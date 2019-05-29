@@ -1,0 +1,19 @@
+#searchUserIndex {
+    .contaiber-fluid {
+        .filter {
+            @extend %filter-style;
+
+            form {
+                float: left;
+            }
+        }
+
+        .content {
+            @extend %content-style;
+        }
+
+        .footer {
+            @extend %footer-style;
+        }
+    }
+}

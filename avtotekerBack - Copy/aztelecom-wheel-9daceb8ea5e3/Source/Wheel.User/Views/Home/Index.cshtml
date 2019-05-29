@@ -1,0 +1,702 @@
+﻿@using res = Wheel.User.Properties.Resources
+@{
+    int i = 0;
+}
+<div id="showcase" class="page_container">
+    <div class="showcase_row__1">
+        <div class="table_cell table_cell__1">
+            <!-- NIVOSLIDER -->
+
+            <div class="slider_wrap">
+                <div class="nivoSlider">
+                    @foreach (var slide in Model.index.sliders)
+                    {
+
+                        <a href="@slide.linkUrl">
+                            <img src="@slide.imgPath" alt="" title="#htmlcaption-@slide.id" />
+                        </a>
+                    }
+
+                </div>
+            </div>
+
+            <div class="caption_hidden">
+
+
+                @foreach (var slide in Model.index.sliders)
+                {
+
+                    <div id="htmlcaption-@slide.id">
+                        <a href="@slide.linkUrl">
+                            @Html.Raw(slide.GetType().GetProperty(Model.lang).GetValue(slide, null))
+                        </a>
+                    </div>
+
+                }
+
+            </div>
+        </div>
+        <div class="table_cell table_cell__2">
+            <div class="showcase_block__1">
+                <a href="@Model.index.slide.linkUrl">
+                    <img src="@Model.index.slide.imgPath" alt="" />
+                    <div>
+                        @Html.Raw(Model.index.slide.GetType().GetProperty(Model.lang).GetValue(Model.index.slide, null))
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="clearfix"></div>
+<div class="container">
+    <div class="homepage_search col-md-12 col-lg-12">
+        <ul class="nav nav-tabs">
+            <li class="active col-md-6 col-lg-6">
+                <a data-toggle="tab" href="#tyre">
+                    <span class="round-tabs one">
+                        @res.search  @res.tyres<i class="fa fa-support pull-right"></i>
+                    </span>
+                </a>
+            </li>
+            <li class="col-md-6 col-lg-6">
+                <a data-toggle="tab" href="#car">
+                    <span class="round-tabs two">
+                        @res.search   @res.car<i class="fa fa-car pull-right"></i>
+                    </span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="tyre" class="tab-pane fade in active">
+                <form id="searchbytyres" action="/tyres/" method="GET">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <select class="selectpicker" name="BrandId" id="BrandId" data-live-search="true" data-width="100%"></select>
+                        </div>
+                        <div class="col-md-3">
+                            <select class="selectpicker clear" name="ModelId" id="ModelId" data-live-search="true" data-width="100%"></select>
+                        </div>
+                        <div class="col-md-3">
+                            <select class="selectpicker clear" name="Width" id="WidthId" data-live-search="true" data-width="100%"></select>
+                        </div>
+                        <div class="col-md-3">
+                            <select class="selectpicker clear" name="Height" id="HeightId" data-live-search="true" data-width="100%"></select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <select class="selectpicker clear" name="Radius" id="RadiusId" data-live-search="true" data-width="100%"></select>
+                        </div>
+                        <div class="col-md-3">
+                            <select class="selectpicker" name="Usage" id="UsageId" data-live-search="true" data-width="100%">
+                                <option selected value="">@*@res.pleaseSelect*@ @res.usage</option>
+                                <option value="true">@res.used</option>
+                                <option value="false">@res.unused</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="col-md-4">@res.price</div>
+                            <div class="col-md-8">
+                            <input id="price" name="priceArray" type="text" placeholder="price" data-slider-id="price" class="price-slider" value="" data-slider-min="0" data-slider-max="1000" data-slider-step="5" data-slider-value="[0,1000]" />
+                        </div>
+                        </div>
+                        <div class="col-md-3">
+                            <button type="button" class="btn btn-warning btn-default btn-block" id="tyreSearchButton">
+                                @res.search
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div id="car" class="tab-pane fade">
+                <form id="searchbycar" action="/tyres/" method="GET">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <select class="selectpicker" name="BrandIdCar" id="BrandIdCar" data-live-search="true" data-width="100%">
+                                <option selected disabled value="0">@*@res.pleaseSelect*@ @res.car</option>
+                                @foreach(var car in Model.carbrand)
+                                {
+                                    <option value="@car.Id">@car.Name</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <select class="selectpicker clear" name="ModelIdCar" disabled id="ModelIdCar" data-live-search="true" data-width="100%"></select>
+                        </div>
+                        <div class="col-md-3">
+                            <select class="selectpicker clear" name="YearCar" disabled id="YearCar" data-live-search="true" data-width="100%"></select>
+                        </div>
+                        <div class="col-md-3">
+                            <select class="selectpicker clear" name="BanCar" disabled id="BanCar" data-live-search="true" data-width="100%"></select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="showcase_row__2">
+    <div class="row">
+        <div class="col-xs-4 showcase_block showcase_block__2 wow">
+            <a href="/tyres?season=1">
+                <img src="/Content/custom_showcase3_img7d44.png" alt="Winter TIRES Shop now!" />
+                <div class="wrap_1">
+                    <div class="wrap_2">
+                        <div class="wrap_3">
+                            <h3 class="wow">@res.summer</h3>
+                            <h4 class="wow">@res.tyresHome</h4>
+                            <span class="btn wow">@res.shopNow!</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-4 showcase_block showcase_block__3 wow">
+            <a href="/tyres?season=0">
+                <img src="/Content/custom_showcase2_img7d44.png" alt="SUMMER TIRES Shop now!" />
+                <div class="wrap_1">
+                    <div class="wrap_2">
+                        <div class="wrap_3">
+                            <h3 class="wow">@res.winter</h3>
+                            <h4 class="wow">@res.tyresHome</h4>
+                            <span class="btn wow">@res.shopNow!</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-4 showcase_block showcase_block__4 wow">
+            <a href="/tyres?season=2">
+                <img src="~/Content/custom_showcase4_img7d44.png" alt="Wheels Shop now!" />
+                <div class="wrap_1">
+                    <div class="wrap_2">
+                        <div class="wrap_3">
+                            <h3 class="wow">@res.fourSeason</h3>
+                            <h4 class="wow">@res.tyresHome</h4>
+                            <span class="btn wow">@res.shopNow!</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+
+    </div>
+</div>
+
+
+<div id="main" role="main">
+    <div class="container featured_container">
+        <div class="row">
+            <div class="main_content col-sm-12 ">
+                <div class="featured_products">
+
+                    <h2 class="page_heading">@res.featuredProducts</h2>
+                    <div id="homepage_carousel__1" class="product_listing_main homepage_carousel row">
+                        @foreach (var tyre in Model.tyres.tyreList)
+                        {
+                            i++;
+                            <div class="wow product col-sm-3 product_homepage item_@i">
+                                <div class="product_wrapper">
+                                    <div class="product_img">
+                                        <a href="/tyres/details/?id=@tyre.Id">
+                                            <img src='/adminpr/@(tyre.Images.Count>0 ? tyre.Images[0].Path : "360_forged_-_mesh_8_custom_painted_close-up_1_large68a8.png")' alt="@tyre.ModelName" />
+
+                                            <span class="product_badge new">@res.newModels</span>
+                                            @if (tyre.Sale > 0)
+                                            {
+                                                @:<span class="product_badge sale">-@((tyre.Sale).ToString("0"))%</span>
+                                            }
+
+                                        </a>
+                                        <div class="product_img_hover">
+                                            <form method="post" action="/tyres/Details?id=@tyre.Id">
+                                                <button class="btn btn-info" type="submit"><i class="fa fa-info"></i><span>@res.more</span></button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="product_info">
+                                        <div class="product_name">
+                                            <a href="/tyres/Details/?id=@tyre.Id">@tyre.BrandName <i class="fa fa-arrow-right" style="font-size: 14px;vertical-align: text-top;"></i> @tyre.ModelName @tyre.Width<span>/</span>@tyre.Height<span>R</span>@tyre.Radius</a>
+                                        </div>
+                                        <div class="product_price ">
+                                            <span class="money priceUSD" style="display:none"> $@(tyre.Price-(tyre.Price/100*tyre.Sale)).ToString("0")</span>
+                                            <span class="money priceAZN"> @(((tyre.Price - (tyre.Price / 100 * tyre.Sale)) * Model.currency).ToString("0"))<i class="manat">m</i></span>
+                                            @if (tyre.Price > (tyre.Price - (tyre.Price / 100 * tyre.Sale)))
+                                            {
+                                                <span class="money priceUSD compare-at-price">$@tyre.Price.ToString("0")</span>
+                                                <span class="money priceAZN compare-at-price">@((tyre.Price * Model.currency).ToString("0"))<i class="manat">m</i></span>
+                                                <span class="money priceAZN compare-at-price">@tyre.Stok <i class="manat">m</i></span>
+                                            }
+
+                                        </div>
+                                        <div class="product_links">
+                                            @*<form method="post" action="/cart/add">
+                                                <input type="hidden" name="id" value="2483992963" />
+                                                <button class="btn btn-cart" type="submit"><i class="fa fa-shopping-cart"></i><span>Add to cart</span></button>
+                                            </form>*@
+                                            <form method="post" action="/tyres/Details?id=@tyre.Id">
+                                                <button class="btn btn-info" type="submit"><i class="fa fa-info"></i><span>@res.more</span></button>
+                                            </form>
+                                            <a class="btn btn-alt" href="/tyres/Details?id=@tyre.Id">View</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            if (i == Model.tyres.tyreList.Count)
+                            {
+                                @:</div>
+                            }
+                            else if (i % 4 == 0)
+                            {
+                                @:</div> <div id="homepage_carousel__2" class="product_listing_main homepage_carousel row">
+                            }
+                        }
+
+                    </div>
+                    <script>
+                        jQuery(document).ready(function ($) {
+                            if (device.desktop() || device.tablet()) {
+                                $('#homepage_carousel__1').bxSlider({
+                                    infiniteLoop: true,
+                                    hideControlOnEnd: true,
+                                    minSlides: 4,
+                                    maxSlides: 4,
+                                    moveSlides: 1,
+                                    slideMargin: 0,
+                                    pager: false,
+                                    prevText: '',
+                                    nextText: '',
+                                });
+
+                                $('#homepage_carousel__2').bxSlider({
+                                    infiniteLoop: true,
+                                    hideControlOnEnd: true,
+                                    minSlides: 4,
+                                    maxSlides: 4,
+                                    moveSlides: 1,
+                                    slideMargin: 0,
+                                    pager: false,
+                                    prevText: '',
+                                    nextText: '',
+                                });
+
+                              //  $('#homepage_carousel__2').parent().parent().find('.bx-controls').hide();
+
+                                var carousel_1_prevBtn = $('#homepage_carousel__1').parent().parent().find('.bx-controls .bx-prev');
+                                var carousel_1_nextBtn = $('#homepage_carousel__1').parent().parent().find('.bx-controls .bx-next');
+
+                                var carousel_2_prevBtn = $('#homepage_carousel__2').parent().parent().find('.bx-controls .bx-prev');
+                                var carousel_2_nextBtn = $('#homepage_carousel__2').parent().parent().find('.bx-controls .bx-next');
+
+
+                                //carousel_1_prevBtn.on('click', function () {
+                                //    carousel_2_nextBtn.trigger("click");
+                                //});
+
+                                //carousel_1_nextBtn.on('click', function () {
+                                //    carousel_2_prevBtn.trigger("click");
+                                //});
+
+                            };
+                        });
+                    </script>
+
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+
+    <!-- HOMEPAGE INFO BLOCK -->
+    <div id="parallax_block" class="homepage_info page_container">
+        <div class="container">
+            <h2 id="homepage_info__title">@res.ourServices</h2>
+            <div class="row">
+                <div class="col-sm-4 homepage_info_item item_1 wow">
+                    <h3 class="wow"><span class="wow">01/</span>@res.servicesTitle1</h3>
+                    <p class="wow">@res.servicesText1</p>
+                </div>
+                <div class="col-sm-4 homepage_info_item item_2 wow">
+                    <h3 class="wow"><span class="wow">02/</span>@res.servicesTitle2</h3>
+                    <p class="wow">@res.servicesText2</p>
+                </div>
+                <div class="col-sm-4 homepage_info_item item_3 wow">
+                    <h3 class="wow"><span class="wow">03/</span>@res.servicesTitle3</h3>
+                    <p class="wow">@res.servicesText3</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <!-- HOMEPAGE BRANDS BLOCK -->
+        <div class="homepage_brands">
+            <div class="row">
+
+
+                <div class="wow col-xs-4 col-sm-2 homepage_brands_item item_1">
+                    <a href="/tyres/?BrandId=138">
+                        <img src="/Content/homepage_brands1_img7d44.png" alt="" />
+                    </a>
+                </div>
+
+                <div class="wow col-xs-4 col-sm-2 homepage_brands_item item_2">
+                    <a href="/tyres/?BrandId=141">
+                        <img src="/Content/homepage_brands2_img7d44.png" alt="" />
+                    </a>
+                </div>
+
+                <div class="wow col-xs-4 col-sm-2 homepage_brands_item item_3">
+                    <a href="/tyres/?BrandId=216">
+                        <img src="/Content/homepage_brands3_img7d44.png" alt="" />
+                    </a>
+                </div>
+
+                <div class="wow col-xs-4 col-sm-2 homepage_brands_item item_4">
+                    <a href="/tyres/?BrandId=145">
+                        <img src="/Content/homepage_brands4_img7d44.png" alt="" />
+                    </a>
+                </div>
+
+                <div class="wow col-xs-4 col-sm-2 homepage_brands_item item_5">
+                    <a href="/tyres/?BrandId=184">
+                        <img src="/Content/homepage_brands5_img7d44.png" alt="" />
+                    </a>
+                </div>
+
+                <div class="wow col-xs-4 col-sm-2 homepage_brands_item item_6">
+                    <a href="/tyres/?BrandId=190">
+                        <img src="/Content/homepage_brands6_img7d44.png" alt="" />
+                    </a>
+                </div>
+
+            </div>
+        </div>
+        <!-- HOMEPAGE BOTTOM BLOCK -->
+        <div class="homepage_bottom">
+            <div class="row">
+
+                <div class="wow col-sm-6 homepage_bottom_item item_1">
+                    <a href="#">
+                        <div class="wrap_1">
+                            <div class="wrap_2 wow">
+                                <i class="fa fa-thumbs-o-up"></i>
+                            </div>
+
+                            <div class="wrap_3 wow">
+                                <h3>@res.satisfaction</h3>
+                                <h3>@res.guaranteed</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="wow col-sm-6 homepage_bottom_item item_2">
+                    <a href="#">
+                        <div class="wrap_1">
+                            <div class="wrap_2 wow">
+                                <i class="fa fa-refresh"></i>
+                            </div>
+
+                            <div class="wrap_3 wow">
+                                <h3>@res.sevenDay</h3>
+                                <h3>@res.easyReturn</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <!--  GOOGLE MAP -->
+          <div class="col-md-4 fbPage">
+              <div class="fb-page" data-href="https://www.facebook.com/Avtoteker.az/" data-tabs="timeline" data-width="400" data-height="300" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/Avtoteker.az/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Avtoteker.az/">Avtoteker.az</a></blockquote></div>
+          </div>
+        <div class="col-md-8"><div id="google_map"></div></div>
+       
+        <div>@Html.Raw(Model.pageContent.GetType().GetProperty(Model.lang).GetValue(Model.pageContent, null))</div>
+    </div>
+    <div id="newCarModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">@*@res.pleaseSelect*@ @res.tyres</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="panel panel-default">
+                        <div class="panel-heading frontPanel">Front</div>
+                        <div class="panel-body">
+                            <ul id="frontPanel"></ul>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Rear</div>
+                        <div class="panel-body rearPanel">
+                            <ul id="rearPanel"></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+        </div>
+    </div>
+    @section script{
+        <script>
+            $.fn.serializeObject = function () {
+                var o = {};
+                var a = this.serializeArray();
+                $.each(a, function () {
+                    if (o[this.name]) {
+                        if (!o[this.name].push) {
+                            o[this.name] = [o[this.name]];
+                        }
+                        o[this.name].push(this.value || '');
+                    } else {
+                        o[this.name] = this.value || '';
+                    }
+                });
+                return o;
+            };
+            // Instantiate a slider
+            var mySlider = $("#price").slider({
+                // tooltip: 'always',
+                tooltip_position: 'bottom',
+
+            }).on("slideStop", function (slideEvt) { refreshList(); });
+
+
+            $("#searchbytyres select").change(function () {
+                refreshList($(this));
+            });
+
+            $("#tyreSearchButton").click(function () {
+                $("#searchbytyres").submit();
+            })
+            function refreshList(e) {
+
+                var formData = $("#searchbytyres").serializeObject();
+                //console.log(e)
+
+                console.dir(formData);
+                $.ajax({
+                    url: "/json/searchbytyres",
+                    type: "GET",
+                    data: formData,
+                    success: function (response) {
+                        var oldValue = $(e).html();
+                        $(".selectpicker.clear").html("");
+                        if (!e) {
+                            for (var i = 0; i < response.brand.length; i++) {
+                                $("#BrandId").append('<option value="' + response.brand[i].Id + '">' + response.brand[i].Name + '</option>');
+                            }
+                        }
+                        for (var i = 0; i < response.model.length; i++) {
+                            $("#ModelId").append('<option value="' + response.model[i].Id + '">' + response.model[i].Name + '</option>');
+                        }
+                        for (var i = 0; i < response.width.length; i++) {
+                            $("#WidthId").append('<option value="' + response.width[i].Id + '">' + response.width[i].Name + '</option>');
+                        }
+                        for (var i = 0; i < response.height.length; i++) {
+                            $("#HeightId").append('<option value="' + response.height[i].Id + '">' + response.height[i].Name + '</option>');
+                        }
+                        for (var i = 0; i < response.radius.length; i++) {
+                            $("#RadiusId").append('<option value="' + response.radius[i].Id + '">' + response.radius[i].Name + '</option>');
+                        }
+
+                        //for (var i = 0; i < response.usage.length; i++) {
+                        //    $("#UsageId").append('<option value="' + response.usage[i].Id + '">' + response.usage[i].Name + '</option>');
+                        //}
+
+                        $(e).html(oldValue);
+
+                        $('#BrandId').val(formData.BrandId);
+                        $('#ModelId').val(formData.ModelId);
+                        $('#WidthId').val(formData.Width);
+                        $('#HeightId').val(formData.Height);
+                        $('#RadiusId').val(formData.Radius);
+                        $('#UsageId').val(formData.Usage);
+                        //todo set selecetd item
+                        $(".selectpicker").selectpicker("refresh");
+                    }
+                })
+            }
+            $(document).ready(function () {
+                refreshList();
+                initialize();
+            })
+
+            $("#BrandIdCar").change(function () {
+                $("#ModelIdCar").html('<option selected disabled value="0"> @res.model</option>');
+                $("#YearCar").html('<option selected disabled value="0"> @res.winter</option>');
+                $("#BanCar").html('<option selected disabled value="0"> @res.car</option>');
+                var id = $(this).val();
+                // if (id != 0) {
+                $.ajax({
+                    url: "/Json/listModels",
+                    data: "id=" + id,
+                    type: "GET",
+                    success: function (result) {
+                        $.each(result.model, function (index, model) {
+                            $("#ModelIdCar").append('<option value="' + model.Id + '">' + model.Name + '</option>');
+                        });
+                        $("#ModelIdCar").removeAttr("disabled");
+                        $("#ModelIdCar").selectpicker("refresh");
+
+                    }
+                })
+                //  }
+                //  else
+                //  {
+                //      $("#ModelIdCar").addAttr("disabled");
+                //  }
+            });
+
+            $("#ModelIdCar").change(function () {
+                $("#YearCar").html('<option selected disabled value="0">@res.winter</option>');
+                $("#BanCar").html('<option selected disabled value="0"> @res.car</option>');
+                var id = $(this).val();
+                $.ajax({
+                    url: "/Json/listYears",
+                    data: "id=" + id,
+                    type: "GET",
+                    success: function (result) {
+                        $.each(result.year, function (index, year) {
+                            $("#YearCar").append('<option value="' + year.Id + '">' + year.Year + '</option>');
+                        });
+                        $("#YearCar").removeAttr("disabled");
+                        $("#YearCar").selectpicker("refresh");
+
+                    }
+                })
+            });
+
+            $("#YearCar").change(function () {
+                $("#BanCar").html('<option selected disabled value="0">@res.car</option>');
+                var id = $(this).val();
+                $.ajax({
+                    url: "/Json/listBans",
+                    data: "id=" + id,
+                    type: "GET",
+                    success: function (result) {
+                        $.each(result.ban, function (index, ban) {
+                            $("#BanCar").append('<option value="' + ban.Id + '">' + ban.Name + '</option>');
+                        });
+                        $("#BanCar").removeAttr("disabled");
+                        $("#BanCar").selectpicker("refresh");
+
+                    }
+                })
+            });
+
+            $("#BanCar").change(function () {
+                var id = $(this).val();
+                var frontTyre = [];
+                var rearTyre = [];
+                $.ajax({
+                    url: "/Json/listWheels",
+                    data: "id=" + id,
+                    type: "GET",
+                    success: function (result) {
+                        $.each(result.wheel, function (index, wheel) {
+                            var wheels = JSON.parse(wheel.wheels);
+                            $.each(wheels, function (i, tyres) {
+                                $.each(tyres, function (index, tyre) {
+                                    $.each(tyre, function (ind, thisTyre) {
+                                        $.each(thisTyre.front, function (tindex, front) {
+                                            // frontTyre.push({ width: front.tire_width[0], height: front.tire_aspect_ratio[0], radius: front.rim_diameter[0] });
+                                            if (front.tire_width[0] != "") {
+                                                frontTyre.push('<li><a class="btn btn-default" href="/tyres?width=' + front.tire_width[0] + '&height=' + front.tire_aspect_ratio[0] + '&radius=' + front.rim_diameter[0] + '">' + front.tire_width[0] + '/' + front.tire_aspect_ratio[0] + 'R' + front.rim_diameter[0] + '</a></li>')
+                                            }//console.log(frontTyre)
+                                        })
+                                        $.each(thisTyre.rear, function (tindex, rear) {
+                                            //rearTyre.push({ width: rear.tire_width[0], height: rear.tire_aspect_ratio[0], radius: rear.rim_diameter[0] });
+                                            if (rear.tire_width[0] != "") {
+                                                rearTyre.push('<li><a  class="btn btn-default"  href="/tyres?width=' + rear.tire_width[0] + '&height=' + rear.tire_aspect_ratio[0] + '&radius=' + rear.rim_diameter[0] + '">' + rear.tire_width[0] + '/' + rear.tire_aspect_ratio[0] + 'R' + rear.rim_diameter[0] + '</a></li>')
+                                            }// console.log(rearTyre)
+                                        })
+                                    })
+                                })
+
+                            })
+                        });
+                        $("#frontPanel").html(frontTyre.join(" "));
+                        $("#rearPanel").html(rearTyre.join(" "));
+                        $("#newCarModal").modal({ backdrop: false });
+                    }
+                })
+            });
+        </script>
+
+
+    }
+
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAUUQdy5XtUuo0wzvwKmm-qjgBo5hVICVA"></script>
+
+<script type="text/javascript">
+                        var map;
+
+                        function initialize() {
+
+                            var latlng = new google.maps.LatLng(40.409793, 49.866322);
+
+                            var mapOptions = {
+                                center: latlng,
+                                zoom: 17,
+                                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                                panControl: false,
+                                zoomControl: true,
+                                mapTypeControl: false,
+                                scaleControl: false,
+                                scrollwheel: false,
+                            };
+
+                            map = new google.maps.Map(document.getElementById('google_map'), mapOptions);
+
+                            var geocoder = new google.maps.Geocoder();
+                            var myLatLng = { lat: 40.409793, lng: 49.866322 };
+                            //40.409793, 49.866322
+                            var address = '102 Yusif Vazir Chamanzaminli';
+                            var marker = new google.maps.Marker({ map: map, position: myLatLng, icon: markerImage });
+
+                            var markerImage = new google.maps.MarkerImage(
+                                '/Content/marker7d44.png',
+                                new google.maps.Size(88, 88), // marker size
+                                new google.maps.Point(0, 0),
+                                new google.maps.Point(37, 88) // marker center point
+                            );
+
+                            var styles = [
+                                {
+                                    stylers: [
+                                        { saturation: -85 },
+                                        { lightness: 13 }
+                                    ]
+                                }, {
+                                    featureType: "road.highway",
+                                    elementType: "geometry",
+                                    stylers: [
+                                      { color: '#ffffff' }
+                                    ]
+                                }
+                            ];
+
+                            map.setOptions({ styles: styles });
+                        }
+</script>
+
+

@@ -1,0 +1,32 @@
+#driverInputUpdate {
+    .contaiber-fluid {
+        .inputAccident {
+            @extend %add-style;
+
+            form {
+                .drvGroup {
+                    margin-bottom: 50px;
+
+                    .drvCode {
+                        display: inline;
+                        padding-left: 0px;
+
+                        span {
+                            font-size: 16px;
+                            font-weight: 600;
+                            color: red;
+                        }
+                    }
+                }
+
+                .inputHere {
+                    margin-bottom: 0px;
+
+                    .dropdown {
+                        padding: 0px 10px;
+                    }
+                }
+            }
+        }
+    }
+}

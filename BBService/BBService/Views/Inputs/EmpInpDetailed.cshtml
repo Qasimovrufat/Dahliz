@@ -1,0 +1,166 @@
+﻿@using BBService.Models
+@{
+    ViewBag.Title = "EmpInpDetailed";
+    List<string> permitted = (List<string>)Session["permitted"];
+}
+
+<div id="driverInputDetailed">
+    <div class="contaiber-fluid">
+        <div class="row content">
+            <div class="col-md-8 wrapper">
+                <div class="row heading">
+                    <h2>İşçi haqqında detallı məlumat</h2>
+                </div>
+                <div class="row item-group">
+                    <div class="left col-xs-4 col-sm-4 col-md-4">
+                        <p>İşçi kodu <span>: </span></p>
+                    </div>
+
+                    <div class="right col-xs-8 col-sm-8 col-md-8">
+                        <p>@ViewBag.Emp.EmployeeCode</p>
+                    </div>
+                </div>
+
+                <div class="row item-group">
+                    <div class="left col-md-4">
+                        <p>Soyad, ad, ata adı <span>: </span></p>
+                    </div>
+
+                    <div class="right col-md-8">
+                        <p>@(ViewBag.Emp.Surname != null ? ViewBag.Emp.Surname : "") @(ViewBag.Emp.Name != null ? ViewBag.Emp.Name : "") @(ViewBag.Emp.FutherName != null ? ViewBag.Emp.FutherName : "")</p>
+                    </div>
+                </div>
+
+                <div class="row item-group">
+                    <div class="left col-md-4">
+                        <p>Şöbə <span>: </span></p>
+                    </div>
+
+                    <div class="right col-md-8">
+                        <p>@(ViewBag.Emp.DepartmentId != null ? ViewBag.Emp.Departments.Name : "")</p>
+                    </div>
+                </div>
+
+                <div class="row item-group">
+                    <div class="left col-md-4">
+                        <p>Sektor <span>: </span></p>
+                    </div>
+
+                    <div class="right col-md-8">
+                        <p>@(ViewBag.Emp.SectorId != null ? ViewBag.Emp.Sectors.Name : "")</p>
+                    </div>
+                </div>
+
+                <div class="row item-group">
+                    <div class="left col-md-4">
+                        <p>Vəzifə <span>: </span></p>
+                    </div>
+
+                    <div class="right col-md-8">
+                        <p>@(ViewBag.Emp.PositionId != null ? ViewBag.Emp.Positions.Name : "")</p>
+                    </div>
+                </div>
+
+                <div class="row item-group">
+                    <div class="left col-md-4">
+                        <p>İşə qəbul tarixi <span>: </span></p>
+                    </div>
+
+                    <div class="right col-md-8">
+                        <p>@(ViewBag.Emp.RecruitmentDate != null ? ViewBag.Emp.RecruitmentDate.ToString("dd.MM.yyyy") : "")</p>
+                    </div>
+                </div>
+
+                <div class="row item-group">
+                    <div class="left col-md-4">
+                        <p>İşdən çıxma tarixi <span>: </span></p>
+                    </div>
+
+                    <div class="right col-md-8">
+                        <p style="color:red;">@(ViewBag.Emp.DeactivationDate != null ? ViewBag.Emp.DeactivationDate.ToString("dd.MM.yyyy") : "")</p>
+                    </div>
+                </div>
+
+                <div class="row item-group">
+                    <div class="left col-md-4">
+                        <p>Telefon <span>: </span></p>
+                    </div>
+
+                    <div class="right col-md-8">
+                        <p>@(ViewBag.Emp.Phone != null ? ViewBag.Emp.Phone : "")</p>
+                    </div>
+                </div>
+
+                <div class="row item-group">
+                    <div class="left col-md-4">
+                        <p>SV kateqoriyası <span>: </span></p>
+                    </div>
+
+                    <div class="right col-md-8">
+                        <p>@(ViewBag.Emp.LicenceCategory != null ? ViewBag.Emp.LicenceCategory : "")</p>
+                    </div>
+                </div>
+
+                <div class="row item-group">
+                    <div class="left col-md-4">
+                        <p>SV seriyası <span>: </span></p>
+                    </div>
+
+                    <div class="right col-md-8">
+                        <p>@(ViewBag.Emp.LicenceSeries != null ? ViewBag.Emp.LicenceSeries : "")</p>
+                    </div>
+                </div>
+
+                <div class="row item-group">
+                    <div class="left col-md-4">
+                        <p>SV nömrəsi <span>: </span></p>
+                    </div>
+
+                    <div class="right col-md-8">
+                        <p>@(ViewBag.Emp.LicenceNumber != null ? ViewBag.Emp.LicenceNumber : "")</p>
+                    </div>
+                </div>
+
+                <div class="row item-group">
+                    <div class="left col-md-4">
+                        <p>SV verilmə tarixi <span>: </span></p>
+                    </div>
+
+                    <div class="right col-md-8">
+                        <p>@(ViewBag.Emp.LicenceIssueDate != null ? ViewBag.Emp.LicenceIssueDate.ToString("dd.MM.yyyy") : "")</p>
+                    </div>
+                </div>
+
+                <div class="row item-group">
+                    <div class="left col-md-4">
+                        <p>SV etibarlılıq tarixi <span>: </span></p>
+                    </div>
+
+                    <div class="right col-md-8">
+                        <p>@(ViewBag.Emp.LicenceExpireDate != null ? ViewBag.Emp.LicenceExpireDate.ToString("dd.MM.yyyy") : "")</p>
+                    </div>
+                </div>
+
+                <div class="row item-group">
+                    <div class="left col-md-4">
+                        <p>Doğum tarixi <span>: </span></p>
+                    </div>
+
+                    <div class="right col-md-8">
+                        <p>@(ViewBag.Emp.BirthDate != null ? ViewBag.Emp.BirthDate.ToString("dd.MM.yyyy") : "")</p>
+                    </div>
+                </div>
+
+                <div class="row item-group">
+                    <div class="left col-md-4">
+                        <p>İş fəaliyyət dövrü <span>: </span></p>
+                    </div>
+
+                    <div class="right col-md-8">
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    </div>
+                </div>
+            </div>
+        </div>       
+    </div>
+</div>

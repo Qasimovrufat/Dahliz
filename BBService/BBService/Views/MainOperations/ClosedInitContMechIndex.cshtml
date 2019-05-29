@@ -1,0 +1,372 @@
+﻿@model BBService.Models.ViewHome
+@{
+    ViewBag.Title = "ClosedInitContMechIndex";
+    List<string> permitted = (List<string>)Session["permitted"];
+}
+
+<div id="ClosedInitContMechIndex">
+    <div class="contaiber-fluid">
+        <div class="row filter">
+            <div class="col-md-12">
+                <form @Url.Action("ClosedInitContMechIndex", "MainOperations")>
+                    <div class="form-row">
+                        <div class="col-md-12">
+
+                            @*NV Nömrəsi*@
+                            <div class="searchItem">
+                                <label class="lableSelectBox">NV Nömrəsi :</label>
+                                <select class="form-control inputItem inputItemWith-3 selectpicker" name="VehicleId" data-live-search="true">
+                                    <option value="null" selected>Seçin ...</option>
+                                    @foreach (var item in Model.Vehicles)
+                                    {
+                                        <option @(Model.SearchModelInitCont.VehicleId == item.Id ? "selected" : "") value="@item.Id">@item.Number</option>
+                                    }
+                                </select>
+                            </div>
+
+                            @*Xətt Nömrəsi*@
+                            <div class="searchItem">
+                                <label class="lableSelectBox">Xətt :</label>
+                                <select class="form-control inputItem inputItemWith-3 selectpicker" name="RouteId" data-live-search="true">
+                                    <option value="null" selected>Seçin ...</option>
+                                    @foreach (var item in Model.Routes)
+                                    {
+                                        <option @(Model.SearchModelInitCont.RouteId == item.Id ? "selected" : "") value="@item.Id">@item.Number</option>
+                                    }
+                                </select>
+                            </div>
+
+                            
+
+                            @*Giriş tarixi*@
+                            <div class="searchItem">
+                                <label>Giriş tarixi(min) :</label>
+                                <input type="text" value="@(Model.SearchModelInitCont.EnterDateStart!=null?Model.SearchModelInitCont.EnterDateStart:"")" class="form-control inputItem datepicker inputItemWith-1" name="EnterDateStart" placeholder="Tarix seçin ...">
+                            </div>
+
+                            <div class="searchItem">
+                                <label>Giriş tarixi(max) :</label>
+                                <input type="text" value="@(Model.SearchModelInitCont.EnterDateEnd!=null?Model.SearchModelInitCont.EnterDateEnd:"")" class="form-control inputItem datepicker inputItemWith-1" name="EnterDateEnd" placeholder="Tarix seçin ...">
+                            </div>
+
+                            @*Giriş Saatı*@
+                            <div class="searchItem">
+                                <label>Giriş Saatı(min) :</label>
+                                <input type="text" value="@(Model.SearchModelInitCont.EnterHourStart!=null?Model.SearchModelInitCont.EnterHourStart:"")" class="form-control inputItem timePicker inputItemWith-1" name="EnterHourStart" placeholder="Saat seçin ...">
+                            </div>
+
+                            <div class="searchItem">
+                                <label>Giriş Saatı(max) :</label>
+                                <input type="text" value="@(Model.SearchModelInitCont.EnterHourEnd!=null?Model.SearchModelInitCont.EnterHourEnd:"")" class="form-control inputItem timePicker inputItemWith-1" name="EnterHourEnd" placeholder="Saat seçin ...">
+                            </div>
+
+                            @*Giriş km*@
+                            <div class="searchItem">
+                                <label>Giriş KM(min) :</label>
+                                <input type="text" value="@(Model.SearchModelInitCont.EnterKmMin!=null?Model.SearchModelInitCont.EnterKmMin:"")" class="form-control inputItem inputItemWith-1" name="EnterKmMin" placeholder="Daxil edin ...">
+                            </div>
+
+                            <div class="searchItem">
+                                <label>Giriş KM(max) :</label>
+                                <input type="text" value="@(Model.SearchModelInitCont.EnterKmMax!=null?Model.SearchModelInitCont.EnterKmMax:"")" class="form-control inputItem inputItemWith-1" name="EnterKmMax" placeholder="Daxil edin ...">
+                            </div>
+
+                            @*Giriş yanacaq*@
+                            <div class="searchItem">
+                                <label>Giriş yanacaq(min) :</label>
+                                <input type="text" value="@(Model.SearchModelInitCont.EnterFuelMin!=null?Model.SearchModelInitCont.EnterFuelMin:"")" class="form-control inputItem inputItemWith-1" name="EnterFuelMin" placeholder="Daxil edin ...">
+                            </div>
+
+                            <div class="searchItem">
+                                <label>Giriş yanacaq(max) :</label>
+                                <input type="text" value="@(Model.SearchModelInitCont.EnterFuelMax!=null?Model.SearchModelInitCont.EnterFuelMax:"")" class="form-control inputItem inputItemWith-1" name="EnterFuelMax" placeholder="Daxil edin ...">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Axtar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-12">
+                <div class="nonFIlterWrapper">
+                    <p class="nonFilter" id="clearFilter">
+                        <a href=""><i class="fa fa-eraser"></i> Təmizlə</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row content">
+            <div class="col-md-12">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="width: 50px;" class="centerCell">S/s</th>
+
+                            <th style="width: 80px;" class="centerCell">Düzəliş et</th>
+
+                            <th style="width: 80px;" class="centerCell">NV Nömrəsi</th>
+                            <th style="width: 80px;" class="centerCell">TQ Nəzarət</th>
+
+                            <th style="width: 50px;" class="centerCell">Xətt</th>
+
+                            <th style="width: 75px;" class="centerCell">Giriş Tarixi</th>
+                            <th style="width: 50px;" class="centerCell">Giriş Saatı</th>
+                            <th style="width: 80px;" class="centerCell">Giriş KM</th>
+                            <th style="width: 80px;" class="centerCell">Giriş Yanacaq</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{ int i = 0;}
+                        @foreach (var item in Model.InitialControlSchedule)
+                        {
+                            i++;
+                            int? tqCon = null;
+                            string tqConString;
+
+                            bool warning1 = false;
+                            bool warning2 = false;
+                            
+                            if (item.EnterKilometer < 30000)
+                            {
+                                tqCon = 30000;
+                                tqConString = "30000";
+                            }
+                            else if (item.EnterKilometer > 30000 && item.EnterKilometer < 60000)
+                            {
+                                tqCon = 60000;
+                                tqConString = "60000";
+                            }
+                            else if (item.EnterKilometer > 60000 && item.EnterKilometer < 90000)
+                            {
+                                tqCon = 90000;
+                                tqConString = "90000";
+                            }
+                            else if (item.EnterKilometer > 90000 && item.EnterKilometer < 120000)
+                            {
+                                tqCon = 120000;
+                                tqConString = "120000";
+                            }
+                            else if (item.EnterKilometer > 120000 && item.EnterKilometer < 150000)
+                            {
+                                tqCon = 150000;
+                                tqConString = "30000";
+                            }
+                            else if (item.EnterKilometer > 150000 && item.EnterKilometer < 180000)
+                            {
+                                tqCon = 180000;
+                                tqConString = "60000";
+                            }
+                            else if (item.EnterKilometer > 180000 && item.EnterKilometer < 210000)
+                            {
+                                tqCon = 210000;
+                                tqConString = "90000";
+                            }
+                            else if (item.EnterKilometer > 210000 && item.EnterKilometer < 240000)
+                            {
+                                tqCon = 240000;
+                                tqConString = "120000";
+                            }
+                            else if (item.EnterKilometer > 240000 && item.EnterKilometer < 270000)
+                            {
+                                tqCon = 270000;
+                                tqConString = "30000";
+                            }
+                            else if (item.EnterKilometer > 270000 && item.EnterKilometer < 300000)
+                            {
+                                tqCon = 300000;
+                                tqConString = "60000";
+                            }
+                            else if (item.EnterKilometer > 300000 && item.EnterKilometer < 330000)
+                            {
+                                tqCon = 330000;
+                                tqConString = "90000";
+                            }
+                            else if (item.EnterKilometer > 330000 && item.EnterKilometer < 360000)
+                            {
+                                tqCon = 360000;
+                                tqConString = "120000";
+                            }
+                            else if (item.EnterKilometer > 360000 && item.EnterKilometer < 390000)
+                            {
+                                tqCon = 390000;
+                                tqConString = "30000";
+                            }
+                            else if (item.EnterKilometer > 390000 && item.EnterKilometer < 420000)
+                            {
+                                tqCon = 420000;
+                                tqConString = "60000";
+                            }
+                            else if (item.EnterKilometer > 420000 && item.EnterKilometer < 450000)
+                            {
+                                tqCon = 450000;
+                                tqConString = "90000";
+                            }
+                            else if (item.EnterKilometer > 450000 && item.EnterKilometer < 480000)
+                            {
+                                tqCon = 480000;
+                                tqConString = "120000";
+                            }
+                            else if (item.EnterKilometer > 480000 && item.EnterKilometer < 510000)
+                            {
+                                tqCon = 510000;
+                                tqConString = "30000";
+                            }
+                            else if (item.EnterKilometer > 510000 && item.EnterKilometer < 540000)
+                            {
+                                tqCon = 540000;
+                                tqConString = "60000";
+                            }
+                            else if (item.EnterKilometer > 540000 && item.EnterKilometer < 570000)
+                            {
+                                tqCon = 570000;
+                                tqConString = "90000";
+                            }
+                            else if (item.EnterKilometer > 570000 && item.EnterKilometer < 600000)
+                            {
+                                tqCon = 600000;
+                                tqConString = "120000";
+                            }
+                            else if (item.EnterKilometer > 600000 && item.EnterKilometer < 630000)
+                            {
+                                tqCon = 630000;
+                                tqConString = "30000";
+                            }
+                            else if (item.EnterKilometer > 630000 && item.EnterKilometer < 660000)
+                            {
+                                tqCon = 660000;
+                                tqConString = "60000";
+                            }
+                            else if (item.EnterKilometer > 660000 && item.EnterKilometer < 690000)
+                            {
+                                tqCon = 690000;
+                                tqConString = "90000";
+                            }
+                            else if (item.EnterKilometer > 690000 && item.EnterKilometer < 720000)
+                            {
+                                tqCon = 720000;
+                                tqConString = "120000";
+                            }
+                            else if (item.EnterKilometer > 720000 && item.EnterKilometer < 750000)
+                            {
+                                tqCon = 750000;
+                                tqConString = "30000";
+                            }
+                            else if (item.EnterKilometer > 750000 && item.EnterKilometer < 780000)
+                            {
+                                tqCon = 780000;
+                                tqConString = "60000";
+                            }
+                            else if (item.EnterKilometer > 780000 && item.EnterKilometer < 810000)
+                            {
+                                tqCon = 810000;
+                                tqConString = "90000";
+                            }
+                            else if (item.EnterKilometer > 810000 && item.EnterKilometer < 840000)
+                            {
+                                tqCon = 840000;
+                                tqConString = "120000";
+                            }
+                            else if (item.EnterKilometer > 840000 && item.EnterKilometer < 870000)
+                            {
+                                tqCon = 870000;
+                                tqConString = "30000";
+                            }
+                            else if (item.EnterKilometer > 870000 && item.EnterKilometer < 900000)
+                            {
+                                tqCon = 900000;
+                                tqConString = "60000";
+                            }
+                            else if (item.EnterKilometer > 900000 && item.EnterKilometer < 930000)
+                            {
+                                tqCon = 930000;
+                                tqConString = "90000";
+                            }
+                            else if (item.EnterKilometer > 930000 && item.EnterKilometer < 960000)
+                            {
+                                tqCon = 960000;
+                                tqConString = "120000";
+                            }
+                            else if (item.EnterKilometer > 960000 && item.EnterKilometer < 990000)
+                            {
+                                tqCon = 990000;
+                                tqConString = "30000";
+                            }
+                            else if (item.EnterKilometer > 990000 && item.EnterKilometer < 1020000)
+                            {
+                                tqCon = 1020000;
+                                tqConString = "60000";
+                            }
+                            else if (item.EnterKilometer > 1020000 && item.EnterKilometer < 1050000)
+                            {
+                                tqCon = 1050000;
+                                tqConString = "90000";
+                            }
+                            else if (item.EnterKilometer > 1050000 && item.EnterKilometer < 1080000)
+                            {
+                                tqCon = 1080000;
+                                tqConString = "120000";
+                            }
+                            else
+                            {
+                                tqCon = 10000000;
+                                tqConString = "1080000-i keçib";
+                            }
+
+
+                            if ((tqCon - item.EnterKilometer < 1000))
+                            {
+                                warning1 = true;
+                            }
+                            else if (tqCon - item.EnterKilometer < 2000)
+                            {
+                                warning2 = true;
+                            }
+                            else if (tqCon == 10000000)
+                            {
+                                warning2 = true;
+                            }
+
+
+                        <tr class="pageItem">
+                            <td scope="row" class="centerCell">@i</td>
+
+                            <td class="centerCell">
+                                <a class="@(permitted.FirstOrDefault(a => a == "InitContCheckupCreate")==null? "hideAction" : "")" href="@Url.Action("InitContCheckupCreate","MainOperations",new { id=item.Id})" title="Yoxlama kartı açın"><i class="fa fa-briefcase" aria-hidden="true"></i></a>
+                                <a class="@(permitted.FirstOrDefault(a => a == "ClosedInitContMechUpdate")==null? "hideAction" : "")" href="@Url.Action("ClosedInitContMechUpdate","MainOperations",new { id=item.Id})" title="Düzəliş et"><i class="fas fa-edit"></i></a>
+                            </td>
+
+                            <td class="centerCell">@(item.VehicleId == null ? "" : item.Vehicles.Number)</td>
+                            <td class="centerCell" style="@(warning1==true?"background-color:red; color:white; font-weight:600;":(warning2==true?"background-color:yellow":""))">@tqCon @((warning1 == true || warning2 == true) && (tqCon != 30000 && tqCon != 60000 && tqCon != 90000 && tqCon != 120000) ? "/ " + tqConString : "")</td>
+
+                            <td class="centerCell">@(item.RouteId == null ? "" : item.Routes.Number)</td>
+
+                            <td class="centerCell">@(item.EnterTime == null ? "" : item.EnterTime.Value.ToString("dd.MM.yyyy"))</td>
+                            <td class="centerCell">@(item.EnterTime == null ? "" : item.EnterTime.Value.ToString("HH:mm"))</td>
+                            <td class="centerCell">@(item.EnterKilometer == null ? "" : item.EnterKilometer.Value.ToString("#.##"))</td>
+                            <td class="centerCell">@(item.EnterFuel == null ? "" : item.EnterFuel.Value.ToString("#.##"))</td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row footer">
+            <div class="col-md-3 download">
+                @*<div class="fieldSet">
+                    <h1>Yüklə</h1>
+                    <a href="@Url.Action("ExportEmployeesData","Inputs")" title="Excel">
+                            <img src="~/public/assets/img/excel.png" alt="">
+                        </a>
+                </div>*@
+            </div>
+            <div class="col-md-6 paginationWrapper">
+                <ul class="paginationCauseListNav"></ul>
+            </div>
+            <div class="col-md-3 records">
+                <p>Cəmi @Model.InitialControlSchedule.Count() sətir</p>
+            </div>
+        </div>
+    </div>
+</div>

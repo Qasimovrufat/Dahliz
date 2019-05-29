@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0f11f4814f204d9484f0d36a964c07f3" Name="Diagram1" ZoomLevel="62">
+        <EntityTypeShape EntityType="BBServiceModel.Actions" Width="1.5" PointX="2.25" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BBServiceModel.Companies" Width="1.5" PointX="2.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BBServiceModel.Departments" Width="1.5" PointX="4.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BBServiceModel.Employees" Width="1.5" PointX="6.875" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BBServiceModel.NotificationContent" Width="1.5" PointX="0.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BBServiceModel.NotificationTitles" Width="1.5" PointX="0.5" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BBServiceModel.Operations" Width="1.5" PointX="0.5" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BBServiceModel.Permissions" Width="1.5" PointX="2.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BBServiceModel.Positions" Width="1.5" PointX="6.875" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BBServiceModel.Routes" Width="1.5" PointX="9.5" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BBServiceModel.Sectors" Width="1.5" PointX="4.625" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BBServiceModel.Users" Width="1.5" PointX="2.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BBServiceModel.Vehicles" Width="1.5" PointX="12.25" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BBServiceModel.VehiclesBrand" Width="1.5" PointX="12.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BBServiceModel.AggregatedCounter" Width="1.5" PointX="22.125" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BBServiceModel.Counter" Width="1.5" PointX="22.375" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BBServiceModel.Hash" Width="1.5" PointX="22" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BBServiceModel.Job" Width="1.5" PointX="18.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BBServiceModel.JobQueue" Width="1.5" PointX="17" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BBServiceModel.JobParameter" Width="1.5" PointX="20.375" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BBServiceModel.List" Width="1.5" PointX="20.375" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BBServiceModel.Schema" Width="1.5" PointX="0.625" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BBServiceModel.Server" Width="1.5" PointX="18.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BBServiceModel.Set" Width="1.5" PointX="20.5" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BBServiceModel.State" Width="1.5" PointX="17" PointY="0.5" IsExpanded="true" />
+        <AssociationConnector Association="BBServiceModel.FK_Actions_Operations" ManuallyRouted="false" />
+        <AssociationConnector Association="BBServiceModel.FK_Permissions_Actions" ManuallyRouted="false" />
+        <AssociationConnector Association="BBServiceModel.FK_Employees_Departments" ManuallyRouted="false" />
+        <AssociationConnector Association="BBServiceModel.FK_Sectors_Departments" ManuallyRouted="false" />
+        <AssociationConnector Association="BBServiceModel.FK_Employees_Positions" ManuallyRouted="false" />
+        <AssociationConnector Association="BBServiceModel.FK_Employees_Sectors" ManuallyRouted="false" />
+        <AssociationConnector Association="BBServiceModel.FK_NotificationContent_NotificationTitles" ManuallyRouted="false" />
+        <AssociationConnector Association="BBServiceModel.FK_Permissions_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="BBServiceModel.FK_Vehicles_VehiclesBrand" ManuallyRouted="false" />
+        <AssociationConnector Association="BBServiceModel.FK_HangFire_JobParameter_Job" ManuallyRouted="false" />
+        <AssociationConnector Association="BBServiceModel.FK_HangFire_State_Job" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BBServiceModel.MechanicBinding" Width="1.5" PointX="0.5" PointY="8" />
+        <AssociationConnector Association="BBServiceModel.FK_MechanicBinding_Employees" />
+        <AssociationConnector Association="BBServiceModel.FK_MechanicBinding_Employees1" />
+        <AssociationConnector Association="BBServiceModel.FK_Users_Employees" />
+        <EntityTypeShape EntityType="BBServiceModel.InitialControlSchedule" Width="1.5" PointX="9.5" PointY="0.5" />
+        <AssociationConnector Association="BBServiceModel.FK_InitialControlSchedule_Employees" />
+        <AssociationConnector Association="BBServiceModel.FK_InitialControlSchedule_Employees1" />
+        <AssociationConnector Association="BBServiceModel.FK_InitialControlSchedule_Employees2" />
+        <AssociationConnector Association="BBServiceModel.FK_InitialControlSchedule_Employees3" />
+        <AssociationConnector Association="BBServiceModel.FK_InitialControlSchedule_Employees4" />
+        <AssociationConnector Association="BBServiceModel.FK_InitialControlSchedule_Employees5" />
+        <AssociationConnector Association="BBServiceModel.FK_InitialControlSchedule_Routes" />
+        <AssociationConnector Association="BBServiceModel.FK_InitialControlSchedule_Vehicles" />
+        <AssociationConnector Association="BBServiceModel.FK_Routes_Users" />
+        <EntityTypeShape EntityType="BBServiceModel.FuelSOCAR" Width="1.5" PointX="11.75" PointY="7.125" />
+        <AssociationConnector Association="BBServiceModel.FK_FuelSOCAR_InitialControlSchedule" />
+        <AssociationConnector Association="BBServiceModel.FK_FuelSOCAR_Users" />
+        <EntityTypeShape EntityType="BBServiceModel.RouteDailyKM" Width="1.5" PointX="9.625" PointY="14.125" />
+        <AssociationConnector Association="BBServiceModel.FK_RouteDailyKM_Routes" />
+        <EntityTypeShape EntityType="BBServiceModel.Depots" Width="1.5" PointX="2.5" PointY="2.625" />
+        <AssociationConnector Association="BBServiceModel.FK_Depots_Companies" />
+        <EntityTypeShape EntityType="BBServiceModel.JobcardToTroubleshoot" Width="1.5" PointX="16.625" PointY="6.875" />
+        <EntityTypeShape EntityType="BBServiceModel.TroubleShoot" Width="1.5" PointX="14.375" PointY="7.125" />
+        <AssociationConnector Association="BBServiceModel.FK_JobcardToTroubleshoot_TroubleShoot" />
+        <EntityTypeShape EntityType="BBServiceModel.Goods" Width="1.5" PointX="14.375" PointY="15" />
+        <EntityTypeShape EntityType="BBServiceModel.WarehouseExits" Width="1.5" PointX="3.375" PointY="5.75" />
+        <EntityTypeShape EntityType="BBServiceModel.WarehouseReceipts" Width="1.5" PointX="5.375" PointY="12.75" />
+        <EntityTypeShape EntityType="BBServiceModel.TempWarehouse" Width="1.5" PointX="5.375" PointY="14.875" />
+        <EntityTypeShape EntityType="BBServiceModel.Requisitions" Width="1.5" PointX="16.25" PointY="11.25" />
+        <AssociationConnector Association="BBServiceModel.FK_Requisitions_TempWarehouse" />
+        <EntityTypeShape EntityType="BBServiceModel.MaintenanceHistory" Width="1.5" PointX="19.25" PointY="8.875" />
+        <AssociationConnector Association="BBServiceModel.FK_MaintenanceHistory_InitialControlSchedule" />
+        <EntityTypeShape EntityType="BBServiceModel.MaintenanceType" Width="1.5" PointX="19.25" PointY="14" />
+        <AssociationConnector Association="BBServiceModel.FK_MaintenanceHistory_MaintenanceType" />
+        <EntityTypeShape EntityType="BBServiceModel.Settings" Width="1.5" PointX="7.375" PointY="16.75" />
+        <EntityTypeShape EntityType="BBServiceModel.WarehouseToMaintenance" Width="1.5" PointX="21.5" PointY="14.5" />
+        <AssociationConnector Association="BBServiceModel.FK_WarehouseToMaintenance_MaintenanceType" />
+        <AssociationConnector Association="BBServiceModel.FK_WarehouseToMaintenance_TempWarehouse" />
+        <AssociationConnector Association="BBServiceModel.FK_TempWarehouse_VehiclesBrand" />
+        <EntityTypeShape EntityType="BBServiceModel.DoneWorks" Width="1.5" PointX="14.5" PointY="3" />
+        <EntityTypeShape EntityType="BBServiceModel.JobCards" Width="1.5" PointX="17" PointY="15" />
+        <EntityTypeShape EntityType="BBServiceModel.JobcardToDoneWorks" Width="1.5" PointX="22.25" PointY="9.125" />
+        <AssociationConnector Association="BBServiceModel.FK_JobCards_Companies" />
+        <AssociationConnector Association="BBServiceModel.FK_DoneWorks_VehiclesBrand" />
+        <AssociationConnector Association="BBServiceModel.FK_JobcardToDoneWorks_DoneWorks" />
+        <AssociationConnector Association="BBServiceModel.FK_JobCards_Employees" />
+        <AssociationConnector Association="BBServiceModel.FK_JobCards_Employees1" />
+        <AssociationConnector Association="BBServiceModel.FK_JobCards_Employees2" />
+        <AssociationConnector Association="BBServiceModel.FK_JobcardToDoneWorks_Employees" />
+        <AssociationConnector Association="BBServiceModel.FK_JobcardToDoneWorks_Employees1" />
+        <AssociationConnector Association="BBServiceModel.FK_JobcardToDoneWorks_JobCards" />
+        <AssociationConnector Association="BBServiceModel.FK_MaintenanceHistory_JobCards" />
+        <AssociationConnector Association="BBServiceModel.FK_Requisitions_JobCards" />
+        <EntityTypeShape EntityType="BBServiceModel.JobcardNotes" Width="1.5" PointX="19.25" PointY="17.125" />
+        <AssociationConnector Association="BBServiceModel.FK_JobcardNotes_JobCards" />
+        <AssociationConnector Association="BBServiceModel.FK_JobcardNotes_Users" />
+        <EntityTypeShape EntityType="BBServiceModel.CheckUpCard" Width="1.5" PointX="24.5" PointY="9.625" />
+        <AssociationConnector Association="BBServiceModel.FK_CheckUpCard_Employees" />
+        <AssociationConnector Association="BBServiceModel.FK_CheckUpCard_InitialControlSchedule" />
+        <AssociationConnector Association="BBServiceModel.FK_CheckUpCard_MaintenanceType" />
+        <AssociationConnector Association="BBServiceModel.FK_JobCards_CheckUpCard" />
+        <EntityTypeShape EntityType="BBServiceModel.Notifications" Width="1.5" PointX="0.5" PointY="5" />
+        <AssociationConnector Association="BBServiceModel.FK_Notifications_NotificationTitles" />
+        <AssociationConnector Association="BBServiceModel.FK_Notifications_Users" />
+        <EntityTypeShape EntityType="BBServiceModel.NotMetRequisitions" Width="1.5" PointX="22.25" PointY="18" />
+        <AssociationConnector Association="BBServiceModel.FK_NotMetRequisitions_JobCards" />
+        <AssociationConnector Association="BBServiceModel.FK_NotMetRequisitions_JobCards1" />
+        <AssociationConnector Association="BBServiceModel.FK_NotMetRequisitions_TempWarehouse" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

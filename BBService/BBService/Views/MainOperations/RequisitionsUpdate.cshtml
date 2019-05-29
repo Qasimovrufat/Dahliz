@@ -1,0 +1,120 @@
+﻿@using BBService.Models
+@model BBService.Models.ViewHome
+@{
+    BBServiceEntities db = new BBServiceEntities();
+
+    ViewBag.Title = "RequisitionsUpdate";
+    List<string> permitted = (List<string>)Session["permitted"];
+    string vehicle = "";
+
+    //jobcard number
+    var cardNo = "";
+    var len = ((string)ViewBag.JobCard.JobCardNo.ToString()).Length;
+    for (int i = 0; i < (9 - len); i++)
+    {
+        cardNo += 0;
+    }
+    cardNo += ViewBag.JobCard.JobCardNo.ToString();
+
+    //Vehicle number
+    if (ViewBag.JobCard.CheckUpCard.VehicleId != null)
+    {
+        int? vehicleId1 = ViewBag.JobCard.CheckUpCard.VehicleId;
+        vehicle = db.Vehicles.FirstOrDefault(v => v.Id == vehicleId1).Number;
+    }
+    else if (ViewBag.JobCard.CheckUpCard.InitialControlSchedule.VehicleId != null)
+    {
+        int? vehicleId2 = ViewBag.JobCard.CheckUpCard.InitialControlSchedule.VehicleId;
+        vehicle = db.Vehicles.FirstOrDefault(v => v.Id == vehicleId2).Number;
+    }
+
+}
+
+<div id="RequisitionsUpdate">
+    <div class="contaiber-fluid">
+        <div class="row">
+            <div class="col-md-12 inputAccident">
+                <h1>Tələb olunan ehtiyyat hissələrini əlavə edin :</h1>
+                <form method="post" @Url.Action("RequisitionsAdd", "MainOperations") class="formTest">
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="form-group text">
+                                <label class="col-sm-10 form-check-label" for="CheckUp">Nəqliyyat vasitəsi : <span>@(ViewBag.JobCard.CheckupCardId != null ? vehicle : "")</span></label>
+                            </div>
+
+                            <div class="form-group text">
+                                <label class="col-sm-10 form-check-label" for="CheckUp">Təmir kartı : <span>@cardNo</span></label>
+                            </div>
+
+                            <div class="form-group inputHere requsitions">
+                                <label class="col-sm-12 col-form-label">Ehtiyyat hissəsi :</label>
+
+                                <div class="col-sm-12">
+                                    @if (Session["repeatedSP"] != null)
+                                    {
+                                        Session["repeatedSP"] = null;
+                                        <div class="alert alert-warning SuccessInfo">
+                                            Əməliyyat uğursuzdur!<br />
+                                            Seçdiyiniz Ehtiyyat hissələrindən artıq əlavə edilən(lər)i var.
+                                        </div>
+                                    }
+
+                                </div>
+
+                                @*First row*@
+                                <div class="itemGroup">
+                                    <div class="itemGood">
+                                        <select class="form-control inputItem inputItemSelect selectpicker" disabled name="TempWarehouseId" data-live-search="true">
+                                            <option value="0" selected>Seçin ...</option>
+                                            @foreach (var item in Model.TempWarehouse)
+                                            {
+                                                <option @(ViewBag.Requisition.TempWarehouseId == item.Id ? "selected" : "") value="@item.Id">@item.Name</option>
+                                            }
+                                        </select>
+                                    </div>
+
+                                    <div class="itemQuantity">
+                                        <input type="text" value="@(ViewBag.Requisition.RequiredQuantity!=null?ViewBag.Requisition.RequiredQuantity.ToString("#.##"):"")" class="form-control inputItem numberValidInput" name="RequiredQuantity">
+                                    </div>
+
+                                    <div class="resultIsOk">
+                                    </div>
+                                </div>
+
+                                <div class="alert alert-warning" role="alert" name="notification">
+
+                                </div>
+                            </div>
+
+                            <input type="hidden" name="JobCardId" id="JobCardId" value="@ViewBag.JobCard.Id">
+                            <input type="hidden" name="RequisitionId" id="RequisitionId" value="@ViewBag.Requisition.Id">
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <div class="col-sm-10">
+                                    <button type="submit" class="btn btn-primary addButton">Düzəliş edin</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <div class="col-sm-10">
+                                    <a id="goBack" href="@Url.Action("RequisitionsIndex","MainOperations",new { jobCardId=ViewBag.JobCard.Id})">Geri qayıdın</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,148 @@
+﻿@model BBService.Models.ViewHome
+@{
+    ViewBag.Title = "CloseInitContIndex";
+}
+
+<div id="CloseInitContIndex">
+    <div class="contaiber-fluid">
+        <div class="row">
+            <div class="col-md-12 inputAccident">
+                <h1>Avtobusların ilkin vəziyyətinə nəzarət kartı - Giriş :</h1>
+                <form method="post" @Url.Action("CloseInitContIndex", "MainOperations") class="formTest">
+                    <div class="row">
+                        <div class="col-md-4">
+
+                            <div class="form-group">
+                                <label class="col-sm-12 col-form-label">Nəqliyyat vasitəsi :</label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control inputItem" disabled value="@ViewBag.InitCon.Vehicles.Number">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-12 col-form-label">Tarix və saat :</label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control inputItem" disabled value="@ViewBag.InitCon.LeavingTime.ToString("dd.MM.yyyy hh:mm")">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-12 col-form-label">Çıxış Kilometraj :</label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control inputItem" disabled value="@ViewBag.InitCon.LeavingKilometer.ToString("#.##")">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-12 col-form-label">Çıxış yanacaq :</label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control inputItem" disabled value="@ViewBag.InitCon.LeavingFuel.ToString("#.##")">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-12 col-form-label">Mexanik :</label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control inputItem" disabled value="@(ViewBag.InitCon.Employees.Surname+" "+ ViewBag.InitCon.Employees.Name+" "+ViewBag.InitCon.Employees.FutherName)">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-12 col-form-label">Baş Mexanik :</label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control inputItem" disabled value="@(ViewBag.InitCon.Employees1.Surname+" "+ ViewBag.InitCon.Employees1.Name+" "+ViewBag.InitCon.Employees1.FutherName)">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            @if (Session["InitContCreated"] != null)
+                            {
+                                Session["InitContCreated"] = null;
+                                <div class="alert alert-info SuccessInfo">
+                                    Əməliyyat uğurla tamamlandı!<br />
+                                    Yeni məlumat əlavə etmək üçün davam edə bilərsiz.
+                                </div>
+                            }
+
+                            @if (Session["DataDeficiency"] != null)
+                            {
+                                Session["DataDeficiency"] = null;
+                                <div class="alert alert-warning SuccessInfo">
+                                    Əməliyyat uğursuzdur!<br />
+                                    İstifadəçi BakuBus əməkdaşı deyil və ya Baş mexanik təhkim edilməyib.
+                                </div>
+                            }
+
+                            <div class="form-group">
+                                <label for="EnterKilometer" class="col-sm-12 col-form-label">Giriş kilometraj :</label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control inputItem" id="EnterKilometer" name="EnterKilometer" placeholder="Daxil edin ...">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="EnterFuel" class="col-sm-12 col-form-label">Giriş yanacaq :</label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control inputItem" id="EnterFuel" name="EnterFuel" placeholder="Daxil edin ...">
+                                </div>
+                            </div>
+
+                            <div class="form-group inputHere">
+                                <label for="RouteId" class="col-sm-12 col-form-label">Xətt :</label>
+                                <div class="col-sm-12">
+                                    <select id="RouteId" class="form-control inputItem inputItemSelect selectpicker" name="RouteId" data-live-search="true">
+                                        <option selected>Seçin ...</option>
+                                        @foreach (var item in Model.Routes)
+                                        {
+                                            <option value="@item.Id">@item.Number</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group inputHere">
+                                <label for="FirstDriverId" class="col-sm-12 col-form-label">Sürücü - 1 :</label>
+                                <div class="col-sm-12">
+                                    <select id="FirstDriverId" class="form-control inputItem inputItemSelect selectpicker" name="FirstDriverId" data-live-search="true">
+                                        <option selected>Seçin ...</option>
+                                        @foreach (var item in Model.Employees)
+                                        {
+                                        <option value="@item.Id">@item.Surname @item.Name @item.FutherName</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group inputHere">
+                                <label for="SecondDriverId" class="col-sm-12 col-form-label">Sürücü - 2 :</label>
+                                <div class="col-sm-12">
+                                    <select id="SecondDriverId" class="form-control inputItem inputItemSelect selectpicker" name="SecondDriverId" data-live-search="true">
+                                        <option selected>Seçin ...</option>
+                                        @foreach (var item in Model.Employees)
+                                        {
+                                        <option value="@item.Id">@item.Surname @item.Name @item.FutherName</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <div class="col-sm-10">
+                                    <button type="submit" class="btn btn-primary addButton">Əlavə edin</button>
+                                </div>
+                                <div class="col-sm-10 cancel">
+                                    <a href="@Url.Action("OpenInitContIndex","MainOperations")">Ləğv edin</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

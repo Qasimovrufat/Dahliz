@@ -1,0 +1,71 @@
+﻿@{
+                ViewBag.Title = "RutInpCreate";
+}
+
+<div id="rutInputCreate">
+    <div class="contaiber-fluid">
+        <div class="row">
+            <div class="col-md-6 inputAccident">
+                <h1>Xətt yaradın :</h1>
+                <form method="post" @Url.Action("RutInpCreate", "Inputs") class="formTest">
+
+                    <div class="form-group">
+                        <label for="number" class="col-sm-10 col-form-label">Xəttin nömrəsi :</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control inputItem" id="number" name="number" placeholder="Daxil edin ...">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name" class="col-sm-10 col-form-label">Xəttin adı :</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control inputItem" id="name" name="name" placeholder="Daxil edin ...">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Forward" class="col-sm-10 col-form-label">Forward :</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control inputItem" id="Forward" name="Forward" placeholder="Daxil edin ...">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ForwardLength" class="col-sm-10 col-form-label">Forward-km :</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control inputItem" id="ForwardLength" name="ForwardLength" placeholder="Daxil edin ...">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Backward" class="col-sm-10 col-form-label">Backward :</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control inputItem" id="Backward" name="Backward" placeholder="Daxil edin ...">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="BackwardLength" class="col-sm-10 col-form-label">Backward-km :</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control inputItem" id="BackwardLength" name="BackwardLength" placeholder="Daxil edin ...">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="StartDate" class="col-sm-10 col-form-label">Açılma tarixi</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="ActivationDate" class="form-control datepicker inputItem" id="StartDate" placeholder="Tarix seçin ...">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-primary addButton">Əlavə edin</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

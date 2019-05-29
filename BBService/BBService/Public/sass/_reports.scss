@@ -1,0 +1,7 @@
+#reports {
+  .contaiber-fluid {
+    .trafficAccident {
+      @extend %operation-style;
+    }
+  }
+}

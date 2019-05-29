@@ -1,0 +1,167 @@
+﻿@model BBService.Models.ViewHome
+@{
+    ViewBag.Title = "EmpInpCreate";
+}
+
+<div id="driverInputCreate">
+    <div class="contaiber-fluid">
+        <div class="row">
+            <div class="col-md-12 inputAccident">
+                <h1>Sürücü daxil edin :</h1>
+                <form method="post" @Url.Action("EmpInpCreate", "Inputs") class="formTest">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-4">
+                            <div class="form-group">
+                                <label for="DriverCode" class="col-sm-10 col-form-label">İşçi kodu :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control inputItem" id="EmployeeCode" name="EmployeeCode" min="10000" max="99999" placeholder="Daxil edin ...">
+                                </div>
+                            </div>
+
+                            @if (Session["InvalidDrvCode"] != null)
+                            {
+                                Session["InvalidDrvCode"] = null;
+                                <div class="form-group">
+                                    <div class="alert alert-info">
+                                        Daxil etdiyiniz işçi kodu artıq mövcuddur və ya kodun rəqəm sayı düzgün deyildir(min-4; max-10) ...
+                                    </div>
+                                </div>
+                            }
+
+                            <div class="form-group">
+                                <label for="Surname" class="col-sm-10 col-form-label">Soyad :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control inputItem" id="Surname" name="Surname" placeholder="Daxil edin ...">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name" class="col-sm-10 col-form-label">Ad :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control inputItem" id="name" name="Name" placeholder="Daxil edin ...">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="FutherName" class="col-sm-10 col-form-label">Ata adı :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control inputItem" id="FutherName" name="FutherName" placeholder="Daxil edin ...">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="BirthDate" class="col-sm-10 col-form-label">Doğum tarixi</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control datepicker inputItem" id="BirthDate" name="BirthDate" placeholder="Tarix seçin ...">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="RecruitmentDate" class="col-sm-10 col-form-label">İşə qəbul tarixi</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control datepicker inputItem" id="RecruitmentDate" name="RecruitmentDate" placeholder="Tarix seçin ...">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-4">
+                            <div class="form-group inputHere">
+                                <label for="DepartmentId" class="col-sm-10 col-form-label">Şöbə :</label>
+                                <div class="col-sm-10">
+                                    <select id="DepartmentId" class="form-control inputItem inputItemSelect selectpicker" name="DepartmentId" data-live-search="true">
+                                        <option selected>Seçin ...</option>
+                                        @foreach (var item in Model.Departments)
+                                        {
+                                            <option value="@item.Id">@item.Name</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group inputHere">
+                                <label for="SectorId" class="col-sm-10 col-form-label">Sektor :</label>
+                                <div class="col-sm-10">
+                                    <select id="SectorId" class="form-control inputItem inputItemSelect selectpicker" name="SectorId" data-live-search="true">
+                                        <option selected>Seçin ...</option>
+                                        @foreach (var item in Model.Sectors)
+                                        {
+                                            <option value="@item.Id">@item.Name</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group inputHere">
+                                <label for="PositionId" class="col-sm-10 col-form-label">Vəzifə :</label>
+                                <div class="col-sm-10">
+                                    <select id="PositionId" class="form-control inputItem inputItemSelect selectpicker" name="PositionId" data-live-search="true">
+                                        <option selected>Seçin ...</option>
+                                        @foreach (var item in Model.Positions)
+                                        {
+                                            <option value="@item.Id">@item.Name</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Phone" class="col-sm-10 col-form-label">Nömrə :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control inputItem" id="Phone" name="Phone" placeholder="Daxil edin ...">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="LicenceSeries" class="col-sm-10 col-form-label">S/V Seriyası :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control inputItem" id="LicenceSeries" name="LicenceSeries" placeholder="Daxil edin ...">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="LicenceNumber" class="col-sm-10 col-form-label">S/V Nömərsi :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control inputItem" id="LicenceNumber" name="LicenceNumber" placeholder="Daxil edin ...">
+                                </div>
+                            </div>                           
+                        </div>
+
+                        <div class="col-md-6 col-lg-4">
+
+                            <div class="form-group">
+                                <label for="LicenceCategory" class="col-sm-10 col-form-label">S/V Kateqoriyası :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control inputItem" id="LicenceCategory" name="LicenceCategory" placeholder="Daxil edin ...">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="LicenceIssueDate" class="col-sm-10 col-form-label">S/V Verilmə tarixi</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control datepicker inputItem" id="LicenceIssueDate" name="LicenceIssueDate" placeholder="Tarix seçin ...">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="LicenceExpireDate" class="col-sm-10 col-form-label">S/V Etibarlılıq tarixi</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control datepicker inputItem" id="LicenceExpireDate" name="LicenceExpireDate" placeholder="Tarix seçin ...">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <div class="col-sm-10">
+                                    <button type="submit" class="btn btn-primary addButton">Əlavə edin</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

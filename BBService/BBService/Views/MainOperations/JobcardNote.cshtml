@@ -1,0 +1,38 @@
+﻿@model BBService.Models.ViewHome
+@{
+    ViewBag.Title = "JobcardNote";
+}
+
+<div id="JobcardNote">
+    <div class="contaiber-fluid">
+        <div class="row">
+            <div class="col-md-12 inputAccident">
+                <h1>Təmir kartı qeydləri :</h1>
+                <form method="post" @Url.Action("JobcardNote", "MainOperations") class="formTest">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="Note" class="col-sm-12 col-form-label">Qeyd :</label>
+                                <div class="col-sm-12">
+                                    <textarea class="form-control inputItem inputItemText" rows="3" id="Note" name="Note">@(ViewBag.JobCard.Note)</textarea>
+                                </div>
+                            </div>
+
+                            <input type="hidden" id="JobCardId" name="JobCardId" value="@ViewBag.JobCard.Id">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <button type="submit" class="btn btn-primary addButton">Təsdiq edin</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

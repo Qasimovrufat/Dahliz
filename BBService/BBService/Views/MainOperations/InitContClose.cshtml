@@ -1,0 +1,253 @@
+﻿@using BBService.Models
+@model BBService.Models.ViewHome
+@{
+    ViewBag.Title = "InitContClose";
+    InitControl initCont = (InitControl)TempData["InitContCls"];
+}
+
+<div id="InitContClose">
+    <div class="contaiber-fluid">
+        <div class="row">
+            <div class="col-md-12 inputAccident">
+                <h1>Avtobusların ilkin vəziyyətinə nəzarət kartı - Giriş :</h1>
+                <form method="post" @Url.Action("InitContClose", "MainOperations") class="formTest">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-4">
+                            <div class="col-sm-12">
+                                @if (Session["overEnterKmClose"] != null)
+                                {
+                                    Session["overEnterKmClose"] = null;
+                                    <div class="alert alert-warning SuccessInfo">
+                                        Əməliyyat uğursuzdur!<br />
+                                        Giriş kilometri dəqiqləşdirin.
+                                    </div>
+                                }
+
+                                @if (Session["FstDrvoverEnterKmClose"] != null)
+                                {
+                                    Session["FstDrvoverEnterKmClose"] = null;
+                                    <div class="alert alert-warning SuccessInfo">
+                                        Əməliyyat uğursuzdur!<br />
+                                        Birinci sürücünün hərəkət kilometrini dəqiqləşdirin.
+                                    </div>
+                                }
+
+                                @if (Session["overLimitKmClose"] != null)
+                                {
+                                    Session["overLimitKmClose"] = null;
+                                    <div class="alert alert-warning SuccessInfo">
+                                        Əməliyyat uğursuzdur!<br />
+                                        NV-nin çıxış hərəkət məsafəsi limiti @TempData["LimitKm"] km-dir
+                                    </div>
+                                }
+
+                                @if (Session["FstDrvoverLimitKmClose"] != null)
+                                {
+                                    Session["FstDrvoverLimitKmClose"] = null;
+                                    <div class="alert alert-warning SuccessInfo">
+                                        Əməliyyat uğursuzdur!<br />
+                                        NV-nin çıxış hərəkət məsafəsi limiti @TempData["FstDrvoverLimitKmClose"] km-dir
+                                    </div>
+                                }
+
+
+                                @if (Session["overLeaveFuel"] != null)
+                                {
+                                    Session["overLeaveFuel"] = null;
+                                    <div class="alert alert-warning SuccessInfo">
+                                        Əməliyyat uğursuzdur!<br />
+                                        NV-nin çıxış yanacağı @TempData["overLeaveFuel"] litrdir
+                                    </div>
+                                }
+
+                                @if (Session["FstDrvOverLeaveFuel"] != null)
+                                {
+                                    Session["FstDrvOverLeaveFuel"] = null;
+                                    <div class="alert alert-warning SuccessInfo">
+                                        Əməliyyat uğursuzdur!<br />
+                                        NV-nin çıxış yanacağı @TempData["FstDrvOverLeaveFuel"] litrdir
+                                    </div>
+                                }
+
+                                @if (Session["DataDeficiencyClose"] != null)
+                                {
+                                    Session["DataDeficiencyClose"] = null;
+                                    <div class="alert alert-warning SuccessInfo">
+                                        Əməliyyat uğursuzdur!<br />
+                                        İstifadəçi BakuBus əməkdaşı deyil və ya Baş mexanik təhkim edilməyib.
+                                    </div>
+                                }
+
+                                @if (Session["emptyFildClose"] != null)
+                                {
+                                    Session["emptyFildClose"] = null;
+                                    <div class="alert alert-warning SuccessInfo">
+                                        Əməliyyat uğursuzdur!<br />
+                                        Bütün ulduzlu(*) xanalar doldurulmalıdır.
+                                    </div>
+                                }
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-12 col-form-label">Nəqliyyat vasitəsi :</label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control inputItem" disabled value="@(ViewBag.InitCon.VehicleId!=null?ViewBag.InitCon.Vehicles.Number:"")">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-12 col-form-label">Xətt :</label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control inputItem" disabled value="@(ViewBag.InitCon.RouteId!=null?ViewBag.InitCon.Routes.Number:"")">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-12 col-form-label">Tarix və saat :</label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control inputItem" disabled value="@(ViewBag.InitCon.LeavingTime!=null?ViewBag.InitCon.LeavingTime.ToString("dd.MM.yyyy hh:mm"):"")">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-12 col-form-label">Çıxış Kilometraj :</label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control inputItem" disabled value="@(ViewBag.InitCon.LeavingKilometer!=null?ViewBag.InitCon.LeavingKilometer.ToString("#.##"):"")">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-12 col-form-label">Çıxış yanacaq :</label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control inputItem" disabled value="@(ViewBag.InitCon.LeavingFuel!=null?ViewBag.InitCon.LeavingFuel.ToString("#.##"):"")">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-4">
+                            <div class="form-group">
+                                <label class="col-sm-12 col-form-label">Mexanik :</label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control inputItem" disabled value="@(ViewBag.InitCon.LeavingRecMechId!=null?ViewBag.InitCon.Employees.Surname+" "+ ViewBag.InitCon.Employees.Name+" "+ViewBag.InitCon.Employees.FutherName:"")">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-12 col-form-label">Baş Mexanik :</label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control inputItem" disabled value="@(ViewBag.InitCon.LeavingSeniorRecMechId!=null?ViewBag.InitCon.Employees1.Surname+" "+ ViewBag.InitCon.Employees1.Name+" "+ViewBag.InitCon.Employees1.FutherName:"")">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-10 col-form-label" for="LeavingNote">Əlavə qeyd - 1</label>
+                                <div class="col-sm-12">
+                                    <textarea class="form-control inputItem inputItemText" rows="6" style="height:176px;" disabled value="@(ViewBag.InitCon.LeavingNote!=null?ViewBag.InitCon.LeavingNote:"")"></textarea>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6 col-lg-4">
+                            @*Birinci sürücünün kilometri*@
+                            <div class="form-group">
+                                <label for="FirstDrvKm" class="col-sm-12 col-form-label">Birinci sürücünün yekun məsafəsi<span class="star">*</span> :</label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control inputItem numberValidInput" id="FirstDrvKm" name="FirstDrvKm" value="@((initCont!=null && initCont.FirstDrvKm!=null)?initCont.FirstDrvKm:"")" placeholder="Daxil edin ...">
+                                </div>
+                            </div>
+
+                            <div class="alert alert-warning ajaxNotif FirstDrvKm">
+                                Əməliyyat uğursuzdur!<br />
+                                <span></span>
+                            </div>
+
+                            @*Birinci sürücünün yanacağı*@
+                            <div class="form-group">
+                                <label for="FirstDrvFuel" class="col-sm-12 col-form-label">Birinci sürücünün yekun yanacağı<span class="star">*</span> :</label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control inputItem numberValidInput" id="FirstDrvFuel" name="FirstDrvFuel" value="@((initCont!=null && initCont.FirstDrvFuel!=null)?initCont.FirstDrvFuel:"")" placeholder="Daxil edin ...">
+                                </div>
+                            </div>
+
+                            <div class="alert alert-warning ajaxNotif FirstDrvFuel">
+                                Əməliyyat uğursuzdur!<br />
+                                <span></span>
+                            </div>
+
+
+                            @*Giriş kilometr*@
+                            <div class="form-group">
+                                <label for="EnterKilometer" class="col-sm-12 col-form-label">Giriş kilometraj<span class="star">*</span> :</label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control inputItem numberValidInput" id="EnterKilometer" name="EnterKilometer" value="@((initCont!=null && initCont.EnterKilometer!=null)?initCont.EnterKilometer:"")" placeholder="Daxil edin ...">
+                                </div>
+                            </div>
+
+                            <div class="alert alert-warning ajaxNotif NotifKm">
+                                Əməliyyat uğursuzdur!<br />
+                                <span></span>
+                            </div>
+
+                            @*Giriş yanacaq*@
+                            <div class="form-group">
+                                <label for="EnterFuel" class="col-sm-12 col-form-label">Giriş yanacaq<span class="star">*</span> :</label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control inputItem numberValidInput" id="EnterFuel" name="EnterFuel" value="@((initCont!=null && initCont.EnterFuel!=null)?initCont.EnterFuel:"")" placeholder="Daxil edin ...">
+                                </div>
+                            </div>
+
+                            <div class="alert alert-warning ajaxNotif NotifFuel">
+                                Əməliyyat uğursuzdur!<br />
+                                <span></span>
+                            </div>
+
+                            <div class="form-group inputHere">
+                                <label for="SecondDriverId" class="col-sm-12 col-form-label">Sürücü - 2<span class="star">*</span> :</label>
+                                <div class="col-sm-12">
+                                    <select id="SecondDriverId" class="form-control inputItem inputItemSelect selectpicker" name="SecondDriverId" data-live-search="true">
+                                        <option value="0" selected>Seçin ...</option>
+                                        @foreach (var item in Model.Employees)
+                                        {
+                                            <option @((initCont != null && initCont.SecondDriverId == item.Id) ? "selected" : "") value="@item.Id">@item.Surname @item.Name @item.FutherName</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-10 col-form-label" for="EnterNote">Əlavə qeyd - 2</label>
+                                <div class="col-sm-12">
+                                    <textarea class="form-control inputItem inputItemText" name="EnterNote" id="EnterNote" rows="3">@((initCont!=null && initCont.EnterNote!=null)?initCont.EnterNote:"")</textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-check">
+                                <div class="col-sm-10">
+                                    <input type="checkbox" class="form-check-input" value="true" name="CheckUp" id="CheckUp">
+                                </div>
+                                <label class="col-sm-10 form-check-label" for="CheckUp">Yoxlama kartı açın</label>
+                            </div>
+
+                            <input type="hidden" id="CheckFuelId" name="CheckFuelId" value="@ViewBag.InitCon.Id">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <button type="submit" class="btn btn-primary addButton">Əlavə edin</button>
+                                </div>
+
+                                <div class="col-sm-12 cancel">
+                                    <a href="@Url.Action("OpenInitContIndex","MainOperations")">Ləğv edin</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

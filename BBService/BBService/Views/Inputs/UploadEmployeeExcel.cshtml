@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "UploadEmployeeExcel";
+}
+
+
+<div id="uploadDriverExcel">
+    <div class="contaiber-fluid">
+        <div class="row">
+            <div class="col-md-6 inputAccident">
+                <h1>İşçi siyahısını Excel file olaraq əlavə edin :</h1>
+                <form method="post" action="@Url.Action("UploadEmployeeExcel", "Inputs")" class="formTest" enctype="multipart/form-data">
+
+                    <div class="form-group">
+                        <label for="UploadedExcel" class="col-sm-10 col-form-label">File seç :</label>
+                        <div class="col-sm-10">
+                            <input type="file" class="form-control inputItem" id="UploadedExcel" name="UploadedExcel">
+                        </div>
+                    </div>
+
+                    @if (Session["RepeatedCodes"] != null)
+                    {
+                        <div class="form-group">
+                            <div class="alert alert-info">
+                                @TempData["RepeatedCodes"] kodlu işçi(lər) artıq bazada mövcuddur.
+                            </div>
+                        </div>
+                        Session["RepeatedCodes"] = null;
+                        TempData["RepeatedCodes"] = null;
+                    }
+
+
+                    @if (Session["EmptyDriverCode"] != null)
+                    {
+                        <div class="form-group">
+                            <div class="alert alert-info">
+                                İşçi kodu boş olmamalıdır.
+                            </div>
+                        </div>
+                        Session["EmptyDriverCode"] = null;
+                    }
+
+                    @if (Session["RepeatedDriverCode"] != null)
+                    {
+                        <div class="form-group">
+                            <div class="alert alert-info">
+                                Yüklədiyiniz faylda  @TempData["RepeatedDriverCode"] İşçi kod(lar)ı təkrar olunur.
+                                <br />
+                                İşçi kod(lar)ı Unikal olmalıdır.
+                            </div>
+                        </div>
+                        Session["RepeatedDriverCode"] = null;
+                        TempData["RepeatedDriverCode"] = null;
+                    }
+
+
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-primary addButton">Əlavə et</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

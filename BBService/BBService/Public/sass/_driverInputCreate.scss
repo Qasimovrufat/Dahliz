@@ -1,0 +1,15 @@
+#driverInputCreate {
+    .contaiber-fluid {
+        .inputAccident {
+            @extend %add-style;
+
+            .inputHere {
+                margin-bottom: 0px;
+
+                .dropdown {
+                    padding: 0px 10px;
+                }
+            }
+        }
+    }
+}

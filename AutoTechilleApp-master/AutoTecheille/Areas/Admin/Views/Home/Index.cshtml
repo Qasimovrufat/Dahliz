@@ -1,0 +1,101 @@
+﻿@model ListModel
+<div class="col-12">
+    <h4>Select Language for Products</h4>
+       @foreach (var item in Model.languages)
+       {
+           <a style="color:#fff; padding:10px;background:#333333;" asp-action="SetLanguage" asp-controller="Home" asp-route-id="@item.Value">@item.Key</a>
+       }
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Product Table</h4>
+            <button class="btn btn-success"><a asp-action="Add" asp-controller="Home" style="color:white;">Add Product</a></button>
+        </div>
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="text-info">
+                    <tr>
+                        <th>
+                            Id
+                        </th>
+                        <th>
+                            RealPartNo
+                        </th>
+                        <th>
+                            Category
+                        </th>
+                        <th>
+                            SubCategory
+                        </th>
+                        <th>
+                            Description
+                        </th>
+                        <th>
+                            Edit
+                        </th>
+                        <th>
+                            Delete
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.productLanguages)
+                    {
+                        <tr>
+                            <td>
+                                @item.ProductId
+                            </td>
+                            <td>
+                                @foreach (var realPartNo in item.Product.RealPartNos)
+                                {
+                                    @realPartNo.Name
+                                    <br>
+                                }
+                            </td>
+                            <td>
+                                @foreach (var category in Model.productCategories.Where(pc=>pc.ProductId == item.ProductId))
+                                {
+                                    @category.Category.Name
+                                }
+                            </td>
+                            <td>
+                                @item.Product.SubCategory.Name
+                            </td>
+                            <td>
+                                @item.Description
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-controller="Home" asp-route-id="@item.Product.Id">  <i class="fas fa-edit"></i></a>
+                            </td>
+                            <td>
+                                <button type="button" data-id="@item.Product.Id"  class="delete-link btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                    <a href="#" style="color:#fff;"><i class="fas fa-times"></i></a>
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Diqqet</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Bu Mehsulu Silmek Istediyinizden Eminsinizmi?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Bağla</button>
+                <button type="button" class="btn btn-primary delete-product" >Sil</a></button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "RepIndex";
+    List<string> permitted = (List<string>)Session["permitted"];
+}
+
+
+<div id="reports">
+    <div class="contaiber-fluid">
+        <div class="row">
+            <div class="col-md-6 col-lg-4">
+                <div class="trafficAccident">
+                    <h1>Administrator</h1>
+                    <ul>
+                        <li class="@(permitted.FirstOrDefault(a => a == "AdminVehRepIndex")==null? "hideAction" : "")">
+                            <a href="@Url.Action("AdminVehRepIndex", "VclAcdReports")">
+                                <i class="fas fa-angle-double-right"></i> Admin - NV barədə məlumat
+                            </a>
+                        </li>
+                        <br class="@(permitted.FirstOrDefault(a => a == "AdminVehRepIndex")==null? "hideAction" : "")">
+
+
+                        <li class="@(permitted.FirstOrDefault(a => a == "AdminAcdRepIndex")==null? "hideAction" : "")">
+                            <a href="@Url.Action("AdminAcdRepIndex","VclAcdReports")">
+                                <i class="fas fa-angle-double-right"></i> Admin - Hadisə barədə məlumat
+                            </a>
+                        </li>
+                        <br class="@(permitted.FirstOrDefault(a => a == "AdminAcdRepIndex")==null? "hideAction" : "")">
+
+
+                        <li class="@(permitted.FirstOrDefault(a => a == "AdminLoseRepIndex")==null? "hideAction" : "")">
+                            <a href="@Url.Action("AdminLoseRepIndex","VclAcdReports")">
+                                <i class="fas fa-angle-double-right"></i> Admin - Zərər barədə məlumat
+                            </a>
+                        </li>
+                        <br class="@(permitted.FirstOrDefault(a => a == "AdminLoseRepIndex")==null? "hideAction" : "")">
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="trafficAccident">
+                    <h1>Yol nəqliyyat hadisələri</h1>
+                    <ul>
+                        <li class="@(permitted.FirstOrDefault(a => a == "DateRepIndex")==null? "hideAction" : "")">
+                            <a href="@Url.Action("DateRepIndex", "VclAcdReports")">
+                                <i class="fas fa-angle-double-right"></i> Detallı hesabat - Tarix-Xətt-NV
+                            </a>
+                        </li>
+                        <br class="@(permitted.FirstOrDefault(a => a == "DateRepIndex")==null? "hideAction" : "")">
+
+
+                        <li class="@(permitted.FirstOrDefault(a => a == "DriverRepIndex")==null? "hideAction" : "")">
+                            <a href="@Url.Action("DriverRepIndex","VclAcdReports")">
+                                <i class="fas fa-angle-double-right"></i> Detallı hesabat - Sürücü-Məsuliyyət
+                            </a>
+                        </li>
+                        <br class="@(permitted.FirstOrDefault(a => a == "DriverRepIndex")==null? "hideAction" : "")">
+
+
+                        <li class="@(permitted.FirstOrDefault(a => a == "LoseRepIndex")==null? "hideAction" : "")">
+                            <a href="@Url.Action("LoseRepIndex","VclAcdReports")">
+                                <i class="fas fa-angle-double-right"></i> Detallı hesabat - Zərər-Franşiza
+                            </a>
+                        </li>
+                        <br class="@(permitted.FirstOrDefault(a => a == "LoseRepIndex")==null? "hideAction" : "")">
+
+
+                        <li class="@(permitted.FirstOrDefault(a => a == "PaymentRepIndex")==null? "hideAction" : "")">
+                            <a href="@Url.Action("PaymentRepIndex","VclAcdReports")">
+                                <i class="fas fa-angle-double-right"></i> Detallı hesabat - Ödəniş-Ödəyən tərəf-Ödəniş tarixi
+                            </a>
+                        </li>
+                        <br class="@(permitted.FirstOrDefault(a => a == "PaymentRepIndex")==null? "hideAction" : "")">
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4"></div>
+        </div>
+    </div>
+</div>

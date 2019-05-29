@@ -1,0 +1,328 @@
+﻿@using BBService.Models
+@{
+    BBServiceEntities db = new BBServiceEntities();
+    if (Session["UserId"] != null)
+    {
+        int UserId = (int)Session["UserId"];
+        ViewBag.User = db.Users.Find(UserId);
+    }
+
+    List<string> permitted = (List<string>)Session["permitted"];
+
+    List<Notifications> Notifications = (List<Notifications>)Session["Last15Notifications"];
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BakuBus-Servis</title>
+    @*<title>@ViewBag.Title</title>*@
+    <link rel="shortcut icon" type="image/png" href="~/public/assets/img/bakubus.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
+          rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
+
+    @*Flag icons*@
+    <link rel="stylesheet" href="~/public/assets/flag-icon-css-master/css/flag-icon.css">
+
+    @*Bootstrap datepicker*@
+    <link rel="stylesheet" href="~/public/assets/dtp/bootstrap-datepicker.standalone.css">
+
+    @*Bootstrap date and time picker*@
+    <link rel="stylesheet" href="~/public/assets/DandTpicker/bootstrap-datetimepicker.min.css">
+
+    @*Jquery timepicker*@
+    <link rel="stylesheet" href="~/public/assets/tp/jquery.timepicker.min.css">
+
+    <link rel="stylesheet" href="~/public/assets/select/bootstrap-select.css">
+    <link rel="stylesheet" href="~/public/css/style.css">
+</head>
+
+<body>
+    <section id="header">
+        <div class="container-fluid">
+            <div class="row bottom">
+                <div class="col-3 col-sm-2 col-md-2 col-lg-1">
+                    <div class="logo">
+                        <a href="@Url.Action("index","home")"><img src="~/public/assets/img/BakuBus.png" alt="BakuBus Logo"></a>
+                    </div>
+                </div>
+
+                <div class="col-4 col-sm-1 col-md-1 col-lg-7 menu">
+                    <div class="menuIcon">
+                        <i class="fa fa-bars" aria-hidden="true"></i>
+                    </div>
+                    <ul>
+                        <li><a href="@Url.Action("index","home")" class="menuItem @(ViewBag.Home!=null?"active":"")">Əsas Səhifə</a></li>
+                        <li class="@(permitted.FirstOrDefault(a => a == "AdministrativeIndex")==null?"hideAction":"")"><a href="@Url.Action("AdministrativeIndex","Administrative")" class="menuItem @(ViewBag.Administrative!=null?"active":"")">Administrativ</a></li>
+                        <li class="@(permitted.FirstOrDefault(a => a == "SysOprIndex")==null?"hideAction":"")"><a href="@Url.Action("SysOprIndex","SystemOperations")" class="menuItem @(ViewBag.Sys!=null?"active":"")">Sistem Əməliyyatları</a></li>
+                        <li class="@(permitted.FirstOrDefault(a => a == "OprIndex")==null?"hideAction":"")"><a href="@Url.Action("OprIndex","MainOperations")" class="menuItem @(ViewBag.Ope!=null?"active":"")">Əməliyyatlar</a></li>
+                        <li class="@(permitted.FirstOrDefault(a => a == "RepIndex")==null?"hideAction":"")"><a href="@Url.Action("RepIndex","reports")" class="menuItem @(ViewBag.Reports!=null?"active":"")">Hesabatlar</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-5 col-sm-9 col-md-9 col-lg-4">
+                    <div class="user">
+                        <a class="profileLink" href="@Url.Action("PrfIndex","profile")">
+                            <div class="profile">
+                                <div class="image">
+                                    @if (ViewBag.User != null && ViewBag.User.Image != null && ViewBag.User.Image != string.Empty)
+                                    {
+                                        <img src="~/Uploads/@(ViewBag.User.Image)" alt="">
+                                    }
+                                    else
+                                    {
+                                        <img src="~/Uploads/empty.jpg" alt="">
+                                    }
+                                    <input style="display:none;" type="hidden" id="userId" value="@((int)Session["UserId"])" />
+                                </div>
+                                <h2>@(ViewBag.User == null ? "Giriş edin" : ViewBag.User.Fullname)</h2>
+                            </div>
+
+                        </a>
+
+                        <div class="notifications">
+                            <a class="bell showElement" href="">
+                                <i class="showElement fas fa-bell @((int)Session["notificCount"]>0?"active":"")"></i>
+                                @if ((int)Session["notificCount"] > 0)
+                                {
+                                    <span class="showElement notiCount">
+                                        @((int)Session["notificCount"])
+                                    </span>
+                                }
+
+                                @*<span class="showElement notiCount">
+                                        @((int)Session["notificCount"])
+                                    </span>*@
+                            </a>
+                            <div class="notificationWrapper showElement">
+                                <div class="notiReview showElement">
+                                    <div class="content showElement">
+                                        @*@if (permitted.FirstOrDefault(a => a == "NotifIndex") != null)
+                                            {
+                                                <ul class="showElement">
+                                                    @foreach (var item in Notifications)
+                                                        {
+                                                            <li class="showElement @(item.Status==true?"active":"")">
+                                                                <a class="showElement" href="@Url.Action("NotifDetails","Notifications", new {notificationId=item.Id, employeeId=item.DataId})">
+                                                                    <h3 class="showElement">@(item.NotificationTitleId != null ? item.NotificationTitles.Name : null)</h3>
+                                                                    <p class="showElement">@(item.DataId != null ? db.Employees.Find(item.DataId).EmployeeCode : "") @(item.NotificationTitleId != null ? (item.NotificationTitles.NotificationContent.First().Name.Length > 80 ? (item.NotificationTitles.NotificationContent.First().Name.Substring(1, 80) + " ...") : item.NotificationTitles.NotificationContent.First().Name) : null)</p>
+                                                                    <span class="date showElement"><i class="far fa-calendar-alt"></i> @item.AddingDate.Value.ToString("dd.MM.yyyy")</span>
+                                                                </a>
+                                                            </li>
+                                                        }
+                                                </ul>
+                                            }*@
+
+                                        <ul class="showElement"></ul>
+                                    </div>
+                                    <div class="footer showElement">
+                                        <a class="showElement" href="@Url.Action("NotifIndex","Notifications")">Hamısını göstər</a>
+                                    </div>
+                                </div>
+                                <span class="angle showElement"></span>
+                            </div>
+                        </div>
+
+                        <div class="info">
+                            <a href="@Url.Action("logout","home")"><i class="fas fa-sign-out-alt"></i><span>Çıxış</span> </a>
+                        </div>
+                    </div>
+                </div>
+
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand" href="#">Navbar</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a class="nav-link @(ViewBag.Home!=null?"active":"")" href="#">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="@(permitted.FirstOrDefault(a => a == "AdministrativeIndex")==null?"hideAction":"")"><a href="@Url.Action("AdministrativeIndex","Administrative")" class="nav-item @(ViewBag.Administrative!=null?"active":"")">Administrativ</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Dropdown
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="#">Disabled</a>
+                            </li>
+                        </ul>
+                        <form class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </div>
+                </nav>
+            </div>
+
+            <div class="row breadcrumbs">
+                @Html.MvcSiteMap().SiteMapPath()
+            </div>
+        </div>
+    </section>
+
+    <div class="header-responsive">
+
+        <nav class="navbar container-fluid navbar-expand-lg navbar-dark bg-light">
+            <div class="logo">
+                <a href="@Url.Action("index","home")"><img src="~/public/assets/img/BakuBus.png" alt="BakuBus Logo"></a>
+
+            </div>
+
+            <a class="profileLink" href="@Url.Action("PrfIndex","profile")">
+                <div class="profile">
+                    <div class="image">
+                        @if (ViewBag.User != null && ViewBag.User.Image != null && ViewBag.User.Image != string.Empty)
+                        {
+                            <img src="~/Uploads/@(ViewBag.User.Image)" alt="">
+                        }
+                        else
+                        {
+                            <img src="~/Uploads/empty.jpg" alt="">
+                        }
+                        <input style="display:none;" type="hidden" id="userId" value="@((int)Session["UserId"])" />
+                    </div>
+                    <h2>@(ViewBag.User == null ? "Giriş edin" : ViewBag.User.Fullname)</h2>
+                </div>
+
+            </a>
+
+            <div class="notifications">
+                <a class="bell showElement" href="#">
+                    <i class="showElement fas fa-bell @((int)Session["notificCount"]>0?"active":"")"></i>
+                    @if ((int)Session["notificCount"] > 0)
+                    {
+                        <span class="showElement notiCount">
+                            @((int)Session["notificCount"])
+                        </span>
+                    }
+
+                    @*<span class="showElement notiCount">
+                            @((int)Session["notificCount"])
+                        </span>*@
+                </a>
+                <div class="notificationWrapper ">
+                    <div class="notiReview showElement">
+                        <div class="content showElement">
+                            @*@if (permitted.FirstOrDefault(a => a == "NotifIndex") != null)
+                                {
+                                    <ul class="showElement">
+                                        @foreach (var item in Notifications)
+                                            {
+                                                <li class="showElement @(item.Status==true?"active":"")">
+                                                    <a class="showElement" href="@Url.Action("NotifDetails","Notifications", new {notificationId=item.Id, employeeId=item.DataId})">
+                                                        <h3 class="showElement">@(item.NotificationTitleId != null ? item.NotificationTitles.Name : null)</h3>
+                                                        <p class="showElement">@(item.DataId != null ? db.Employees.Find(item.DataId).EmployeeCode : "") @(item.NotificationTitleId != null ? (item.NotificationTitles.NotificationContent.First().Name.Length > 80 ? (item.NotificationTitles.NotificationContent.First().Name.Substring(1, 80) + " ...") : item.NotificationTitles.NotificationContent.First().Name) : null)</p>
+                                                        <span class="date showElement"><i class="far fa-calendar-alt"></i> @item.AddingDate.Value.ToString("dd.MM.yyyy")</span>
+                                                    </a>
+                                                </li>
+                                            }
+                                    </ul>
+                                }*@
+
+                            <ul class="showElement"></ul>
+                        </div>
+                        <div class="footer showElement">
+                            <a class="showElement" href="@Url.Action("NotifIndex","Notifications")">Hamısını göstər</a>
+                        </div>
+                    </div>
+                    <span class="angle showElement"></span>
+                </div>
+            </div>
+
+            <div class="info">
+                <a href="@Url.Action("logout","home")"><i class="fas fa-sign-out-alt"></i><span>Çıxış</span> </a>
+            </div>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="navbar-collapse collapse " id="myNavbar">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link @(ViewBag.Home!=null?"active":"")" href="@Url.Action("index","home")">Əsas Səhifə <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item @(permitted.FirstOrDefault(a => a == "AdministrativeIndex")==null?"hideAction":"")"><a href="@Url.Action("AdministrativeIndex","Administrative")" class="nav-link @(ViewBag.Administrative!=null?"active":"")">Administrativ</a></li>
+                    <li class="nav-item @(permitted.FirstOrDefault(a => a == "SysOprIndex")==null?"hideAction":"")"><a href="@Url.Action("SysOprIndex","SystemOperations")" class="nav-link @(ViewBag.Sys!=null?"active":"")">Sistem Əməliyyatları</a></li>
+                    <li class="nav-item@(permitted.FirstOrDefault(a => a == "OprIndex")==null?"hideAction":"")"><a href="@Url.Action("OprIndex","MainOperations")" class="nav-link @(ViewBag.Ope!=null?"active":"")">Əməliyyatlar</a></li>
+                    <li class="nav-item @(permitted.FirstOrDefault(a => a == "RepIndex")==null?"hideAction":"")"><a href="@Url.Action("RepIndex","reports")" class="nav-link @(ViewBag.Reports!=null?"active":"")">Hesabatlar</a></li>
+                </ul>
+
+            </div>
+        </nav>
+
+
+    </div>
+
+    <div class="row breadcrumbs breadcrumbs-responsive">
+        @Html.MvcSiteMap().SiteMapPath()
+    </div>
+
+
+    <section id="body">
+        @RenderBody()
+    </section>
+    <section id="footer">
+        <div class="container-fluid">
+            <div class="row content">
+                <div class="col-md-2 col-sm-3 col-4 company">
+                    <p><a href="@Url.Action("index","home")">BakuBus MMC</a></p>
+                </div>
+                <div class="col-9 col-md-8 col-sm-6 col-6 copyright">
+                    <p>Copyright <i class="far fa-copyright"></i> | BakuBus</p>
+                </div>
+                <div class="col-3 col-md-2  col-sm-3 col-2 version">
+                    <p>v. 1.0</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="~/public/assets/jquery/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.4.0.min.js"></script>
+    <script src="/signalr/hubs"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+
+    @*Bootstrap datepicker*@
+    <script src="~/public/assets/dtp/bootstrap-datepicker.js"></script>
+
+    @*Bootstrap date and time picker*@
+    <script src="~/public/assets/DandTpicker/bootstrap-datetimepicker.min.js"></script>
+
+
+
+
+    @*Jquery timepicker*@
+    <script src="~/public/assets/tp/jquery.timepicker.min.js"></script>
+
+    @*Jquery Counter*@
+    <script src="~/public/assets/animated-counter-master/counter.js"></script>
+
+    <script src="~/public/assets/select/bootstrap-select.js"></script>
+    <script src="~/public/js/script.js"></script>
+
+</body>
+</html>

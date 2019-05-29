@@ -1,0 +1,1146 @@
+// <-- ~~~~~~~~~~~~~~~~~~    Variables    ~~~~~~~~~~~~~~~~~~ --> //
+/*$main-col: #003366;*/
+$main-col: #004466;
+$main-col-dark: #00264d;
+$main-col-black: black;
+$main-col-red: #b30000;
+/*$main-col-red: #FF9900;*/
+$main-col-white: white;
+$main-col-border: #707DA1;
+$main-col-hover: #fff3cd;
+$main-col-sorted: #24ff69;
+$main-col-shadow: #807d7d;
+$main-col-light: lightgray;
+$main-col-info: #bcdff1;
+$main-font: 'Montserrat',
+sans-serif;
+$font-2: "Times New Roman";
+/*$font-2: 'Roboto', sans-serif;*/
+// <-- ~~~~~~~~~~~~~~~~~~    Mixins    ~~~~~~~~~~~~~~~~~~ --> //
+@mixin calc($property, $expression) {
+    #{$property}: -moz-calc(#{$expression});
+    #{$property}: -webkit-calc(#{$expression});
+    #{$property}: calc(#{$expression});
+}
+
+// <-- ~~~~~~~~~~~~~~~~~~    General Styles    ~~~~~~~~~~~~~~~~~~ --> //
+#body {
+    font-family: $main-font;
+    position: relative;
+    top: 48px;
+    width: 100%;
+    margin: 0 auto 40px;
+    padding: 6px;
+    box-sizing: border-box;
+    border: 2px solid $main-col; // border-radius: 3px;
+    box-shadow: 0 0 8px 0 $main-col-shadow;
+    font-size: 20px;
+    overflow: hidden;
+}
+
+@media (max-width: 1200px) {
+    #body {
+        top: 42px;
+    }
+}
+
+@media (max-width: 992px) {
+    #body {
+        top: -4px;
+    }
+}
+//General classes
+
+.star{
+    color:red;
+}
+
+.hideAction {
+    display: none !important;
+}
+
+//General CSS Codes
+%filter-style {
+    min-height: 52px;
+    width: 100%;
+    box-shadow: 0 0 8px 1px $main-col-shadow;
+    margin: 0 auto 8px;
+    /*padding-top: 4px;*/
+    padding-bottom: 5px;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+
+    form {
+        .searchItem {
+            display: inline-block;
+            margin-right: 15px;
+            margin-top: 4px;
+
+            label {
+                font-size: 11px;
+                font-weight: 600;
+                margin-bottom: 2px;
+                color: #565656;
+                display: block;
+            }
+
+            .lableSelectBox {
+                position: relative;
+                bottom: -4px;
+            }
+
+            .inputItem {
+                font-size: 10px;
+                padding: 0px 5px;
+                font-weight: 500;
+                border-color: #848484;
+                height: 22px;
+                color: $main-col-black;
+
+                button {
+                    background-color: $main-col-white;
+                    color: $main-col;
+                    width: 160px;
+                    margin-bottom: 5px;
+                    margin-left: -5px;
+                    font-size: 12px;
+                    line-height: 22px;
+                    letter-spacing: 0;
+                    height: 22px;
+
+                    &:hover {
+                        background-color: none;
+                        border-color: $main-col;
+                    }
+
+                    &:focus {
+                        outline: none !important;
+                    }
+                }
+
+                & > .dropdown-menu {
+                    padding: 0;
+                    border: 1px solid #848484;
+
+                    .bs-searchbox {
+                        padding: 3px;
+
+                        input {
+                            padding: 2px 5px;
+
+                            &:focus {
+                                box-shadow: none;
+                            }
+                        }
+                    }
+
+                    .inner {
+                        .active {
+                            background-color: $main-col-red;
+                            color: $main-col-white;
+                            font-weight: 600;
+                        }
+
+                        ul {
+                            li {
+                                a {
+                                    padding: 2px 10px;
+                                    font-size: 13px;
+                                    font-weight: 500;
+                                    color: $main-col-black;
+                                    transition: all .15s linear;
+
+                                    &:hover {
+                                        background-color: $main-col-red;
+                                        color: $main-col-white;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &:focus {
+                    box-shadow: none;
+                }
+            }
+
+            .inputItemWith-1 {
+                width: 120px;
+
+                button {
+                    width: 120px;
+                }
+            }
+
+            .inputItemWith-2 {
+                width: 160px;
+
+                button {
+                    width: 160px;
+                }
+            }
+
+            .inputItemWith-3 {
+                width: 230px;
+
+                button {
+                    width: 230px;
+                }
+            }
+
+            .inputItemDriver {
+                width: 220px !important;
+            }
+        }
+
+        .inputCheck {
+            position: relative;
+            width: 160px;
+            cursor: pointer;
+
+            input {
+                margin-left: -14px;
+                position: absolute;
+                left: 14px;
+                top: -7px;
+                width: 16px;
+                height: 16px;
+                cursor: pointer;
+            }
+
+            label {
+                margin-left: 5px;
+                cursor: pointer;
+            }
+        }
+
+        button {
+            display: inline-block;
+            margin-top: 2px;
+            padding: 0 10px;
+            height: 23px;
+            margin-bottom: 1px;
+            font-size: 13px;
+            background-color: $main-col;
+            color: $main-col-white;
+            font-weight: 500;
+            border-color: #848484;
+            letter-spacing: 3px;
+
+            &:focus {
+                box-shadow: none;
+            }
+
+            &:hover {
+                border-color: $main-col-red;
+                background-color: $main-col-red;
+            }
+        }
+    }
+
+    p {
+        float: right;
+        margin-top: -28px;
+        position: relative;
+        z-index: 10;
+
+        a {
+            height: 30px;
+            font-size: 14px;
+            background-color: $main-col;
+            color: $main-col-white;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 3px;
+            padding: 6px 15px;
+            transition: all .15s linear;
+
+            i {
+                font-weight: 600;
+                font-size: 13px;
+                margin-right: 5px;
+            }
+
+            &:hover {
+                background-color: $main-col-red;
+            }
+        }
+    }
+
+    .nonFilter {
+        float: left !important;
+        margin-top: 10px;
+        margin-right: 15px;
+        position: relative;
+        z-index: 10;
+    }
+
+    .link {
+        float: left !important;
+        margin-top: 10px;
+        margin-right: 15px;
+        position: relative;
+        z-index: 10;
+
+        a {
+            height: 30px;
+            font-size: 14px;
+            background-color: white !important;
+            color: $main-col !important;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 3px;
+            padding: 6px 15px;
+            transition: all .15s linear;
+
+            i {
+                font-weight: 600;
+                font-size: 13px;
+                margin-right: 5px;
+            }
+
+            &:hover {
+                color: $main-col-red !important;
+            }
+        }
+    }
+}
+
+%content-style {
+    width: 100%;
+    box-shadow: 0 0 8px 1px $main-col-shadow;
+    margin: 0 auto;
+    padding-top: 10px;
+    margin-bottom: 10px;
+    overflow: auto;
+
+    table {
+        border: 1px solid $main-col;
+        table-layout: fixed;
+
+        tr {
+            line-height: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        th {
+            padding: 6px 5px;
+            vertical-align: middle;
+            line-height: 18px;
+        }
+
+        td {
+            padding: 6px 5px;
+            line-height: 16px;
+            border-top: 1px solid $main-col-border;
+            vertical-align: middle;
+        }
+
+        thead {
+            background-color: $main-col;
+
+            tr {
+                line-height: 10px;
+                color: $main-col-white !important;
+
+                th {
+                    .sortItem {
+                        color: $main-col-white;
+                        text-decoration: none;
+
+                        i {
+                            color: $main-col-white !important;
+                            font-size: 13px;
+                        }
+                    }
+
+                    .sorted {
+                        color: $main-col-sorted;
+
+                        i {
+                            color: $main-col-sorted !important;
+                            font-weight: 900 !important;
+                        }
+                    }
+                }
+            }
+        }
+
+        tbody {
+            .newData {
+                background-color: $main-col-info !important;
+            }
+
+            tr {
+                transition: all .15s linear;
+
+                &:nth-child(odd) {
+                    background-color: rgba(230, 225, 225, 0.16);
+                }
+
+                td {
+                    transition: all .15s linear;
+
+                    a {
+                        text-decoration: none;
+                    }
+                }
+
+                &:hover {
+                    background-color: $main-col-hover;
+
+                    td {
+                        border-color: $main-col-hover;
+                    }
+                }
+            }
+        }
+
+        .centerCell {
+            text-align: center;
+
+            i {
+                color: $main-col;
+                transition: all .15s linear;
+                margin-right: 10px;
+                font-size: 20px;
+
+                &:hover {
+                    color: $main-col-red;
+                }
+            }
+        }
+    }
+
+    .submitSection {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        border: 1px solid #cfe6cf;
+        width: 100%;
+        padding: 10px;
+        border-radius: 2px;
+        padding-left: 0px;
+        position: relative;
+
+        .allCheck {
+            display: flex;
+            align-items: center;
+
+            input {
+                margin-left: 37px;
+                margin-top: 0px !important;
+                position: static;
+                width: 20px;
+                height: 20px;
+                font-family: $main-font;
+                cursor: pointer;
+            }
+
+            lable {
+                margin-left: 15px;
+                font-size: 14px;
+                font-weight: 600;
+                color: $main-col;
+            }
+        }
+
+        .submitChecked {
+            position: absolute;
+            right: 15px;
+            top: 8px;
+
+            i {
+                margin-right: 10px;
+                position: relative;
+                top: 3px;
+                font-size: 20px;
+                color: $main-col-red;
+                display: none;
+            }
+
+            .submitbutton {
+                font-size: 14px;
+                border: 1px solid $main-col;
+                border-radius: 3px;
+                padding: 3px 15px;
+                font-weight: 500;
+                background-color: $main-col;
+                color: $main-col-white;
+                cursor: pointer;
+                transition: all .2s linear;
+
+                &:hover {
+                    background-color: $main-col-red;
+                    border-color: $main-col-red;
+                    transition: all .2s linear;
+                }
+            }
+        }
+    }
+}
+
+%content-style-outlook {
+    width: 100%;
+    box-shadow: 0 0 8px 1px $main-col-shadow;
+    margin: 0 auto;
+    padding-top: 10px;
+    margin-bottom: 10px;
+
+    .listWrapper {
+        overflow: auto;
+        height: 430px;
+
+        ul {
+            margin-bottom: 10px;
+
+            li {
+                font-size: 15px;
+                font-weight: 600;
+                padding: 5px 8px;
+                background-color: rgba(230, 225, 225, 0.16);
+                border: 1px solid #dee2e6;
+                color: $main-col;
+                cursor: pointer;
+                line-height: 16px;
+                transition: all 0.1s linear;
+
+                &:hover {
+                    background-color: rgba(230, 225, 225, 0.86);
+                    transition: all 0.1s linear;
+                }
+
+                .data {
+                    float: right;
+                    width: 20px;
+                    text-align: right;
+                }
+
+                .newData {
+                    float: right;
+                    font-size: 11px;
+                    position: relative;
+                    display: inline-block;
+                    margin-right: 5px;
+                    border-radius: 100%;
+                    width: 20px;
+                    text-align: right;
+                    line-height: 20px;
+                    color: #dc1111;
+                    font-weight: 800;
+                    top: -2px;
+                }
+
+                .countInsur {
+                    float: right;
+                    font-size: 11px;
+                    position: relative;
+                    display: inline-block;
+                    margin-right: 5px;
+                    border-radius: 100%;
+                    width: 20px;
+                    text-align: right;
+                    line-height: 20px;
+                    color: #08c;
+                    font-weight: 800;
+                    top: -2px;
+                }
+            }
+
+            .active {
+                background-color: #d3e4a7;
+                border: 1px solid #d3e4a7;
+                color: $main-col;
+
+                &:hover {
+                    background-color: #d3e4a7;
+                }
+            }
+        }
+    }
+}
+
+%footer-style {
+    width: 100%;
+    height: 62px;
+    box-shadow: 0 0 8px 1px $main-col-shadow;
+    margin: 0 auto 2px;
+    padding: 10px 0 5px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+
+    .download {
+        .fieldSet {
+            border: 1px solid $main-col-light;
+            position: relative;
+            padding: 12px 5px 2px;
+
+            h1 {
+                color: $main-col;
+                font-size: 12px;
+                font-weight: 600; // margin-bottom: 10px;
+                position: absolute;
+                top: -6px;
+                background-color: $main-col-white;
+                padding: 0 3px;
+            }
+
+            img {
+                max-height: 28px;
+                max-width: 28px;
+            }
+        }
+    }
+
+    .paginationWrapper {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+
+        form {
+            display: flex;
+        }
+
+        input {
+            width: 110px;
+            height: 20px;
+            font-size: 11px;
+            margin-top: 15px;
+            margin-left: 25px;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        button {
+            transition: all 0.15s linear;
+            font-weight: 600;
+            font-size: 11px;
+            color: #003366;
+            margin-top: 15px;
+            padding: 3px 8px;
+            height: 32%;
+            margin-left: 10px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #b30000;
+                color: white;
+                border-color: #b30000;
+            }
+        }
+
+        .pagination {
+            margin-top: 15px;
+            justify-content: center;
+
+            li {
+                list-style-type: none;
+                display: inline-block;
+                cursor: pointer;
+
+                a {
+                    transition: all 0.15s linear;
+                    font-weight: 600;
+                    font-size: 11px;
+                    color: #003366;
+                    padding: 3px 8px;
+
+                    &:hover {
+                        background-color: #b30000;
+                        color: white;
+                        border-color: #b30000;
+                    }
+                }
+
+                a.active {
+                    background-color: #b30000;
+                    color: white;
+                    border-color: #b30000;
+                }
+            }
+        }        
+    }
+
+    /*.paginationWrapper {
+        text-align: center;
+
+        .paginationCauseListNav {
+            margin-top: 15px;
+
+            %controlButtons {
+                list-style-type: none;
+                display: inline-block;
+                padding: 3px 8px;
+                font-size: 11px;
+                font-weight: 600;
+                margin-right: 1px;
+                border: 1px solid $main-col-light;
+                cursor: pointer;
+                color: $main-col;
+                transition: all .15s linear;
+
+                &:hover {
+                    background-color: $main-col-red;
+                    color: $main-col-white;
+                    border-color: $main-col-red;
+                }
+            }
+
+            .buttonItem {
+                @extend %controlButtons;
+            }
+
+            .prev {
+                @extend %controlButtons;
+            }
+
+            .next {
+                @extend %controlButtons;
+            }
+
+            .jump {
+                list-style-type: none;
+                display: inline-block;
+                padding: 3px 8px;
+                font-size: 11px;
+                font-weight: 600;
+                margin-right: 1px;
+                border: 1px solid $main-col-light;
+                cursor: no-drop;
+                color: $main-col;
+                transition: all .15s linear;
+            }
+
+            .active {
+                background-color: $main-col-red;
+                color: $main-col-white;
+                border-color: $main-col-red;
+            }
+        }
+    }*/
+    .records {
+        text-align: right;
+        line-height: 52px;
+
+        p {
+            color: $main-col;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .countOfFilter {
+            margin-bottom: 0px;
+            color: $main-col-red;
+        }
+    }
+}
+
+%add-style {
+    h1 {
+        font-size: 21px;
+        color: $main-col;
+        font-weight: 600;
+        margin: 10px 0 25px 13px;
+    }
+
+    form {
+        label {
+            font-size: 15px;
+            color: $main-col;
+            font-weight: 600;
+            display: inline;
+        }
+
+        .form-group {
+            /*& > div {
+                position: relative;
+                top: -6px;
+            }*/
+            & > div > input {
+                border: 1px solid $main-col-border;
+            }
+
+            .alert-info {
+                max-width: 300px;
+                margin-left: 15px;
+                font-size: 14px;
+                line-height: 18px;
+                padding: 10px;
+            }
+        }
+
+        .addFile {
+            input {
+                border: none !important;
+                margin-left: -10px !important;
+            }
+        }
+
+        .inputItem {
+            font-size: 12px;
+            padding: 5px 10px;
+            /*max-width: 300px;*/
+            font-weight: 500;
+            height: 30px;
+            margin-bottom: 20px; // margin-top: 10px;
+            color: $main-col;
+
+            &:focus {
+                box-shadow: none;
+            }
+
+            &::placeholder {
+                color: $main-col;
+            }
+
+            button {
+                background-color: $main-col-white;
+                border: 1px solid $main-col-border;
+                padding: 3px 5px;
+                color: $main-col;
+                /*max-width: 300px;*/
+                margin-left: -11px;
+                font-size: 12px;
+                line-height: 22px;
+                letter-spacing: 0;
+                height: 30px;
+
+                &:hover {
+                    background-color: none;
+                    border-color: $main-col-border;
+                }
+
+                &:focus {
+                    outline: none !important;
+                }
+            }
+
+            & > .dropdown-menu {
+                padding: 0;
+                border: 1px solid $main-col;
+
+                .bs-searchbox {
+                    padding: 3px;
+
+                    input {
+                        padding: 2px 5px;
+
+                        &:focus {
+                            box-shadow: none;
+                        }
+                    }
+                }
+
+                .inner {
+                    .active {
+                        background-color: $main-col-red;
+                        color: $main-col-white;
+                        font-weight: 600;
+                    }
+
+                    ul {
+                        li {
+                            a {
+                                padding: 2px 10px;
+                                font-size: 13px;
+                                font-weight: 500;
+                                color: black;
+                                transition: all .15s linear;
+
+                                &:hover {
+                                    background-color: $main-col-red;
+                                    color: $main-col-white;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .inputItemSelect {
+            /*margin-bottom: 0px;*/
+        }
+
+        .addButton {
+            padding: 0 10px;
+            height: 30px;
+            margin-left: 15px;
+            font-size: 14px;
+            background-color: $main-col;
+            color: $main-col-white;
+            font-weight: 500;
+            border-color: $main-col;
+            letter-spacing: 3px;
+
+            &:focus {
+                box-shadow: none;
+            }
+
+            &:hover {
+                border-color: $main-col-red;
+                background-color: $main-col-red;
+            }
+        }
+
+        .inputItemText {
+            height: 102px;
+            border: 1px solid $main-col-border;
+        }
+
+        .ajaxNotif {
+            display: none;
+            font-size: 17px;
+            line-height: 25px;
+            letter-spacing: 2px;
+            color: $main-col-red;
+            margin: 15px;
+            padding: 4px 10px;
+            box-sizing: border-box;
+        }
+    }
+}
+
+%operation-style {
+    width: 100%;
+    padding-bottom: 25px;
+    border: 2px solid $main-col;
+    box-shadow: 0 0 8px 1px $main-col-shadow;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    margin-bottom:10px;
+
+    h1 {
+        color: $main-col-white;
+        background-color: $main-col;
+        text-align: center;
+        padding: 7px 0;
+        font-size: 15px;
+        font-weight: 500;
+    }
+    ul {
+        padding: 15px;
+        li {
+            list-style-type: none;
+            margin-bottom: 15px;
+            transition: all .2s linear;
+            display: inline-block;
+            &:hover {
+                margin-left: 3px;
+                a {
+                    color: $main-col-red;
+                }
+            }
+            a {
+                text-decoration: none;
+                font-size: 14px;
+                font-weight: 600;
+                transition: all .2s linear;
+                color: $main-col;
+                line-height: 20px;
+            }
+        }
+    }
+}
+
+%detailed-content-style {
+    width: 100%;
+    height: 85vh;
+    box-shadow: 0 0 8px 1px $main-col-shadow;
+    margin: 0 auto;
+    padding: 10px 10px 30px 10px;
+    margin-bottom: 10px;
+    overflow: auto;
+
+    .wrapper {
+        background-color: #f7f7f7;
+        display: inline-block;
+        padding: 0px 15px;
+        font-family: $main-font;
+        height: fit-content;
+
+        .heading {
+            padding: 10px;
+            /*background-color: cadetblue;*/
+            background-color: $main-col;
+            margin: 0px -15px;
+
+            h2 {
+                color: white;
+                font-size: 17px;
+                font-weight: 500;
+            }
+        }
+
+        .item-group {
+            padding: 20px 0px 3px 0px;
+            font-size: 15px;
+            color: black;
+            line-height: 20px;
+            /*border-bottom: 1px solid #d8d8d8;*/
+            border-bottom: 1px solid rgba(211, 211, 211, 0.4196078431372549);
+
+            .left {
+                font-weight: 700;
+
+                span {
+                    float: right;
+                    font-weight: 300;
+                }
+            }
+
+            .right {
+                font-weight: 500;
+                letter-spacing: 2px;
+            }
+        }
+    }
+}
+
+
+
+// <-- ~~~~~~~~~~~~~~~~~~    Imports    ~~~~~~~~~~~~~~~~~~ --> //
+@import 'reset';
+@import 'header';
+@import 'footer';
+@import 'home';
+@import 'operations';
+@import 'administrativeOperations';
+@import 'sysOperations';
+@import 'login';
+@import 'profile';
+@import 'reports';
+@import 'accidentReports';
+@import 'accidentReportsAdmin';
+@import 'users';
+@import 'createUser';
+@import 'usersAccess';
+@import 'createUserAccessOperation';
+@import 'operationList';
+@import 'accessUpdate';
+@import 'accessCreate';
+@import 'brandInputIndex';
+@import 'brandInputCreate';
+@import 'brandInputUpdate';
+@import 'compInputUpdate';
+@import 'driverInputUpdate';
+@import 'rutInputUpdate';
+@import 'vehInputUpdate';
+@import 'uploadDriverExcel';
+@import 'uploadVehicleExcel';
+@import 'compInputCreate';
+@import 'driverInputCreate';
+@import 'rutInputCreate';
+@import 'vehInputCreate';
+@import 'compInputIndex';
+@import 'driverInputIndex';
+@import 'driverInputDetailed';
+@import 'rutInputIndex';
+@import 'vehInputIndex';
+@import 'updateUserAccessOperation';
+@import 'actOperationManagIndex';
+@import 'actOperationManagCreate';
+@import 'actOperationManagUpdate';
+@import 'updateUser';
+@import 'depInpIndex';
+@import 'depInpCreate';
+@import 'depInpUpdate';
+@import 'notificationsIndex';
+@import 'searchUserIndex';
+@import 'secInpIndex';
+@import 'secInpUpdate';
+@import 'secInpCreate';
+@import 'posInpIndex';
+@import 'posInpCreate';
+@import 'posInpUpdate';
+
+@import 'bindMechIndex';
+@import 'bindMechCreate';
+@import 'bindMechUpdate';
+
+@import 'initContCreate';
+@import 'initContUpdate';
+@import 'openInitContIndex';
+@import 'initContClose';
+@import 'closedInitContIndex';
+@import 'closedInitContUpdate';
+
+@import 'closedInitContMechIndex';
+@import 'closedInitContMechUpdate';
+
+@import 'initContCheckupIndex';
+@import 'initContCheckupCreate';
+@import 'initContCheckupUpdate';
+
+@import 'initContSOCARIndex';
+@import 'initContSOCARUpdate';
+@import 'initContSOCARAdd';
+
+@import 'kmLimitInpIndex';
+@import 'kmLimitInpCreate';
+@import 'kmLimitInpUpdate';
+
+@import 'depotInpIndex';
+@import 'depotInpCreate';
+@import 'depotInpUpdate';
+
+@import 'troInpIndex';
+@import 'troInpCreate';
+@import 'troInpUpdate';
+
+@import 'jobcardIndex';
+@import 'jobcardDashboard';
+@import 'jobcardDetails';
+@import 'jobcardNote';
+@import 'jobcardOpen';
+@import 'jobcardClosed';
+@import 'jobcardInWaitRoute';
+@import 'jobcardInWaitDepot';
+@import 'jobcardAllAdmin';
+
+
+@import 'submitRepairedBus';
+
+
+
+@import 'requisitionsAdd';
+@import 'requisitionsIndex';
+@import 'requisitionsUpdate';
+
+@import 'doneWorksIndex';
+@import 'doneWorksAdd';
+@import 'doneWorksUpdate';
+
+@import 'doneWorksIndexInput';
+@import 'doneWorksCreateInput';
+@import 'doneWorksUpdateInput';
+@import 'uploadDoneWorksExcelInput';
+
+
+@import 'startMaintenance';
+@import 'finishMaintenance';
+
+@import 'maintenanceMonitorngIndex';
+@import 'maintenanceHistory';
+
+@import 'bindMaintenanceIndex';
+@import 'bindMaintenanceCreate';
+@import 'bindMaintenanceUpdate';
+
+@import 'settingsIndex';
+@import 'settingsCreate';
+@import 'settingsUpdate';
+
+@import 'bindSparePartIndex';
+@import 'bindSparePartCreate';
+@import 'bindSparePartUpdate';
+
+@import 'notMetRequisitionsIndex';
+
+
+

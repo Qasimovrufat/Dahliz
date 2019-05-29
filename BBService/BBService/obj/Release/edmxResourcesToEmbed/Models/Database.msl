@@ -1,0 +1,575 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BBServiceModelStoreContainer" CdmEntityContainer="BBServiceEntities">
+    <EntitySetMapping Name="Actions">
+      <EntityTypeMapping TypeName="BBServiceModel.Actions">
+        <MappingFragment StoreEntitySet="Actions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="OperationId" ColumnName="OperationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Companies">
+      <EntityTypeMapping TypeName="BBServiceModel.Companies">
+        <MappingFragment StoreEntitySet="Companies">
+          <ScalarProperty Name="IsClient" ColumnName="IsClient" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Departments">
+      <EntityTypeMapping TypeName="BBServiceModel.Departments">
+        <MappingFragment StoreEntitySet="Departments">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="BBServiceModel.Employees">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="FutherName" ColumnName="FutherName" />
+          <ScalarProperty Name="RecruitmentDate" ColumnName="RecruitmentDate" />
+          <ScalarProperty Name="DeactivationDate" ColumnName="DeactivationDate" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="LicenceSeries" ColumnName="LicenceSeries" />
+          <ScalarProperty Name="LicenceNumber" ColumnName="LicenceNumber" />
+          <ScalarProperty Name="LicenceCategory" ColumnName="LicenceCategory" />
+          <ScalarProperty Name="LicenceIssueDate" ColumnName="LicenceIssueDate" />
+          <ScalarProperty Name="LicenceExpireDate" ColumnName="LicenceExpireDate" />
+          <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+          <ScalarProperty Name="SectorId" ColumnName="SectorId" />
+          <ScalarProperty Name="PositionId" ColumnName="PositionId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NotificationContent">
+      <EntityTypeMapping TypeName="BBServiceModel.NotificationContent">
+        <MappingFragment StoreEntitySet="NotificationContent">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="NotificationTitleId" ColumnName="NotificationTitleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NotificationTitles">
+      <EntityTypeMapping TypeName="BBServiceModel.NotificationTitles">
+        <MappingFragment StoreEntitySet="NotificationTitles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Operations">
+      <EntityTypeMapping TypeName="BBServiceModel.Operations">
+        <MappingFragment StoreEntitySet="Operations">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Create" ColumnName="Create" />
+          <ScalarProperty Name="Read" ColumnName="Read" />
+          <ScalarProperty Name="Update" ColumnName="Update" />
+          <ScalarProperty Name="Delete" ColumnName="Delete" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Permissions">
+      <EntityTypeMapping TypeName="BBServiceModel.Permissions">
+        <MappingFragment StoreEntitySet="Permissions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ActionId" ColumnName="ActionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Positions">
+      <EntityTypeMapping TypeName="BBServiceModel.Positions">
+        <MappingFragment StoreEntitySet="Positions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Routes">
+      <EntityTypeMapping TypeName="BBServiceModel.Routes">
+        <MappingFragment StoreEntitySet="Routes">
+          <ScalarProperty Name="ClosedDate" ColumnName="ClosedDate" />
+          <ScalarProperty Name="IsClosed" ColumnName="IsClosed" />
+          <ScalarProperty Name="AddedUserId" ColumnName="AddedUserId" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="BackwardLength" ColumnName="BackwardLength" />
+          <ScalarProperty Name="ForwardLength" ColumnName="ForwardLength" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Forward" ColumnName="Forward" />
+          <ScalarProperty Name="Backward" ColumnName="Backward" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="ActivationDate" ColumnName="ActivationDate" />
+          <ScalarProperty Name="DeactivationDate" ColumnName="DeactivationDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sectors">
+      <EntityTypeMapping TypeName="BBServiceModel.Sectors">
+        <MappingFragment StoreEntitySet="Sectors">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="BBServiceModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vehicles">
+      <EntityTypeMapping TypeName="BBServiceModel.Vehicles">
+        <MappingFragment StoreEntitySet="Vehicles">
+          <ScalarProperty Name="EngineCode" ColumnName="EngineCode" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+          <ScalarProperty Name="VehicleCode" ColumnName="VehicleCode" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="ReleaseYear" ColumnName="ReleaseYear" />
+          <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+          <ScalarProperty Name="NumberOfSeats" ColumnName="NumberOfSeats" />
+          <ScalarProperty Name="RegistrationCertificationSeries" ColumnName="RegistrationCertificationSeries" />
+          <ScalarProperty Name="RegistrationCertificationNumber" ColumnName="RegistrationCertificationNumber" />
+          <ScalarProperty Name="ChassisNumber" ColumnName="ChassisNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VehiclesBrand">
+      <EntityTypeMapping TypeName="BBServiceModel.VehiclesBrand">
+        <MappingFragment StoreEntitySet="VehiclesBrand">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Brand" ColumnName="Brand" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AggregatedCounter">
+      <EntityTypeMapping TypeName="BBServiceModel.AggregatedCounter">
+        <MappingFragment StoreEntitySet="AggregatedCounter">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Key" ColumnName="Key" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="ExpireAt" ColumnName="ExpireAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Counter">
+      <EntityTypeMapping TypeName="BBServiceModel.Counter">
+        <MappingFragment StoreEntitySet="Counter">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Key" ColumnName="Key" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="ExpireAt" ColumnName="ExpireAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Hash">
+      <EntityTypeMapping TypeName="BBServiceModel.Hash">
+        <MappingFragment StoreEntitySet="Hash">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Key" ColumnName="Key" />
+          <ScalarProperty Name="Field" ColumnName="Field" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="ExpireAt" ColumnName="ExpireAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Job">
+      <EntityTypeMapping TypeName="BBServiceModel.Job">
+        <MappingFragment StoreEntitySet="Job">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="InvocationData" ColumnName="InvocationData" />
+          <ScalarProperty Name="Arguments" ColumnName="Arguments" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="ExpireAt" ColumnName="ExpireAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JobQueue">
+      <EntityTypeMapping TypeName="BBServiceModel.JobQueue">
+        <MappingFragment StoreEntitySet="JobQueue">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="JobId" ColumnName="JobId" />
+          <ScalarProperty Name="Queue" ColumnName="Queue" />
+          <ScalarProperty Name="FetchedAt" ColumnName="FetchedAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JobParameter">
+      <EntityTypeMapping TypeName="BBServiceModel.JobParameter">
+        <MappingFragment StoreEntitySet="JobParameter">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="JobId" ColumnName="JobId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="List">
+      <EntityTypeMapping TypeName="BBServiceModel.List">
+        <MappingFragment StoreEntitySet="List">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Key" ColumnName="Key" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="ExpireAt" ColumnName="ExpireAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Schema">
+      <EntityTypeMapping TypeName="BBServiceModel.Schema">
+        <MappingFragment StoreEntitySet="Schema">
+          <ScalarProperty Name="Version" ColumnName="Version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Server">
+      <EntityTypeMapping TypeName="BBServiceModel.Server">
+        <MappingFragment StoreEntitySet="Server">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="LastHeartbeat" ColumnName="LastHeartbeat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Set">
+      <EntityTypeMapping TypeName="BBServiceModel.Set">
+        <MappingFragment StoreEntitySet="Set">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Key" ColumnName="Key" />
+          <ScalarProperty Name="Score" ColumnName="Score" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="ExpireAt" ColumnName="ExpireAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="State">
+      <EntityTypeMapping TypeName="BBServiceModel.State">
+        <MappingFragment StoreEntitySet="State">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="JobId" ColumnName="JobId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MechanicBinding">
+      <EntityTypeMapping TypeName="BBServiceModel.MechanicBinding">
+        <MappingFragment StoreEntitySet="MechanicBinding">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="RecMechId" ColumnName="RecMechId" />
+          <ScalarProperty Name="SeniorRecMechId" ColumnName="SeniorRecMechId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InitialControlSchedule">
+      <EntityTypeMapping TypeName="BBServiceModel.InitialControlSchedule">
+        <MappingFragment StoreEntitySet="InitialControlSchedule">
+          <ScalarProperty Name="FirstDrvFuel" ColumnName="FirstDrvFuel" />
+          <ScalarProperty Name="FirstDrvKm" ColumnName="FirstDrvKm" />
+          <ScalarProperty Name="RouteLength" ColumnName="RouteLength" />
+          <ScalarProperty Name="AllUpdateDate" ColumnName="AllUpdateDate" />
+          <ScalarProperty Name="AllUpdateUserId" ColumnName="AllUpdateUserId" />
+          <ScalarProperty Name="EnterUpdateDate" ColumnName="EnterUpdateDate" />
+          <ScalarProperty Name="EnterUpdateEmpId" ColumnName="EnterUpdateEmpId" />
+          <ScalarProperty Name="LeavingUpdateDate" ColumnName="LeavingUpdateDate" />
+          <ScalarProperty Name="LeavingUpdateEmpId" ColumnName="LeavingUpdateEmpId" />
+          <ScalarProperty Name="EnterNote" ColumnName="EnterNote" />
+          <ScalarProperty Name="LeavingNote" ColumnName="LeavingNote" />
+          <ScalarProperty Name="RouteId" ColumnName="RouteId" />
+          <ScalarProperty Name="SecondDriverId" ColumnName="SecondDriverId" />
+          <ScalarProperty Name="FirstDriverId" ColumnName="FirstDriverId" />
+          <ScalarProperty Name="EnterFuel" ColumnName="EnterFuel" />
+          <ScalarProperty Name="EnterKilometer" ColumnName="EnterKilometer" />
+          <ScalarProperty Name="EnterTime" ColumnName="EnterTime" />
+          <ScalarProperty Name="EnterSeniorRecMechId" ColumnName="EnterSeniorRecMechId" />
+          <ScalarProperty Name="EnterRecMechId" ColumnName="EnterRecMechId" />
+          <ScalarProperty Name="LeavingFuel" ColumnName="LeavingFuel" />
+          <ScalarProperty Name="LeavingKilometer" ColumnName="LeavingKilometer" />
+          <ScalarProperty Name="LeavingTime" ColumnName="LeavingTime" />
+          <ScalarProperty Name="LeavingSeniorRecMechId" ColumnName="LeavingSeniorRecMechId" />
+          <ScalarProperty Name="LeavingRecMechId" ColumnName="LeavingRecMechId" />
+          <ScalarProperty Name="IsOpen" ColumnName="IsOpen" />
+          <ScalarProperty Name="VehicleId" ColumnName="VehicleId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FuelSOCAR">
+      <EntityTypeMapping TypeName="BBServiceModel.FuelSOCAR">
+        <MappingFragment StoreEntitySet="FuelSOCAR">
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedUserId" ColumnName="AddedUserId" />
+          <ScalarProperty Name="FuelTime3" ColumnName="FuelTime3" />
+          <ScalarProperty Name="FuelTime2" ColumnName="FuelTime2" />
+          <ScalarProperty Name="FuelTime1" ColumnName="FuelTime1" />
+          <ScalarProperty Name="FuelAmount3" ColumnName="FuelAmount3" />
+          <ScalarProperty Name="FuelAmount2" ColumnName="FuelAmount2" />
+          <ScalarProperty Name="FuelAmount1" ColumnName="FuelAmount1" />
+          <ScalarProperty Name="DateSOCAR" ColumnName="DateSOCAR" />
+          <ScalarProperty Name="InitContId" ColumnName="InitContId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RouteDailyKM">
+      <EntityTypeMapping TypeName="BBServiceModel.RouteDailyKM">
+        <MappingFragment StoreEntitySet="RouteDailyKM">
+          <ScalarProperty Name="KmLimit" ColumnName="KmLimit" />
+          <ScalarProperty Name="RouteId" ColumnName="RouteId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Depots">
+      <EntityTypeMapping TypeName="BBServiceModel.Depots">
+        <MappingFragment StoreEntitySet="Depots">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JobcardToTroubleshoot">
+      <EntityTypeMapping TypeName="BBServiceModel.JobcardToTroubleshoot">
+        <MappingFragment StoreEntitySet="JobcardToTroubleshoot">
+          <ScalarProperty Name="TroubleshootId" ColumnName="TroubleshootId" />
+          <ScalarProperty Name="JobcardId" ColumnName="JobcardId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TroubleShoot">
+      <EntityTypeMapping TypeName="BBServiceModel.TroubleShoot">
+        <MappingFragment StoreEntitySet="TroubleShoot">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Goods">
+      <EntityTypeMapping TypeName="BBServiceModel.Goods">
+        <MappingFragment StoreEntitySet="Goods">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="AnalogCode2" ColumnName="AnalogCode2" />
+          <ScalarProperty Name="AnalogCode1" ColumnName="AnalogCode1" />
+          <ScalarProperty Name="InternalCode" ColumnName="InternalCode" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WarehouseExits">
+      <EntityTypeMapping TypeName="BBServiceModel.WarehouseExits">
+        <MappingFragment StoreEntitySet="WarehouseExits">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WarehouseReceipts">
+      <EntityTypeMapping TypeName="BBServiceModel.WarehouseReceipts">
+        <MappingFragment StoreEntitySet="WarehouseReceipts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TempWarehouse">
+      <EntityTypeMapping TypeName="BBServiceModel.TempWarehouse">
+        <MappingFragment StoreEntitySet="TempWarehouse">
+          <ScalarProperty Name="InternalCode" ColumnName="InternalCode" />
+          <ScalarProperty Name="SparePartCode" ColumnName="SparePartCode" />
+          <ScalarProperty Name="VehicleId" ColumnName="VehicleId" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Requisitions">
+      <EntityTypeMapping TypeName="BBServiceModel.Requisitions">
+        <MappingFragment StoreEntitySet="Requisitions">
+          <ScalarProperty Name="IsOpen" ColumnName="IsOpen" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="MeetingQuantity" ColumnName="MeetingQuantity" />
+          <ScalarProperty Name="RequiredQuantity" ColumnName="RequiredQuantity" />
+          <ScalarProperty Name="TempWarehouseId" ColumnName="TempWarehouseId" />
+          <ScalarProperty Name="JobCardId" ColumnName="JobCardId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MaintenanceHistory">
+      <EntityTypeMapping TypeName="BBServiceModel.MaintenanceHistory">
+        <MappingFragment StoreEntitySet="MaintenanceHistory">
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="MaintenanceStatus" ColumnName="MaintenanceStatus" />
+          <ScalarProperty Name="MaintenanceId" ColumnName="MaintenanceId" />
+          <ScalarProperty Name="JobCardId" ColumnName="JobCardId" />
+          <ScalarProperty Name="InitContId" ColumnName="InitContId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MaintenanceType">
+      <EntityTypeMapping TypeName="BBServiceModel.MaintenanceType">
+        <MappingFragment StoreEntitySet="MaintenanceType">
+          <ScalarProperty Name="MaintenanceValue" ColumnName="MaintenanceValue" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Settings">
+      <EntityTypeMapping TypeName="BBServiceModel.Settings">
+        <MappingFragment StoreEntitySet="Settings">
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WarehouseToMaintenance">
+      <EntityTypeMapping TypeName="BBServiceModel.WarehouseToMaintenance">
+        <MappingFragment StoreEntitySet="WarehouseToMaintenance">
+          <ScalarProperty Name="NotRequireSPLimit" ColumnName="NotRequireSPLimit" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="WarehouseId" ColumnName="WarehouseId" />
+          <ScalarProperty Name="MaintenanceTypeId" ColumnName="MaintenanceTypeId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DoneWorks">
+      <EntityTypeMapping TypeName="BBServiceModel.DoneWorks">
+        <MappingFragment StoreEntitySet="DoneWorks">
+          <ScalarProperty Name="VehicleBrandId" ColumnName="VehicleBrandId" />
+          <ScalarProperty Name="NormativeBakubus" ColumnName="NormativeBakubus" />
+          <ScalarProperty Name="NormativeFactory" ColumnName="NormativeFactory" />
+          <ScalarProperty Name="WorkName" ColumnName="WorkName" />
+          <ScalarProperty Name="WorkCode" ColumnName="WorkCode" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JobCards">
+      <EntityTypeMapping TypeName="BBServiceModel.JobCards">
+        <MappingFragment StoreEntitySet="JobCards">
+          <ScalarProperty Name="TakeOverServisOfficerSubmit" ColumnName="TakeOverServisOfficerSubmit" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="CreatedBySystem" ColumnName="CreatedBySystem" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="HandOverServisOfficer" ColumnName="HandOverServisOfficer" />
+          <ScalarProperty Name="TakeOverServisOfficer" ColumnName="TakeOverServisOfficer" />
+          <ScalarProperty Name="ReceivingServisOfficer" ColumnName="ReceivingServisOfficer" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="InWaitRoute" ColumnName="InWaitRoute" />
+          <ScalarProperty Name="IsGuarantee" ColumnName="IsGuarantee" />
+          <ScalarProperty Name="IsRepair" ColumnName="IsRepair" />
+          <ScalarProperty Name="IsMaintenance" ColumnName="IsMaintenance" />
+          <ScalarProperty Name="IsAccident" ColumnName="IsAccident" />
+          <ScalarProperty Name="InWaitDepot" ColumnName="InWaitDepot" />
+          <ScalarProperty Name="InUnderRepair" ColumnName="InUnderRepair" />
+          <ScalarProperty Name="IsOpen" ColumnName="IsOpen" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CheckupCardId" ColumnName="CheckupCardId" />
+          <ScalarProperty Name="JobCardNo" ColumnName="JobCardNo" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JobcardToDoneWorks">
+      <EntityTypeMapping TypeName="BBServiceModel.JobcardToDoneWorks">
+        <MappingFragment StoreEntitySet="JobcardToDoneWorks">
+          <ScalarProperty Name="IsOpen" ColumnName="IsOpen" />
+          <ScalarProperty Name="WorkEndTime" ColumnName="WorkEndTime" />
+          <ScalarProperty Name="WorkStartTime" ColumnName="WorkStartTime" />
+          <ScalarProperty Name="Master" ColumnName="Master" />
+          <ScalarProperty Name="ServisOfficer" ColumnName="ServisOfficer" />
+          <ScalarProperty Name="WorkId" ColumnName="WorkId" />
+          <ScalarProperty Name="JobcardId" ColumnName="JobcardId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JobcardNotes">
+      <EntityTypeMapping TypeName="BBServiceModel.JobcardNotes">
+        <MappingFragment StoreEntitySet="JobcardNotes">
+          <ScalarProperty Name="JobCardId" ColumnName="JobCardId" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedUserId" ColumnName="AddedUserId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CheckUpCard">
+      <EntityTypeMapping TypeName="BBServiceModel.CheckUpCard">
+        <MappingFragment StoreEntitySet="CheckUpCard">
+          <ScalarProperty Name="MaintenanceTypeId" ColumnName="MaintenanceTypeId" />
+          <ScalarProperty Name="AddedMechanicId" ColumnName="AddedMechanicId" />
+          <ScalarProperty Name="AddedUserId" ColumnName="AddedUserId" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="IsOpen" ColumnName="IsOpen" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="InitContId" ColumnName="InitContId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Notifications">
+      <EntityTypeMapping TypeName="BBServiceModel.Notifications">
+        <MappingFragment StoreEntitySet="Notifications">
+          <ScalarProperty Name="AddingDate" ColumnName="AddingDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="DataId" ColumnName="DataId" />
+          <ScalarProperty Name="NotificationTitleId" ColumnName="NotificationTitleId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NotMetRequisitions">
+      <EntityTypeMapping TypeName="BBServiceModel.NotMetRequisitions">
+        <MappingFragment StoreEntitySet="NotMetRequisitions">
+          <ScalarProperty Name="ClosedDate" ColumnName="ClosedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsOpen" ColumnName="IsOpen" />
+          <ScalarProperty Name="SubstituteJCId" ColumnName="SubstituteJCId" />
+          <ScalarProperty Name="OrijinalJCId" ColumnName="OrijinalJCId" />
+          <ScalarProperty Name="RemainingQuantity" ColumnName="RemainingQuantity" />
+          <ScalarProperty Name="SPId" ColumnName="SPId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

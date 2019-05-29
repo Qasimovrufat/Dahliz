@@ -1,0 +1,87 @@
+#DoneWorksCreateInput {
+    .contaiber-fluid {
+        .inputAccident {
+            @extend %add-style;
+
+            .SuccessInfo {
+                font-size: 17px;
+                line-height: 22px;
+                color: $main-col-red;
+            }
+
+            /*max-width: unset;*/
+
+            h1 {
+                margin-bottom: 35px !important;
+            }
+
+            form {
+                .inputItem {
+                    margin-bottom: 0px;
+                }
+
+                .addButton {
+                    margin-top: 40px;
+                }
+
+                .text {
+                    span {
+                        color: $main-col-red;
+                        font-weight: 700;
+                        margin-left: 10px;
+                    }
+                }
+
+                .text-failure {
+                    padding: 0px 30px;
+
+                    label {
+                        display: block;
+                        margin-bottom: 5px;
+                        margin-left: -29px;
+                    }
+
+                    span {
+                        color: $main-col;
+                        font-weight: 500;
+                        font-size: 14px;
+                    }
+                }
+
+                #goBack {
+                    margin-left: 15px;
+                    font-size: 16px;
+                    font-weight: 500;
+                    text-decoration: none;
+                    padding: 5px 9px;
+                    color: $main-col;
+                    border-radius: 4px;
+                    transition: all .1s linear;
+                    cursor: pointer;
+                    letter-spacing: 1px;
+
+                    &:hover {
+                        color: $main-col-red;
+                        transition: all .1s linear;
+                    }
+                }
+            }
+            /*.SuccessInfo {
+                font-size: 17px;
+                line-height: 22px;
+                color: $main-col-red;
+                width: calc(100% - 39px) !important;
+                max-width: unset;
+                margin-left: 0px !important;
+                display: block !important;
+            }*/
+            .inputHere {
+                margin-bottom: 15px;
+
+                .dropdown {
+                    padding: 0px 10px;
+                }
+            }
+        }
+    }
+}

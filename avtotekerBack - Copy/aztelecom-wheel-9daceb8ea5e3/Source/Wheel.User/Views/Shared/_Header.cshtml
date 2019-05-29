@@ -1,0 +1,339 @@
+﻿@model  Wheel.User.Models.commonModel
+@using res = Wheel.User.Properties.Resources
+<header id="header">
+    <div class="container">
+        <!-- LOGO -->
+        <div class="logo_main logo_header">
+            <a href="/"><img  src="~/Content/avtoteker-logo-png.png" /></a>
+            <span class="phoneNumber"><i class="fa fa-phone"></i> Tel: (077) 592 7444 </span>
+        </div>
+        <div class="header_right">
+            <ul class="social_links social_header">
+                <li><a target="_blank" href="@res.twitterUrl"><i class="fa fa-instagram"></i></a></li>
+                <li><a target="_blank" href="@res.fbUrl"><i class="fa fa-facebook-square"></i></a></li>
+            </ul>
+            <div class="header_panel">
+
+                <!-- USER MENU -->
+                <ul class="header_user">
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="lock"><a href="/account/logout" id="customer_logou_link">@res.logout</a></li>
+                    }
+                    else
+                    {
+                        <li class="user"><a href="#" data-dismiss="modal" data-backdrop="false" data-toggle="modal" data-target="#newRegisterModal" id="customer_register_link">@res.createAccount</a></li>
+                        <li class="lock"><a href="#" data-dismiss="modal" data-backdrop="false" data-toggle="modal" data-target="#newLoginModal" id="customer_login_link">@res.login</a></li>
+                    }
+                    
+                    @*<li class="checkout"><a href="cart.html">Check out</a></li>*@
+                    <li class="checkout">
+                    <span><a href="/Home/SetCulture/?culture=az&href=@Request.Url">AZ</a></span>
+                    <span><a href="/Home/SetCulture/?culture=en-US&href=@Request.Url">EN</a></span>
+                    <span><a href="/Home/SetCulture/?culture=ru&href=@Request.Url">RU</a></span></li>
+                </ul>
+
+                <div class="cart_currency">
+
+                    <!-- CURRENCIES -->
+                    <div class="header_currency" style="display:none">                        
+                            <select id="currencySelect" name="currency">
+                                <option value="AZN">AZN</option>                                
+                                <option value="USD">USD</option>
+                            </select>                        
+                    </div>
+
+                    <!-- HEADER CART -->
+                    @*<div class="header_cart">
+                            <a href="cart.html"><i class="fa fa-shopping-cart"></i><b>Shopping cart:</b><span class="cart-total-items"><span class="count">0</span></span></a>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- MEGAMENU -->
+<div id="megamenu">
+    <div class="container">
+        <ul class="sf-menu megamenu_desktop visible-md visible-lg">
+            <li class="megamenu_item_1">
+                <a href="#">@res.menuCatalog<span class="menu_badge">@res.menuNew</span></a>
+                <ul>
+                    <li>
+                        <div class="submenu submenu_1">
+                            <div class="row">
+
+                                @foreach (var catalog in Model.catalog)
+                                {
+                                    <div class="col-sm-3 megamenu_custom_holder">
+                                        <h4 style="margin-top: 0;  margin-bottom: 10px;"><a class="megamenu_custom_a" href="/tyres/?BrandId=@catalog.Id">@catalog.Name</a></h4>
+                                        <ul class="megamenu_custom_sub" data-mcs-theme="dark">
+                                            @foreach (var tyreModel in catalog.Models)
+                                            {
+                                                <li><a href="/tyres/?BrandId=@catalog.Id&ModelId=@tyreModel.Id">@tyreModel.Name</a></li>
+                                            }
+                                        </ul>
+                                    </div>
+                                }
+                            </div>
+                            <a class="btn" href="/tyres">@res.viewAll</a>
+                        </div>
+                    </li>
+                </ul>
+
+            </li>
+
+            <li class="megamenu_item_3">
+                <a href="/tyres/?sale=1">@res.sale</a>
+
+                <ul>
+                    <li>
+                        <div class="submenu submenu_3">
+                            <div class="row">
+                                @foreach (var tyre in Model.saleTyres.tyreList)
+                                {
+                                    <div class="col-sm-3">
+                                        <div class="product_img">
+                                            <a href="/tyres/Details?id=@tyre.Id">
+                                                <img src='/adminpr/@(tyre.Images.Count>0 ? tyre.Images[0].Path : "360_forged_-_mesh_8_custom_painted_close-up_1_large68a8.png?v=1433860250")' alt="@tyre.ModelName" />
+                                            </a>
+                                        </div>
+                                        <div class="product_name">
+                                            <a href="/tyres/Details?id=@tyre.Id">@tyre.ModelName</a>
+                                        </div>
+                                        <div class="product_price">
+                                            <span class="money priceUSD" style="display:none"> $@tyre.Sale.Value.ToString()</span>
+                                            <span class="money priceAZN">@((tyre.Sale.Value * Model.currency).ToString("0"))<i class="manat">m</i></span>
+                                            <span class="money compare-at-price priceUSD" style="display:none"> $@tyre.Price.ToString("0")</span>
+                                            <span class="money compare-at-price priceAZN"> @((tyre.Price * Model.currency).ToString("0"))<i class="manat">m</i></span>
+
+                                        </div>
+                                    </div>
+                                }
+
+
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+            </li>
+            <li class="megamenu_item_4">
+                <a href="/pages/campaign">@res.campaign</a>
+            </li>
+            <li class="megamenu_item_5">
+                <a href="/pages/aboutus">@res.aboutUs</a>
+            </li>
+            <li class="megamenu_item_6">
+                <a href="/pages/contact">@res.contact</a>
+            </li>
+        </ul>
+        <div class="megamenu_mobile visible-xs visible-sm">
+            <h2>@res.tyres<i></i></h2>
+            <ul class="level_1">
+                <li>
+                    <a href="#">@res.catalog<i class="level_1_trigger"></i></a>
+
+                    <ul class="level_2">
+
+                        @foreach (var catalog in Model.catalog)
+                        {
+
+                            <li>
+                                <a href="/tyres/?catalog=@catalog.Id">@catalog.Name<i class="level_2_trigger"></i></a>
+                                <ul class="level_3">
+                                    @foreach (var tyreModel in catalog.Models)
+                                    {
+                                        <li><a href="/tyres/?catalog=@catalog.Id&model=@tyreModel.Id">@tyreModel.Name</a></li>
+                                    }
+
+                                </ul>
+                            </li>
+                        }
+                    </ul>
+
+                </li>
+                @*<li>
+                        <a href="blogs/blog.html">Blog</a>
+                    </li>*@
+                <li>
+                    <a href="/tyres/?sale=true">@res.sale</a>
+                </li>
+                <li>
+                    <a href="/pages/aboutus">@res.aboutUs</a>
+                </li>
+                <li>
+                    <a href="/pages/contact">@res.contact</a>
+                </li>
+            </ul>
+        </div>
+        <!-- HEADER SEARCH -->
+        @*<div class="header_search">
+                <form action="http://theme177-wheels.myshopify.com/search" method="get" class="search-form" role="search">
+                    <input id="search-field" name="q" type="text" placeholder="Search store..." class="hint" />
+                    <button id="search-submit" type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>*@
+    </div>
+</div>
+
+<div id="newRegisterModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Register</h4>
+            </div>
+            <div class="modal-body" style="height:140px">
+                <form id="newRegisterForm">
+                    <p>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="basic-addon1">First Name</span>
+                                        <input type="text" class="form-control fullname" name="fullname" aria-describedby="basic-addon2">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="basic-addon1">Password</span>
+                                        <input type="password" class="form-control password" name="password" aria-describedby="basic-addon2">
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="basic-addon1">Email</span>
+                                        <input type="email" class="form-control email" name="email" aria-describedby="basic-addon2">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="basic-addon1">Phone</span>
+                                        <input type="text" class="form-control phonenumber" name="phonenumber" aria-describedby="basic-addon2">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-12 alert alert-danger registerError" style="display:none">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </p>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default confirmRegister">Confirm</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="newLoginModal" class="modal fade" role="dialog">
+    <div class="modal-dialog" style="width:300px">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Login</h4>
+            </div>
+            <div class="modal-body" style="height:140px">
+                <form id="newLoginForm">
+                    <p>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="input-group">
+                                            <span class="input-group-addon" id="basic-addon1">Email</span>
+                                            <input type="text" class="form-control name" name="email" aria-describedby="basic-addon2">
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="input-group">
+                                            <span class="input-group-addon" id="basic-addon1">Password</span>
+                                            <input type="password" class="form-control password" name="password" aria-describedby="basic-addon2">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                        </div>
+                    </p>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default confirmLogin">Confirm</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+    $(".confirmRegister").click(function () {
+        $(".registerError").html('');
+        var data = $("#newRegisterForm").serialize();
+        $.ajax({
+            url: "/Account/Create",
+            type: "POST",
+            data: data,
+            success: function (result) {
+                if (result.status == "ok") {
+                    $('#newRegisterModal').modal('hide');
+                }
+                else if (result.status == "login") {
+                    window.location.reload();
+                }
+                else {
+                  
+                    $.each(result.message, function (index, message) {
+                        $(".registerError").append(message + "<br/>");
+                    })
+                    $(".registerError").show();
+                }
+            }
+
+        })
+    });
+
+    $(".confirmLogin").click(function () {
+        var data = $("#newLoginForm").serialize();
+        $.ajax({
+            url: "/Account/Login",
+            type: "POST",
+            data: data,
+            success: function (result) {
+                if (result.status == "ok") {
+                    $('#newLoginModal').modal('hide');
+                    window.location = "/";
+                }
+            }
+
+        })
+    })
+
+    $("#currencySelect").change(function () {
+        var cur = $(this).val();
+        localStorage.thisCurrency = cur ;
+        $(".priceAZN,.priceUSD").hide();
+        $(".price" + cur).show();
+    })
+</script>

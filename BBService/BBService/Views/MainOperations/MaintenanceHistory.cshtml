@@ -1,0 +1,114 @@
+﻿@model BBService.Models.ViewHome
+@{
+    ViewBag.Title = "MaintenanceHistory";
+    int? jocId = ViewBag.JobcardId;
+    List<string> permitted = (List<string>)Session["permitted"];
+}
+
+<div id="MaintenanceHistory">
+    <div class="contaiber-fluid">
+        <div class="row filter">
+            <div class="col-md-12">
+                <form @Url.Action("MaintenanceHistory", "MainOperations")>
+                    <div class="form-row">
+                        <div class="col-md-12">
+
+                            @*NV Nömrəsi*@
+                            @*<div class="searchItem">
+                                    <label class="lableSelectBox">NV Nömrəsi :</label>
+                                    <select class="form-control inputItem inputItemWith-3 selectpicker" name="VehicleId" data-live-search="true">
+                                        <option value="null" selected>Seçin ...</option>
+                                        @foreach (var item in Model.Vehicles)
+                                        {
+                                            <option @(Model.SearchCheckup.VehicleId == item.Id ? "selected" : "") value="@item.Id">@item.VehicleCode - @item.Number</option>
+                                        }
+                                    </select>
+                                </div>*@
+
+                            <button type="submit" class="btn btn-primary">Axtar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-12">
+                <div class="nonFIlterWrapper">
+                    <p class="nonFilter" id="clearinitCheckup">
+                        <a href=""><i class="fa fa-eraser"></i> Təmizlə</a>
+                    </p>
+
+                    @*<p class="nonFilter">
+                            <a class="@(permitted.FirstOrDefault(a => a == "RequisitionsAdd")==null? "hideAction" : "")" href="@Url.Action("RequisitionsAdd","MainOperations", new { id = jocId})"><i class="fas fa-plus"></i> Əlavə edin</a>
+                        </p>
+
+                        <p class="nonFilter">
+                            <a class="@(permitted.FirstOrDefault(a => a == "MaintenanceHistory")==null? "hideAction" : "")" href="@Url.Action("MaintenanceHistory","MainOperations")"><i class="fa fa-history"></i> TQ tarixçəsi</a>
+                        </p>*@
+                </div>
+            </div>
+        </div>
+        <div class="row content">
+            <div class="col-md-12">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="width: 50px;" class="centerCell">S/s</th>
+                            <th style="width: 100px;" class="centerCell">Nəqliyyat vasitəsi</th>
+                            <th style="width: 80px;" class="centerCell">Kilometraj</th>
+                            <th style="width: 80px;" class="centerCell">TK nömrəsi</th>
+                            <th style="width: 80px;" class="centerCell">TQ növü</th>
+                            <th style="width: 80px;" class="centerCell">TQ status</th>
+                            @*<th style="width: 100px;" class="centerCell">Düzəliş et</th>*@
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{ int i = 0;}
+                        @foreach (var item in Model.MaintenanceHistory)
+                        {
+                            i++;
+                            var cardNo = "";
+                            var len = (item.JobCardId != null ? item.JobCards.JobCardNo.ToString() : "").Length;
+                            for (int j = 0; j < (9 - len); j++)
+                            {
+                                cardNo += 0;
+                            }
+                            if (item.JobCardId != null)
+                            {
+                                cardNo += item.JobCards.JobCardNo.ToString();
+                            }
+
+                            <tr class="pageItem">
+                                <td scope="row" class="centerCell">@i</td>
+                                <td class="centerCell">@(item.InitialControlSchedule.VehicleId != null ? item.InitialControlSchedule.Vehicles.Number : "")</td>
+                                <td class="centerCell">@(item.InitialControlSchedule.EnterKilometer != null ? item.InitialControlSchedule.EnterKilometer.Value.ToString("#.##") : (item.InitialControlSchedule.LeavingKilometer != null ? item.InitialControlSchedule.LeavingKilometer.Value.ToString("#.##") : "")) </td>
+                                <td class="centerCell">@(item.JobCardId != null ? cardNo : "Yox") </td>
+                                <td class="centerCell">@(item.MaintenanceId != null ? item.MaintenanceType.Name + "-" + item.MaintenanceType.MaintenanceValue : "") </td>
+                                <td class="centerCell" style="@(item.MaintenanceStatus==null?(((item.MaintenanceType.MaintenanceValue - ViewBag.MaintenanceCheckupStep) < item.InitialControlSchedule.EnterKilometer && item.InitialControlSchedule.EnterKilometer < item.MaintenanceType.MaintenanceValue)?"background-color:yellow; font-weight:600;":"background-color:red; color:white; font-weight:600;"):"")">@(item.MaintenanceStatus != null ? "İcra edilib" : "İcra edilməyib") </td>
+
+                                @*<td class="centerCell">
+                                        <a class="@(permitted.FirstOrDefault(a => a == "InitContUpdate")==null? "hideAction" : "")" href="@Url.Action("InitContUpdate","MainOperations",new { id=item.Id})" title="Təmir kartı aç"><i class="fa fa-credit-card" aria-hidden="true"></i></a>
+                                        <a class="@(permitted.FirstOrDefault(a => a == "InitContOpenDelete")==null? "hideAction" : "")" href="@Url.Action("InitContOpenDelete","MainOperations",new { id=item.Id})" onclick="return confirm('Are you sure?')" title="TQ tarixçəsi"><i class="fa fa-history" aria-hidden="true"></i></a>
+                                    </td>*@
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row footer">
+            <div class="col-md-3 download">
+                <div class="fieldSet">
+                    <h1>Yüklə</h1>
+                    @*<a href="@Url.Action("ExportOpenInitCont","MainOperations")" title="Excel">
+                            <img src="~/public/assets/img/excel.png" alt="">
+                        </a>*@
+                </div>
+            </div>
+            <div class="col-md-6 paginationWrapper">
+                <ul class="paginationCauseListNav"></ul>
+            </div>
+            <div class="col-md-3 records">
+                <p>Cəmi @Model.MaintenanceHistory.Count sətir</p>
+            </div>
+        </div>
+    </div>
+</div>

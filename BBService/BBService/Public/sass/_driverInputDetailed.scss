@@ -1,0 +1,8 @@
+#driverInputDetailed {
+    .contaiber-fluid {
+
+        .content {
+            @extend %detailed-content-style;
+        }
+    }
+}

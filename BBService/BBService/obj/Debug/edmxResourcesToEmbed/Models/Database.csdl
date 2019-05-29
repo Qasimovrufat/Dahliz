@@ -1,0 +1,1587 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BBServiceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Actions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OperationId" Type="Int32" />
+    <NavigationProperty Name="Operations" Relationship="Self.FK_Actions_Operations" FromRole="Actions" ToRole="Operations" />
+    <NavigationProperty Name="Permissions" Relationship="Self.FK_Permissions_Actions" FromRole="Actions" ToRole="Permissions" />
+  </EntityType>
+  <EntityType Name="Companies">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Depots" Relationship="BBServiceModel.FK_Depots_Companies" FromRole="Companies" ToRole="Depots" />
+    <Property Name="IsClient" Type="Boolean" />
+    <NavigationProperty Name="JobCards" Relationship="BBServiceModel.FK_JobCards_Companies" FromRole="Companies" ToRole="JobCards" />
+  </EntityType>
+  <EntityType Name="Departments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Employees" Relationship="Self.FK_Employees_Departments" FromRole="Departments" ToRole="Employees" />
+    <NavigationProperty Name="Sectors" Relationship="Self.FK_Sectors_Departments" FromRole="Departments" ToRole="Sectors" />
+  </EntityType>
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeCode" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Surname" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="FutherName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="RecruitmentDate" Type="DateTime" Precision="3" />
+    <Property Name="DeactivationDate" Type="DateTime" Precision="3" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LicenceSeries" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="LicenceNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="LicenceCategory" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="LicenceIssueDate" Type="DateTime" Precision="3" />
+    <Property Name="LicenceExpireDate" Type="DateTime" Precision="3" />
+    <Property Name="DepartmentId" Type="Int32" />
+    <Property Name="SectorId" Type="Int32" />
+    <Property Name="PositionId" Type="Int32" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="BirthDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Departments" Relationship="Self.FK_Employees_Departments" FromRole="Employees" ToRole="Departments" />
+    <NavigationProperty Name="Positions" Relationship="Self.FK_Employees_Positions" FromRole="Employees" ToRole="Positions" />
+    <NavigationProperty Name="Sectors" Relationship="Self.FK_Employees_Sectors" FromRole="Employees" ToRole="Sectors" />
+    <NavigationProperty Name="MechanicBinding" Relationship="BBServiceModel.FK_MechanicBinding_Employees" FromRole="Employees" ToRole="MechanicBinding" />
+    <NavigationProperty Name="MechanicBinding1" Relationship="BBServiceModel.FK_MechanicBinding_Employees1" FromRole="Employees" ToRole="MechanicBinding" />
+    <NavigationProperty Name="Users" Relationship="BBServiceModel.FK_Users_Employees" FromRole="Employees" ToRole="Users" />
+    <NavigationProperty Name="InitialControlSchedule" Relationship="BBServiceModel.FK_InitialControlSchedule_Employees" FromRole="Employees" ToRole="InitialControlSchedule" />
+    <NavigationProperty Name="InitialControlSchedule1" Relationship="BBServiceModel.FK_InitialControlSchedule_Employees1" FromRole="Employees" ToRole="InitialControlSchedule" />
+    <NavigationProperty Name="InitialControlSchedule2" Relationship="BBServiceModel.FK_InitialControlSchedule_Employees2" FromRole="Employees" ToRole="InitialControlSchedule" />
+    <NavigationProperty Name="InitialControlSchedule3" Relationship="BBServiceModel.FK_InitialControlSchedule_Employees3" FromRole="Employees" ToRole="InitialControlSchedule" />
+    <NavigationProperty Name="InitialControlSchedule4" Relationship="BBServiceModel.FK_InitialControlSchedule_Employees4" FromRole="Employees" ToRole="InitialControlSchedule" />
+    <NavigationProperty Name="InitialControlSchedule5" Relationship="BBServiceModel.FK_InitialControlSchedule_Employees5" FromRole="Employees" ToRole="InitialControlSchedule" />
+    <NavigationProperty Name="JobCards" Relationship="BBServiceModel.FK_JobCards_Employees" FromRole="Employees" ToRole="JobCards" />
+    <NavigationProperty Name="JobCards1" Relationship="BBServiceModel.FK_JobCards_Employees1" FromRole="Employees" ToRole="JobCards" />
+    <NavigationProperty Name="JobCards2" Relationship="BBServiceModel.FK_JobCards_Employees2" FromRole="Employees" ToRole="JobCards" />
+    <NavigationProperty Name="JobcardToDoneWorks" Relationship="BBServiceModel.FK_JobcardToDoneWorks_Employees" FromRole="Employees" ToRole="JobcardToDoneWorks" />
+    <NavigationProperty Name="JobcardToDoneWorks1" Relationship="BBServiceModel.FK_JobcardToDoneWorks_Employees1" FromRole="Employees" ToRole="JobcardToDoneWorks" />
+    <NavigationProperty Name="CheckUpCard" Relationship="BBServiceModel.FK_CheckUpCard_Employees" FromRole="Employees" ToRole="CheckUpCard" />
+  </EntityType>
+  <EntityType Name="NotificationContent">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="NotificationTitleId" Type="Int32" />
+    <NavigationProperty Name="NotificationTitles" Relationship="Self.FK_NotificationContent_NotificationTitles" FromRole="NotificationContent" ToRole="NotificationTitles" />
+  </EntityType>
+  <EntityType Name="NotificationTitles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="NotificationContent" Relationship="Self.FK_NotificationContent_NotificationTitles" FromRole="NotificationTitles" ToRole="NotificationContent" />
+    <NavigationProperty Name="Notifications" Relationship="BBServiceModel.FK_Notifications_NotificationTitles" FromRole="NotificationTitles" ToRole="Notifications" />
+  </EntityType>
+  <EntityType Name="Operations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Create" Type="Boolean" />
+    <Property Name="Read" Type="Boolean" />
+    <Property Name="Update" Type="Boolean" />
+    <Property Name="Delete" Type="Boolean" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Actions" Relationship="Self.FK_Actions_Operations" FromRole="Operations" ToRole="Actions" />
+  </EntityType>
+  <EntityType Name="Permissions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="ActionId" Type="Int32" />
+    <NavigationProperty Name="Actions" Relationship="Self.FK_Permissions_Actions" FromRole="Permissions" ToRole="Actions" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Permissions_Users" FromRole="Permissions" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Positions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Employees" Relationship="Self.FK_Employees_Positions" FromRole="Positions" ToRole="Employees" />
+  </EntityType>
+  <EntityType Name="Routes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Forward" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Backward" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Number" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="ActivationDate" Type="DateTime" Precision="3" />
+    <Property Name="DeactivationDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="InitialControlSchedule" Relationship="BBServiceModel.FK_InitialControlSchedule_Routes" FromRole="Routes" ToRole="InitialControlSchedule" />
+    <Property Name="ForwardLength" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="BackwardLength" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="AddedDate" Type="DateTime" Precision="3" />
+    <Property Name="AddedUserId" Type="Int32" />
+    <NavigationProperty Name="Users" Relationship="BBServiceModel.FK_Routes_Users" FromRole="Routes" ToRole="Users" />
+    <Property Name="IsClosed" Type="Boolean" />
+    <Property Name="ClosedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="RouteDailyKM" Relationship="BBServiceModel.FK_RouteDailyKM_Routes" FromRole="Routes" ToRole="RouteDailyKM" />
+  </EntityType>
+  <EntityType Name="Sectors">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="DepartmentId" Type="Int32" />
+    <NavigationProperty Name="Departments" Relationship="Self.FK_Sectors_Departments" FromRole="Sectors" ToRole="Departments" />
+    <NavigationProperty Name="Employees" Relationship="Self.FK_Employees_Sectors" FromRole="Sectors" ToRole="Employees" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fullname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="IsAdmin" Type="Boolean" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Permissions" Relationship="Self.FK_Permissions_Users" FromRole="Users" ToRole="Permissions" />
+    <Property Name="EmployeeId" Type="Int32" />
+    <NavigationProperty Name="Employees" Relationship="BBServiceModel.FK_Users_Employees" FromRole="Users" ToRole="Employees" />
+    <NavigationProperty Name="Routes" Relationship="BBServiceModel.FK_Routes_Users" FromRole="Users" ToRole="Routes" />
+    <NavigationProperty Name="FuelSOCAR" Relationship="BBServiceModel.FK_FuelSOCAR_Users" FromRole="Users" ToRole="FuelSOCAR" />
+    <NavigationProperty Name="JobcardNotes" Relationship="BBServiceModel.FK_JobcardNotes_Users" FromRole="Users" ToRole="JobcardNotes" />
+    <NavigationProperty Name="Notifications" Relationship="BBServiceModel.FK_Notifications_Users" FromRole="Users" ToRole="Notifications" />
+  </EntityType>
+  <EntityType Name="Vehicles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BrandId" Type="Int32" />
+    <Property Name="VehicleCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Number" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="ReleaseYear" Type="Int32" />
+    <Property Name="Capacity" Type="Byte" />
+    <Property Name="NumberOfSeats" Type="Byte" />
+    <Property Name="RegistrationCertificationSeries" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="RegistrationCertificationNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="ChassisNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="VehiclesBrand" Relationship="Self.FK_Vehicles_VehiclesBrand" FromRole="Vehicles" ToRole="VehiclesBrand" />
+    <NavigationProperty Name="InitialControlSchedule" Relationship="BBServiceModel.FK_InitialControlSchedule_Vehicles" FromRole="Vehicles" ToRole="InitialControlSchedule" />
+    <Property Name="EngineCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="VehiclesBrand">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Brand" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Vehicles" Relationship="Self.FK_Vehicles_VehiclesBrand" FromRole="VehiclesBrand" ToRole="Vehicles" />
+    <NavigationProperty Name="TempWarehouse" Relationship="BBServiceModel.FK_TempWarehouse_VehiclesBrand" FromRole="VehiclesBrand" ToRole="TempWarehouse" />
+    <NavigationProperty Name="DoneWorks" Relationship="BBServiceModel.FK_DoneWorks_VehiclesBrand" FromRole="VehiclesBrand" ToRole="DoneWorks" />
+  </EntityType>
+  <EntityType Name="AggregatedCounter">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Key" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Value" Type="Int64" Nullable="false" />
+    <Property Name="ExpireAt" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Counter">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Key" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Value" Type="Int16" Nullable="false" />
+    <Property Name="ExpireAt" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Hash">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Key" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Field" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ExpireAt" Type="DateTime" Precision="7" />
+  </EntityType>
+  <EntityType Name="Job">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StateId" Type="Int32" />
+    <Property Name="StateName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="InvocationData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Arguments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ExpireAt" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="JobParameter" Relationship="Self.FK_HangFire_JobParameter_Job" FromRole="Job" ToRole="JobParameter" />
+    <NavigationProperty Name="State" Relationship="Self.FK_HangFire_State_Job" FromRole="Job" ToRole="State" />
+  </EntityType>
+  <EntityType Name="JobQueue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="JobId" Type="Int32" Nullable="false" />
+    <Property Name="Queue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FetchedAt" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="JobParameter">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="JobId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Job" Relationship="Self.FK_HangFire_JobParameter_Job" FromRole="JobParameter" ToRole="Job" />
+  </EntityType>
+  <EntityType Name="List">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Key" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ExpireAt" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Schema">
+    <Key>
+      <PropertyRef Name="Version" />
+    </Key>
+    <Property Name="Version" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Server">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Data" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LastHeartbeat" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="Set">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Key" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Score" Type="Double" Nullable="false" />
+    <Property Name="Value" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ExpireAt" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="State">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="JobId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Reason" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Data" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Job" Relationship="Self.FK_HangFire_State_Job" FromRole="State" ToRole="Job" />
+  </EntityType>
+  <Association Name="FK_Actions_Operations">
+    <End Role="Operations" Type="Self.Operations" Multiplicity="0..1" />
+    <End Role="Actions" Type="Self.Actions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operations">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Actions">
+        <PropertyRef Name="OperationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Permissions_Actions">
+    <End Role="Actions" Type="Self.Actions" Multiplicity="0..1" />
+    <End Role="Permissions" Type="Self.Permissions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Actions">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Permissions">
+        <PropertyRef Name="ActionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employees_Departments">
+    <End Role="Departments" Type="Self.Departments" Multiplicity="0..1" />
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departments">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="DepartmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sectors_Departments">
+    <End Role="Departments" Type="Self.Departments" Multiplicity="0..1" />
+    <End Role="Sectors" Type="Self.Sectors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departments">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sectors">
+        <PropertyRef Name="DepartmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employees_Positions">
+    <End Role="Positions" Type="Self.Positions" Multiplicity="0..1" />
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Positions">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="PositionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employees_Sectors">
+    <End Role="Sectors" Type="Self.Sectors" Multiplicity="0..1" />
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sectors">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="SectorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NotificationContent_NotificationTitles">
+    <End Role="NotificationTitles" Type="Self.NotificationTitles" Multiplicity="0..1" />
+    <End Role="NotificationContent" Type="Self.NotificationContent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NotificationTitles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NotificationContent">
+        <PropertyRef Name="NotificationTitleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Permissions_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="Permissions" Type="Self.Permissions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Permissions">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehicles_VehiclesBrand">
+    <End Role="VehiclesBrand" Type="Self.VehiclesBrand" Multiplicity="0..1" />
+    <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VehiclesBrand">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Vehicles">
+        <PropertyRef Name="BrandId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HangFire_JobParameter_Job">
+    <End Role="Job" Type="Self.Job" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="JobParameter" Type="Self.JobParameter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Job">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="JobParameter">
+        <PropertyRef Name="JobId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HangFire_State_Job">
+    <End Role="Job" Type="Self.Job" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="State" Type="Self.State" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Job">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="State">
+        <PropertyRef Name="JobId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BBServiceEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Actions" EntityType="Self.Actions" />
+    <EntitySet Name="Companies" EntityType="Self.Companies" />
+    <EntitySet Name="Departments" EntityType="Self.Departments" />
+    <EntitySet Name="Employees" EntityType="Self.Employees" />
+    <EntitySet Name="NotificationContent" EntityType="Self.NotificationContent" />
+    <EntitySet Name="NotificationTitles" EntityType="Self.NotificationTitles" />
+    <EntitySet Name="Operations" EntityType="Self.Operations" />
+    <EntitySet Name="Permissions" EntityType="Self.Permissions" />
+    <EntitySet Name="Positions" EntityType="Self.Positions" />
+    <EntitySet Name="Routes" EntityType="Self.Routes" />
+    <EntitySet Name="Sectors" EntityType="Self.Sectors" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <EntitySet Name="Vehicles" EntityType="Self.Vehicles" />
+    <EntitySet Name="VehiclesBrand" EntityType="Self.VehiclesBrand" />
+    <EntitySet Name="AggregatedCounter" EntityType="Self.AggregatedCounter" />
+    <EntitySet Name="Counter" EntityType="Self.Counter" />
+    <EntitySet Name="Hash" EntityType="Self.Hash" />
+    <EntitySet Name="Job" EntityType="Self.Job" />
+    <EntitySet Name="JobQueue" EntityType="Self.JobQueue" />
+    <EntitySet Name="JobParameter" EntityType="Self.JobParameter" />
+    <EntitySet Name="List" EntityType="Self.List" />
+    <EntitySet Name="Schema" EntityType="Self.Schema" />
+    <EntitySet Name="Server" EntityType="Self.Server" />
+    <EntitySet Name="Set" EntityType="Self.Set" />
+    <EntitySet Name="State" EntityType="Self.State" />
+    <AssociationSet Name="FK_Actions_Operations" Association="Self.FK_Actions_Operations">
+      <End Role="Operations" EntitySet="Operations" />
+      <End Role="Actions" EntitySet="Actions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Permissions_Actions" Association="Self.FK_Permissions_Actions">
+      <End Role="Actions" EntitySet="Actions" />
+      <End Role="Permissions" EntitySet="Permissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employees_Departments" Association="Self.FK_Employees_Departments">
+      <End Role="Departments" EntitySet="Departments" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sectors_Departments" Association="Self.FK_Sectors_Departments">
+      <End Role="Departments" EntitySet="Departments" />
+      <End Role="Sectors" EntitySet="Sectors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employees_Positions" Association="Self.FK_Employees_Positions">
+      <End Role="Positions" EntitySet="Positions" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employees_Sectors" Association="Self.FK_Employees_Sectors">
+      <End Role="Sectors" EntitySet="Sectors" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NotificationContent_NotificationTitles" Association="Self.FK_NotificationContent_NotificationTitles">
+      <End Role="NotificationTitles" EntitySet="NotificationTitles" />
+      <End Role="NotificationContent" EntitySet="NotificationContent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Permissions_Users" Association="Self.FK_Permissions_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Permissions" EntitySet="Permissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicles_VehiclesBrand" Association="Self.FK_Vehicles_VehiclesBrand">
+      <End Role="VehiclesBrand" EntitySet="VehiclesBrand" />
+      <End Role="Vehicles" EntitySet="Vehicles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HangFire_JobParameter_Job" Association="Self.FK_HangFire_JobParameter_Job">
+      <End Role="Job" EntitySet="Job" />
+      <End Role="JobParameter" EntitySet="JobParameter" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HangFire_State_Job" Association="Self.FK_HangFire_State_Job">
+      <End Role="Job" EntitySet="Job" />
+      <End Role="State" EntitySet="State" />
+    </AssociationSet>
+    <EntitySet Name="MechanicBinding" EntityType="BBServiceModel.MechanicBinding" />
+    <AssociationSet Name="FK_MechanicBinding_Employees" Association="BBServiceModel.FK_MechanicBinding_Employees">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="MechanicBinding" EntitySet="MechanicBinding" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MechanicBinding_Employees1" Association="BBServiceModel.FK_MechanicBinding_Employees1">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="MechanicBinding" EntitySet="MechanicBinding" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Employees" Association="BBServiceModel.FK_Users_Employees">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <EntitySet Name="InitialControlSchedule" EntityType="BBServiceModel.InitialControlSchedule" />
+    <AssociationSet Name="FK_InitialControlSchedule_Employees" Association="BBServiceModel.FK_InitialControlSchedule_Employees">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="InitialControlSchedule" EntitySet="InitialControlSchedule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InitialControlSchedule_Employees1" Association="BBServiceModel.FK_InitialControlSchedule_Employees1">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="InitialControlSchedule" EntitySet="InitialControlSchedule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InitialControlSchedule_Employees2" Association="BBServiceModel.FK_InitialControlSchedule_Employees2">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="InitialControlSchedule" EntitySet="InitialControlSchedule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InitialControlSchedule_Employees3" Association="BBServiceModel.FK_InitialControlSchedule_Employees3">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="InitialControlSchedule" EntitySet="InitialControlSchedule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InitialControlSchedule_Employees4" Association="BBServiceModel.FK_InitialControlSchedule_Employees4">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="InitialControlSchedule" EntitySet="InitialControlSchedule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InitialControlSchedule_Employees5" Association="BBServiceModel.FK_InitialControlSchedule_Employees5">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="InitialControlSchedule" EntitySet="InitialControlSchedule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InitialControlSchedule_Routes" Association="BBServiceModel.FK_InitialControlSchedule_Routes">
+      <End Role="Routes" EntitySet="Routes" />
+      <End Role="InitialControlSchedule" EntitySet="InitialControlSchedule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InitialControlSchedule_Vehicles" Association="BBServiceModel.FK_InitialControlSchedule_Vehicles">
+      <End Role="Vehicles" EntitySet="Vehicles" />
+      <End Role="InitialControlSchedule" EntitySet="InitialControlSchedule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Routes_Users" Association="BBServiceModel.FK_Routes_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Routes" EntitySet="Routes" />
+    </AssociationSet>
+    <EntitySet Name="FuelSOCAR" EntityType="BBServiceModel.FuelSOCAR" />
+    <AssociationSet Name="FK_FuelSOCAR_InitialControlSchedule" Association="BBServiceModel.FK_FuelSOCAR_InitialControlSchedule">
+      <End Role="InitialControlSchedule" EntitySet="InitialControlSchedule" />
+      <End Role="FuelSOCAR" EntitySet="FuelSOCAR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FuelSOCAR_Users" Association="BBServiceModel.FK_FuelSOCAR_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="FuelSOCAR" EntitySet="FuelSOCAR" />
+    </AssociationSet>
+    <EntitySet Name="RouteDailyKM" EntityType="BBServiceModel.RouteDailyKM" />
+    <AssociationSet Name="FK_RouteDailyKM_Routes" Association="BBServiceModel.FK_RouteDailyKM_Routes">
+      <End Role="Routes" EntitySet="Routes" />
+      <End Role="RouteDailyKM" EntitySet="RouteDailyKM" />
+    </AssociationSet>
+    <EntitySet Name="Depots" EntityType="BBServiceModel.Depots" />
+    <AssociationSet Name="FK_Depots_Companies" Association="BBServiceModel.FK_Depots_Companies">
+      <End Role="Companies" EntitySet="Companies" />
+      <End Role="Depots" EntitySet="Depots" />
+    </AssociationSet>
+    <EntitySet Name="JobcardToTroubleshoot" EntityType="BBServiceModel.JobcardToTroubleshoot" />
+    <EntitySet Name="TroubleShoot" EntityType="BBServiceModel.TroubleShoot" />
+    <AssociationSet Name="FK_JobcardToTroubleshoot_TroubleShoot" Association="BBServiceModel.FK_JobcardToTroubleshoot_TroubleShoot">
+      <End Role="TroubleShoot" EntitySet="TroubleShoot" />
+      <End Role="JobcardToTroubleshoot" EntitySet="JobcardToTroubleshoot" />
+    </AssociationSet>
+    <EntitySet Name="Goods" EntityType="BBServiceModel.Goods" />
+    <EntitySet Name="WarehouseExits" EntityType="BBServiceModel.WarehouseExits" />
+    <EntitySet Name="WarehouseReceipts" EntityType="BBServiceModel.WarehouseReceipts" />
+    <EntitySet Name="TempWarehouse" EntityType="BBServiceModel.TempWarehouse" />
+    <EntitySet Name="Requisitions" EntityType="BBServiceModel.Requisitions" />
+    <AssociationSet Name="FK_Requisitions_TempWarehouse" Association="BBServiceModel.FK_Requisitions_TempWarehouse">
+      <End Role="TempWarehouse" EntitySet="TempWarehouse" />
+      <End Role="Requisitions" EntitySet="Requisitions" />
+    </AssociationSet>
+    <EntitySet Name="MaintenanceHistory" EntityType="BBServiceModel.MaintenanceHistory" />
+    <AssociationSet Name="FK_MaintenanceHistory_InitialControlSchedule" Association="BBServiceModel.FK_MaintenanceHistory_InitialControlSchedule">
+      <End Role="InitialControlSchedule" EntitySet="InitialControlSchedule" />
+      <End Role="MaintenanceHistory" EntitySet="MaintenanceHistory" />
+    </AssociationSet>
+    <EntitySet Name="MaintenanceType" EntityType="BBServiceModel.MaintenanceType" />
+    <AssociationSet Name="FK_MaintenanceHistory_MaintenanceType" Association="BBServiceModel.FK_MaintenanceHistory_MaintenanceType">
+      <End Role="MaintenanceType" EntitySet="MaintenanceType" />
+      <End Role="MaintenanceHistory" EntitySet="MaintenanceHistory" />
+    </AssociationSet>
+    <EntitySet Name="Settings" EntityType="BBServiceModel.Settings" />
+    <EntitySet Name="WarehouseToMaintenance" EntityType="BBServiceModel.WarehouseToMaintenance" />
+    <AssociationSet Name="FK_WarehouseToMaintenance_MaintenanceType" Association="BBServiceModel.FK_WarehouseToMaintenance_MaintenanceType">
+      <End Role="MaintenanceType" EntitySet="MaintenanceType" />
+      <End Role="WarehouseToMaintenance" EntitySet="WarehouseToMaintenance" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WarehouseToMaintenance_TempWarehouse" Association="BBServiceModel.FK_WarehouseToMaintenance_TempWarehouse">
+      <End Role="TempWarehouse" EntitySet="TempWarehouse" />
+      <End Role="WarehouseToMaintenance" EntitySet="WarehouseToMaintenance" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TempWarehouse_VehiclesBrand" Association="BBServiceModel.FK_TempWarehouse_VehiclesBrand">
+      <End Role="VehiclesBrand" EntitySet="VehiclesBrand" />
+      <End Role="TempWarehouse" EntitySet="TempWarehouse" />
+    </AssociationSet>
+    <EntitySet Name="DoneWorks" EntityType="BBServiceModel.DoneWorks" />
+    <EntitySet Name="JobCards" EntityType="BBServiceModel.JobCards" />
+    <EntitySet Name="JobcardToDoneWorks" EntityType="BBServiceModel.JobcardToDoneWorks" />
+    <AssociationSet Name="FK_JobCards_Companies" Association="BBServiceModel.FK_JobCards_Companies">
+      <End Role="Companies" EntitySet="Companies" />
+      <End Role="JobCards" EntitySet="JobCards" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DoneWorks_VehiclesBrand" Association="BBServiceModel.FK_DoneWorks_VehiclesBrand">
+      <End Role="VehiclesBrand" EntitySet="VehiclesBrand" />
+      <End Role="DoneWorks" EntitySet="DoneWorks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JobcardToDoneWorks_DoneWorks" Association="BBServiceModel.FK_JobcardToDoneWorks_DoneWorks">
+      <End Role="DoneWorks" EntitySet="DoneWorks" />
+      <End Role="JobcardToDoneWorks" EntitySet="JobcardToDoneWorks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JobCards_Employees" Association="BBServiceModel.FK_JobCards_Employees">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="JobCards" EntitySet="JobCards" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JobCards_Employees1" Association="BBServiceModel.FK_JobCards_Employees1">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="JobCards" EntitySet="JobCards" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JobCards_Employees2" Association="BBServiceModel.FK_JobCards_Employees2">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="JobCards" EntitySet="JobCards" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JobcardToDoneWorks_Employees" Association="BBServiceModel.FK_JobcardToDoneWorks_Employees">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="JobcardToDoneWorks" EntitySet="JobcardToDoneWorks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JobcardToDoneWorks_Employees1" Association="BBServiceModel.FK_JobcardToDoneWorks_Employees1">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="JobcardToDoneWorks" EntitySet="JobcardToDoneWorks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JobcardToDoneWorks_JobCards" Association="BBServiceModel.FK_JobcardToDoneWorks_JobCards">
+      <End Role="JobCards" EntitySet="JobCards" />
+      <End Role="JobcardToDoneWorks" EntitySet="JobcardToDoneWorks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MaintenanceHistory_JobCards" Association="BBServiceModel.FK_MaintenanceHistory_JobCards">
+      <End Role="JobCards" EntitySet="JobCards" />
+      <End Role="MaintenanceHistory" EntitySet="MaintenanceHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Requisitions_JobCards" Association="BBServiceModel.FK_Requisitions_JobCards">
+      <End Role="JobCards" EntitySet="JobCards" />
+      <End Role="Requisitions" EntitySet="Requisitions" />
+    </AssociationSet>
+    <EntitySet Name="JobcardNotes" EntityType="BBServiceModel.JobcardNotes" />
+    <AssociationSet Name="FK_JobcardNotes_JobCards" Association="BBServiceModel.FK_JobcardNotes_JobCards">
+      <End Role="JobCards" EntitySet="JobCards" />
+      <End Role="JobcardNotes" EntitySet="JobcardNotes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JobcardNotes_Users" Association="BBServiceModel.FK_JobcardNotes_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="JobcardNotes" EntitySet="JobcardNotes" />
+    </AssociationSet>
+    <EntitySet Name="CheckUpCard" EntityType="BBServiceModel.CheckUpCard" />
+    <AssociationSet Name="FK_CheckUpCard_Employees" Association="BBServiceModel.FK_CheckUpCard_Employees">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="CheckUpCard" EntitySet="CheckUpCard" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CheckUpCard_InitialControlSchedule" Association="BBServiceModel.FK_CheckUpCard_InitialControlSchedule">
+      <End Role="InitialControlSchedule" EntitySet="InitialControlSchedule" />
+      <End Role="CheckUpCard" EntitySet="CheckUpCard" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CheckUpCard_MaintenanceType" Association="BBServiceModel.FK_CheckUpCard_MaintenanceType">
+      <End Role="MaintenanceType" EntitySet="MaintenanceType" />
+      <End Role="CheckUpCard" EntitySet="CheckUpCard" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JobCards_CheckUpCard" Association="BBServiceModel.FK_JobCards_CheckUpCard">
+      <End Role="CheckUpCard" EntitySet="CheckUpCard" />
+      <End Role="JobCards" EntitySet="JobCards" />
+    </AssociationSet>
+    <EntitySet Name="Notifications" EntityType="BBServiceModel.Notifications" />
+    <AssociationSet Name="FK_Notifications_NotificationTitles" Association="BBServiceModel.FK_Notifications_NotificationTitles">
+      <End Role="NotificationTitles" EntitySet="NotificationTitles" />
+      <End Role="Notifications" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Notifications_Users" Association="BBServiceModel.FK_Notifications_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Notifications" EntitySet="Notifications" />
+    </AssociationSet>
+    <EntitySet Name="NotMetRequisitions" EntityType="BBServiceModel.NotMetRequisitions" />
+    <AssociationSet Name="FK_NotMetRequisitions_JobCards" Association="BBServiceModel.FK_NotMetRequisitions_JobCards">
+      <End Role="JobCards" EntitySet="JobCards" />
+      <End Role="NotMetRequisitions" EntitySet="NotMetRequisitions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NotMetRequisitions_JobCards1" Association="BBServiceModel.FK_NotMetRequisitions_JobCards1">
+      <End Role="JobCards" EntitySet="JobCards" />
+      <End Role="NotMetRequisitions" EntitySet="NotMetRequisitions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NotMetRequisitions_TempWarehouse" Association="BBServiceModel.FK_NotMetRequisitions_TempWarehouse">
+      <End Role="TempWarehouse" EntitySet="TempWarehouse" />
+      <End Role="NotMetRequisitions" EntitySet="NotMetRequisitions" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="MechanicBinding">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SeniorRecMechId" Type="Int32" />
+    <Property Name="RecMechId" Type="Int32" />
+    <Property Name="AddedDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="Employees" Relationship="BBServiceModel.FK_MechanicBinding_Employees" FromRole="MechanicBinding" ToRole="Employees" />
+    <NavigationProperty Name="Employees1" Relationship="BBServiceModel.FK_MechanicBinding_Employees1" FromRole="MechanicBinding" ToRole="Employees" />
+  </EntityType>
+  <Association Name="FK_MechanicBinding_Employees">
+    <End Type="BBServiceModel.Employees" Role="Employees" Multiplicity="0..1" />
+    <End Type="BBServiceModel.MechanicBinding" Role="MechanicBinding" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MechanicBinding">
+        <PropertyRef Name="SeniorRecMechId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MechanicBinding_Employees1">
+    <End Type="BBServiceModel.Employees" Role="Employees" Multiplicity="0..1" />
+    <End Type="BBServiceModel.MechanicBinding" Role="MechanicBinding" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MechanicBinding">
+        <PropertyRef Name="RecMechId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Employees">
+    <End Type="BBServiceModel.Employees" Role="Employees" Multiplicity="0..1" />
+    <End Type="BBServiceModel.Users" Role="Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="InitialControlSchedule">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VehicleId" Type="Int32" />
+    <Property Name="IsOpen" Type="Boolean" />
+    <Property Name="LeavingRecMechId" Type="Int32" />
+    <Property Name="LeavingSeniorRecMechId" Type="Int32" />
+    <Property Name="LeavingTime" Type="DateTime" Precision="3" />
+    <Property Name="LeavingKilometer" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="LeavingFuel" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="EnterRecMechId" Type="Int32" />
+    <Property Name="EnterSeniorRecMechId" Type="Int32" />
+    <Property Name="EnterTime" Type="DateTime" Precision="3" />
+    <Property Name="EnterKilometer" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="EnterFuel" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="FirstDriverId" Type="Int32" />
+    <Property Name="SecondDriverId" Type="Int32" />
+    <Property Name="RouteId" Type="Int32" />
+    <Property Name="LeavingNote" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+    <Property Name="EnterNote" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Employees" Relationship="BBServiceModel.FK_InitialControlSchedule_Employees" FromRole="InitialControlSchedule" ToRole="Employees" />
+    <NavigationProperty Name="Employees1" Relationship="BBServiceModel.FK_InitialControlSchedule_Employees1" FromRole="InitialControlSchedule" ToRole="Employees" />
+    <NavigationProperty Name="Employees2" Relationship="BBServiceModel.FK_InitialControlSchedule_Employees2" FromRole="InitialControlSchedule" ToRole="Employees" />
+    <NavigationProperty Name="Employees3" Relationship="BBServiceModel.FK_InitialControlSchedule_Employees3" FromRole="InitialControlSchedule" ToRole="Employees" />
+    <NavigationProperty Name="Employees4" Relationship="BBServiceModel.FK_InitialControlSchedule_Employees4" FromRole="InitialControlSchedule" ToRole="Employees" />
+    <NavigationProperty Name="Employees5" Relationship="BBServiceModel.FK_InitialControlSchedule_Employees5" FromRole="InitialControlSchedule" ToRole="Employees" />
+    <NavigationProperty Name="Routes" Relationship="BBServiceModel.FK_InitialControlSchedule_Routes" FromRole="InitialControlSchedule" ToRole="Routes" />
+    <NavigationProperty Name="Vehicles" Relationship="BBServiceModel.FK_InitialControlSchedule_Vehicles" FromRole="InitialControlSchedule" ToRole="Vehicles" />
+    <Property Name="LeavingUpdateEmpId" Type="Int32" />
+    <Property Name="LeavingUpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="EnterUpdateEmpId" Type="Int32" />
+    <Property Name="EnterUpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="AllUpdateUserId" Type="Int32" />
+    <Property Name="AllUpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="RouteLength" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="FuelSOCAR" Relationship="BBServiceModel.FK_FuelSOCAR_InitialControlSchedule" FromRole="InitialControlSchedule" ToRole="FuelSOCAR" />
+    <NavigationProperty Name="MaintenanceHistory" Relationship="BBServiceModel.FK_MaintenanceHistory_InitialControlSchedule" FromRole="InitialControlSchedule" ToRole="MaintenanceHistory" />
+    <NavigationProperty Name="CheckUpCard" Relationship="BBServiceModel.FK_CheckUpCard_InitialControlSchedule" FromRole="InitialControlSchedule" ToRole="CheckUpCard" />
+    <Property Name="FirstDrvKm" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="FirstDrvFuel" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <Association Name="FK_InitialControlSchedule_Employees">
+    <End Type="BBServiceModel.Employees" Role="Employees" Multiplicity="0..1" />
+    <End Type="BBServiceModel.InitialControlSchedule" Role="InitialControlSchedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InitialControlSchedule">
+        <PropertyRef Name="LeavingRecMechId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InitialControlSchedule_Employees1">
+    <End Type="BBServiceModel.Employees" Role="Employees" Multiplicity="0..1" />
+    <End Type="BBServiceModel.InitialControlSchedule" Role="InitialControlSchedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InitialControlSchedule">
+        <PropertyRef Name="LeavingSeniorRecMechId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InitialControlSchedule_Employees2">
+    <End Type="BBServiceModel.Employees" Role="Employees" Multiplicity="0..1" />
+    <End Type="BBServiceModel.InitialControlSchedule" Role="InitialControlSchedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InitialControlSchedule">
+        <PropertyRef Name="EnterRecMechId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InitialControlSchedule_Employees3">
+    <End Type="BBServiceModel.Employees" Role="Employees" Multiplicity="0..1" />
+    <End Type="BBServiceModel.InitialControlSchedule" Role="InitialControlSchedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InitialControlSchedule">
+        <PropertyRef Name="EnterSeniorRecMechId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InitialControlSchedule_Employees4">
+    <End Type="BBServiceModel.Employees" Role="Employees" Multiplicity="0..1" />
+    <End Type="BBServiceModel.InitialControlSchedule" Role="InitialControlSchedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InitialControlSchedule">
+        <PropertyRef Name="FirstDriverId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InitialControlSchedule_Employees5">
+    <End Type="BBServiceModel.Employees" Role="Employees" Multiplicity="0..1" />
+    <End Type="BBServiceModel.InitialControlSchedule" Role="InitialControlSchedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InitialControlSchedule">
+        <PropertyRef Name="SecondDriverId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InitialControlSchedule_Routes">
+    <End Type="BBServiceModel.Routes" Role="Routes" Multiplicity="0..1" />
+    <End Type="BBServiceModel.InitialControlSchedule" Role="InitialControlSchedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Routes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InitialControlSchedule">
+        <PropertyRef Name="RouteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InitialControlSchedule_Vehicles">
+    <End Type="BBServiceModel.Vehicles" Role="Vehicles" Multiplicity="0..1" />
+    <End Type="BBServiceModel.InitialControlSchedule" Role="InitialControlSchedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InitialControlSchedule">
+        <PropertyRef Name="VehicleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Routes_Users">
+    <End Type="BBServiceModel.Users" Role="Users" Multiplicity="0..1" />
+    <End Type="BBServiceModel.Routes" Role="Routes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Routes">
+        <PropertyRef Name="AddedUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="FuelSOCAR">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InitContId" Type="Int32" />
+    <Property Name="DateSOCAR" Type="DateTime" Precision="3" />
+    <Property Name="FuelAmount1" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="FuelAmount2" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="FuelAmount3" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="FuelTime1" Type="Time" Precision="7" />
+    <Property Name="FuelTime2" Type="Time" Precision="7" />
+    <Property Name="FuelTime3" Type="Time" Precision="7" />
+    <Property Name="AddedUserId" Type="Int32" />
+    <Property Name="AddedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="InitialControlSchedule" Relationship="BBServiceModel.FK_FuelSOCAR_InitialControlSchedule" FromRole="FuelSOCAR" ToRole="InitialControlSchedule" />
+    <NavigationProperty Name="Users" Relationship="BBServiceModel.FK_FuelSOCAR_Users" FromRole="FuelSOCAR" ToRole="Users" />
+  </EntityType>
+  <Association Name="FK_FuelSOCAR_InitialControlSchedule">
+    <End Type="BBServiceModel.InitialControlSchedule" Role="InitialControlSchedule" Multiplicity="0..1" />
+    <End Type="BBServiceModel.FuelSOCAR" Role="FuelSOCAR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InitialControlSchedule">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FuelSOCAR">
+        <PropertyRef Name="InitContId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FuelSOCAR_Users">
+    <End Type="BBServiceModel.Users" Role="Users" Multiplicity="0..1" />
+    <End Type="BBServiceModel.FuelSOCAR" Role="FuelSOCAR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FuelSOCAR">
+        <PropertyRef Name="AddedUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="RouteDailyKM">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RouteId" Type="Int32" />
+    <Property Name="KmLimit" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="Routes" Relationship="BBServiceModel.FK_RouteDailyKM_Routes" FromRole="RouteDailyKM" ToRole="Routes" />
+  </EntityType>
+  <Association Name="FK_RouteDailyKM_Routes">
+    <End Type="BBServiceModel.Routes" Role="Routes" Multiplicity="0..1" />
+    <End Type="BBServiceModel.RouteDailyKM" Role="RouteDailyKM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Routes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RouteDailyKM">
+        <PropertyRef Name="RouteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Depots">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyId" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Companies" Relationship="BBServiceModel.FK_Depots_Companies" FromRole="Depots" ToRole="Companies" />
+  </EntityType>
+  <Association Name="FK_Depots_Companies">
+    <End Type="BBServiceModel.Companies" Role="Companies" Multiplicity="0..1" />
+    <End Type="BBServiceModel.Depots" Role="Depots" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Companies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Depots">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="JobcardToTroubleshoot">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="JobcardId" Type="Int32" />
+    <Property Name="TroubleshootId" Type="Int32" />
+    <NavigationProperty Name="TroubleShoot" Relationship="BBServiceModel.FK_JobcardToTroubleshoot_TroubleShoot" FromRole="JobcardToTroubleshoot" ToRole="TroubleShoot" />
+  </EntityType>
+  <EntityType Name="TroubleShoot">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="JobcardToTroubleshoot" Relationship="BBServiceModel.FK_JobcardToTroubleshoot_TroubleShoot" FromRole="TroubleShoot" ToRole="JobcardToTroubleshoot" />
+  </EntityType>
+  <Association Name="FK_JobcardToTroubleshoot_TroubleShoot">
+    <End Type="BBServiceModel.TroubleShoot" Role="TroubleShoot" Multiplicity="0..1" />
+    <End Type="BBServiceModel.JobcardToTroubleshoot" Role="JobcardToTroubleshoot" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TroubleShoot">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="JobcardToTroubleshoot">
+        <PropertyRef Name="TroubleshootId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Goods">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="InternalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AnalogCode1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AnalogCode2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="WarehouseExits">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WarehouseReceipts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TempWarehouse">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Quantity" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="VehicleId" Type="Int32" />
+    <NavigationProperty Name="Requisitions" Relationship="BBServiceModel.FK_Requisitions_TempWarehouse" FromRole="TempWarehouse" ToRole="Requisitions" />
+    <NavigationProperty Name="WarehouseToMaintenance" Relationship="BBServiceModel.FK_WarehouseToMaintenance_TempWarehouse" FromRole="TempWarehouse" ToRole="WarehouseToMaintenance" />
+    <Property Name="SparePartCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="VehiclesBrand" Relationship="BBServiceModel.FK_TempWarehouse_VehiclesBrand" FromRole="TempWarehouse" ToRole="VehiclesBrand" />
+    <Property Name="InternalCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="NotMetRequisitions" Relationship="BBServiceModel.FK_NotMetRequisitions_TempWarehouse" FromRole="TempWarehouse" ToRole="NotMetRequisitions" />
+  </EntityType>
+  <EntityType Name="Requisitions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="JobCardId" Type="Int32" />
+    <Property Name="TempWarehouseId" Type="Int32" />
+    <Property Name="RequiredQuantity" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="MeetingQuantity" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="TempWarehouse" Relationship="BBServiceModel.FK_Requisitions_TempWarehouse" FromRole="Requisitions" ToRole="TempWarehouse" />
+    <Property Name="AddedDate" Type="DateTime" Precision="3" />
+    <Property Name="IsOpen" Type="Boolean" />
+    <NavigationProperty Name="JobCards" Relationship="BBServiceModel.FK_Requisitions_JobCards" FromRole="Requisitions" ToRole="JobCards" />
+  </EntityType>
+  <Association Name="FK_Requisitions_TempWarehouse">
+    <End Type="BBServiceModel.TempWarehouse" Role="TempWarehouse" Multiplicity="0..1" />
+    <End Type="BBServiceModel.Requisitions" Role="Requisitions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TempWarehouse">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Requisitions">
+        <PropertyRef Name="TempWarehouseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="MaintenanceHistory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="InitContId" Type="Int32" />
+    <Property Name="JobCardId" Type="Int32" />
+    <Property Name="MaintenanceId" Type="Int32" />
+    <Property Name="MaintenanceStatus" Type="Boolean" />
+    <Property Name="AddedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="InitialControlSchedule" Relationship="BBServiceModel.FK_MaintenanceHistory_InitialControlSchedule" FromRole="MaintenanceHistory" ToRole="InitialControlSchedule" />
+    <NavigationProperty Name="MaintenanceType" Relationship="BBServiceModel.FK_MaintenanceHistory_MaintenanceType" FromRole="MaintenanceHistory" ToRole="MaintenanceType" />
+    <NavigationProperty Name="JobCards" Relationship="BBServiceModel.FK_MaintenanceHistory_JobCards" FromRole="MaintenanceHistory" ToRole="JobCards" />
+  </EntityType>
+  <Association Name="FK_MaintenanceHistory_InitialControlSchedule">
+    <End Type="BBServiceModel.InitialControlSchedule" Role="InitialControlSchedule" Multiplicity="0..1" />
+    <End Type="BBServiceModel.MaintenanceHistory" Role="MaintenanceHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InitialControlSchedule">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MaintenanceHistory">
+        <PropertyRef Name="InitContId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="MaintenanceType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="MaintenanceValue" Type="Int32" />
+    <NavigationProperty Name="MaintenanceHistory" Relationship="BBServiceModel.FK_MaintenanceHistory_MaintenanceType" FromRole="MaintenanceType" ToRole="MaintenanceHistory" />
+    <NavigationProperty Name="WarehouseToMaintenance" Relationship="BBServiceModel.FK_WarehouseToMaintenance_MaintenanceType" FromRole="MaintenanceType" ToRole="WarehouseToMaintenance" />
+    <NavigationProperty Name="CheckUpCard" Relationship="BBServiceModel.FK_CheckUpCard_MaintenanceType" FromRole="MaintenanceType" ToRole="CheckUpCard" />
+  </EntityType>
+  <Association Name="FK_MaintenanceHistory_MaintenanceType">
+    <End Type="BBServiceModel.MaintenanceType" Role="MaintenanceType" Multiplicity="0..1" />
+    <End Type="BBServiceModel.MaintenanceHistory" Role="MaintenanceHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MaintenanceType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MaintenanceHistory">
+        <PropertyRef Name="MaintenanceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Settings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Value" Type="Int32" />
+  </EntityType>
+  <EntityType Name="WarehouseToMaintenance">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaintenanceTypeId" Type="Int32" />
+    <Property Name="WarehouseId" Type="Int32" />
+    <NavigationProperty Name="MaintenanceType" Relationship="BBServiceModel.FK_WarehouseToMaintenance_MaintenanceType" FromRole="WarehouseToMaintenance" ToRole="MaintenanceType" />
+    <NavigationProperty Name="TempWarehouse" Relationship="BBServiceModel.FK_WarehouseToMaintenance_TempWarehouse" FromRole="WarehouseToMaintenance" ToRole="TempWarehouse" />
+    <Property Name="Quantity" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="NotRequireSPLimit" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <Association Name="FK_WarehouseToMaintenance_MaintenanceType">
+    <End Type="BBServiceModel.MaintenanceType" Role="MaintenanceType" Multiplicity="0..1" />
+    <End Type="BBServiceModel.WarehouseToMaintenance" Role="WarehouseToMaintenance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MaintenanceType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WarehouseToMaintenance">
+        <PropertyRef Name="MaintenanceTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WarehouseToMaintenance_TempWarehouse">
+    <End Type="BBServiceModel.TempWarehouse" Role="TempWarehouse" Multiplicity="0..1" />
+    <End Type="BBServiceModel.WarehouseToMaintenance" Role="WarehouseToMaintenance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TempWarehouse">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WarehouseToMaintenance">
+        <PropertyRef Name="WarehouseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TempWarehouse_VehiclesBrand">
+    <End Type="BBServiceModel.VehiclesBrand" Role="VehiclesBrand" Multiplicity="0..1" />
+    <End Type="BBServiceModel.TempWarehouse" Role="TempWarehouse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VehiclesBrand">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TempWarehouse">
+        <PropertyRef Name="VehicleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="DoneWorks">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WorkCode" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="WorkName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="NormativeFactory" Type="Int32" />
+    <Property Name="NormativeBakubus" Type="Int32" />
+    <Property Name="VehicleBrandId" Type="Int32" />
+    <NavigationProperty Name="VehiclesBrand" Relationship="BBServiceModel.FK_DoneWorks_VehiclesBrand" FromRole="DoneWorks" ToRole="VehiclesBrand" />
+    <NavigationProperty Name="JobcardToDoneWorks" Relationship="BBServiceModel.FK_JobcardToDoneWorks_DoneWorks" FromRole="DoneWorks" ToRole="JobcardToDoneWorks" />
+  </EntityType>
+  <EntityType Name="JobCards">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="JobCardNo" Type="Int32" />
+    <Property Name="CheckupCardId" Type="Int32" />
+    <Property Name="CompanyId" Type="Int32" />
+    <Property Name="IsOpen" Type="Boolean" />
+    <Property Name="InUnderRepair" Type="Boolean" />
+    <Property Name="InWaitDepot" Type="Boolean" />
+    <Property Name="IsAccident" Type="Boolean" />
+    <Property Name="IsMaintenance" Type="Boolean" />
+    <Property Name="IsRepair" Type="Boolean" />
+    <Property Name="IsGuarantee" Type="Boolean" />
+    <Property Name="InWaitRoute" Type="Boolean" />
+    <Property Name="EndTime" Type="DateTime" Precision="3" />
+    <Property Name="StartTime" Type="DateTime" Precision="3" />
+    <Property Name="ReceivingServisOfficer" Type="Int32" />
+    <Property Name="TakeOverServisOfficer" Type="Int32" />
+    <Property Name="HandOverServisOfficer" Type="Int32" />
+    <NavigationProperty Name="Companies" Relationship="BBServiceModel.FK_JobCards_Companies" FromRole="JobCards" ToRole="Companies" />
+    <NavigationProperty Name="Employees" Relationship="BBServiceModel.FK_JobCards_Employees" FromRole="JobCards" ToRole="Employees" />
+    <NavigationProperty Name="Employees1" Relationship="BBServiceModel.FK_JobCards_Employees1" FromRole="JobCards" ToRole="Employees" />
+    <NavigationProperty Name="Employees2" Relationship="BBServiceModel.FK_JobCards_Employees2" FromRole="JobCards" ToRole="Employees" />
+    <NavigationProperty Name="JobcardToDoneWorks" Relationship="BBServiceModel.FK_JobcardToDoneWorks_JobCards" FromRole="JobCards" ToRole="JobcardToDoneWorks" />
+    <NavigationProperty Name="MaintenanceHistory" Relationship="BBServiceModel.FK_MaintenanceHistory_JobCards" FromRole="JobCards" ToRole="MaintenanceHistory" />
+    <NavigationProperty Name="Requisitions" Relationship="BBServiceModel.FK_Requisitions_JobCards" FromRole="JobCards" ToRole="Requisitions" />
+    <Property Name="Note" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="JobcardNotes" Relationship="BBServiceModel.FK_JobcardNotes_JobCards" FromRole="JobCards" ToRole="JobcardNotes" />
+    <NavigationProperty Name="CheckUpCard" Relationship="BBServiceModel.FK_JobCards_CheckUpCard" FromRole="JobCards" ToRole="CheckUpCard" />
+    <Property Name="CreatedBySystem" Type="Boolean" />
+    <Property Name="AddedDate" Type="DateTime" Precision="3" />
+    <Property Name="TakeOverServisOfficerSubmit" Type="Boolean" />
+    <NavigationProperty Name="NotMetRequisitions" Relationship="BBServiceModel.FK_NotMetRequisitions_JobCards" FromRole="JobCards" ToRole="NotMetRequisitions" />
+    <NavigationProperty Name="NotMetRequisitions1" Relationship="BBServiceModel.FK_NotMetRequisitions_JobCards1" FromRole="JobCards" ToRole="NotMetRequisitions" />
+  </EntityType>
+  <EntityType Name="JobcardToDoneWorks">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="JobcardId" Type="Int32" />
+    <Property Name="WorkId" Type="Int32" />
+    <Property Name="ServisOfficer" Type="Int32" />
+    <Property Name="Master" Type="Int32" />
+    <Property Name="WorkStartTime" Type="DateTime" Precision="3" />
+    <Property Name="WorkEndTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="DoneWorks" Relationship="BBServiceModel.FK_JobcardToDoneWorks_DoneWorks" FromRole="JobcardToDoneWorks" ToRole="DoneWorks" />
+    <NavigationProperty Name="Employees" Relationship="BBServiceModel.FK_JobcardToDoneWorks_Employees" FromRole="JobcardToDoneWorks" ToRole="Employees" />
+    <NavigationProperty Name="Employees1" Relationship="BBServiceModel.FK_JobcardToDoneWorks_Employees1" FromRole="JobcardToDoneWorks" ToRole="Employees" />
+    <NavigationProperty Name="JobCards" Relationship="BBServiceModel.FK_JobcardToDoneWorks_JobCards" FromRole="JobcardToDoneWorks" ToRole="JobCards" />
+    <Property Name="IsOpen" Type="Boolean" />
+  </EntityType>
+  <Association Name="FK_JobCards_Companies">
+    <End Type="BBServiceModel.Companies" Role="Companies" Multiplicity="0..1" />
+    <End Type="BBServiceModel.JobCards" Role="JobCards" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Companies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="JobCards">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DoneWorks_VehiclesBrand">
+    <End Type="BBServiceModel.VehiclesBrand" Role="VehiclesBrand" Multiplicity="0..1" />
+    <End Type="BBServiceModel.DoneWorks" Role="DoneWorks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VehiclesBrand">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DoneWorks">
+        <PropertyRef Name="VehicleBrandId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JobcardToDoneWorks_DoneWorks">
+    <End Type="BBServiceModel.DoneWorks" Role="DoneWorks" Multiplicity="0..1" />
+    <End Type="BBServiceModel.JobcardToDoneWorks" Role="JobcardToDoneWorks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DoneWorks">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="JobcardToDoneWorks">
+        <PropertyRef Name="WorkId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JobCards_Employees">
+    <End Type="BBServiceModel.Employees" Role="Employees" Multiplicity="0..1" />
+    <End Type="BBServiceModel.JobCards" Role="JobCards" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="JobCards">
+        <PropertyRef Name="ReceivingServisOfficer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JobCards_Employees1">
+    <End Type="BBServiceModel.Employees" Role="Employees" Multiplicity="0..1" />
+    <End Type="BBServiceModel.JobCards" Role="JobCards" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="JobCards">
+        <PropertyRef Name="TakeOverServisOfficer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JobCards_Employees2">
+    <End Type="BBServiceModel.Employees" Role="Employees" Multiplicity="0..1" />
+    <End Type="BBServiceModel.JobCards" Role="JobCards" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="JobCards">
+        <PropertyRef Name="HandOverServisOfficer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JobcardToDoneWorks_Employees">
+    <End Type="BBServiceModel.Employees" Role="Employees" Multiplicity="0..1" />
+    <End Type="BBServiceModel.JobcardToDoneWorks" Role="JobcardToDoneWorks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="JobcardToDoneWorks">
+        <PropertyRef Name="ServisOfficer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JobcardToDoneWorks_Employees1">
+    <End Type="BBServiceModel.Employees" Role="Employees" Multiplicity="0..1" />
+    <End Type="BBServiceModel.JobcardToDoneWorks" Role="JobcardToDoneWorks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="JobcardToDoneWorks">
+        <PropertyRef Name="Master" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JobcardToDoneWorks_JobCards">
+    <End Type="BBServiceModel.JobCards" Role="JobCards" Multiplicity="0..1" />
+    <End Type="BBServiceModel.JobcardToDoneWorks" Role="JobcardToDoneWorks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JobCards">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="JobcardToDoneWorks">
+        <PropertyRef Name="JobcardId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MaintenanceHistory_JobCards">
+    <End Type="BBServiceModel.JobCards" Role="JobCards" Multiplicity="0..1" />
+    <End Type="BBServiceModel.MaintenanceHistory" Role="MaintenanceHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JobCards">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MaintenanceHistory">
+        <PropertyRef Name="JobCardId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Requisitions_JobCards">
+    <End Type="BBServiceModel.JobCards" Role="JobCards" Multiplicity="0..1" />
+    <End Type="BBServiceModel.Requisitions" Role="Requisitions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JobCards">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Requisitions">
+        <PropertyRef Name="JobCardId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="JobcardNotes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="AddedUserId" Type="Int32" />
+    <Property Name="AddedDate" Type="DateTime" Precision="3" />
+    <Property Name="JobCardId" Type="Int32" />
+    <NavigationProperty Name="JobCards" Relationship="BBServiceModel.FK_JobcardNotes_JobCards" FromRole="JobcardNotes" ToRole="JobCards" />
+    <NavigationProperty Name="Users" Relationship="BBServiceModel.FK_JobcardNotes_Users" FromRole="JobcardNotes" ToRole="Users" />
+  </EntityType>
+  <Association Name="FK_JobcardNotes_JobCards">
+    <End Type="BBServiceModel.JobCards" Role="JobCards" Multiplicity="0..1" />
+    <End Type="BBServiceModel.JobcardNotes" Role="JobcardNotes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JobCards">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="JobcardNotes">
+        <PropertyRef Name="JobCardId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JobcardNotes_Users">
+    <End Type="BBServiceModel.Users" Role="Users" Multiplicity="0..1" />
+    <End Type="BBServiceModel.JobcardNotes" Role="JobcardNotes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="JobcardNotes">
+        <PropertyRef Name="AddedUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="CheckUpCard">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InitContId" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="IsOpen" Type="Boolean" />
+    <Property Name="AddedDate" Type="DateTime" Precision="3" />
+    <Property Name="AddedUserId" Type="Int32" />
+    <Property Name="AddedMechanicId" Type="Int32" />
+    <Property Name="MaintenanceTypeId" Type="Int32" />
+    <NavigationProperty Name="Employees" Relationship="BBServiceModel.FK_CheckUpCard_Employees" FromRole="CheckUpCard" ToRole="Employees" />
+    <NavigationProperty Name="InitialControlSchedule" Relationship="BBServiceModel.FK_CheckUpCard_InitialControlSchedule" FromRole="CheckUpCard" ToRole="InitialControlSchedule" />
+    <NavigationProperty Name="MaintenanceType" Relationship="BBServiceModel.FK_CheckUpCard_MaintenanceType" FromRole="CheckUpCard" ToRole="MaintenanceType" />
+    <NavigationProperty Name="JobCards" Relationship="BBServiceModel.FK_JobCards_CheckUpCard" FromRole="CheckUpCard" ToRole="JobCards" />
+  </EntityType>
+  <Association Name="FK_CheckUpCard_Employees">
+    <End Type="BBServiceModel.Employees" Role="Employees" Multiplicity="0..1" />
+    <End Type="BBServiceModel.CheckUpCard" Role="CheckUpCard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CheckUpCard">
+        <PropertyRef Name="AddedMechanicId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CheckUpCard_InitialControlSchedule">
+    <End Type="BBServiceModel.InitialControlSchedule" Role="InitialControlSchedule" Multiplicity="0..1" />
+    <End Type="BBServiceModel.CheckUpCard" Role="CheckUpCard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InitialControlSchedule">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CheckUpCard">
+        <PropertyRef Name="InitContId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CheckUpCard_MaintenanceType">
+    <End Type="BBServiceModel.MaintenanceType" Role="MaintenanceType" Multiplicity="0..1" />
+    <End Type="BBServiceModel.CheckUpCard" Role="CheckUpCard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MaintenanceType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CheckUpCard">
+        <PropertyRef Name="MaintenanceTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JobCards_CheckUpCard">
+    <End Type="BBServiceModel.CheckUpCard" Role="CheckUpCard" Multiplicity="0..1" />
+    <End Type="BBServiceModel.JobCards" Role="JobCards" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CheckUpCard">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="JobCards">
+        <PropertyRef Name="CheckupCardId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Notifications">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NotificationTitleId" Type="Int32" />
+    <Property Name="DataId" Type="Int32" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="AddingDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="NotificationTitles" Relationship="BBServiceModel.FK_Notifications_NotificationTitles" FromRole="Notifications" ToRole="NotificationTitles" />
+    <NavigationProperty Name="Users" Relationship="BBServiceModel.FK_Notifications_Users" FromRole="Notifications" ToRole="Users" />
+  </EntityType>
+  <Association Name="FK_Notifications_NotificationTitles">
+    <End Type="BBServiceModel.NotificationTitles" Role="NotificationTitles" Multiplicity="0..1" />
+    <End Type="BBServiceModel.Notifications" Role="Notifications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NotificationTitles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Notifications">
+        <PropertyRef Name="NotificationTitleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Notifications_Users">
+    <End Type="BBServiceModel.Users" Role="Users" Multiplicity="0..1" />
+    <End Type="BBServiceModel.Notifications" Role="Notifications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Notifications">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="NotMetRequisitions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SPId" Type="Int32" />
+    <Property Name="RemainingQuantity" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="OrijinalJCId" Type="Int32" />
+    <Property Name="SubstituteJCId" Type="Int32" />
+    <Property Name="IsOpen" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ClosedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="JobCards" Relationship="BBServiceModel.FK_NotMetRequisitions_JobCards" FromRole="NotMetRequisitions" ToRole="JobCards" />
+    <NavigationProperty Name="JobCards1" Relationship="BBServiceModel.FK_NotMetRequisitions_JobCards1" FromRole="NotMetRequisitions" ToRole="JobCards" />
+    <NavigationProperty Name="TempWarehouse" Relationship="BBServiceModel.FK_NotMetRequisitions_TempWarehouse" FromRole="NotMetRequisitions" ToRole="TempWarehouse" />
+  </EntityType>
+  <Association Name="FK_NotMetRequisitions_JobCards">
+    <End Type="BBServiceModel.JobCards" Role="JobCards" Multiplicity="0..1" />
+    <End Type="BBServiceModel.NotMetRequisitions" Role="NotMetRequisitions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JobCards">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NotMetRequisitions">
+        <PropertyRef Name="OrijinalJCId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NotMetRequisitions_JobCards1">
+    <End Type="BBServiceModel.JobCards" Role="JobCards" Multiplicity="0..1" />
+    <End Type="BBServiceModel.NotMetRequisitions" Role="NotMetRequisitions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JobCards">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NotMetRequisitions">
+        <PropertyRef Name="SubstituteJCId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NotMetRequisitions_TempWarehouse">
+    <End Type="BBServiceModel.TempWarehouse" Role="TempWarehouse" Multiplicity="0..1" />
+    <End Type="BBServiceModel.NotMetRequisitions" Role="NotMetRequisitions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TempWarehouse">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NotMetRequisitions">
+        <PropertyRef Name="SPId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,167 @@
+﻿
+@{
+    ViewBag.Title = "OprIndex";
+    List<string> permitted = (List<string>)Session["permitted"];
+}
+
+<div id="operations">
+    <div class="contaiber-fluid">
+        <div class="row">
+            <div class="col-md-6 col-lg-4">
+                <div class="trafficAccident">
+                    <h1>Məlumatların daxil edilməsi</h1>
+                    <ul>
+                        @*Companies*@
+                        <li class="@(permitted.FirstOrDefault(a => a == "CompInpIndex")==null? "hideAction" : "")">
+                            <a href="@Url.Action("CompInpIndex","Inputs")">
+                                <i class="fas fa-angle-double-right"></i> Şirkət Əməliyyatları
+                            </a>
+                        </li>
+                        <br class="@(permitted.FirstOrDefault(a => a == "CompInpIndex")==null? "hideAction" : "")">
+
+                        @*Depots*@
+                        <li class="@(permitted.FirstOrDefault(a => a == "DepotInpIndex")==null? "hideAction" : "")">
+                            <a href="@Url.Action("DepotInpIndex","Inputs")">
+                                <i class="fas fa-angle-double-right"></i> Depo Əməliyyatları
+                            </a>
+                        </li>
+                        <br class="@(permitted.FirstOrDefault(a => a == "DepotInpIndex")==null? "hideAction" : "")">
+
+                        @*Routes*@
+                        <li class="@(permitted.FirstOrDefault(a => a == "RutInpIndex")==null? "hideAction" : "")">
+                            <a href="@Url.Action("RutInpIndex","Inputs")">
+                                <i class="fas fa-angle-double-right"></i> Xətt Əməliyyatları
+                            </a>
+                        </li>
+                        <br class="@(permitted.FirstOrDefault(a => a == "RutInpIndex")==null? "hideAction" : "")">
+
+                        @*Employees*@
+                        <li class="@(permitted.FirstOrDefault(a => a == "EmpInpIndex")==null? "hideAction" : "")">
+                            <a href="@Url.Action("EmpInpIndex","Inputs")">
+                                <i class="fas fa-angle-double-right"></i> İşçi Əməliyyatları
+                            </a>
+                        </li>
+                        <br class="@(permitted.FirstOrDefault(a => a == "EmpInpIndex")==null? "hideAction" : "")">
+
+                        @*Departments*@
+                        <li class="@(permitted.FirstOrDefault(a => a == "DepInpIndex")==null? "hideAction" : "")">
+                            <a href="@Url.Action("DepInpIndex","Inputs")">
+                                <i class="fas fa-angle-double-right"></i> Şöbə Əməliyyatları
+                            </a>
+                        </li>
+                        <br class="@(permitted.FirstOrDefault(a => a == "DepInpIndex")==null? "hideAction" : "")">
+
+                        @*Sectors*@
+                        <li class="@(permitted.FirstOrDefault(a => a == "SecInpIndex")==null? "hideAction" : "")">
+                            <a href="@Url.Action("SecInpIndex","Inputs")">
+                                <i class="fas fa-angle-double-right"></i> Sektor Əməliyyatları
+                            </a>
+                        </li>
+                        <br class="@(permitted.FirstOrDefault(a => a == "SecInpIndex")==null? "hideAction" : "")">
+
+                        @*Positions*@
+                        <li class="@(permitted.FirstOrDefault(a => a == "PosInpIndex")==null? "hideAction" : "")">
+                            <a href="@Url.Action("PosInpIndex","Inputs")">
+                                <i class="fas fa-angle-double-right"></i> Vəzifə Əməliyyatları
+                            </a>
+                        </li>
+                        <br class="@(permitted.FirstOrDefault(a => a == "PosInpIndex")==null? "hideAction" : "")">
+
+                        @*Vehicles*@
+                        <li class="@(permitted.FirstOrDefault(a => a == "VehInpIndex")==null? "hideAction" : "")">
+                            <a href="@Url.Action("VehInpIndex","Inputs")">
+                                <i class="fas fa-angle-double-right"></i> Nəqliyyat Vasitəsi Əməliyyatları
+                            </a>
+                        </li>
+                        <br class="@(permitted.FirstOrDefault(a => a == "VehInpIndex")==null? "hideAction" : "")">
+
+                        @*Vehicles' Brands*@
+                        <li class="@(permitted.FirstOrDefault(a => a == "BraInpIndex")==null? "hideAction" : "")">
+                            <a href="@Url.Action("BraInpIndex","Inputs")">
+                                <i class="fas fa-angle-double-right"></i> NV Marka&Model Əməliyyatları
+                            </a>
+                        </li>
+                        <br class="@(permitted.FirstOrDefault(a => a == "BraInpIndex")==null? "hideAction" : "")">
+
+
+
+                        @* Reserve *@
+                        <li class="@(permitted.FirstOrDefault(a => a == "ResInpIndex")==null? "hideAction" : "")">
+                            <a href="@Url.Action("ResInpIndex","Inputs")">
+                                <i class="fas fa-angle-double-right"></i> Məsuliyyət növləri
+                            </a>
+                        </li>
+                        <br class="@(permitted.FirstOrDefault(a => a == "ResInpIndex")==null? "hideAction" : "")">
+
+                        @* Troubleshoots *@
+                        <li class="@(permitted.FirstOrDefault(a => a == "TroInpIndex")==null? "hideAction" : "")">
+                            <a href="@Url.Action("TroInpIndex","Inputs")">
+                                <i class="fas fa-angle-double-right"></i> Nasazlıq növləri
+                            </a>
+                        </li>
+                        <br class="@(permitted.FirstOrDefault(a => a == "TroInpIndex")==null? "hideAction" : "")">
+
+                        @* Troubleshoots *@
+                        <li class="@(permitted.FirstOrDefault(a => a == "DoneWorksIndexInput")==null? "hideAction" : "")">
+                            <a href="@Url.Action("DoneWorksIndexInput","Inputs")">
+                                <i class="fas fa-angle-double-right"></i> Görülmüş işlər
+                            </a>
+                        </li>
+                        <br class="@(permitted.FirstOrDefault(a => a == "DoneWorksIndexInput")==null? "hideAction" : "")">
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="trafficAccident">
+                    <h1>Quraşdırmalar</h1>
+                    <ul>
+                        @*Binding Mechanics*@
+                        <li class="@(permitted.FirstOrDefault(a => a == "BindMechIndex")==null? "hideAction" : "")">
+                            <a href="@Url.Action("BindMechIndex","Monipulations")">
+                                <i class="fas fa-angle-double-right"></i> Mexaniklərin Təhkim edilməsi
+                            </a>
+                        </li>
+                        <br class="@(permitted.FirstOrDefault(a => a == "BindMechIndex")==null? "hideAction" : "")">
+
+                        @*KM Limit*@
+                        <li class="@(permitted.FirstOrDefault(a => a == "KmLimitInpIndex")==null? "hideAction" : "")">
+                            <a href="@Url.Action("KmLimitInpIndex","Inputs")">
+                                <i class="fas fa-angle-double-right"></i> Xətlərin məsafə limiti
+                            </a>
+                        </li>
+                        <br class="@(permitted.FirstOrDefault(a => a == "KmLimitInpIndex")==null? "hideAction" : "")">
+
+                        @*Maintenance type*@
+                        <li class="@(permitted.FirstOrDefault(a => a == "BindMaintenanceIndex")==null? "hideAction" : "")">
+                            <a href="@Url.Action("BindMaintenanceIndex","Monipulations")">
+                                <i class="fas fa-angle-double-right"></i> TQ limitləri
+                            </a>
+                        </li>
+                        <br class="@(permitted.FirstOrDefault(a => a == "BindMaintenanceIndex")==null? "hideAction" : "")">
+
+                        @*Settings*@
+                        <li class="@(permitted.FirstOrDefault(a => a == "SettingsIndex")==null? "hideAction" : "")">
+                            <a href="@Url.Action("SettingsIndex","Monipulations")">
+                                <i class="fas fa-angle-double-right"></i> Tənzimləmələr
+                            </a>
+                        </li>
+                        <br class="@(permitted.FirstOrDefault(a => a == "SettingsIndex")==null? "hideAction" : "")">
+
+                        @*Bind spare part to maintenance type*@
+                        <li class="@(permitted.FirstOrDefault(a => a == "BindSparePartIndex")==null? "hideAction" : "")">
+                            <a href="@Url.Action("BindSparePartIndex","Monipulations")">
+                                <i class="fas fa-angle-double-right"></i> Ehtiyyat hissələrinin TQ-yə təhkim edilməsi
+                            </a>
+                        </li>
+                        <br class="@(permitted.FirstOrDefault(a => a == "BindSparePartIndex")==null? "hideAction" : "")">
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                
+            </div>
+        </div>
+    </div>
+</div>

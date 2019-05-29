@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<div id="home">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 image">
+                <img style="width:100%;" src="~/public/assets/img/bb1.png" alt="Alternate Text" />
+                <div class="overlay"></div>
+            </div>
+        
+        </div>
+        <div class="row content">
+            <div class="col-lg-3 col-md-4 itemGroup">
+                <div class="item item1">
+                    <h3>Xətdə olan avtobus sayı</h3>
+                    <p><span class="count count-this">@ViewBag.InRoute</span> ədəd</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 itemGroup">
+                <div class="item item2">
+                    <h3>Depoda olan ümumi avtobus sayı</h3>
+                    <p><span class="count count-this">@ViewBag.InDepot</span> ədəd</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 itemGroup">
+                <div class="item item3">
+                    <h3>Depoda olan saz avtobus sayı</h3>
+                    <p><span class="count count-this">@(ViewBag.InDepot - ViewBag.InRepair)</span> ədəd</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 itemGroup">
+                <div class="item item4">
+                    <h3>Təmirdə olan avtobus sayı</h3>
+                    <p><span class="count count-this">@ViewBag.InRepair</span> ədəd</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 itemGroup">
+                <div class="item item5">
+                    <h3>Xətdən geri qayıdan avtobus sayı</h3>
+                    <p><span class="count count-this">@ViewBag.InRepair</span> ədəd</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 itemGroup">
+                <div class="item item6">
+                    <h3>Qəza törətmiş avtobus sayı</h3>
+                    <p><span class="count count-this">@ViewBag.Accident</span> ədəd</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 itemGroup">
+                <div class="item item7">
+                    <h3>Ehtiyyat hissəsi gözləyən avtobus sayı</h3>
+                    <p class="pList"><span class="name">Gözləmə-xətt : </span><span class="count count-this">@ViewBag.InWaitRoute</span> ədəd</p>
+                    <p class="pList"><span class="name">Gözləmə-depo : </span><span class="count count-this">@ViewBag.InWaitDepot</span> ədəd</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

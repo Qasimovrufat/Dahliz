@@ -1,0 +1,42 @@
+﻿@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Http.Features
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Options
+
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cultureItems = LocOptions.Value.SupportedUICultures
+        .Select(c => new SelectListItem { Value = c.Name, Text = c.DisplayName })
+        .ToList();
+    var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}";
+}
+
+<form id="selectLanguage" asp-controller="Language"
+          asp-action="SetLanguage" asp-route-returnUrl="@returnUrl"
+          method="post" class="form-horizontal" role="form">
+        <label asp-for="@requestCulture.RequestCulture.UICulture.Name">@Localizer["Language"]:</label> <select name="culture"  id="languages"
+                                                                                                               onchange="this.form.submit();"
+                                                                                                               asp-for="@requestCulture.RequestCulture.UICulture.Name" asp-items="cultureItems"></select>
+    </form>
+
+<div class="language-wrapper">
+    @foreach (var item in cultureItems)
+    {
+        if (item.Value == "de")
+        {
+            <a asp-action="SetLanguage" class="language-items" asp-controller="Language" asp-route-culture="@item.Value" asp-route-returnUrl="@returnUrl"><i class="fas fa-globe-africa"></i>ger</a>
+
+        }
+        else
+        {
+            <a asp-action="SetLanguage" class="language-items" asp-controller="Language" asp-route-culture="@item.Value" asp-route-returnUrl="@returnUrl">
+                <i class="fas fa-globe-africa"></i>@item.Value
+            </a>
+        }
+
+    }
+</div>

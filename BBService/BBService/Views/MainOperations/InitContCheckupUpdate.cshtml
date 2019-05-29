@@ -1,0 +1,39 @@
+﻿@model BBService.Models.ViewHome
+@{
+    ViewBag.Title = "InitContCheckupUpdate";
+}
+
+<div id="InitContCheckupUpdate">
+    <div class="contaiber-fluid">
+        <div class="row">
+            <div class="col-md-12 inputAccident">
+                <h1>Yoxlama kartının yenilənməsi :</h1>
+                <form method="post" @Url.Action("InitContCheckupUpdate", "MainOperations") class="formTest">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-4">
+
+                            <div class="form-group">
+                                <label for="Description" class="col-sm-12 col-form-label">Nasazlıq barədə məlumat :</label>
+                                <div class="col-sm-12">
+                                    <textarea class="form-control inputItem inputItemText" rows="3" id="Description" name="Description">@(ViewBag.InitCont.Description)</textarea>
+                                </div>
+                            </div>
+
+                            <input type="hidden" id="InitContId" name="InitContId" value="@ViewBag.InitCont.Id">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-lg-4">
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <button type="submit" class="btn btn-primary addButton">Düzəliş edin</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

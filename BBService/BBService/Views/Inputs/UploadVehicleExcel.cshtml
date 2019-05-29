@@ -1,0 +1,136 @@
+﻿@{
+    ViewBag.Title = "UploadVehicleExcel";
+}
+
+
+<div id="uploadVehicleExcel">
+    <div class="contaiber-fluid">
+        <div class="row">
+            <div class="col-md-6 inputAccident">
+                <h1>NV siyahısını Excel file olaraq əlavə edin :</h1>
+                <form method="post" action="@Url.Action("UploadVehicleExcel", "Inputs")" class="formTest" enctype="multipart/form-data">
+
+                    <div class="form-group">
+                        <label for="UploadedExcel" class="col-sm-10 col-form-label">File seç :</label>
+                        <div class="col-sm-10">
+                            <input type="file" class="form-control inputItem" id="UploadedExcel" name="UploadedExcel">
+                        </div>
+                    </div>
+
+                    @if (Session["RepeatedCodes"] != null)
+                    {
+                        <div class="form-group">
+                            <div class="alert alert-info">
+                                @TempData["RepeatedCodes"] kodlu NV(ləri)si artıq bazada mövcuddur.
+                            </div>
+                        </div>
+                        Session["RepeatedCodes"] = null;
+                        TempData["RepeatedCodes"] = null;
+                    }
+
+                    @if (Session["RepeatedNumber"] != null)
+                    {
+                        <div class="form-group">
+                            <div class="alert alert-info">
+                                @TempData["RepeatedNumber"] Nömrəli NV(ləri)si artıq bazada mövcuddur.
+                            </div>
+                        </div>
+                        Session["RepeatedNumber"] = null;
+                        TempData["RepeatedNumber"] = null;
+                    }
+
+                    @if (Session["RepeatedChassi"] != null)
+                    {
+                        <div class="form-group">
+                            <div class="alert alert-info">
+                                @TempData["RepeatedChassi"] Şassi nömrəli NV(ləri)si artıq bazada mövcuddur.
+                            </div>
+                        </div>
+                        Session["RepeatedChassi"] = null;
+                        TempData["RepeatedChassi"] = null;
+                    }
+
+                    @if (Session["RepeatedEngine"] != null)
+                    {
+                        <div class="form-group">
+                            <div class="alert alert-info">
+                                @TempData["RepeatedEngine"] Mühərrik nömrəli NV(ləri)si artıq bazada mövcuddur.
+                            </div>
+                        </div>
+                        Session["RepeatedEngine"] = null;
+                        TempData["RepeatedEngine"] = null;
+                    }
+
+                    @if (Session["EmptyVehicleCode"] != null)
+                    {
+                        Session["EmptyVehicleCode"] = null;
+                        <div class="form-group">
+                            <div class="alert alert-info">
+                                NV kodu və DQN nömrəsi boş olmamalıdır.
+                            </div>
+                        </div>
+                    }
+
+                    @if (Session["RepeatedNVCode"] != null)
+                    {
+                        <div class="form-group">
+                            <div class="alert alert-info">
+                                Yüklədiyiniz faylda  @TempData["RepeatedNVCode"] NV kodları təkrar olunur.
+                                <br />
+                                NV kodları Unikal olmalıdır.
+                            </div>
+                        </div>
+                        Session["RepeatedNVCode"] = null;
+                        TempData["RepeatedNVCode"] = null;
+                    }
+
+                    @if (Session["RepeatedDQN"] != null)
+                    {
+                        <div class="form-group">
+                            <div class="alert alert-info">
+                                Yüklədiyiniz faylda  @TempData["RepeatedDQN"] DQN(lar)ı təkrar olunur.
+                                <br />
+                                DQN(lar)ı Unikal olmalıdır.
+                            </div>
+                        </div>
+                        Session["RepeatedDQN"] = null;
+                        TempData["RepeatedDQN"] = null;
+                    }
+
+                    @if (Session["RepeatedChassi"] != null)
+                    {
+                        <div class="form-group">
+                            <div class="alert alert-info">
+                                Yüklədiyiniz faylda  @TempData["RepeatedChassi"] Şassi nömrə(lər)si təkrar olunur.
+                                <br />
+                                Şassi nömrə(lər)si Unikal olmalıdır.
+                            </div>
+                        </div>
+                        Session["RepeatedChassi"] = null;
+                        TempData["RepeatedChassi"] = null;
+                    }
+
+                    @if (Session["RepeatedEngine"] != null)
+                    {
+                        <div class="form-group">
+                            <div class="alert alert-info">
+                                Yüklədiyiniz faylda  @TempData["RepeatedEngine"] Mühərrik nömrə(lər)si təkrar olunur.
+                                <br />
+                                Şassi nömrə(lər)si Unikal olmalıdır.
+                            </div>
+                        </div>
+                        Session["RepeatedEngine"] = null;
+                        TempData["RepeatedEngine"] = null;
+                    }
+
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-primary addButton">Əlavə et</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

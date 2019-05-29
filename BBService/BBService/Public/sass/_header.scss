@@ -1,0 +1,1443 @@
+#header {
+    min-height: 52px;
+    width: 100%;
+    font-family: $main-font;
+    position: fixed;
+    background-color: $main-col-white;
+    z-index: 99;
+    top: 0;
+
+    .container-fluid {
+        position: relative;
+        padding: 0px;
+
+        .top {
+            height: 44px;
+        }
+
+        .bottom {
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            z-index: 10;
+            padding: 16px 0;
+            height: 34px;
+            width: 100%;
+            background-color: $main-col;
+            box-shadow: 0 0 6px 1px $main-col-shadow;
+
+            .logo {
+                height: 31px;
+                margin-top: -14px;
+                position: relative;
+                right: -11px;
+
+                img {
+                    height: 98%;
+                }
+            }
+
+            .menu {
+
+                .menuIcon {
+                    display: none;
+
+                    i {
+                        top: -10px;
+                        font-size: 22px;
+                        position: relative;
+                        color: white;
+                        cursor: pointer;
+
+                        &:hover {
+                            color: $main-col-red;
+                        }
+                    }
+                }
+
+                ul {
+                    li {
+                        list-style-type: none;
+                        display: inline-block;
+                        position: relative;
+                        top: -7px;
+
+                        a {
+                            letter-spacing: 1px;
+                            text-decoration: none;
+                            color: $main-col-white;
+                            padding: 9px 10px;
+                            transition: all 0.2s linear;
+                            font-size: 13px;
+                            font-weight: 500;
+
+                            &:hover {
+                                background-color: $main-col-red;
+                            }
+                        }
+
+                        .active {
+                            background-color: $main-col-red;
+                        }
+                    }
+                }
+            }
+
+
+            .user {
+                margin-top: -16px;
+                height: 34px;
+                display: flex;
+                justify-content: flex-end;
+                padding-right: 45px;
+
+
+
+                .notifications {
+                    width: 65px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    position: relative;
+
+                    .bell {
+                        position: relative;
+                        /*display:none;*/
+                        i {
+                            color: rgba(0, 0, 0, 0.46);
+                            transition: all 0.2s linear;
+                            font-size: 15px;
+
+                            &:hover {
+                                color: rgba(0, 0, 0, 0.66);
+                            }
+                        }
+
+                        .active {
+                            color: white !important;
+                        }
+
+                        .notiCount {
+                            position: absolute;
+                            color: #ffffff;
+                            font-size: 9px;
+                            left: 9px;
+                            top: -7px;
+                            font-weight: 500;
+                            background-color: $main-col-red;
+                            padding: 2px 3px;
+                            border-radius: 2px;
+                        }
+                    }
+
+                    .notificationWrapper {
+                        display: none;
+
+                        .notiReview {
+                            width: 430px;
+                            max-height: 450px;
+                            min-height: 230px;
+                            height: 70vh;
+                            position: absolute;
+                            top: 41px;
+                            right: 0px;
+                            z-index: 12;
+                            background-color: white;
+                            box-shadow: 0px 10px 16px -1px grey;
+
+                            .content {
+                                width: 100%;
+                                height: calc(100% - 30px);
+                                padding: 10px 0px;
+                                overflow: auto;
+
+                                ul {
+                                    li {
+                                        background-color: rgba(226, 248, 255, 0.19);
+                                        border: 1px solid whitesmoke;
+                                        height: 70px;
+                                        padding: 4px 12px;
+
+                                        &:hover {
+                                            background-color: #ecf5fd;
+                                        }
+
+                                        a {
+                                            text-decoration: none;
+                                        }
+                                        /*a {
+                                            margin-bottom: 2px;
+                                            display: block;
+                                            text-decoration: none;
+                                            color: $main-col;
+                                            font-size: 14px;
+                                            font-weight: 500;
+                                            line-height: 20px;
+                                            font-family: $main-font;
+                                        }
+
+                                        .date {
+                                            font-size: 12px;
+                                            font-family: $main-font;
+
+                                            i {
+                                                margin-right: 3px;
+                                                font-size: 12px;
+                                            }
+                                        }*/
+                                        h3 {
+                                            color: black;
+                                            font-weight: 700;
+                                            font-size: 13px;
+                                            margin-bottom: 5px;
+                                        }
+
+                                        p {
+                                            color: black;
+                                            font-size: 12px;
+                                            font-weight: 500;
+                                            margin-bottom: 5px;
+                                        }
+
+                                        span {
+                                            color: $main-col-red;
+                                            font-size: 10px;
+                                            display: block;
+
+                                            i {
+                                                margin-right: 5px;
+                                            }
+                                        }
+                                    }
+
+                                    .active {
+                                        background-color: #d3e4a7;
+
+                                        &:hover {
+                                            background-color: #cfe693;
+                                        }
+                                    }
+                                }
+                            }
+
+                            .footer {
+                                width: 100%;
+                                height: 30px;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                border: 1px solid #eaeaea;
+
+                                a {
+                                    color: $main-col;
+                                    font-size: 14px;
+                                    font-weight: 600;
+                                }
+                            }
+                        }
+
+                        .angle {
+                            background-color: white;
+                            position: absolute;
+                            z-index: 11;
+                            top: 34px;
+                            right: 22px;
+                            box-shadow: 0px 0px 16px -1px grey;
+                            transform: rotate(45deg);
+                            width: 20px;
+                            height: 20px;
+                        }
+                    }
+                }
+            }
+
+            .lang {
+                position: relative;
+                z-index: 100;
+
+                p {
+                    color: $main-col-white;
+                    font-size: 17px;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: all .2s ease-out;
+                    float: right;
+                    margin-right: 25px;
+                    margin-top: -11px;
+                    padding: 6px;
+
+                    &:hover {
+                        background-color: $main-col-red;
+                    }
+                }
+
+                ul {
+                    display: none;
+                    position: absolute;
+                    margin-top: 15px;
+                    right: 0;
+                    margin-right: 38px;
+
+                    li {
+                        margin: 12px 0;
+                        line-height: 16px;
+
+                        a {
+                            text-decoration: none;
+                            color: $main-col-white;
+                            font-size: 12px;
+                            font-weight: 600;
+                            transition: all .2s ease-out;
+                            padding: 5px 10px;
+                            background-color: $main-col;
+                            border-radius: 5px;
+
+                            &:hover {
+                                background-color: $main-col-red;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.navbar {
+    display: none !important;
+}
+
+.breadcrumbs-responsive {
+    display: none !important;
+}
+
+.breadcrumbs {
+    height: 18px;
+    width: 100%;
+    /*background-color: #04407d;*/
+    position: absolute;
+    left: 0;
+    top: 34px;
+    background-color: #025782;
+    z-index: 9;
+    margin: 0 auto;
+    box-shadow: 0 0 3px 1px $main-col-shadow;
+    padding-top: 4px;
+    padding-left: 32px;
+    font-size: 11px;
+    font-weight: 500;
+    color: #a09c9c;
+
+    a {
+        font-size: 11px;
+        font-weight: 500;
+        text-decoration: none;
+        color: $main-col-light;
+        margin: 0px 3px;
+
+        &:hover {
+            color: $main-col-white;
+        }
+    }
+}
+
+.notifications {
+    width: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    .bell {
+        position: relative;
+        /*display:none;*/
+        i {
+            color: rgba(0, 0, 0, 0.46);
+            transition: all 0.2s linear;
+            font-size: 15px;
+
+            &:hover {
+                color: rgba(0, 0, 0, 0.66);
+            }
+        }
+
+        .active {
+            color: white !important;
+        }
+
+        .notiCount {
+            position: absolute;
+            color: #ffffff;
+            font-size: 9px;
+            left: 9px;
+            top: -7px;
+            font-weight: 500;
+            background-color: $main-col-red;
+            padding: 2px 3px;
+            border-radius: 2px;
+        }
+    }
+
+    .notificationWrapper {
+        display: none;
+
+        .notiReview {
+            width: 430px;
+            max-height: 450px;
+            min-height: 230px;
+            height: 70vh;
+            position: absolute;
+            top: 41px;
+            right: 0px;
+            z-index: 12;
+            background-color: white;
+            box-shadow: 0px 10px 16px -1px grey;
+
+            .content {
+                width: 100%;
+                height: calc(100% - 30px);
+                padding: 10px 0px;
+                overflow: auto;
+
+                ul {
+                    li {
+                        background-color: rgba(226, 248, 255, 0.19);
+                        border: 1px solid whitesmoke;
+                        height: 70px;
+                        padding: 4px 12px;
+
+                        &:hover {
+                            background-color: #ecf5fd;
+                        }
+
+                        a {
+                            text-decoration: none;
+                        }
+                        /*a {
+                                            margin-bottom: 2px;
+                                            display: block;
+                                            text-decoration: none;
+                                            color: $main-col;
+                                            font-size: 14px;
+                                            font-weight: 500;
+                                            line-height: 20px;
+                                            font-family: $main-font;
+                                        }
+
+                                        .date {
+                                            font-size: 12px;
+                                            font-family: $main-font;
+
+                                            i {
+                                                margin-right: 3px;
+                                                font-size: 12px;
+                                            }
+                                        }*/
+                        h3 {
+                            color: black;
+                            font-weight: 700;
+                            font-size: 13px;
+                            margin-bottom: 5px;
+                        }
+
+                        p {
+                            color: black;
+                            font-size: 12px;
+                            font-weight: 500;
+                            margin-bottom: 5px;
+                        }
+
+                        span {
+                            color: $main-col-red;
+                            font-size: 10px;
+                            display: block;
+
+                            i {
+                                margin-right: 5px;
+                            }
+                        }
+                    }
+
+                    .active {
+                        background-color: #d3e4a7;
+
+                        &:hover {
+                            background-color: #cfe693;
+                        }
+                    }
+                }
+            }
+
+            .footer {
+                width: 100%;
+                height: 30px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: 1px solid #eaeaea;
+
+                a {
+                    color: $main-col;
+                    font-size: 14px;
+                    font-weight: 600;
+                }
+            }
+        }
+
+        .angle {
+            background-color: white;
+            position: absolute;
+            z-index: 11;
+            top: 34px;
+            right: 22px;
+            box-shadow: 0px 0px 16px -1px grey;
+            transform: rotate(45deg);
+            width: 20px;
+            height: 20px;
+        }
+    }
+}
+
+.profileLink {
+    text-decoration: none;
+    border-radius: 1px;
+    padding: 3px 5px 2px 2px;
+    transition: all 0.2s linear;
+
+    &:hover {
+        text-decoration: none !important;
+    }
+
+    .profile {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+
+        .image {
+            float: left;
+            height: 28px;
+            width: 28px;
+            border-radius: 100%;
+            margin-right: 10px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            img {
+                max-height: 28px;
+                max-width: 28px;
+                float: left;
+            }
+        }
+
+        h2 {
+            letter-spacing: 1px;
+            color: white;
+            font-size: 13px;
+            font-weight: 500;
+        }
+    }
+
+    &:hover {
+        background-color: $main-col-red;
+    }
+}
+
+.info {
+    display: inline-block;
+
+    a {
+        color: white;
+        font-weight: 600;
+        font-size: 12px;
+        letter-spacing: 1px;
+        padding: 0px 4px;
+        line-height: 34px;
+        border-radius: 1px;
+        display: inline-block;
+        text-decoration: none;
+        transition: all .2s linear;
+
+        & {
+            border: none;
+            border-radius: unset;
+            margin-right: unset;
+        }
+
+        &:hover {
+            background-color: $main-col-red;
+        }
+
+        i {
+            margin-right: 5px;
+        }
+    }
+}
+
+.header-responsive {
+    .navbar-toggler:focus {
+        outline: none;
+    }
+
+    .navbar {
+        background-color: #004466 !important;
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+
+        .nav-link {
+            color: white !important;
+        }
+
+        .nav-item .active {
+            color: #b30000 !important;
+        }
+
+        button {
+            border: none;
+            padding: 0px;
+            font-size: 16px;
+        }
+    }
+
+    .logo {
+        height: 31px;
+
+        img {
+            height: 31px;
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+
+
+    #header {
+        min-height: 46px;
+
+        .container-fluid {
+            position: relative;
+            padding: 0px;
+
+            .top {
+                height: 44px;
+            }
+
+            .bottom {
+                padding: 13px 0;
+                height: 28px;
+
+                .logo {
+                    img {
+                        height: 66%;
+                        margin-top: 5px;
+                    }
+                }
+
+                .menu {
+                    ul {
+                        li {
+                            top: -9px;
+
+                            a {
+                                padding: 8px;
+                                font-size: 10px;
+                            }
+                        }
+                    }
+                }
+
+                .user {
+                    margin-top: -16px;
+                    height: 31px;
+                    padding-right: 30px;
+
+                    .profileLink {
+                        padding: 5px 5px 2px 2px;
+
+                        .profile {
+                            .image {
+                                height: 22px;
+                                width: 22px;
+
+                                img {
+                                    max-height: 22px;
+                                    max-width: 22px;
+                                }
+                            }
+
+                            h2 {
+                                font-size: 9px;
+                            }
+                        }
+                    }
+
+                    .notifications {
+                        .bell {
+                            i {
+                                font-size: 13px;
+                            }
+
+                            .notiCount {
+                                font-size: 7px;
+                                top: -4px;
+                            }
+                        }
+
+                        .notificationWrapper {
+                            display: none;
+
+                            .notiReview {
+                                width: 380px;
+
+                                .content {
+                                    width: 100%;
+                                    height: calc(100% - 24px);
+                                    padding: 10px 0px;
+                                    overflow: auto;
+
+                                    ul {
+                                        li {
+                                            background-color: rgba(226, 248, 255, 0.19);
+                                            border: 1px solid whitesmoke;
+                                            height: 70px;
+                                            padding: 4px 12px;
+
+                                            &:hover {
+                                                background-color: #ecf5fd;
+                                            }
+
+                                            a {
+                                                text-decoration: none;
+                                            }
+
+                                            h3 {
+                                                color: black;
+                                                font-weight: 700;
+                                                font-size: 13px;
+                                                margin-bottom: 5px;
+                                            }
+
+                                            p {
+                                                color: black;
+                                                font-size: 12px;
+                                                font-weight: 500;
+                                                margin-bottom: 5px;
+                                            }
+
+                                            span {
+                                                color: $main-col-red;
+                                                font-size: 10px;
+                                                display: block;
+
+                                                i {
+                                                    margin-right: 5px;
+                                                }
+                                            }
+                                        }
+
+                                        .active {
+                                            background-color: #d3e4a7;
+
+                                            &:hover {
+                                                background-color: #cfe693;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                .footer {
+                                    height: 24px;
+
+                                    a {
+                                        font-size: 12px;
+                                    }
+                                }
+                            }
+
+                            .angle {
+                                right: 16px;
+                            }
+                        }
+                    }
+
+                    .info {
+                        a {
+                            font-size: 10px;
+                        }
+                    }
+                }
+            }
+
+            .breadcrumbs {
+                top: 28px;
+                padding-top: 5px;
+
+                a {
+                    font-size: 10px;
+                }
+            }
+        }
+    }
+
+    .header-responsive {
+        .notifications {
+            .bell {
+                i {
+                    font-size: 13px;
+                }
+
+                .notiCount {
+                    font-size: 7px;
+                    top: -4px;
+                }
+            }
+
+            .notificationWrapper {
+                display: none;
+
+                .notiReview {
+                    width: 380px;
+
+                    .content {
+                        width: 100%;
+                        height: calc(100% - 24px);
+                        padding: 10px 0px;
+                        overflow: auto;
+
+                        ul {
+                            li {
+                                background-color: rgba(226, 248, 255, 0.19);
+                                border: 1px solid whitesmoke;
+                                height: 70px;
+                                padding: 4px 12px;
+
+                                &:hover {
+                                    background-color: #ecf5fd;
+                                }
+
+                                a {
+                                    text-decoration: none;
+                                }
+
+                                h3 {
+                                    color: black;
+                                    font-weight: 700;
+                                    font-size: 13px;
+                                    margin-bottom: 5px;
+                                }
+
+                                p {
+                                    color: black;
+                                    font-size: 12px;
+                                    font-weight: 500;
+                                    margin-bottom: 5px;
+                                }
+
+                                span {
+                                    color: $main-col-red;
+                                    font-size: 10px;
+                                    display: block;
+
+                                    i {
+                                        margin-right: 5px;
+                                    }
+                                }
+                            }
+
+                            .active {
+                                background-color: #d3e4a7;
+
+                                &:hover {
+                                    background-color: #cfe693;
+                                }
+                            }
+                        }
+                    }
+
+                    .footer {
+                        height: 24px;
+
+                        a {
+                            font-size: 12px;
+                        }
+                    }
+                }
+
+                .angle {
+                    right: 16px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    .breadcrumbs-responsive {
+        display: flex !important;
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+
+    .navbar {
+        display: flex !important;
+    }
+
+    #header {
+        display: none !important;
+        min-height: 46px;
+
+        .container-fluid {
+            position: relative;
+            padding: 0px;
+
+            .top {
+                height: 44px;
+            }
+
+            .bottom {
+                padding: 13px 0;
+                height: 28px;
+
+                .logo {
+                    img {
+                        height: 84%;
+                        margin-top: 2px;
+                    }
+                }
+
+                .menu {
+                    .menuIcon {
+                        display: block;
+                    }
+
+                    ul {
+                        display: none;
+
+                        li {
+                            top: -9px;
+
+                            a {
+                                padding: 8px;
+                                font-size: 10px;
+                            }
+                        }
+                    }
+                }
+
+                .user {
+                    margin-top: -16px;
+                    height: 31px;
+                    padding-right: 30px;
+
+                    .profileLink {
+                        padding: 4px 5px 2px 2px !important;
+
+                        .profile {
+                            .image {
+                                height: 22px;
+                                width: 22px;
+
+                                img {
+                                    max-height: 22px;
+                                    max-width: 22px;
+                                }
+                            }
+
+                            h2 {
+                                font-size: 9px;
+                            }
+                        }
+                    }
+
+
+
+                    .info {
+                        a {
+                            font-size: 10px;
+                        }
+                    }
+                }
+            }
+
+            .breadcrumbs {
+                top: 28px;
+                padding-top: 5px;
+
+                a {
+                    font-size: 10px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    #header {
+        .container-fluid {
+            .top {
+            }
+
+            .bottom {
+
+                .logo {
+                    img {
+                    }
+                }
+
+                .menu {
+                    .menuIcon {
+                        display: block;
+                    }
+
+                    ul {
+                        display: none;
+
+                        li {
+
+                            a {
+                            }
+                        }
+                    }
+                }
+
+                .user {
+                    padding-right: 4px;
+
+                    .profileLink {
+                        padding: 4px 5px 2px 2px !important;
+
+                        .profile {
+                            .image {
+
+
+                                img {
+                                }
+                            }
+
+                            h2 {
+                            }
+                        }
+                    }
+
+                    .notifications {
+                        .bell {
+                            i {
+                            }
+
+                            .notiCount {
+                            }
+                        }
+
+                        .notificationWrapper {
+                            display: none;
+
+                            .notiReview {
+                                width: 350px;
+
+                                .content {
+
+                                    ul {
+                                        li {
+                                            background-color: rgba(226, 248, 255, 0.19);
+                                            border: 1px solid whitesmoke;
+                                            height: 70px;
+                                            padding: 4px 12px;
+
+                                            &:hover {
+                                                background-color: #ecf5fd;
+                                            }
+
+                                            a {
+                                                text-decoration: none;
+                                            }
+
+                                            h3 {
+                                                color: black;
+                                                font-weight: 700;
+                                                font-size: 13px;
+                                                margin-bottom: 5px;
+                                            }
+
+                                            p {
+                                                color: black;
+                                                font-size: 12px;
+                                                font-weight: 500;
+                                                margin-bottom: 5px;
+                                            }
+
+                                            span {
+                                                color: $main-col-red;
+                                                font-size: 10px;
+                                                display: block;
+
+                                                i {
+                                                    margin-right: 5px;
+                                                }
+                                            }
+                                        }
+
+                                        .active {
+                                            background-color: #d3e4a7;
+
+                                            &:hover {
+                                                background-color: #cfe693;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                .footer {
+
+                                    a {
+                                    }
+                                }
+                            }
+
+                            .angle {
+                            }
+                        }
+                    }
+
+                    .info {
+                        a {
+                        }
+                    }
+                }
+            }
+
+            .breadcrumbs {
+
+                a {
+                }
+            }
+        }
+    }
+
+    .header-responsive {
+        .notifications {
+            .bell {
+                i {
+                }
+
+                .notiCount {
+                }
+            }
+
+            .notificationWrapper {
+                display: none;
+
+                .notiReview {
+                    width: 350px;
+
+                    .content {
+
+                        ul {
+                            li {
+                                background-color: rgba(226, 248, 255, 0.19);
+                                border: 1px solid whitesmoke;
+                                height: 70px;
+                                padding: 4px 12px;
+
+                                &:hover {
+                                    background-color: #ecf5fd;
+                                }
+
+                                a {
+                                    text-decoration: none;
+                                }
+
+                                h3 {
+                                    color: black;
+                                    font-weight: 700;
+                                    font-size: 13px;
+                                    margin-bottom: 5px;
+                                }
+
+                                p {
+                                    color: black;
+                                    font-size: 12px;
+                                    font-weight: 500;
+                                    margin-bottom: 5px;
+                                }
+
+                                span {
+                                    color: $main-col-red;
+                                    font-size: 10px;
+                                    display: block;
+
+                                    i {
+                                        margin-right: 5px;
+                                    }
+                                }
+                            }
+
+                            .active {
+                                background-color: #d3e4a7;
+
+                                &:hover {
+                                    background-color: #cfe693;
+                                }
+                            }
+                        }
+                    }
+
+                    .footer {
+
+                        a {
+                        }
+                    }
+                }
+
+                .angle {
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    #header {
+        .container-fluid {
+            .top {
+            }
+
+            .bottom {
+
+                .logo {
+                    img {
+                    }
+                }
+
+                .menu {
+                    .menuIcon {
+                        display: block;
+                    }
+
+                    ul {
+                        display: none;
+
+                        li {
+
+                            a {
+                            }
+                        }
+                    }
+                }
+
+                .user {
+                    padding-right: 4px;
+
+                    .profileLink {
+
+                        .profile {
+                            .image {
+                                margin-right: 0px;
+
+                                img {
+                                }
+                            }
+
+                            h2 {
+                                display: none !important;
+                            }
+                        }
+                    }
+
+                    .notifications {
+                        .bell {
+                            i {
+                            }
+
+                            .notiCount {
+                            }
+                        }
+
+                        .notificationWrapper {
+                            display: none;
+
+                            .notiReview {
+                                width: 350px;
+
+                                .content {
+
+                                    ul {
+                                        li {
+                                            background-color: rgba(226, 248, 255, 0.19);
+                                            border: 1px solid whitesmoke;
+                                            height: 70px;
+                                            padding: 4px 12px;
+
+                                            &:hover {
+                                                background-color: #ecf5fd;
+                                            }
+
+                                            a {
+                                                text-decoration: none;
+                                            }
+
+                                            h3 {
+                                                color: black;
+                                                font-weight: 700;
+                                                font-size: 13px;
+                                                margin-bottom: 5px;
+                                            }
+
+                                            p {
+                                                color: black;
+                                                font-size: 12px;
+                                                font-weight: 500;
+                                                margin-bottom: 5px;
+                                            }
+
+                                            span {
+                                                color: $main-col-red;
+                                                font-size: 10px;
+                                                display: block;
+
+                                                i {
+                                                    margin-right: 5px;
+                                                }
+                                            }
+                                        }
+
+                                        .active {
+                                            background-color: #d3e4a7;
+
+                                            &:hover {
+                                                background-color: #cfe693;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                .footer {
+
+                                    a {
+                                    }
+                                }
+                            }
+
+                            .angle {
+                            }
+                        }
+                    }
+
+                    .info {
+                        a {
+                            span {
+                                display: none;
+                            }
+
+                            i {
+                                margin-right: 0px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .breadcrumbs {
+
+                a {
+                }
+            }
+        }
+    }
+
+    .header-responsive {
+        .notifications {
+            .bell {
+                i {
+                }
+
+                .notiCount {
+                }
+            }
+
+            .notificationWrapper {
+                display: none;
+
+                .notiReview {
+                    width: 350px;
+
+                    .content {
+
+                        ul {
+                            li {
+                                background-color: rgba(226, 248, 255, 0.19);
+                                border: 1px solid whitesmoke;
+                                height: 70px;
+                                padding: 4px 12px;
+
+                                &:hover {
+                                    background-color: #ecf5fd;
+                                }
+
+                                a {
+                                    text-decoration: none;
+                                }
+
+                                h3 {
+                                    color: black;
+                                    font-weight: 700;
+                                    font-size: 13px;
+                                    margin-bottom: 5px;
+                                }
+
+                                p {
+                                    color: black;
+                                    font-size: 12px;
+                                    font-weight: 500;
+                                    margin-bottom: 5px;
+                                }
+
+                                span {
+                                    color: $main-col-red;
+                                    font-size: 10px;
+                                    display: block;
+
+                                    i {
+                                        margin-right: 5px;
+                                    }
+                                }
+                            }
+
+                            .active {
+                                background-color: #d3e4a7;
+
+                                &:hover {
+                                    background-color: #cfe693;
+                                }
+                            }
+                        }
+                    }
+
+                    .footer {
+
+                        a {
+                        }
+                    }
+                }
+
+                .angle {
+                }
+            }
+        }
+    }
+
+
+    .profileLink {
+        
+        .profile {
+            
+            h2 {
+                display:none !important;
+            }
+        }
+
+    }
+
+}

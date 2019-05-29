@@ -1,0 +1,124 @@
+﻿
+@{
+    ViewBag.Title = "OprIndex";
+    List<string> permitted = (List<string>)Session["permitted"];
+}
+
+<div id="operations">
+    <div class="contaiber-fluid">
+        <div class="row">
+            <div class="col-md-6 col-lg-4">
+                <div class="trafficAccident">
+                    <h1>Avtobusların vəziyyətinə ilkin nəzarət</h1>
+                    <ul>
+                        @* NV Nəzarət kartı*@
+                        <li class="@(permitted.FirstOrDefault(a => a == "InitContCreate")==null? "hideAction" : "")">
+                            <a href="@Url.Action("InitContCreate","MainOperations")">
+                                <i class="fas fa-angle-double-right"></i> AVN kartı aç
+                            </a>
+                        </li>
+                        <br class="@(permitted.FirstOrDefault(a => a == "InitContCreate")==null? "hideAction" : "")">
+
+                        @* Açıq NV Nəzarət kartları*@
+                        <li class="@(permitted.FirstOrDefault(a => a == "OpenInitContIndex")==null? "hideAction" : "")">
+                            <a href="@Url.Action("OpenInitContIndex","MainOperations")">
+                                <i class="fas fa-angle-double-right"></i> AVN kartı bağla
+                            </a>
+                        </li>
+                        <br class="@(permitted.FirstOrDefault(a => a == "OpenInitContIndex")==null? "hideAction" : "")">
+
+                        @* Bağlanılmış NV Nəzarət kartları*@
+                        <li class="@(permitted.FirstOrDefault(a => a == "ClosedInitContIndex")==null? "hideAction" : "")">
+                            <a href="@Url.Action("ClosedInitContIndex","MainOperations")">
+                                <i class="fas fa-angle-double-right"></i> AVN tarixçəsi
+                            </a>
+                        </li>
+                        <br class="@(permitted.FirstOrDefault(a => a == "ClosedInitContIndex")==null? "hideAction" : "")">
+
+                        @* Mexaniklər üçün Bağlanılmış NV Nəzarət kartları*@
+                        <li class="@(permitted.FirstOrDefault(a => a == "ClosedInitContMechIndex")==null? "hideAction" : "")">
+                            <a href="@Url.Action("ClosedInitContMechIndex","MainOperations")">
+                                <i class="fas fa-angle-double-right"></i> Bağlı AVN kartları - Mexanik
+                            </a>
+                        </li>
+                        <br class="@(permitted.FirstOrDefault(a => a == "ClosedInitContMechIndex")==null? "hideAction" : "")">
+
+                        @* SOCAR Yanacaq məlumatlarının daxil edilməsi*@
+                        <li class="@(permitted.FirstOrDefault(a => a == "InitContSOCARIndex")==null? "hideAction" : "")">
+                            <a href="@Url.Action("InitContSOCARIndex","MainOperations")">
+                                <i class="fas fa-angle-double-right"></i> SOCAR Yanacaq məlumatlarının daxil edilməsi
+                            </a>
+                        </li>
+                        <br class="@(permitted.FirstOrDefault(a => a == "InitContSOCARIndex")==null? "hideAction" : "")">
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="trafficAccident">
+                    <h1>Avtobusların təmir prosesinə nəzarət</h1>
+                    <ul>
+                        @* Maintenance monitoring*@
+                        <li class="@(permitted.FirstOrDefault(a => a == "MaintenanceMonitorngIndex")==null? "hideAction" : "")">
+                            <a href="@Url.Action("MaintenanceMonitorngIndex","MainOperations")">
+                                <i class="fas fa-angle-double-right"></i> TQ Nəzarət
+                            </a>
+                        </li>
+                        <br class="@(permitted.FirstOrDefault(a => a == "InitContCheckupIndex")==null? "hideAction" : "")">
+
+                        @* Yoxlama kartı*@
+                        <li class="@(permitted.FirstOrDefault(a => a == "InitContCheckupIndex")==null? "hideAction" : "")">
+                            <a href="@Url.Action("InitContCheckupIndex","MainOperations")">
+                                <i class="fas fa-angle-double-right"></i> Yoxlama kartı
+                            </a>
+                        </li>
+                        <br class="@(permitted.FirstOrDefault(a => a == "InitContCheckupIndex")==null? "hideAction" : "")">
+
+                        @* Job Card*@
+                        <li class="@(permitted.FirstOrDefault(a => a == "JobcardDashboard")==null? "hideAction" : "")">
+                            <a href="@Url.Action("JobcardDashboard","MainOperations")">
+                                <i class="fas fa-angle-double-right"></i> Təmir kartı
+                            </a>
+                        </li>
+                        <br class="@(permitted.FirstOrDefault(a => a == "JobcardDashboard")==null? "hideAction" : "")">
+
+                        @* Job Card Receiving submit*@
+                        <li class="@(permitted.FirstOrDefault(a => a == "SubmitRepairedBus")==null? "hideAction" : "")">
+                            <a href="@Url.Action("SubmitRepairedBus","MainOperations")">
+                                <i class="fas fa-angle-double-right"></i> Təmir edilmiş avtobus qəbulu
+                            </a>
+                        </li>
+                        <br class="@(permitted.FirstOrDefault(a => a == "SubmitRepairedBus")==null? "hideAction" : "")">
+
+                        @* Mobile service*@
+                        <li class="@(permitted.FirstOrDefault(a => a == "SubmitRepairedBus")==null? "hideAction" : "")">
+                            <a href="@Url.Action("SubmitRepairedBus","MainOperations")">
+                                <i class="fas fa-angle-double-right"></i> Mobil Xidmət
+                            </a>
+                        </li>
+                        <br class="@(permitted.FirstOrDefault(a => a == "SubmitRepairedBus")==null? "hideAction" : "")">
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="trafficAccident">
+                    <h1>Ehtiyyat hissələrinin planlaşdırılması və təchizatı</h1>
+                    <ul>
+                        @* Not met requisitions*@
+                        <li class="@(permitted.FirstOrDefault(a => a == "NotMetRequisitionsIndex")==null? "hideAction" : "")">
+                            <a href="@Url.Action("NotMetRequisitionsIndex","MainOperations")">
+                                <i class="fas fa-angle-double-right"></i> Qarşılanmamış tələblər
+                            </a>
+                        </li>
+                        <br class="@(permitted.FirstOrDefault(a => a == "NotMetRequisitionsIndex")==null? "hideAction" : "")">
+
+                        
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

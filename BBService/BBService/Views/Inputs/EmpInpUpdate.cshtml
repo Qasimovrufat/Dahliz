@@ -1,0 +1,175 @@
+﻿@model BBService.Models.ViewHome
+@{
+    ViewBag.Title = "EmpInpUpdate";
+}
+
+
+<div id="driverInputUpdate">
+    <div class="contaiber-fluid">
+        <div class="row">
+            <div class="col-md-12 inputAccident">
+                <h1>Sürücü məlumatlarını yenilə :</h1>
+                <form method="post" @Url.Action("EmpInpUpdate", "Inputs") class="formTest">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-4">
+                            <div class="form-group drvGroup">
+                                <label for="EmployeeCode" class="col-sm-10 col-form-label">Sürücü kodu :</label>
+                                <div class="col-sm-10 drvCode">
+                                    <span>@(ViewBag.Drv.EmployeeCode == null ? "" : ViewBag.Drv.EmployeeCode)</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Surname" class="col-sm-10 col-form-label">Soyad :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control inputItem" id="Surname" name="Surname" value="@(ViewBag.Drv.Surname==null?"":ViewBag.Drv.Surname)" placeholder="Daxil edin ...">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name" class="col-sm-10 col-form-label">Ad :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control inputItem" id="name" name="Name" value="@(ViewBag.Drv.Name==null?"":ViewBag.Drv.Name)" placeholder="Daxil edin ...">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="FutherName" class="col-sm-10 col-form-label">Ata adı :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control inputItem" id="FutherName" name="FutherName" value="@(ViewBag.Drv.FutherName==null?"":ViewBag.Drv.FutherName)" placeholder="Daxil edin ...">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="BirthDate" class="col-sm-10 col-form-label">Doğum tarixi</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control datepicker inputItem" id="BirthDate" name="BirthDate" value="@(ViewBag.Drv.BirthDate==null?"":ViewBag.Drv.BirthDate.ToString("dd.MM.yyyy"))" placeholder="Tarix seçin ...">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="RecruitmentDate" class="col-sm-10 col-form-label">İşə qəbul tarixi</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control datepicker inputItem" id="RecruitmentDate" name="RecruitmentDate" value="@(ViewBag.Drv.RecruitmentDate==null?"":ViewBag.Drv.RecruitmentDate.ToString("dd.MM.yyyy"))" placeholder="Tarix seçin ...">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-4">
+                            <div class="form-group inputHere">
+                                <label for="DepartmentId" class="col-sm-10 col-form-label">Şöbə :</label>
+                                <div class="col-sm-10">
+                                    <select id="DepartmentId" class="form-control inputItem inputItemSelect selectpicker" name="DepartmentId" data-live-search="true">
+                                        <option value="0" selected>Seçin ...</option>
+                                        @foreach (var item in Model.Departments)
+                                        {
+                                            <option @(item.Id == ViewBag.Drv.DepartmentId ? "selected" : "") value="@item.Id">@item.Name</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group inputHere">
+                                <label for="SectorId" class="col-sm-10 col-form-label">Sektor :</label>
+                                <div class="col-sm-10">
+                                    <select id="SectorId" class="form-control inputItem inputItemSelect selectpicker" name="SectorId" data-live-search="true">
+                                        <option value="0" selected>Seçin ...</option>
+                                        @foreach (var item in Model.Sectors)
+                                        {
+                                            <option @(item.Id == ViewBag.Drv.SectorId ? "selected" : "") value="@item.Id">@item.Name</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group inputHere">
+                                <label for="PositionId" class="col-sm-10 col-form-label">Vəzifə :</label>
+                                <div class="col-sm-10">
+                                    <select id="PositionId" class="form-control inputItem inputItemSelect selectpicker" name="PositionId" data-live-search="true">
+                                        <option value="0" selected>Seçin ...</option>
+                                        @foreach (var item in Model.Positions)
+                                        {
+                                            <option @(item.Id == ViewBag.Drv.PositionId ? "selected" : "") value="@item.Id">@item.Name</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Phone" class="col-sm-10 col-form-label">Nömrə :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control inputItem" id="Phone" name="Phone" value="@(ViewBag.Drv.Phone==null?"":ViewBag.Drv.Phone)" placeholder="Daxil edin ...">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="LicenceSeries" class="col-sm-10 col-form-label">S/V Seriyası :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control inputItem" id="LicenceSeries" name="LicenceSeries" value="@(ViewBag.Drv.LicenceSeries==null?"":ViewBag.Drv.LicenceSeries)" placeholder="Daxil edin ...">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="LicenceNumber" class="col-sm-10 col-form-label">S/V Nömərsi :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control inputItem" id="LicenceNumber" name="LicenceNumber" value="@(ViewBag.Drv.LicenceNumber==null?"":ViewBag.Drv.LicenceNumber)" placeholder="Daxil edin ...">
+                                </div>
+                            </div>                            
+                        </div>
+
+                        <div class="col-md-6 col-lg-4">
+                            <div class="form-group">
+                                <label for="LicenceCategory" class="col-sm-10 col-form-label">S/V Kateqoriyası :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control inputItem" id="LicenceCategory" name="LicenceCategory" value="@(ViewBag.Drv.LicenceCategory==null?"":ViewBag.Drv.LicenceCategory)" placeholder="Daxil edin ...">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="LicenceIssueDate" class="col-sm-10 col-form-label">S/V Verilmə tarixi</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control datepicker inputItem" id="LicenceIssueDate" name="LicenceIssueDate" value="@(ViewBag.Drv.LicenceIssueDate==null?"":ViewBag.Drv.LicenceIssueDate.ToString("dd.MM.yyyy"))" placeholder="Tarix seçin ...">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="LicenceExpireDate" class="col-sm-10 col-form-label">S/V Etibarlılıq tarixi</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control datepicker inputItem" id="LicenceExpireDate" name="LicenceExpireDate" value="@(ViewBag.Drv.LicenceExpireDate==null?"":ViewBag.Drv.LicenceExpireDate.ToString("dd.MM.yyyy"))" placeholder="Tarix seçin ...">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="DeactivationDate" class="col-sm-10 col-form-label">İşdən çıxma tarixi</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control datepicker inputItem" id="DeactivationDate" name="DeactivationDate" value="@(ViewBag.Drv.DeactivationDate==null?"":ViewBag.Drv.DeactivationDate.ToString("dd.MM.yyyy"))" placeholder="Tarix seçin ...">
+                                </div>
+                            </div>
+
+                            <div class="form-group form-check">
+                                <div class="col-sm-10">
+                                    <input type="checkbox" value="true" @(ViewBag.Drv.Status == false ? "checked" : "") name="Status" class="form-check-input" id="status">
+                                </div>
+                                <label class="col-sm-10 form-check-label" for="status">İşdən çıxıb</label>
+                            </div>
+
+                            <!-- Hiden inputs -->
+                            <input type="hidden" class="form-control" name="Id" value="@ViewBag.DrvId">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group row">
+                                <div class="col-sm-10">
+                                    <button type="submit" class="btn btn-primary addButton">Yenilə</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

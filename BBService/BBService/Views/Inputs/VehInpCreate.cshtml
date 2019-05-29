@@ -1,0 +1,140 @@
+﻿@model BBService.Models.ViewHome
+@{
+    ViewBag.Title = "VehInpCreate";
+}
+
+
+<div id="vehInputCreate">
+    <div class="contaiber-fluid">
+        <div class="row">
+            <div class="col-md-6 inputAccident">
+                <h1>NV daxil edin :</h1>
+                <form method="post" @Url.Action("VehInpCreate", "Inputs") class="formTest">
+
+                    <div class="form-group">
+                        <label for="VehicleCode" class="col-sm-10 col-form-label">NV Kodu* :</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control inputItem" id="VehicleCode" name="VehicleCode" placeholder="Daxil edin ...">
+                        </div>
+                    </div>
+                    @if (Session["InvalidVehCode"] != null)
+                    {
+                        Session["InvalidVehCode"] = null;
+                        <div class="form-group">
+                            <div class="alert alert-info">
+                                Daxil etdiyiniz NV kodu artıq mövcuddur ...
+                            </div>
+                        </div>
+                    }
+
+                    <div class="form-group">
+                        <label for="Number" class="col-sm-10 col-form-label">NV Nömrəsi* :</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control inputItem" id="Number" name="Number" placeholder="Daxil edin ...">
+                        </div>
+                    </div>
+
+                    @if (Session["InvalidVehNum"] != null)
+                    {
+                        Session["InvalidVehNum"] = null;
+                        <div class="form-group">
+                            <div class="alert alert-info">
+                                Daxil etdiyiniz NV Nömrəsi artıq mövcuddur ...
+                            </div>
+                        </div>
+                    }
+
+                    <div class="form-group">
+                        <label for="BrandId" class="col-sm-10 col-form-label">Marka və Model :</label>
+                        <div class="col-sm-10">
+                            <select id="BrandId" class="form-control inputItem inputItemSelect selectpicker" name="BrandId" data-live-search="true">
+                                <option value="0" selected>Seçin ...</option>
+                                @foreach (var item in Model.VehiclesBrand)
+                                {
+                                    <option value="@item.Id">@item.Brand</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ReleaseYear" class="col-sm-10 col-form-label">İstehsalat İli :</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control inputItem" id="ReleaseYear" name="ReleaseYear" min="1000" max="3000" placeholder="Daxil edin ...">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="NumberOfSeats" class="col-sm-10 col-form-label">Oturacaq sayı :</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control inputItem" id="NumberOfSeats" name="NumberOfSeats" min="0" max="100" placeholder="Daxil edin ...">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Capacity" class="col-sm-10 col-form-label">Tutumu :</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control inputItem" id="Capacity" name="Capacity" min="0" max="1000" placeholder="Daxil edin ...">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ChassisNumber" class="col-sm-10 col-form-label">Şassi Nömrəsi* :</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control inputItem" id="ChassisNumber" name="ChassisNumber" placeholder="Daxil edin ...">
+                        </div>
+                    </div>
+
+                    @if (Session["InvalidVehCha"] != null)
+                    {
+                        Session["InvalidVehCha"] = null;
+                        <div class="form-group">
+                            <div class="alert alert-info">
+                                Daxil etdiyiniz NV Şassi nömrəsi artıq mövcuddur ...
+                            </div>
+                        </div>
+                    }
+
+                    <div class="form-group">
+                        <label for="EngineCode" class="col-sm-10 col-form-label">Mühərrik Nömrəsi* :</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control inputItem" id="EngineCode" name="EngineCode" placeholder="Daxil edin ...">
+                        </div>
+                    </div>
+
+                    @if (Session["InvalidVehEng"] != null)
+                    {
+                        Session["InvalidVehEng"] = null;
+                        <div class="form-group">
+                            <div class="alert alert-info">
+                                Daxil etdiyiniz NV Mühərrik nömrəsi artıq mövcuddur ...
+                            </div>
+                        </div>
+                    }
+
+                    <div class="form-group">
+                        <label for="RegistrationCertificationSeries" class="col-sm-10 col-form-label">T/Posport Seriyası :</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control inputItem" id="RegistrationCertificationSeries" name="RegistrationCertificationSeries" placeholder="Daxil edin ...">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="RegistrationCertificationNumber" class="col-sm-10 col-form-label">T/Posport Nömrəsi :</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control inputItem" id="RegistrationCertificationNumber" name="RegistrationCertificationNumber" placeholder="Daxil edin ...">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-primary addButton">Əlavə edin</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

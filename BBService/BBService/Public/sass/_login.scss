@@ -1,0 +1,128 @@
+#login {
+    font-family: $main-font;
+    /*background-color: #001a33;*/
+    background-color: #02334c;
+
+    .form {
+        margin-top: 70px;
+
+        .content {
+            margin: 0 auto;
+
+            .logo {
+                margin-bottom: 140px;
+                justify-content: center;
+
+                img {
+                    width: 200px;
+                    height: 62px;
+                    margin-left: -21px;
+                }
+
+                span {
+                    font-style: italic;
+                    color: $main-col-red;
+                }
+            }
+
+            form {
+                border: 1px solid rgba(33, 39, 74, 0.49);
+                padding: 26px 26px;
+                border-radius: 6px;
+
+                .form-group {
+                    margin-bottom: 5px;
+                    border-bottom: 1px solid #02334c;
+                    transition: all .1s linear;
+
+                    &:hover {
+                        border-bottom: 1px solid rgba(29, 32, 49, 0.37);
+                        transition: all .1s linear;
+                    }
+                }
+
+                input {
+                    background-color: transparent !important;
+                    border-radius: unset;
+                    border: none;
+                    background-color: $main-col;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    text-align: center;
+                    color: white !important;
+                    letter-spacing: 2px;
+
+                    &:focus {
+                        box-shadow: 0px 0px 62px 10px #021223;
+                        background-color: transparent !important;
+                    }
+
+                    &:visited {
+                        box-shadow: 0px 0px 62px 10px #021223;
+                    }
+
+
+                    &::placeholder {
+                        font-size: 12px;
+                        font-weight: 600;
+                    }
+                    /*&:hover {
+                        border-bottom: 3px solid #ffffff !important;
+                        box-shadow:5px 0px 5px 5px red !important;
+                    }*/
+                }
+
+                input:-webkit-autofill {
+                    border: none !important;
+                    -webkit-text-fill-color: #adadad;
+                    -webkit-box-shadow: 0 0 0px 1000px #02334c inset;
+                    background-color: #02334c;
+                }
+
+                input:-webkit-autofill:focus {
+                    border: none !important;
+                    -webkit-text-fill-color: #adadad;
+                    -webkit-box-shadow: 0 0 0px 1000px #02334c inset;
+                    background-color: #02334c;
+                }
+
+                input:-webkit-autofill:visited {
+                    border: none !important;
+                    -webkit-text-fill-color: #adadad;
+                    -webkit-box-shadow: 0 0 0px 1000px #02334c inset;
+                    background-color: #02334c;
+                }
+
+                button {
+                    margin-top: 40px;
+                    box-shadow: none;
+                    cursor: pointer;
+                    background-color: unset;
+                    border: none;
+                    font-size: 16px;
+                    font-weight: 500;
+                    letter-spacing: 4px;
+                    color: #888888;
+
+                    &:hover {
+                        box-shadow: 0px 13px 50px 10px #021223;
+                        color: white;
+                    }
+                }
+
+                .alert-info {
+                    line-height: 18px;
+                    height: 47px;
+                    text-align: center;
+                    padding: 7px 5px;
+                    background-color: unset;
+                    border: none;
+                    box-shadow: 0px 13px 50px 10px #021223;
+                    color: red;
+                    font-size: 15px;
+                    letter-spacing: 2px;
+                }
+            }
+        }
+    }
+}

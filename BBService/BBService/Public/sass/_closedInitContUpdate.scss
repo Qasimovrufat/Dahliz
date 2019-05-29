@@ -1,0 +1,44 @@
+#ClosedInitContUpdate {
+    .contaiber-fluid {
+        .inputAccident {
+            @extend %add-style;
+
+
+            .SuccessInfo {
+                font-size: 17px;
+                line-height: 22px;
+                color: $main-col-red;
+            }
+
+            .inputHere {
+                margin-bottom: 0px;
+
+                .dropdown {
+                    padding: 0px 10px;
+                }
+            }
+
+            .cancel {
+                margin-top: 30px;
+
+                a {
+                    margin-left: 15px;
+                    color: #b30000;
+                    padding: 5px 14px;
+                    border: 1px solid #b30000;
+                    border-radius: 4px;
+                    text-decoration: none;
+                    font-weight: 600;
+                    font-size: 14px;
+                    letter-spacing: 3px;
+
+                    &:hover {
+                        background-color: $main-col-red;
+                        color: $main-col-white;
+                        transition: all .1s linear;
+                    }
+                }
+            }
+        }
+    }
+}

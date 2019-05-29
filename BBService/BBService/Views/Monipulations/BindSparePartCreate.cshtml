@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "BindSparePartCreate";
+}
+
+
+<div id="BindSparePartCreate">
+    <div class="contaiber-fluid">
+        <div class="row">
+            <div class="col-md-12 col-lg-6 inputAccident">
+                <h1>Yenisini təyin et :</h1>
+                <form method="post" action="@Url.Action("BindSparePartCreate", "Monipulations")" class="formTest">
+
+                    <div class="form-group inputHere">
+                        <label for="MaintenanceTypeId" class="col-sm-10 col-form-label">TQ :</label>
+                        <div class="col-sm-10">
+                            <select id="MaintenanceTypeId" class="form-control inputItem inputItemSelect selectpicker" name="MaintenanceTypeId" data-live-search="true">
+                                <option selected>Seçin ...</option>
+                                @foreach (var item in ViewBag.Maintenance)
+                                {
+                                    <option value="@item.Id">@(item.Name + " - " + item.MaintenanceValue)</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group inputHere">
+                        <label for="VehicleBrand" class="col-sm-10 col-form-label">Nəqliyyat vasitəsi markası :</label>
+                        <div class="col-sm-10">
+                            <select id="VehicleBrand" class="form-control inputItem inputItemSelect selectpicker" data-live-search="true">
+                                <option selected>Seçin ...</option>
+                                @foreach (var item in ViewBag.VehicleBrand)
+                                {
+                                    <option value="@item.Id">@item.Brand</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group inputHere">
+                        <label for="WarehouseId" class="col-sm-10 col-form-label">Ehtiyyat hissəsi :</label>
+                        <div class="col-sm-10">
+                            <select id="WarehouseId" class="form-control inputItem inputItemSelect selectpicker" name="WarehouseId" data-live-search="true">
+                                <option selected>Seçin ...</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Quantity" class="col-sm-10 col-form-label">Miqdar :</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control inputItem numberValidInput" id="Quantity" name="Quantity" placeholder="Daxil edin ...">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Limit" class="col-sm-10 col-form-label">Limit :</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control inputItem numberValidInput" id="Limit" name="NotRequiredSPLimit" placeholder="Daxil edin ...">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-primary addButton">Əlavə et</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

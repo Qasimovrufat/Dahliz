@@ -1,0 +1,50 @@
+﻿@model BBService.Models.ViewHome
+@{
+    ViewBag.Title = "BindMechUpdate";
+}
+
+
+<div id="BindMechUpdate">
+    <div class="contaiber-fluid">
+        <div class="row">
+            <div class="col-md-12 col-lg-6 inputAccident">
+                <h1>Mexanik təhkimetmə-yeniləmə :</h1>
+                <form method="post" @Url.Action("BindMechUpdate", "Monipulations") class="formTest">
+                    
+                    <div class="form-group inputHere">
+                        <label for="SeniorRecMechId" class="col-sm-12 col-form-label">Baş Mexanik :</label>
+                        <div class="col-sm-12">
+                            <select id="SeniorRecMechId" class="form-control inputItem inputItemSelect selectpicker" name="SeniorRecMechId" data-live-search="true">
+                                <option value="0" selected>Seçin ...</option>
+                                @foreach (var item in ViewBag.SenMech)
+                                {
+                                <option @(ViewBag.SenMechSingle.Id == item.Id ? "selected" : "") value="@item.Id">@item.Surname @item.Name @item.FutherName</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group inputHere">
+                        <label for="RecMechId" class="col-sm-12 col-form-label">Mexanik :</label>
+                        <div class="col-sm-12">
+                            <select id="RecMechId" class="form-control inputItem inputItemSelect selectpicker" name="RecMechId" data-live-search="true">
+                                <option value="0" selected>Seçin ...</option>
+                                @foreach (var item in ViewBag.Mech)
+                                {
+                                <option @(ViewBag.MechSingle.Id == item.Id ? "selected" : "") value="@item.Id">@item.Surname @item.Name @item.FutherName</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <button type="submit" class="btn btn-primary addButton">Əlavə et</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

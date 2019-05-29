@@ -1,0 +1,120 @@
+﻿
+@{
+    ViewBag.Title = "Profile";
+}
+
+<div id="profile">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 left">
+                <div class="image">
+                    @if (ViewBag.User != null && ViewBag.User.Image != null && ViewBag.User.Image != string.Empty)
+                    {
+                        <img src="~/Uploads/@(ViewBag.User.Image)" alt="">
+                    }
+                    else
+                    {
+                        <img src="~/Uploads/empty.jpg" alt="">
+                    }
+                </div>
+                @*<div class="settings">
+
+                    </div>*@
+                <div class="name">
+                    <h1>@ViewBag.User.Fullname</h1>
+                </div>
+            </div>
+            <div class="col-lg-6 right">
+                <form method="post" action=@Url.Action("PrfUpdate", "Profile") enctype="multipart/form-data">
+                    <input type="hidden" class="form-control" id="userId" name="Id" value="@(ViewBag.User == null ? "" : ViewBag.User.Id)">
+                    <div class="form-group photoGroup">
+                        <input type="hidden" class="form-control" name="oldImage" value="@(ViewBag.User==null?"":ViewBag.User.Image)">
+                        <div class="col-sm-10">
+                            <input type="file" id="Image" class="form-control Image" name="Image">
+                            <label for="Image" class="imageLable"><i class="fas fa-upload"></i> Şəkil yüklə</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name" class="col-sm-10 col-form-label">Ad, Soyad</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control inputItem" disabled value="@(ViewBag.User==null?"":ViewBag.User.Fullname)">
+                            <input type="hidden" class="form-control inputItem" name="Fullname" value="@(ViewBag.User==null?"":ViewBag.User.Fullname)">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="col-sm-10 col-form-label">Email</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control inputItem" id="email2" disabled value="@(ViewBag.User==null?"":ViewBag.User.Email)">
+                            <input type="hidden" class="form-control inputItem" id="email" name="Email" value="@(ViewBag.User==null?"":ViewBag.User.Email)">
+                        </div>
+                    </div>
+                    <div class="form-group passwordGroup">
+                        <div class="currentPass">
+                            <label for="Password" class="col-sm-10 col-form-label">Şifrə</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control inputItem" style="margin-bottom:2px;" id="Password" disabled value="@(ViewBag.User==null?"":"123123123")">
+                            </div>
+                        </div>
+
+                        <div class="oldPass">
+                            <label for="oldPassword" class="col-sm-10 col-form-label oldPassword">Köhnə şifrə :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control inputItem oldPassword" id="oldPassword" name="oldPassword">
+                            </div>
+                        </div>
+
+                        <div class="newPass">
+                            <label for="newPassword" class="col-sm-10 col-form-label newPassword">Yeni şifrə :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control inputItem newPassword" id="newPassword" name="newPassword">
+                            </div>
+                        </div>
+
+                        <div class="newPassRepeat">
+                            <label for="newPasswordRepeat" class="col-sm-10 col-form-label newPasswordRepeat">Yeni şifrəni təkrar daxil edin :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control inputItem newPasswordRepeat" id="newPasswordRepeat" name="newPasswordRepeat">
+                            </div>
+                        </div>
+                        @if (Session["NewPasswordInValid"] != null)
+                        {
+                            <div class="alert alert-info alertInfo" role="alert">
+                                Daxil etdiyiniz məlumatlarda yanlışlıq var, dəqiqləşdirib yenidən daxil edin ...
+                            </div>
+                            Session["NewPasswordInValid"] = null;
+                        }
+
+                        @if (ViewBag.User != null)
+                        {
+                            <p class="updatePassword">Şifrəni yenilə</p>
+                        }
+
+                    </div>
+
+                    <div class="form-group phoneGroup">
+                        <label for="phone" class="col-sm-10 col-form-label">Telefon</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control inputItem" style="margin-bottom:2px;" name="Phone" disabled value="@(ViewBag.User==null?"":ViewBag.User.Phone)">
+                            <input type="hidden" class="form-control inputItem" style="margin-bottom:2px;" name="oldPhone" value="@(ViewBag.User==null?"":ViewBag.User.Phone)">
+                        </div>
+
+                        @if (ViewBag.User != null)
+                        {
+                            <p class="updatePhone" style="margin-left:222px;">Nömrəni yenilə</p>
+                        }
+
+
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-primary addButton">Yadda saxla</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

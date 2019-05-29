@@ -1,0 +1,136 @@
+﻿@using BBService.Models
+@model BBService.Models.ViewHome
+@{
+    BBServiceEntities db = new BBServiceEntities();
+
+    ViewBag.Title = "DoneWorksUpdate";
+    List<string> permitted = (List<string>)Session["permitted"];
+    string vehicle = "";
+
+    //jobcard number
+    var cardNo = "";
+    var len = ((string)ViewBag.JobCard.JobCardNo.ToString()).Length;
+    for (int i = 0; i < (9 - len); i++)
+    {
+        cardNo += 0;
+    }
+    cardNo += ViewBag.JobCard.JobCardNo.ToString();
+
+    //Vehicle number
+    if (ViewBag.JobCard.CheckUpCard.VehicleId != null)
+    {
+        int? vehicleId1 = ViewBag.JobCard.CheckUpCard.VehicleId;
+        vehicle = db.Vehicles.FirstOrDefault(v => v.Id == vehicleId1).Number;
+    }
+    else if (ViewBag.JobCard.CheckUpCard.InitialControlSchedule.VehicleId != null)
+    {
+        int? vehicleId2 = ViewBag.JobCard.CheckUpCard.InitialControlSchedule.VehicleId;
+        vehicle = db.Vehicles.FirstOrDefault(v => v.Id == vehicleId2).Number;
+    }
+
+}
+
+<div id="DoneWorksUpdate">
+    <div class="contaiber-fluid">
+        <div class="row">
+            <div class="col-md-12 inputAccident">
+                <h1>Görülmüş işləri yeniləyin :</h1>
+                <form method="post" @Url.Action("DoneWorksUpdate", "MainOperations") class="formTest">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group text">
+                                <label class="col-sm-10 form-check-label" for="CheckUp">Nəqliyyat vasitəsi : <span>@(ViewBag.JobCard.CheckupCardId != null ? vehicle : "")</span></label>
+                            </div>
+
+                            <div class="form-group text">
+                                <label class="col-sm-10 form-check-label" for="CheckUp">Təmir kartı : <span>@cardNo</span></label>
+                            </div>
+
+                            <div class="col-sm-12">
+                                 @if (Session["repeatedSP"] != null)
+                                  {
+                                    Session["repeatedSP"] = null;
+                                    <div class="alert alert-warning SuccessInfo">
+                                        Əməliyyat uğursuzdur!<br />
+                                        Seçdiyiniz Ehtiyyat hissələrindən artıq əlavə edilən(lər)i var.
+                                    </div>
+                                  }
+                            </div>
+
+                            @*Master*@
+                            <div class="form-group inputHere">
+                                <label for="Master" class="col-sm-12 col-form-label">Usta :</label>
+                                <div class="col-sm-12">
+                                    <select id="Master" class="form-control inputItem inputItemSelect selectpicker" name="Master" data-live-search="true">
+                                        <option value="0" selected>Seçin ...</option>
+                                        @foreach (var item in Model.Employees)
+                                        {
+                                            <option @(item.Id==ViewBag.JobcardToDoneWorks.Master?"selected":"") value="@item.Id">@(item.EmployeeCode + "-" + item.Surname + " " + item.Name)</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+
+                            @*Done works*@
+                            <div class="form-group inputHere">
+                                <label for="WorkId" class="col-sm-12 col-form-label">İşlər :</label>
+                                <div class="col-sm-12">
+                                    <select id="WorkId" class="form-control inputItem inputItemSelect selectpicker" name="WorkId" data-live-search="true">
+                                        <option value="0" selected>Seçin ...</option>
+                                        @foreach (var item in Model.DoneWorks)
+                                        {
+                                            <option @(item.Id==ViewBag.JobcardToDoneWorks.WorkId?"selected":"") value="@item.Id">@(item.WorkCode + "-" + item.WorkName )</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+
+                            @*Start time*@
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <label for="WorkStartTime" class="col-sm-12 col-form-label">İşin başlama vaxtı :</label>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control dateTimePicker inputItem" id="WorkStartTime" name="WorkStartTime" value="@(ViewBag.JobcardToDoneWorks.WorkStartTime!=null?ViewBag.JobcardToDoneWorks.WorkStartTime.ToString("dd.MM.yyyy HH:mm"):"")" placeholder="Daxil edin ...">
+                                    </div>
+                                </div>
+                            </div>
+
+                            @*End time*@
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <label for="WorkEndTime" class="col-sm-12 col-form-label">İşin bitmə vaxtı :</label>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control dateTimePicker inputItem" id="WorkEndTime" name="WorkEndTime" value="@(ViewBag.JobcardToDoneWorks.WorkEndTime!=null?ViewBag.JobcardToDoneWorks.WorkEndTime.ToString("dd.MM.yyyy HH:mm"):"")" placeholder="Daxil edin ...">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <input type="hidden" name="Id" id="Id" value="@ViewBag.JobcardToDoneWorks.Id">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <div class="col-sm-10">
+                                    <button type="submit" class="btn btn-primary addButton">Əlavə edin</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <div class="col-sm-10">
+                                    <a id="goBack" href="@Url.Action("DoneWorksIndex","MainOperations",new { jobCardId=ViewBag.JobCard.Id})">Geri qayıdın</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,62 @@
+#StartMaintenance {
+    padding: 15px;
+
+    .accidentInfo {
+        .itemGroup {
+            margin-bottom: 10px;
+
+            .left {
+                display: inline-block;
+                width: 230px;
+                float: left;
+
+                p {
+                    font-size: 16px;
+                    font-weight: 700;
+                }
+            }
+
+            .right {
+                display: inline-block;
+                width: calc(100% - 240px);
+
+                p {
+                    font-size: 13px;
+                    font-weight: 500;
+                    line-height: 20px;
+                }
+            }
+
+            .bold {
+                p {
+                    font-size: 16px;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+
+    .inputAccident {
+        @extend %add-style;
+
+        form {
+            .checks {
+
+                .mainlable {
+                    margin-bottom: 10px;
+                    display: inline-block;
+                }
+
+                input {
+                    width: 16px;
+                    height: 16px;
+                }
+            }
+
+            .line {
+                width: calc(100% - 31px);
+                margin-bottom: 35px;
+            }
+        }
+    }
+}

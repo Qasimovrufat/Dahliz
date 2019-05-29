@@ -1,0 +1,13 @@
+#accidentReportsAdmin {
+    .contaiber-fluid {
+        .filter {
+            @extend %filter-style;  
+        }
+        .content {
+            @extend %content-style;
+        }
+        .footer {
+             @extend %footer-style;
+        }
+    }
+}

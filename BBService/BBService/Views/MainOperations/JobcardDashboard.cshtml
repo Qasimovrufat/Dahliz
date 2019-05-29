@@ -1,0 +1,63 @@
+﻿@model BBService.Models.ViewHome
+@{
+    ViewBag.Title = "JobcardDashboard";
+    List<string> permitted = (List<string>)Session["permitted"];
+}
+
+<div id="JobcardDashboard">
+    <div class="container-fluid">
+        <div class="row dashboardWrapper">
+            <div class="col-lg-3 col-md-4 itemGroup @(permitted.FirstOrDefault(a => a == "JobcardOpen")==null? "hideAction" : "")">
+                <a href="@Url.Action("JobcardOpen", "MainOperations")">
+                    <div class="item item1">
+                        <i class="fa fa-wrench"></i>
+                        <h3>Açıq Təmir Kartları</h3>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-4 itemGroup @(permitted.FirstOrDefault(a => a == "JobcardClosed")==null? "hideAction" : "")">
+                <a href="@Url.Action("JobcardClosed", "MainOperations")">
+                    <div class="item item2">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                        <h3>Bağlı Təmir Kartları</h3>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-4 itemGroup @(permitted.FirstOrDefault(a => a == "JobcardInWaitRoute")==null? "hideAction" : "")">
+                <a href="@Url.Action("JobcardInWaitRoute", "MainOperations")">
+                    <div class="item item3">
+                        <i class="fa fa-pause" aria-hidden="true"></i>
+                        <h3>Gözləmə - Xətt Təmir Kartları</h3>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-lg-3 col-md-4 itemGroup @(permitted.FirstOrDefault(a => a == "JobcardInWaitDepot")==null? "hideAction" : "")">
+                <a href="@Url.Action("JobcardInWaitDepot", "MainOperations")">
+                    <div class="item item4">
+                        <i class="fa fa-pause" aria-hidden="true"></i>
+                        <h3>Gözləmə - Depo Təmir Kartları</h3>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-lg-3 col-md-4 itemGroup @(permitted.FirstOrDefault(a => a == "JobcardIndex")==null? "hideAction" : "")">
+                <a href="@Url.Action("JobcardIndex", "MainOperations")">
+                    <div class="item item5">
+                        <i class="fa fa-globe" aria-hidden="true"></i>
+                        <h3>Bütün Təmir Kartları</h3>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-lg-3 col-md-4 itemGroup @(permitted.FirstOrDefault(a => a == "JobcardAllAdmin")==null? "hideAction" : "")">
+                <a href="@Url.Action("JobcardAllAdmin", "MainOperations")">
+                    <div class="item item6">
+                        <i class="fa fa-unlock" aria-hidden="true"></i>
+                        <h3>Bütün Təmir Kartları - Admin</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

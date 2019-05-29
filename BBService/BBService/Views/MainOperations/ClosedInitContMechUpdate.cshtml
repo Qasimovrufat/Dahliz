@@ -1,0 +1,67 @@
+﻿@model BBService.Models.ViewHome
+@{
+    ViewBag.Title = "ClosedInitContMechUpdate";
+}
+
+<div id="ClosedInitContMechUpdate">
+    <div class="contaiber-fluid">
+        <div class="row">
+            <div class="col-md-12 inputAccident">
+                <h1>Avtobusların ilkin vəziyyətinə nəzarət kartı :</h1>
+                <form method="post" @Url.Action("ClosedInitContMechUpdate", "MainOperations") class="formTest">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-4">
+                            
+                            <div class="form-group">
+                                <label for="EnterKilometer" class="col-sm-12 col-form-label">Giriş Kilometraj :</label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control inputItem" id="EnterKilometer" name="EnterKilometer" value="@(ViewBag.InitCont.EnterKilometer!=null?ViewBag.InitCont.EnterKilometer.ToString("#.##"):"")" placeholder="Daxil edin ...">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="EnterFuel" class="col-sm-12 col-form-label">Giriş yanacaq :</label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control inputItem" id="EnterFuel" name="EnterFuel" value="@(ViewBag.InitCont.EnterFuel!=null? ViewBag.InitCont.EnterFuel.ToString("#.##"):"")" placeholder="Daxil edin ...">
+                                </div>
+                            </div>
+
+                            <div class="form-group inputHere">
+                                <label for="SecondDriverId" class="col-sm-12 col-form-label">Sürücü - 2 :</label>
+                                <div class="col-sm-12">
+                                    <select id="SecondDriverId" class="form-control inputItem inputItemSelect selectpicker" name="SecondDriverId" data-live-search="true">
+                                        <option value="0" selected>Seçin ...</option>
+                                        @foreach (var item in Model.Employees)
+                                        {
+                                            <option @(ViewBag.InitCont.SecondDriverId != null ? (item.Id == ViewBag.InitCont.SecondDriverId ? "selected" : "") : "") value="@item.Id">@(item.Id != null ? (item.Surname + " " + item.Name + " " + item.FutherName) : "")</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="col-sm-10 col-form-label" for="EnterNote">Əlavə qeyd - 2</label>
+                                <div class="col-sm-12">
+                                    <textarea class="form-control inputItem inputItemText" name="EnterNote" id="EnterNote" rows="3">@ViewBag.InitCont.EnterNote</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <div class="col-sm-10">
+                                    <button type="submit" class="btn btn-primary addButton">Dəyişin</button>
+                                </div>
+                                <div class="col-sm-10 cancel">
+                                    <a href="@Url.Action("ClosedInitContMechIndex","MainOperations")">Ləğv edin</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

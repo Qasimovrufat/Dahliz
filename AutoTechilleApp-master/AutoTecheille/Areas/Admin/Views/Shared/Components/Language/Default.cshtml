@@ -1,0 +1,9 @@
+﻿@model List<Language>
+<div class="nav-tabs-wrapper">
+    <select class="select-language product-language form-control">
+        @foreach (var item in Model)
+        {
+            <option value="@item.Key">@item.Key</option>
+        }
+    </select>
+</div>

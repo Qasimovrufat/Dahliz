@@ -1,0 +1,101 @@
+﻿@model ProductViewModel
+@{
+    ViewData["Title"] = "Add";
+}
+
+<div class="panel-header panel-header-sm">
+</div>
+<div class="col-md-12">
+
+    <!-- Tabs with icons on Card -->
+    <div class="card card-nav-tabs">
+        <div class="card-header card-header-primary">
+            <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+            <div class="nav-tabs-navigation">
+                <h5>Məhsul Dilini Seçin</h5>
+                <vc:language></vc:language>
+            </div>
+        </div>
+
+        @foreach (var lang in Model.languages)
+        {
+            <div class="col-12 product-form" style="display:none;" id="@lang.Key">
+                <div class="card card-body">
+                    <span class="alert alert-primary">
+                        <h6>Məhsul @lang.Key.ToUpper() dilində əlavə olunacaqdır</h6>
+                    </span>
+                    <form enctype="multipart/form-data" id="infoForm">
+                        <div asp-validation-summary="ModelOnly"></div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <input type="text" class="form-control description">
+                        </div>
+                        <vc:category id="@lang.Id"></vc:category>
+                        <vc:sub-category id="@lang.Id"></vc:sub-category>
+                        <div class="form-group">
+                            <label for="input-tags">Real Part No</label>
+                            <div class="input-tags"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="product_photo">Add Photo</label>
+                            <input type="file" class="form-control product_photo" />
+                        </div>
+                        <div class="form-group">
+                            <img src="#" class="photo_view" alt="Burada Məhsulun Şəkili Olacaq" />
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary add-button">ADD PRODUCT</button>
+                        </div>
+
+                        <div class="error-wrapper">
+                            <h2 class="error_view"></h2>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        }
+    </div>
+    <!-- End Tabs with icons on Card -->
+</div>
+
+<div class="modal" id="myModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Success</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Mehsul Elave Edildi</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary"><a asp-action="Index" asp-controller="Home" style="color:#fff;">Siyahiya Kec</a></button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><a asp-action="Add" asp-controller="Home" style="color:#fff;">Yeni Mehsul Elave Et</a></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script defer>
+    var product_language = document.querySelector(".product-language");
+    ChangeForm(product_language);
+    product_language.addEventListener("change", function () {
+        var all_forms = document.querySelectorAll(".product-form");
+        for (var form of all_forms) {
+            form.style.display = "none";
+        }
+        ChangeForm(this)
+    })
+
+    function ChangeForm(select) {
+        var value = select.value;
+        var all_forms = document.querySelectorAll(".product-form");
+        for (var form of all_forms) {
+            if (form.getAttribute("id") == value) {
+                form.style.display = "block";
+            }
+        }
+    }
+</script>

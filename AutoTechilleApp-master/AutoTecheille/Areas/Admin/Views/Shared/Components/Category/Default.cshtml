@@ -1,0 +1,15 @@
+﻿@model List<CategoryLanguage>
+<div class="form-group">
+    <label for="category">Category</label>
+    <select multiple class="form-control category">
+        @foreach (var item in Model)
+        {
+            @if (item.LanguageId == ViewBag.CLagId)
+            {
+                <option value="@item.Category.Name">
+                    @item.Category.Name
+                </option>
+            }
+        }
+    </select>
+</div>

@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "AdministrativeIndex";
+    List<string> permitted = (List<string>)Session["permitted"];
+}
+
+<div id="administrativeOperations">
+    <div class="contaiber-fluid">
+        <div class="row">
+            <div class="col-md-6 col-lg-4">
+                <div class="trafficAccident">
+                    <h1>İstifadəçi Əməliyyatları</h1>
+                    <ul>
+                        <li class="@(permitted.FirstOrDefault(a => a == "UsrOprIndex")==null? "hideAction" : "")">
+                            <a href="@Url.Action("UsrOprIndex","UserOperations")">
+                                <i class="fas fa-angle-double-right"></i> İstifadəçilər
+                            </a>
+                        </li>
+                        <br class="@(permitted.FirstOrDefault(a => a == "UsrOprIndex")==null? "hideAction" : "")">
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="trafficAccident">
+                    <h1>İdarəetmə Əməliyyatları</h1>
+                    <ul>
+                        <li class="@(permitted.FirstOrDefault(a => a == "MngOprIndex")==null? "hideAction" : "")">
+                            <a href="@Url.Action("MngOprIndex","ManageOperations")">
+                                <i class="fas fa-angle-double-right"></i> Əməliyyatlar
+                            </a>
+                        </li>
+                        <br class="@(permitted.FirstOrDefault(a => a == "MngOprIndex")==null? "hideAction" : "")">
+
+                                               
+                        <li class="@(permitted.FirstOrDefault(a => a == "ActOprMngIndex")==null? "hideAction" : "")">
+                            <a href="@Url.Action("ActOprMngIndex","ManageOperations")">
+                                <i class="fas fa-angle-double-right"></i> Action-lar
+                            </a>
+                        </li>
+                        <br class="@(permitted.FirstOrDefault(a => a == "searchUserIndex")==null? "hideAction" : "")">
+
+
+                        <li class="@(permitted.FirstOrDefault(a => a == "searchUserIndex")==null? "hideAction" : "")">
+                            <a href="@Url.Action("searchUserIndex","ManageOperations")">
+                                <i class="fas fa-angle-double-right"></i> Action üzrə istifadəçi axtar
+                            </a>
+                        </li>
+                        <br class="@(permitted.FirstOrDefault(a => a == "searchUserIndex")==null? "hideAction" : "")">
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4"></div>
+        </div>
+    </div>
+</div>

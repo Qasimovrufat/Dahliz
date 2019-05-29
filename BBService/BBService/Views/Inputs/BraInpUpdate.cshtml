@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "BraInpUpdate";
+}
+
+
+<div id="brandInputUpdate">
+    <div class="contaiber-fluid">
+        <div class="row">
+            <div class="col-md-6 inputAccident">
+                <h1>Yenilə :</h1>
+                <form method="post" action="@Url.Action("BraInpUpdate", "Inputs")" class="formTest">
+
+                    <div class="form-group">
+                        <label for="Brand" class="col-sm-10 col-form-label">Marka və Model :</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control inputItem" id="Brand" name="Brand" value="@ViewBag.VehBra.Brand" placeholder="Daxil edin ...">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-primary addButton">Əlavə et</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

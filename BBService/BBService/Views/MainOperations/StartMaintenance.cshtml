@@ -1,0 +1,120 @@
+﻿@{
+    ViewBag.Title = "StartMaintenance";
+    var cardNo = "";
+    var len = ((string)ViewBag.JobCard.JobCardNo.ToString()).Length;
+    for (int i = 0; i < (9 - len); i++)
+    {
+        cardNo += 0;
+    }
+    cardNo += ViewBag.JobCard.JobCardNo.ToString();
+}
+
+
+<div id="StartMaintenance">
+
+    <div class="contaiber-fluid">
+        <div class="row accidentInfo">
+            <div class="col-md-12">
+                <div class="itemGroup">
+                    <div class="left">
+                        <p>Təmir kartı :</p>
+                    </div>
+                    <div class="right bold">
+                        <p>@cardNo</p>
+                    </div>
+                </div>
+                <div class="itemGroup">
+                    <div class="left">
+                        <p>Nəqliyyat vasitəsi :</p>
+                    </div>
+                    <div class="right bold">
+                        <p>@(ViewBag.JobCard.CheckUpCard.InitContId != null ? ViewBag.JobCard.CheckUpCard.InitialControlSchedule.Vehicles.Number : "")</p>
+                    </div>
+                </div>
+
+                <div class="itemGroup">
+                    <div class="left">
+                        <p>TQ Nəzarət :</p>
+                    </div>
+                    <div class="right bold">
+                        <p>@(ViewBag.JobCard.CheckUpCard.MaintenanceTypeId != null ? ViewBag.JobCard.CheckUpCard.MaintenanceType.Name + "-" + ViewBag.JobCard.CheckUpCard.MaintenanceType.MaintenanceValue : "")</p>
+                    </div>
+                </div>
+
+                <div class="itemGroup">
+                    <div class="left">
+                        <p>Nasazlıq barədə məlumat :</p>
+                    </div>
+                    <div class="right">
+                        <p>@ViewBag.JobCard.CheckUpCard.Description</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row formInfo">
+            <div class="col-md-12 inputAccident">
+                <hr />
+                <form method="post" @Url.Action("StartMaintenance", "MainOperations") class="formTest" autocomplete="off">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="StartTime" class="col-sm-12 col-form-label">Qəbul tarixi :</label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control dateTimePicker inputItem" id="StartTime" name="StartTime" value="@(ViewBag.JobCard.StartTime != null ? ViewBag.JobCard.StartTime.ToString("dd.MM.yyyy HH:mm") : "")" placeholder="Daxil edin ...">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <div class="form-group checks">
+                                <label class="col-sm-10 form-check-label mainlable">Nasazlıq növü :</label>
+                                @{
+                                    if (ViewBag.JobCard.IsMaintenance != null)
+                                    {
+                                        <div class="form-group form-check">
+                                            <div class="col-sm-10">
+                                                <input type="checkbox" class="form-check-input" value="true" name="IsMaintenance" id="IsMaintenance" @(ViewBag.JobCard.IsMaintenance != null ? "checked" : "")>
+                                            </div>
+                                            <label class="col-sm-10 form-check-label" for="IsMaintenance">TQ Nəzarət</label>
+                                        </div>
+                                    }
+                                }
+
+
+                                <div class="form-group form-check">
+                                    <div class="col-sm-10">
+                                        <input type="checkbox" class="form-check-input" value="true" name="IsAccident" id="IsAccident" @(ViewBag.JobCard.IsAccident != null ? "checked" : "")>
+                                    </div>
+                                    <label class="col-sm-10 form-check-label" for="IsAccident">Qəza</label>
+                                </div>
+
+                                <div class="form-group form-check">
+                                    <div class="col-sm-10">
+                                        <input type="checkbox" class="form-check-input" value="true" name="IsRepair" id="IsRepair" @(ViewBag.JobCard.IsRepair != null ? "checked" : "")>
+                                    </div>
+                                    <label class="col-sm-10 form-check-label" for="IsRepair">Təmir</label>
+                                </div>
+
+                                <div class="form-group form-check">
+                                    <div class="col-sm-10">
+                                        <input type="checkbox" class="form-check-input" value="true" name="IsGuarantee" id="IsGuarantee" @(ViewBag.JobCard.IsGuarantee != null ? "checked" : "")>
+                                    </div>
+                                    <label class="col-sm-10 form-check-label" for="IsGuarantee">Zəmanət</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="Id" value="@ViewBag.JobCard.Id">
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <button type="submit" class="btn btn-primary addButton">Təsdiq edin</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>

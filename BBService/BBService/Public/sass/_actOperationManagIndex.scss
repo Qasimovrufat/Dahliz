@@ -1,0 +1,33 @@
+#actOperationManagIndex {
+    .contaiber-fluid {
+        .filter {
+            @extend %filter-style;
+
+            form {
+                float: left;
+            }
+
+            .nonFIlterWrapper {
+                float: right;
+                margin-top: 20px;
+
+                p {
+                    margin-top: 0px !important;
+
+                    a {
+                        padding: 4px 10px;
+                        font-size: 13px;
+                    }
+                }
+            }
+        }
+
+        .content {
+            @extend %content-style;
+        }
+
+        .footer {
+            @extend %footer-style;
+        }
+    }
+}

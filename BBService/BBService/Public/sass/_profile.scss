@@ -1,0 +1,191 @@
+#profile {
+    font-family: $main-font;
+    margin-top: 20px;
+
+    .left {
+        text-align: center;
+        margin-bottom: 60px;
+
+        .image {
+            margin: 0 auto;
+            margin-bottom: 10px;
+
+            width: 200px;
+            height: 200px;
+            border-radius: 100%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0px 0px 92px 0px rgba(96, 87, 95, 0.22);
+            margin-bottom: 20px;
+
+            img {
+                height: 100%;
+            }
+        }
+
+        .settings {
+        }
+
+        .name {
+            h1 {
+                color: $main-col-dark;
+                font-size: 20px;
+                font-weight: 600;
+            }
+        }
+    }
+
+    .right {
+        form {
+            label {
+                font-size: 16px;
+                color: $main-col;
+                font-weight: 600;
+                display: inline;
+            }
+
+            .inputItem {
+                font-size: 12px;
+                padding: 5px 10px;
+                max-width: 300px;
+                font-weight: 500;
+                border-color: $main-col;
+                height: 30px;
+                margin-bottom: 30px;
+                margin-top: 2px;
+                color: $main-col;
+
+                &:focus {
+                    box-shadow: none;
+                }
+
+                &::placeholder {
+                    color: $main-col;
+                }
+            }
+
+            .addButton {
+                padding: 0px 10px;
+                height: 30px;
+                margin-top: 20px;
+                margin-left: 15px;
+                font-size: 14px;
+                background-color: $main-col;
+                color: $main-col-white;
+                font-weight: 500;
+                border-color: $main-col;
+                letter-spacing: 3px;
+
+                &:focus {
+                    box-shadow: none;
+                }
+
+                &:hover {
+                    border-color: $main-col-red;
+                    background-color: $main-col-red;
+                }
+            }
+
+            p {
+                margin-left: 237px;
+                cursor: pointer;
+                text-decoration: none;
+                color: $main-col-red;
+                font-size: 12px;
+                transition: all 0.15s linear;
+                display: table;
+
+                &:hover {
+                    font-weight: 500;
+                }
+            }
+
+            .passwordGroup {
+
+                .oldPass {
+                    display: none;
+                }
+
+                .newPass {
+                    display: none;
+                }
+
+                .newPassRepeat {
+                    display: none;
+                }
+            }
+
+            .alertInfo {
+                margin-left: 15px;
+                margin-top: 20px;
+                width: 300px;
+                font-size: 15px;
+                padding: 10px;
+                line-height: 20px;
+            }
+
+            .photoGroup {
+                margin-bottom: 35px;
+
+                img {
+                    max-height: 100px;
+                    max-width: 100px;
+                    border-radius: 3px;
+                }
+
+                input {
+                    border: none;
+                    cursor: pointer;
+                    margin-left: -11px;
+                    width: 250px;
+                }
+
+                .Image {
+                    width: 0.1px;
+                    height: 0.1px;
+                    opacity: 0;
+                    overflow: hidden;
+                    position: absolute;
+                    z-index: -1;
+                }
+
+                .imageLable {
+                    border: 1px solid $main-col-red;
+                    padding: 6px 91px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    color: white;
+                    background-color: $main-col-red;
+                    box-sizing: border-box;
+
+                    i {
+                        margin-right: 10px;
+                    }
+
+                    &:hover {
+                        background-color: #c70303;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media (max-width: 1200px) {
+    
+}
+
+@media (max-width: 992px) {
+   
+}
+
+@media (max-width: 768px) {
+   
+}
+
+@media (max-width: 576px) {
+    
+}

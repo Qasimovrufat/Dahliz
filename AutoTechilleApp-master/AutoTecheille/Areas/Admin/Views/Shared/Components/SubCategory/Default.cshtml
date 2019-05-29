@@ -1,0 +1,27 @@
+﻿@model List<SubCategoryLanguage>
+<div class="form-group">
+    <label for="subcategoey">Subcategory</label>
+    <select class="form-control subcategory">
+        <option style="color:black;"></option>
+        @{
+            var i = 0;
+        }
+        @foreach (var sub in Model)
+        {
+            @if (sub.LanguageId == ViewBag.CLagId)
+            {
+                if (i == 0)
+                {
+                      <option selected value="@sub.SubCategory.Name">@sub.SubCategory.Name</option>
+                }
+                else
+                {
+                       <option value="@sub.SubCategory.Name">
+                              @sub.SubCategory.Name
+                       </option>
+                }
+                i++;
+            }
+        }
+    </select>
+</div>

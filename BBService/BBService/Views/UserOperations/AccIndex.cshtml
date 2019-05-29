@@ -1,0 +1,53 @@
+﻿@model BBService.Models.ViewHome
+@{
+    ViewBag.Title = "AccIndex";
+    List<string> permitted = (List<string>)Session["permitted"];
+}
+<div id="usersAccess">
+    <div class="contaiber-fluid">
+        <div class="row create">
+            <div class="col-md-12">
+                <div class="content">
+                    <h1 class="button">
+                        <i class="fas fa-user"></i> @(ViewBag.User.Fullname == null ? "" : ViewBag.User.Fullname)
+                    </h1>
+
+                    <a class="button @(permitted.FirstOrDefault(a => a == "AccCreate")==null?"hideAction":"")" href="@Url.Action("AccCreate", "UserOperations", new { id = ViewBag.UserId})">
+                        <i class="fas fa-plus"></i> Access Level əlavə et
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row userTable">
+            <div class="col-md-12">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="width: 80px;" class="centerCell">#</th>
+                            <th scope="col" style="width: 400px;" class="centerCell">Əməliyyat</th>
+                            <th scope="col" style="width: 200px;" class="centerCell">Action</th>
+                            <th scope="col" style="width: 100px;" class="centerCell">Düzəliş et</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{ int i = 0;}
+                        @foreach (var item in Model.Permissions)
+                        {
+                            i++;
+                            <tr class="pageItem">
+                                <td scope="row" class="centerCell">@i</td>
+                                <td>@(item.ActionId == null ? "" : item.Actions.Operations.Name)</td>
+                                <td class="centerCell">@(item.ActionId == null ? "" : item.Actions.Name)</td>
+                                <td class="centerCell">
+                                    <a class="@(permitted.FirstOrDefault(a => a == "AccDelete")==null?"hideAction":"")" href="@Url.Action("AccDelete","UserOperations",new { id=item.Id, UserId=ViewBag.UserId})" title="Delete" onclick="return confirm('Are you sure?')">
+                                        <i class="fas fa-times"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

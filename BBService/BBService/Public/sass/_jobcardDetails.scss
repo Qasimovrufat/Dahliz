@@ -1,0 +1,179 @@
+#JobcardDetails {
+    padding: 20px;
+
+    .contaiber-fluid {
+
+        .allParts {
+            margin-bottom: 40px;
+            font-family: unset;
+
+            .heading {
+                h1 {
+                    text-align: center;
+                    font-weight: 600;
+                    letter-spacing: 2px;
+                }
+            }
+
+            .content {
+                overflow: auto;
+
+                table {
+                    margin-bottom: 10px;
+
+                    thead {
+                        tr {
+                            th {
+                                font-size: 14px;
+                                font-weight: 600;
+                                vertical-align: middle;
+                                padding: 10px;
+                                border: 1px solid #aba0a0;
+                                /*background-color: #b1ccbb;*/
+                                background-color: #1dd60f;
+                                color: black;
+                            }
+                        }
+                    }
+
+                    tbody {
+                        tr {
+                            td {
+                                font-size: 13px;
+                                font-weight: 500;
+                                vertical-align: middle;
+                                padding: 5px;
+                                border: 1px solid #aba0a0;
+                            }
+                        }
+
+                        .sum {
+                            td {
+                                font-size: 14px;
+                                font-weight: 700;
+                                padding: 8px 5px;
+                            }
+                        }
+                    }
+
+                    .centerCell {
+                        text-align: center;
+                    }
+                }
+            }
+
+            .note {
+                p {
+                    font-size: 16px;
+                    font-weight: 600;
+                    letter-spacing: 1px;
+                    color: $main-col-red;
+                }
+            }
+        }
+
+        .firstPart {
+            .heading {
+                h1 {
+                    font-size: 22px;
+                    margin-bottom: 35px;
+                    color: #0004ab;
+                }
+            }
+
+            .allItemGroup {
+                .itemGroup {
+                    padding: 2px 0px;
+
+                    .left {
+                        display: inline-block;
+
+                        p {
+                            font-size: 15px;
+                            font-weight: 600;
+                        }
+                    }
+
+                    .right {
+                        display: inline-block;
+
+                        p {
+                            font-size: 13px;
+                            font-weight: 500;
+                        }
+                    }
+
+                    p {
+                        color: #0004ab;
+                    }
+                }
+            }
+
+            .firstItemGroup {
+                .itemGroup {
+                    .left {
+                        width: 135px;
+                    }
+                }
+            }
+
+            .secondItemGroup {
+                .itemGroup {
+                    .left {
+                        width: 105px;
+                    }
+                }
+            }
+
+            .thirdItemGroup {
+                .itemGroup {
+                    .left {
+                        width: 150px;
+                    }
+                }
+            }
+        }
+
+        .secondPart {
+            .heading {
+                h1 {
+                    font-size: 18px;
+                    letter-spacing: 1px;
+                    margin-bottom: 10px;
+                    color: #0004ab;
+                }
+            }
+        }
+
+        .thirdPart {
+            margin-bottom: 15px;
+
+            .heading {
+                h1 {
+                    font-size: 18px;
+                    letter-spacing: 1px;
+                    margin-bottom: 10px;
+                    color: #0004ab;
+                }
+            }
+        }
+
+        .fourthPart {
+            .linkWrapper {
+                text-align: right;
+
+                a {
+                    padding: 0px 15px;
+                    font-size: 16px;
+                    font-weight: 600;
+                    color: $main-col;
+                    text-decoration: none;
+
+                    &:hover {
+                        color: $main-col-red;
+                    }
+                }
+            }
+        }
+    }
+}

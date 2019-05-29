@@ -1,0 +1,58 @@
+﻿@model ProductModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="panel-header panel-header-sm">
+</div>
+<div class="col-md-12">
+    <!-- Tabs with icons on Card -->
+    <div class="card card-nav-tabs">
+            <div class="col-12">
+                <div class="card card-body" id="product" data-id="@Model.Id" data-lang="@ViewBag.langId">
+                    <form asp-action="Edit" asp-controller="Home" asp-route-id="@Model.Id" asp-route-langId="@ViewBag.langId" method="post" enctype="multipart/form-data" id="infoForm">
+                        <div asp-validation-summary="ModelOnly"></div>
+                        <div class="form-group">
+                            <label asp-for="Description">Description</label>
+                            <input asp-for="Description" type="text" value="@Model.Description" class="form-control" id="description">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="CategoryNames">Category</label>
+                            <select class="form-control" asp-for="CategoryNames">
+                                @foreach (var item in Model.CategoryNames)
+                                {
+                                    <option>@item</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="SubCategory">SubCategory</label>
+                            <select asp-for="SubCategory.Name">
+                                @foreach (var item in Model.SubCategories)
+                                {
+                                    <option>@item.SubCategory.Name</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="input-tags">Real Part No</label>
+                            <div class="input-tags">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Photo">Add Photo</label>
+                            <input asp-for="Photo" type="file" class="form-control product_photo" name="product_photo" />
+                        </div>
+                        <div class="form-group">
+                            <img src="@Model.OldPhoto" class="photo_view" alt="Alternate Text" />
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary" id="edit-button">Edit Product</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+    </div>
+    <!-- End Tabs with icons on Card -->
+</div>
+

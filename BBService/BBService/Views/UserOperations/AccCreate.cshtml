@@ -1,0 +1,58 @@
+﻿@model BBService.Models.ViewHome
+@{
+    ViewBag.Title = "AccCreate";
+}
+
+
+<div id="accessCreate">
+    <div class="contaiber-fluid">
+        <div class="row">
+            <div class="col-md-12 inputAccident">
+                <h1>Action yaradın :</h1>
+                <form method="post" action="@Url.Action("AccCreate", "UserOperations")" class="formTest">
+
+                    <input type="hidden" name="UserId" value="@ViewBag.UserId">
+                    <div class="form-group">
+                        <label for="OperationForActions" class="col-sm-10 col-lg-10 col-md-10 col-form-label">Əməliyyat :</label>
+                        <div class="col-sm-10 col-lg-10 col-md-10">
+                            <select id="OperationForActions" class="form-control inputItem inputItemSelect selectpicker" name="OperationId" data-live-search="true">
+                                <option selected>Seçin ...</option>
+                                @foreach (var item in Model.Operations)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="JsonActionList" class="col-sm-10 col-lg-10 col-md-10 col-form-label">Action adı :</label>
+                        <div class="col-sm-10 col-lg-10 col-md-10">
+                            <select id="JsonActionList" class="form-control inputItem inputItemSelect select2-multiple-class" name="ActionId[]" multiple="multiple"></select>
+                        </div>
+                    </div>
+
+                    @if (Session["userActions"] != null)
+                    {
+                        <div class="form-group">
+                            <div class="alert alert-info">
+                                Cari istifadəçidə @TempData["userActions"] Action(lar)ı artıq mövcuddur.
+                                <br />
+                                İstifadəçi üzrə Action(lar) Unikal olmalıdır.
+                            </div>
+                        </div>
+                        Session["userActions"] = null;
+                        TempData["userActions"] = null;
+                    }
+
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-primary addButton">Əlavə et</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

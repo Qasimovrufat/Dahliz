@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "RutInpUpdate";
+}
+
+
+<div id="rutInputUpdate">
+    <div class="contaiber-fluid">
+        <div class="row">
+            <div class="col-md-6 inputAccident">
+                <h1>Xətti yenilə :</h1>
+                <form method="post" @Url.Action("RutInpUpdate", "Inputs") class="formTest">
+
+                    <div class="form-group">
+                        <label for="number" class="col-sm-10 col-form-label">Xəttin nömrəsi :</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control inputItem" id="number" name="number" value="@(ViewBag.Rut.Number==null?"":ViewBag.Rut.Number)" placeholder="Daxil edin ...">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name" class="col-sm-10 col-form-label">Xəttin adı :</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control inputItem" id="name" name="name" value="@(ViewBag.Rut.Name==null?"":ViewBag.Rut.Name)" placeholder="Daxil edin ...">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Forward" class="col-sm-10 col-form-label">Forward :</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control inputItem" id="Forward" name="Forward" value="@(ViewBag.Rut.Forward==null?"":ViewBag.Rut.Forward)" placeholder="Daxil edin ...">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ForwardLength" class="col-sm-10 col-form-label">Forward-km :</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control inputItem" id="ForwardLength" name="ForwardLength" value="@(ViewBag.Rut.ForwardLength==null?"":ViewBag.Rut.ForwardLength.ToString("#.##"))" placeholder="Daxil edin ...">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Backward" class="col-sm-10 col-form-label">Backward :</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control inputItem" id="Backward" name="Backward" value="@(ViewBag.Rut.Backward==null?"":ViewBag.Rut.Backward)" placeholder="Daxil edin ...">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="BackwardLength" class="col-sm-10 col-form-label">Backward-km :</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control inputItem" id="BackwardLength" name="BackwardLength" value="@(ViewBag.Rut.BackwardLength==null?"":ViewBag.Rut.BackwardLength.ToString("#.##"))" placeholder="Daxil edin ...">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="StartDate" class="col-sm-10 col-form-label">Açılma tarixi</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="ActivationDate" class="form-control datepicker inputItem" id="StartDate" value="@(ViewBag.Rut.ActivationDate==null?"":ViewBag.Rut.ActivationDate.ToString("dd.MM.yyyy"))" placeholder="Tarix seçin ...">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="DeactivationDate" class="col-sm-10 col-form-label">Bağlanma tarixi</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="DeactivationDate" class="form-control datepicker inputItem" id="DeactivationDate" value="@(ViewBag.Rut.DeactivationDate==null?"":ViewBag.Rut.DeactivationDate.ToString("dd.MM.yyyy"))" placeholder="Tarix seçin ...">
+                        </div>
+                    </div>
+
+                    <!-- Hiden inputs -->
+                    <input type="hidden" class="form-control" name="Id" value="@ViewBag.RutId">
+
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-primary addButton">Yenilə</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "SettingsUpdate";
+}
+
+
+<div id="SettingsUpdate">
+    <div class="contaiber-fluid">
+        <div class="row">
+            <div class="col-md-12 col-lg-6 inputAccident">
+                <h1>Yenilə :</h1>
+                <form method="post" action="@Url.Action("SettingsUpdate", "Monipulations")" class="formTest">
+
+                    <div class="form-group">
+                        <label for="Name" class="col-sm-10 col-form-label">Tənzimləmə adı :</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control inputItem" id="Name" value="@(ViewBag.setting.Name!=null?ViewBag.setting.Name:"")" name="Name" placeholder="Daxil edin ...">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Value" class="col-sm-10 col-form-label">Tənzimləmə qiyməti :</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control inputItem numberValidInput" id="Value" name="Value" value="@(ViewBag.setting.Value!=null?ViewBag.setting.Value:"")" placeholder="Daxil edin ...">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-primary addButton">Yenilə</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

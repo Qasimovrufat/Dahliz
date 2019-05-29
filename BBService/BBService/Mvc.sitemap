@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mvcSiteMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0"
+            xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0 MvcSiteMapSchema.xsd">
+
+  <mvcSiteMapNode title="Əsas Səhifə" controller="Home" action="Index">
+
+    <mvcSiteMapNode title="Administrativ" controller="Administrative" action="AdministrativeIndex">
+      <mvcSiteMapNode title="İstifadəçi Əməliyyatları" controller="useroperations" action="UsrOprIndex">
+        <mvcSiteMapNode title="İstifadəçi Yarat" controller="useroperations" action="UsrOprCreate"/>
+        <mvcSiteMapNode title="Yenilə" controller="userOperations" action="UsrOprUpdate" preservedRouteParameters="id"/>
+        <mvcSiteMapNode title="Access Level" controller="userOperations" action="AccIndex" preservedRouteParameters="id">
+          <mvcSiteMapNode title="Access Level əlavə et" controller="userOperations" action="AccCreate" preservedRouteParameters="id"/>
+        </mvcSiteMapNode>
+      </mvcSiteMapNode>
+      
+      <mvcSiteMapNode title="Əməliyyatlar Cədvəli" controller="ManageOperations" action="MngOprIndex">
+        <mvcSiteMapNode title="Əməliyyat Yarat" controller="ManageOperations" action="MngOprCreate"/>
+        <mvcSiteMapNode title="Əməliyyat Yenilə" controller="ManageOperations" action="MngOprUpdate" preservedRouteParameters="id"/>
+      </mvcSiteMapNode>
+
+      <mvcSiteMapNode title="Action-lar" controller="ManageOperations" action="ActOprMngIndex">
+        <mvcSiteMapNode title="Action Yarat" controller="ManageOperations" action="ActOprMngCreate"/>
+        <mvcSiteMapNode title="Action Yenilə" controller="ManageOperations" action="ActOprMngUpdate" preservedRouteParameters="id"/>
+      </mvcSiteMapNode>
+
+      <mvcSiteMapNode title="Action üzrə istifadəçilər" controller="ManageOperations" action="searchUserIndex"/>
+    </mvcSiteMapNode>
+
+    <mvcSiteMapNode title="Sistem Əməliyyatları" controller="Systemoperations" action="SysOprIndex">
+      <mvcSiteMapNode title="Şirkət Əməliyyatları" controller="Inputs" action="CompInpIndex">
+        <mvcSiteMapNode title="Şirkət yarat" controller="Inputs" action="CompInpCreate"/>
+        <mvcSiteMapNode title="Yenilə" controller="Inputs" action="CompInpUpdate" preservedRouteParameters="id"/>        
+      </mvcSiteMapNode>
+
+      <mvcSiteMapNode title="Depo Əməliyyatları" controller="Inputs" action="DepotInpIndex">
+        <mvcSiteMapNode title="Yenisini yarat" controller="Inputs" action="DepotInpCreate"/>
+        <mvcSiteMapNode title="Yenilə" controller="Inputs" action="DepotInpUpdate" preservedRouteParameters="id"/>
+      </mvcSiteMapNode>
+
+      <mvcSiteMapNode title="Xətt Əməliyyatları" controller="Inputs" action="RutInpIndex">
+        <mvcSiteMapNode title="Xətt yarat" controller="Inputs" action="RutInpCreate"/>
+        <mvcSiteMapNode title="Yenilə" controller="Inputs" action="RutInpUpdate" preservedRouteParameters="id"/>
+      </mvcSiteMapNode>
+
+      <mvcSiteMapNode title="İşçi Əməliyyatları" controller="Inputs" action="EmpInpIndex">
+        <mvcSiteMapNode title="İşçi yarat" controller="Inputs" action="EmpInpCreate"/>
+        <mvcSiteMapNode title="Excel file ilə yüklə" controller="Inputs" action="UploadEmployeeExcel" preservedRouteParameters="id"/>
+        <mvcSiteMapNode title="Yenilə" controller="Inputs" action="EmpInpUpdate" preservedRouteParameters="id"/>
+        <mvcSiteMapNode title="Excel file ilə yenilə" controller="Inputs" action="UpdateEmployeeExcel" preservedRouteParameters="id"/>
+        <mvcSiteMapNode title="Detallı" controller="Inputs" action="EmpInpDetailed" preservedRouteParameters="id"/>
+      </mvcSiteMapNode>
+
+      <mvcSiteMapNode title="Şöbə Əməliyyatları" controller="Inputs" action="DepInpIndex">
+        <mvcSiteMapNode title="Şöbə yarat" controller="Inputs" action="DepInpCreate"/>
+        <mvcSiteMapNode title="Yenilə" controller="Inputs" action="DepInpUpdate" preservedRouteParameters="id"/>
+      </mvcSiteMapNode>
+
+      <mvcSiteMapNode title="Sektor Əməliyyatları" controller="Inputs" action="SecInpIndex">
+        <mvcSiteMapNode title="Sektor yarat" controller="Inputs" action="SecInpCreate"/>
+        <mvcSiteMapNode title="Yenilə" controller="Inputs" action="SecInpUpdate" preservedRouteParameters="id"/>
+      </mvcSiteMapNode>
+
+      <mvcSiteMapNode title="Vəzifə Əməliyyatları" controller="Inputs" action="PosInpIndex">
+        <mvcSiteMapNode title="Vəzifə yarat" controller="Inputs" action="PosInpCreate"/>
+        <mvcSiteMapNode title="Yenilə" controller="Inputs" action="PosInpUpdate" preservedRouteParameters="id"/>
+      </mvcSiteMapNode>
+
+      <mvcSiteMapNode title="NV Əməliyyatları" controller="Inputs" action="VehInpIndex">
+        <mvcSiteMapNode title="NV yarat" controller="Inputs" action="VehInpCreate"/>
+        <mvcSiteMapNode title="Yenilə" controller="Inputs" action="VehInpUpdate" preservedRouteParameters="id"/>
+        <mvcSiteMapNode title="Excel file ilə yenilə" controller="Inputs" action="UploadVehicleExcel" preservedRouteParameters="id"/>
+      </mvcSiteMapNode>
+
+      <mvcSiteMapNode title="NV marka-model Əməliyyatları" controller="Inputs" action="BraInpIndex">
+        <mvcSiteMapNode title="Marka-model yarat" controller="Inputs" action="BraInpCreate"/>
+        <mvcSiteMapNode title="Yenilə" controller="Inputs" action="BraInpUpdate" preservedRouteParameters="id"/>
+      </mvcSiteMapNode>
+
+      <mvcSiteMapNode title="Nasazlıq növləri" controller="Inputs" action="TroInpIndex">
+        <mvcSiteMapNode title="Yenisini yarat" controller="Inputs" action="TroInpCreate"/>
+        <mvcSiteMapNode title="Yenilə" controller="Inputs" action="TroInpUpdate" preservedRouteParameters="id"/>
+      </mvcSiteMapNode>
+
+      <mvcSiteMapNode title="Görülmüş işlər" controller="Inputs" action="DoneWorksIndexInput">
+        <mvcSiteMapNode title="Yenisini yarat" controller="Inputs" action="DoneWorksCreateInput"/>
+        <mvcSiteMapNode title="Excel fayl yüklə" controller="Inputs" action="UploadDoneWorksExcelInput"/>
+        <mvcSiteMapNode title="Yenilə" controller="Inputs" action="DoneWorksUpdateInput" preservedRouteParameters="id"/>
+      </mvcSiteMapNode>
+
+
+      <mvcSiteMapNode title="Xətlərin məsafə limiti" controller="Inputs" action="KmLimitInpIndex">
+        <mvcSiteMapNode title="Yenisini yarat" controller="Inputs" action="KmLimitInpCreate"/>
+        <mvcSiteMapNode title="Yenilə" controller="Inputs" action="KmLimitInpUpdate" preservedRouteParameters="id"/>
+      </mvcSiteMapNode>
+
+      <mvcSiteMapNode title="Mexaniklərin təhkim edilməsi" controller="Monipulations" action="BindMechIndex">
+        <mvcSiteMapNode title="Yarat" controller="Monipulations" action="BindMechCreate"/>
+        <mvcSiteMapNode title="Yenilə" controller="Monipulations" action="BindMechUpdate" preservedRouteParameters="id"/>
+      </mvcSiteMapNode>
+
+      <mvcSiteMapNode title="TQ limitləri" controller="Monipulations" action="BindMaintenanceIndex">
+        <mvcSiteMapNode title="Yenisini yarat" controller="Monipulations" action="BindMaintenanceCreate"/>
+        <mvcSiteMapNode title="Yenilə" controller="Monipulations" action="BindMaintenanceUpdate" preservedRouteParameters="id"/>
+      </mvcSiteMapNode>
+
+      <mvcSiteMapNode title="Tənzimləmələr" controller="Monipulations" action="SettingsIndex">
+        <mvcSiteMapNode title="Yenisini yarat" controller="Monipulations" action="SettingsCreate"/>
+        <mvcSiteMapNode title="Yenilə" controller="Monipulations" action="SettingsUpdate" preservedRouteParameters="id"/>
+      </mvcSiteMapNode>
+      
+     <mvcSiteMapNode title="EH-nin TQ-yə təhkimi" controller="Monipulations" action="BindSparePartIndex">
+        <mvcSiteMapNode title="Yenisini yarat" controller="Monipulations" action="BindSparePartCreate"/>
+        <mvcSiteMapNode title="Yenilə" controller="Monipulations" action="BindSparePartUpdate" preservedRouteParameters="id"/>
+      </mvcSiteMapNode>
+      
+    </mvcSiteMapNode>
+
+    <mvcSiteMapNode title="Əməliyyatlar" controller="MainOperations" action="OprIndex">
+      <mvcSiteMapNode title="AVN kartı aç" controller="MainOperations" action="InitContCreate"/>
+
+      <mvcSiteMapNode title="AVN kartı bağla" controller="MainOperations" action="OpenInitContIndex">
+        <mvcSiteMapNode title="Bağla" controller="MainOperations" action="InitContClose" preservedRouteParameters="id"/>
+        <mvcSiteMapNode title="Yenilə" controller="MainOperations" action="InitContUpdate" preservedRouteParameters="id"/>
+      </mvcSiteMapNode>
+
+      <mvcSiteMapNode title="AVN tarixçəsi" controller="MainOperations" action="ClosedInitContIndex">
+        <mvcSiteMapNode title="Yenilə" controller="MainOperations" action="ClosedInitContUpdate" preservedRouteParameters="id"/>
+      </mvcSiteMapNode>
+
+      <mvcSiteMapNode title="Yoxlama kartı açın" controller="MainOperations" action="InitContCheckupCreate" preservedRouteParameters="id"/>
+
+      <mvcSiteMapNode title="Bağlı AVN kartları - Mexanik" controller="MainOperations" action="ClosedInitContMechIndex">
+        <mvcSiteMapNode title="Yenilə" controller="MainOperations" action="ClosedInitContMechUpdate" preservedRouteParameters="id"/>
+      </mvcSiteMapNode>
+
+      <mvcSiteMapNode title="SOCAR Yanacaq məlumatlarının daxil edilməsi" controller="MainOperations" action="InitContSOCARIndex">
+        <mvcSiteMapNode title="Əlavə et" controller="MainOperations" action="InitContSOCARAdd" preservedRouteParameters="id"/>
+        <mvcSiteMapNode title="Yenilə" controller="MainOperations" action="InitContSOCARUpdate" preservedRouteParameters="id"/>
+      </mvcSiteMapNode>
+
+      <mvcSiteMapNode title="TQ Nəzarət" controller="MainOperations" action="MaintenanceMonitorngIndex">
+        <mvcSiteMapNode title="TQ Tarixçəsi" controller="MainOperations" action="MaintenanceHistory" preservedRouteParameters="id"/>
+      </mvcSiteMapNode>
+      
+      <mvcSiteMapNode title="Yoxlama kartı" controller="MainOperations" action="InitContCheckupIndex">
+        <mvcSiteMapNode title="Yenilə" controller="MainOperations" action="InitContCheckupUpdate" preservedRouteParameters="id"/>
+      </mvcSiteMapNode>
+
+      <mvcSiteMapNode title="Təmir kartı-Dashboard" controller="MainOperations" action="JobcardDashboard">
+        <mvcSiteMapNode title="Bütün Təmir kartları" controller="MainOperations" action="JobcardIndex">
+          <mvcSiteMapNode title="Təmirə başla" controller="MainOperations" action="StartMaintenance" preservedRouteParameters="id"/>
+          <mvcSiteMapNode title="Tələbnamə" controller="MainOperations" action="RequisitionsIndex" preservedRouteParameters="id"/>
+          <mvcSiteMapNode title="Tələbnamə əlavə edin" controller="MainOperations" action="RequisitionsAdd" preservedRouteParameters="id"/>
+          <mvcSiteMapNode title="Detallı baxış" controller="MainOperations" action="JobcardDetails" preservedRouteParameters="id"/>
+          <mvcSiteMapNode title="Görülmüş işlər" controller="MainOperations" action="DoneWorksIndex" preservedRouteParameters="id"/>
+          <mvcSiteMapNode title="Görülmüş işi əlavə edin" controller="MainOperations" action="DoneWorksAdd" preservedRouteParameters="id"/>
+          <mvcSiteMapNode title="Təmiri bitir" controller="MainOperations" action="FinishMaintenance" preservedRouteParameters="id"/>
+        </mvcSiteMapNode>
+
+        <mvcSiteMapNode title="Açıq Təmir kartları" controller="MainOperations" action="JobcardOpen">
+          
+        </mvcSiteMapNode>
+
+        <mvcSiteMapNode title="Bağlı Təmir kartları" controller="MainOperations" action="JobcardClosed">
+
+        </mvcSiteMapNode>
+
+        <mvcSiteMapNode title="Gözləmə - Xətt Təmir kartları" controller="MainOperations" action="JobcardInWaitRoute">
+
+        </mvcSiteMapNode>
+
+        <mvcSiteMapNode title="Gözləmə - Depo Təmir kartları" controller="MainOperations" action="JobcardInWaitDepot">
+
+        </mvcSiteMapNode>
+
+        <mvcSiteMapNode title="Bütün Təmir kartları - Admin" controller="MainOperations" action="JobcardAllAdmin">
+
+        </mvcSiteMapNode>
+      </mvcSiteMapNode>
+
+      <mvcSiteMapNode title="Təmirdən çıxmış avtobusun qəbulu" controller="MainOperations" action="SubmitRepairedBus"/>
+      
+      <mvcSiteMapNode title="Qarşılanmamış tələblər" controller="MainOperations" action="NotMetRequisitionsIndex"/>
+      
+    </mvcSiteMapNode>
+
+    <mvcSiteMapNode title="Hesabatlar" controller="Reports" action="RepIndex">
+      
+    </mvcSiteMapNode>
+    
+    <mvcSiteMapNode title="Profil" controller="Profile" action="PrfIndex"></mvcSiteMapNode>
+
+    <mvcSiteMapNode title="Bütün xəbərdarlıqlar" controller="Notifications" action="NotifIndex"></mvcSiteMapNode>
+    
+  </mvcSiteMapNode>
+
+</mvcSiteMap>

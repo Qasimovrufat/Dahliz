@@ -1,0 +1,208 @@
+﻿@using BBService.Models
+@model BBService.Models.ViewHome
+@{
+    ViewBag.Title = "InitContCreate";
+    List<string> permitted = (List<string>)Session["permitted"];
+    InitControl initCont = (InitControl)TempData["InitCon"];
+}
+
+<div id="InitContCreate">
+    <div class="contaiber-fluid">
+        <div class="row">
+            <div class="col-md-12 inputAccident">
+                <h1>Avtobusların ilkin vəziyyətinə nəzarət kartı :</h1>
+                <form method="post" @Url.Action("InitContCreate", "MainOperations") class="formTest">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-4">
+                            <div class="col-sm-12">
+                                @if (Session["InitContCreated"] != null)
+                                {
+                                    Session["InitContCreated"] = null;
+                                    <div class="alert alert-info SuccessInfo">
+                                        Əməliyyat uğurla tamamlandı!<br />
+                                        Yeni məlumat əlavə etmək üçün davam edə bilərsiz.
+                                    </div>
+                                }
+
+                                @if (Session["repeatedVehicle"] != null)
+                                {
+                                    Session["repeatedVehicle"] = null;
+                                    <div class="alert alert-warning SuccessInfo">
+                                        Əməliyyat uğursuzdur!<br />
+                                        Seçdiyiniz NV artıq xəttə buraxılıb.
+                                    </div>
+                                }
+
+                                @if (Session["repeatedVehicleCheck"] != null)
+                                {
+                                    Session["repeatedVehicleCheck"] = null;
+                                    <div class="alert alert-warning SuccessInfo">
+                                        Əməliyyat uğursuzdur!<br />
+                                        Seçdiyiniz NV təmir prosesindədir.
+                                    </div>
+                                }
+
+                                @if (Session["VehicleIsUnderRepair"] != null)
+                                {
+                                    Session["VehicleIsUnderRepair"] = null;
+                                    <div class="alert alert-warning SuccessInfo">
+                                        Əməliyyat uğursuzdur!<br />
+                                        Seçdiyiniz NV təmir prosesindədir.
+                                    </div>
+                                }
+
+                                @if (Session["emptyFild"] != null)
+                                {
+                                    Session["emptyFild"] = null;
+                                    <div class="alert alert-warning SuccessInfo">
+                                        Əməliyyat uğursuzdur!<br />
+                                        Bütün girişləri doldurmalısınız.
+                                    </div>
+                                }
+
+                                @if (Session["overKm"] != null)
+                                {
+                                    Session["overKm"] = null;
+                                    <div class="alert alert-warning SuccessInfo">
+                                        Əməliyyat uğursuzdur!<br />
+                                        Seçdiyiniz NV-in KM-ni yanlış daxil etdiniz.
+                                    </div>
+                                }
+
+                                @if (Session["DataDeficiency"] != null)
+                                {
+                                    Session["DataDeficiency"] = null;
+                                    <div class="alert alert-warning SuccessInfo">
+                                        Əməliyyat uğursuzdur!<br />
+                                        İstifadəçi BakuBus əməkdaşı deyil və ya Baş mexanik təhkim edilməyib.
+                                    </div>
+                                }
+                            </div>
+
+                            <div class="form-group form-check">
+                                <div class="col-sm-10">
+                                    <input type="checkbox" class="form-check-input" value="true" name="CheckUp" id="CheckUp">
+                                </div>
+                                <label class="col-sm-10 form-check-label" for="CheckUp">Yoxlama kartı açın</label>
+                            </div>
+
+                            <div class="alert alert-warning ajaxNotif ajaxNotifFirstCheck">
+                                Əməliyyat uğursuzdur!<br />
+                                <span></span>
+                            </div>
+
+                            <div class="form-group inputHere" id="nv">
+                                <label for="VehicleId" class="col-sm-12 col-form-label">NV nömrəsi :</label>
+                                <div class="col-sm-12">
+                                    <select id="VehicleId" class="form-control inputItem inputItemSelect selectpicker" name="VehicleId" data-live-search="true">
+                                        <option value="0" selected>Seçin ...</option>
+                                        @foreach (var item in Model.Vehicles)
+                                        {
+                                            <option @((initCont != null && initCont.VehicleId == item.Id) ? "selected" : "") value="@item.Id">@item.Number</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="alert alert-warning ajaxNotif ajaxNotifVehicle">
+                                Əməliyyat uğursuzdur!<br />
+                                <span></span>
+                            </div>
+
+                            <div class="form-group maintenanceDataWrapper">
+                                <label class="col-sm-10 col-form-label">TQ statusu: </label>
+                                <div class="col-sm-12">
+                                    <input class="form-control inputItem" disabled id="maintenanceData" />
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="note">
+                                <label class="col-sm-10 col-form-label" for="Description">Nasazlıq barədə qeydlər:</label>
+                                <div class="col-sm-12">
+                                    <textarea class="form-control inputItem inputItemText" name="Description" id="Description" rows="3"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group inputHere" id="route">
+                                <label for="RouteId" class="col-sm-12 col-form-label">Xətt :</label>
+                                <div class="col-sm-12">
+                                    <select id="RouteId" class="form-control inputItem inputItemSelect selectpicker" name="RouteId" data-live-search="true">
+                                        <option value="0" selected>Seçin ...</option>
+                                        @foreach (var item in Model.Routes)
+                                        {
+                                            <option @((initCont != null && initCont.RouteId == item.Id) ? "selected" : "") value="@item.Id">@item.Number</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group inputHere" id="driver">
+                                <label for="FirstDriverId" class="col-sm-12 col-form-label">Sürücü - 1 :</label>
+                                <div class="col-sm-12">
+                                    <select id="FirstDriverId" class="form-control inputItem inputItemSelect selectpicker" name="FirstDriverId" data-live-search="true">
+                                        <option value="0" selected>Seçin ...</option>
+                                        @foreach (var item in Model.Employees)
+                                        {
+                                            <option @((initCont != null && initCont.FirstDriverId == item.Id) ? "selected" : "") value="@item.Id">@item.Surname @item.Name @item.FutherName</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-4" id="others">
+                            <div class="form-group">
+                                <label for="LeavingKilometer" class="col-sm-12 col-form-label">Çıxış Kilometraj :</label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control inputItem numberValidInput" id="LeavingKilometer" name="LeavingKilometer" value="@((initCont!=null && initCont.LeavingKilometer!=null)?initCont.LeavingKilometer:"")" placeholder="Daxil edin ...">
+                                </div>
+                            </div>
+
+                            <div class="alert alert-warning ajaxNotif ajaxNotifKM">
+                                Əməliyyat uğursuzdur!<br />
+                                <span></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="LeavingFuel" class="col-sm-12 col-form-label">Çıxış yanacaq :</label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control inputItem numberValidInput" id="LeavingFuel" name="LeavingFuel" value="@((initCont!=null && initCont.LeavingFuel!=null)?initCont.LeavingFuel:"")" placeholder="Daxil edin ...">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-10 col-form-label" for="LeavingNote">Əlavə qeyd</label>
+                                <div class="col-sm-12">
+                                    <textarea class="form-control inputItem inputItemText" name="LeavingNote" id="LeavingNote" rows="3">@((initCont != null && initCont.LeavingNote!=null)?initCont.LeavingNote: "")</textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-4">
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <div class="col-sm-10">
+                                    <button type="submit" class="btn btn-primary addButton">Əlavə edin</button>
+                                </div>
+
+                                <div class="col-sm-10 link">
+                                    <a class="@(permitted.FirstOrDefault(a => a == "OpenInitContIndex")==null? "hideAction" : "")" href="@Url.Action("OpenInitContIndex","MainOperations")">Siyahıya keçin</a>
+                                </div>
+
+                                <div class="col-sm-10 cancel">
+                                    <a href="@Url.Action("OprIndex","MainOperations")">Ləğv edin</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

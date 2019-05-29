@@ -1,0 +1,134 @@
+﻿@model ViewCatalogue
+<div class="filter-wrapper container-fluid">
+    <div class="row">
+        <div class="col-lg-3 mt-5 desktop-categories">
+            <div class="categories">
+                <div class="dropdown-show">
+                    <a class="categories-button btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                       @ViewBag.CategoryName
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" asp-action="Index" asp-controller="Catalogue" asp-route-categoryId="-1">@Localizer["All"]</a>
+                        @foreach (var item in Model.categories)
+                        {
+                            <a class="dropdown-item" asp-route-categoryName="@item.Category.Name" asp-action="Index" asp-controller="Catalogue" asp-route-categoryId="@item.Category.Id">@item.Category.Name</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="search-product mt-5 col-lg-9">
+            <form autocomplete="off" class="search-form" asp-action="Search" asp-controller="Catalogue" method="post">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="search" placeholder="Search Product ... " name="search" value="" />
+                </div>
+            </form>
+            <div class="search-result-wrapper"></div>
+        </div>
+        <div class="col-md-6 first-filter my-3">
+            <span class="filter-button">Categories <i class="fas fa-chevron-down"></i></span>
+            <ul class="filter-ul">
+                <li><a asp-action="Index" asp-controller="Catalogue" asp-route-categoryId="-1">@Localizer["All"]</a></li>
+                @foreach (var item in Model.categories)
+                {
+                    <li><a asp-action="Index" asp-controller="Catalogue" asp-route-categoryId="@item.Category.Id">@item.Category.Name</a></li>
+                }
+            </ul>
+        </div>
+        <div class="col-md-6 first-filter my-3">
+            <span class="filter-button">SubCategories<i class="fas fa-chevron-down"></i></span>
+            <ul class="filter-ul">
+                <li> <a asp-action="Index" asp-controller="Catalogue" asp-route-categoryId="@ViewBag.CategoryId" asp-route-subcategoryId="0">@Localizer["All"]</a></li>
+                @foreach (var item in Model.subCategory)
+                {
+                    <li><a asp-action="Index" asp-controller="Catalogue" asp-route-categoryId="@ViewBag.CategoryId" asp-route-subcategoryId="@item.SubCategory.Id">@item.SubCategory.Name</a></li>
+                }
+            </ul>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                @*<div class="search-product my-3 col-md-3">
+                        <form autocomplete="off" class="search-form" asp-action="Search" asp-controller="Catalogue" method="post">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="search" placeholder="Search Product ... " name="search" value="" />
+                            </div>
+                        </form>
+                        <div class="search-result-wrapper"></div>
+                    </div>*@
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="side-subcategories">
+                        <div class="side-subcategories">
+                            <ul>
+                                <li>
+                                    <a asp-action="Index" asp-controller="Catalogue" asp-route-categoryId="@ViewBag.CategoryId" asp-route-subcategoryId="0">@Localizer["All"]</a>
+                                </li>
+                                @foreach (var item in Model.subCategory)
+                                {
+                                    <li @(item.SubCategoryId == ViewBag.SubcategoryId ? "active" : "")> <a asp-action="Index" asp-controller="Catalogue" asp-route-categoryId="@ViewBag.CategoryId" asp-route-subcategoryId="@item.SubCategory.Id">@item.SubCategory.Name</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9 product-wrapper">
+                    <div class="container-fluid">
+                        <div class="row">
+                            @foreach (var item in Model.productLanguages)
+                            {
+                                <div class="col-md-10 mb-3 p-0 product-item">
+                                    <div class="product-number">
+                                        <h2>@item.Product.Id</h2>
+                                    </div>
+                                    <div class="col-12 product-content">
+                                        <div class="row">
+                                            <div class="product-img col-md-3">
+                                                <img src="~/Uploads/Products/@item.Product.PhotoPath" alt="Product">
+                                            </div>
+                                            <div class="product-info col-md-9 p-0">
+                                                <div class="product-description">
+                                                    <div class="row">
+                                                        <div class="col-4">
+                                                            <p>@Localizer["Description"]</p>
+                                                        </div>
+                                                        <div class="col-8">
+                                                            <p>@item.Description</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="product-part-no">
+                                                    <div class="row">
+                                                        <div class="col-4">@Localizer["Repl"]</div>
+                                                        <div class="col-8">
+                                                            @foreach (var realpartno in item.Product.RealPartNos)
+                                                            {
+                                                                <p>@realpartno.Name</p>
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="product-used-in">
+                                                    <div class="row">
+                                                        <div class="col-4">@Localizer["Used"]</div>
+                                                        <div class="col-8">
+                                                            @foreach (var usedIn in item.Product.ProductCategories.Where(c => c.ProductId == item.ProductId).Select(c => c.Category))
+                                                            {
+                                                                <p>@usedIn.Name</p>
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

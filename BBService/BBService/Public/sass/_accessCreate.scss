@@ -1,0 +1,13 @@
+#accessCreate {
+    .contaiber-fluid {
+        .inputAccident {
+            @extend %add-style;
+
+            form {
+                .select2-container--default {
+                    width:100% !important;
+                }
+            }
+        }
+    }
+}

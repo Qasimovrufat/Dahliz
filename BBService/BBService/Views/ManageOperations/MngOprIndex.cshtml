@@ -1,0 +1,69 @@
+﻿@model BBService.Models.ViewHome
+@{
+    ViewBag.Title = "MngOprIndex";
+    List<string> permitted = (List<string>)Session["permitted"];
+}
+<div id="operationList">
+    <div class="contaiber-fluid">
+        <div class="row create">
+            <div class="col-md-12">
+                <div class="content">
+                    <h1 class="button">
+                        Əməliyyatlar cədvəli
+                    </h1>
+                    <a class="button @(permitted.FirstOrDefault(a => a == "MngOprCreate")==null? "hideAction" : "")" href="@Url.Action("MngOprCreate", "ManageOperations")">
+                        <i class="fas fa-plus"></i> Əməliyyat yarat
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row userTable">
+            <div class="col-md-12">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="width: 40px;" class="centerCell">#</th>
+                            <th scope="col" style="width: 400px;" class="centerCell">Əməliyyat</th>
+                            <th scope="col" style="width: 100px;" class="centerCell">Baxmaq</th>
+                            <th scope="col" style="width: 100px;" class="centerCell">Yaratmaq</th>
+                            <th scope="col" style="width: 100px;" class="centerCell">Yeniləmək</th>
+                            <th scope="col" style="width: 100px;" class="centerCell">Silmək</th>
+                            <th scope="col" style="width: 100px;" class="centerCell">Düzəliş et</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{ int i = 0;}
+                        @foreach (var item in Model.Operations)
+                        {
+                            i++;
+                            <tr class="pageItem">
+                                <td scope="row" class="centerCell">@i</td>
+                                <td>@item.Name</td>
+                                <td class="centerCell">
+                                    <i style="color:@(item.Read==true?"green":"#b30000")" class="fas fa-@(item.Read==true?"check":"exclamation-circle")"></i>
+                                </td>
+                                <td class="centerCell">
+                                    <i style="color:@(item.Create==true?"green":"#b30000")" class="fas fa-@(item.Create==true?"check":"exclamation-circle")"></i>
+                                </td>
+                                <td class="centerCell">
+                                    <i style="color:@(item.Update==true?"green":"#b30000")" class="fas fa-@(item.Update==true?"check":"exclamation-circle")"></i>
+                                </td>
+                                <td class="centerCell">
+                                    <i style="color:@(item.Delete==true?"green":"#b30000")" class="fas fa-@(item.Delete==true?"check":"exclamation-circle")"></i>
+                                </td>
+                                <td class="centerCell">
+                                    <a class="@(permitted.FirstOrDefault(a => a == "MngOprUpdate")==null? "hideAction" : "")" href="@Url.Action("MngOprUpdate","ManageOperations",new { id=item.Id})" title="Edit">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <a class="@(permitted.FirstOrDefault(a => a == "MngOprDelete")==null? "hideAction" : "")" href="@Url.Action("MngOprDelete","ManageOperations",new { id=item.Id})" title="Delete" onclick="return confirm('Are you sure?')">
+                                        <i class="fas fa-times"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

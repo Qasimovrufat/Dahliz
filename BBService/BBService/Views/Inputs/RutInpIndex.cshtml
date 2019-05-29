@@ -1,0 +1,82 @@
+﻿@model BBService.Models.ViewHome
+@{
+    ViewBag.Title = "RutInpIndex";
+    List<string> permitted = (List<string>)Session["permitted"];
+}
+
+<div id="rutInputIndex">
+    <div class="contaiber-fluid">
+        <div class="row filter">
+            <div class="col-md-12">
+                <p class="nonFilter">
+                    <a class="@(permitted.FirstOrDefault(a => a == "RutInpCreate")==null? "hideAction" : "")" href="@Url.Action("RutInpCreate","Inputs")"><i class="fas fa-plus"></i> Yenisini əlavə et</a>
+                </p>
+            </div>
+        </div>
+        <div class="row content">
+            <div class="col-md-12">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="width: 55px;" class="centerCell">S/s</th>
+                            <th style="width: 100px;" class="centerCell">Xətt Nömrəsi</th>
+                            <th style="width: 250px;" class="centerCell">Xətt adı</th>
+                            <th style="width: 155px;" class="centerCell">Forward</th>
+                            <th style="width: 120px;" class="centerCell">Forward-km</th>
+                            <th style="width: 155px;" class="centerCell">Backward</th>
+                            <th style="width: 120px;" class="centerCell">Backward-km</th>
+                            <th style="width: 120px;" class="centerCell">Açılma tarixi</th>
+                            <th style="width: 120px;" class="centerCell">Bağlanma tarixi</th>
+                            <th scope="col" style="width: 80px;" class="centerCell">Düzəliş et</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{ int i = 0;}
+                        @foreach (var item in Model.Routes)
+                        {
+                            i++;
+                        <tr class="pageItem">
+
+                            <td scope="row" class="centerCell">@i</td>
+                            <td class="centerCell">@(item.Number == null ? "" : item.Number)</td>
+                            <td>@(item.Name == null ? "" : item.Name)</td>
+                            <td>@(item.Forward == null ? "" : item.Forward)</td>
+                            <td>@(item.ForwardLength == null ? "" : item.ForwardLength.Value.ToString("#.##"))</td>
+                            <td>@(item.Backward == null ? "" : item.Backward)</td>
+                            <td>@(item.BackwardLength == null ? "" : item.BackwardLength.Value.ToString("#.##"))</td>
+                            <td class="centerCell">@(item.ActivationDate == null ? "" : item.ActivationDate.Value.ToString("dd.MM.yyyy"))</td>
+                            <td class="centerCell">@(item.DeactivationDate == null ? "" : item.DeactivationDate.Value.ToString("dd.MM.yyyy"))</td>
+                            <td class="centerCell">
+                                <a class="@(permitted.FirstOrDefault(a => a == "RutInpUpdate")==null? "hideAction" : "")" href="@Url.Action("RutInpUpdate","Inputs",new { id=item.Id})" title="Düzəliş et"><i class="fas fa-edit"></i></a>
+                                <a class="@(permitted.FirstOrDefault(a => a == "RutInpClose")==null? "hideAction" : "")" href="@Url.Action("RutInpClose","Inputs",new { id=item.Id})" title="Düzəliş et"><i class="fa fa-clone"></i></a>
+                                <a class="@(permitted.FirstOrDefault(a => a == "RutInpDelete")==null? "hideAction" : "")" href="@Url.Action("RutInpDelete","Inputs",new { id=item.Id})" onclick="return confirm('Are you sure?')" title="Sil">
+                                    <i class="fas fa-times"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row footer">
+            <div class="col-md-3 download">
+                <div class="fieldSet">
+                    <h1>Yüklə</h1>
+                    <a href="@Url.Action("ExportRoutesData","Inputs")" title="Excel">
+                        <img src="~/public/assets/img/excel.png" alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6 paginationWrapper">
+                <ul class="paginationCauseListNav">
+
+                </ul>
+            </div>
+            <div class="col-md-3 records">
+                <p>Cəmi @Model.Routes.Count sərt</p>
+            </div>
+        </div>
+    </div>
+</div>

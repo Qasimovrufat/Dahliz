@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "TroInpCreate";
+}
+
+
+<div id="TroInpCreate">
+    <div class="contaiber-fluid">
+        <div class="row">
+            <div class="col-md-6 inputAccident">
+                <h1>Nasazlıq növü yaradın :</h1>
+                <form method="post" @Url.Action("TroInpCreate", "Inputs") class="formTest">
+
+                    <div class="form-group">
+                        <label for="name" class="col-sm-10 col-form-label">Nasazlıq növü :</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control inputItem" id="name" name="name" placeholder="Daxil edin ...">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-primary addButton">Əlavə et</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

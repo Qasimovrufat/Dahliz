@@ -1,0 +1,94 @@
+﻿@model BBService.Models.ViewHome
+@{
+    ViewBag.Title = "InitContUpdate";
+}
+
+<div id="InitContUpdate">
+    <div class="contaiber-fluid">
+        <div class="row">
+            <div class="col-md-12 inputAccident">
+                <h1>Avtobusların ilkin vəziyyətinə nəzarət kartı :</h1>
+                <form method="post" @Url.Action("InitContUpdate", "MainOperations") class="formTest">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-4">
+
+                            <div class="form-group inputHere">
+                                <label for="VehicleId" class="col-sm-12 col-form-label">NV nömrəsi :</label>
+                                <div class="col-sm-12">
+                                    <select id="VehicleId" class="form-control inputItem inputItemSelect selectpicker" name="VehicleId" data-live-search="true">
+                                        <option value="0" selected>Seçin ...</option>
+                                        @foreach (var item in Model.Vehicles)
+                                        {
+                                            <option @(ViewBag.InitCont.VehicleId!=null?(item.Id==ViewBag.InitCont.VehicleId?"selected":""):"") value="@item.Id">@item.Number</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group inputHere">
+                                <label for="RouteId" class="col-sm-12 col-form-label">Xətt :</label>
+                                <div class="col-sm-12">
+                                    <select id="RouteId" class="form-control inputItem inputItemSelect selectpicker" name="RouteId" data-live-search="true">
+                                        <option value="0" selected>Seçin ...</option>
+                                        @foreach (var item in Model.Routes)
+                                        {
+                                            <option @(ViewBag.InitCont.RouteId!=null?(item.Id==ViewBag.InitCont.RouteId?"selected":""):"") value="@item.Id">@item.Number</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group inputHere">
+                                <label for="FirstDriverId" class="col-sm-12 col-form-label">Sürücü - 1 :</label>
+                                <div class="col-sm-12">
+                                    <select id="FirstDriverId" class="form-control inputItem inputItemSelect selectpicker" name="FirstDriverId" data-live-search="true">
+                                        <option value="0" selected>Seçin ...</option>
+                                        @foreach (var item in Model.Employees)
+                                        {
+                                            <option @(ViewBag.InitCont.FirstDriverId !=null?(item.Id==ViewBag.InitCont.FirstDriverId?"selected":""):"") value="@item.Id">@(item.Id!=null? (item.Surname+" "+item.Name+" "+item.FutherName) :"")</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="LeavingKilometer" class="col-sm-12 col-form-label">Çıxış Kilometraj :</label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control inputItem numberValidInput" id="LeavingKilometer" name="LeavingKilometer" value="@(ViewBag.InitCont.LeavingKilometer!=null?ViewBag.InitCont.LeavingKilometer.ToString("#.##"):"")" placeholder="Daxil edin ...">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="LeavingFuel" class="col-sm-12 col-form-label">Çıxış yanacaq :</label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control inputItem numberValidInput" id="LeavingFuel" name="LeavingFuel" value="@(ViewBag.InitCont.LeavingFuel!=null? ViewBag.InitCont.LeavingFuel.ToString("#.##"):"")" placeholder="Daxil edin ...">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-10 col-form-label" for="LeavingNote">Əlavə qeyd</label>
+                                <div class="col-sm-12">
+                                    <textarea class="form-control inputItem inputItemText" name="LeavingNote" id="LeavingNote" rows="3">@ViewBag.InitCont.LeavingNote</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <div class="col-sm-10">
+                                    <button type="submit" class="btn btn-primary addButton">Dəyişin</button>
+                                </div>
+                                <div class="col-sm-10 cancel">
+                                    <a href="@Url.Action("OpenInitContIndex","MainOperations")">Ləğv edin</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

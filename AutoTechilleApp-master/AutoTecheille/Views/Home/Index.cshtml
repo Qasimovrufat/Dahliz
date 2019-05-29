@@ -1,0 +1,25 @@
+﻿@model List<AboutLanguage>
+<div class="container">
+    <div class="about my-5">
+        <div class="col-12 about-photo">
+            <img src="images/img3.jpg" alt="car">
+            @foreach (var item in Model)
+            {
+                if (item.About.IsTitle)
+                {
+                    <p>
+                        @item.Text
+                    </p>
+                }
+            }
+        </div>
+        <div class="about-text">
+            @foreach (var item in Model)
+            {
+                <p>
+                    @item.Text
+                </p>
+            }
+        </div>
+    </div>
+</div>

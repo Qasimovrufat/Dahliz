@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "MngOprUpdate";
+    DateTime date = DateTime.Now;
+}
+<div id="updateUserAccessOperation">
+    <div class="contaiber-fluid">
+        <div class="row">
+            <div class="col-md-12 inputAccident">
+                <h1>Yeni Əməliyyat yarat :</h1>
+                <form method="post" @Url.Action("MngOprUpdate", "ManageOperations")>
+                    <div class="form-group">
+                        <label for="operation" class="col-sm-10 col-form-label">Əməliyyat :</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control inputItem" id="operation" name="name" value="@ViewBag.Operation.Name" placeholder="Daxil edin ...">
+                        </div>
+                    </div>
+                    <div class="form-group form-check">
+                        <div class="col-sm-10">
+                            <input type="checkbox" class="form-check-input" value="true" name="read" @(ViewBag.Operation.Read == true ? "checked" : "") id="read">
+                        </div>
+                        <label class="col-sm-10 form-check-label" for="read">Baxmaq</label>
+                    </div>
+                    <div class="form-group form-check">
+                        <div class="col-sm-10">
+                            <input type="checkbox" class="form-check-input" value="true" id="create" name="create" @(ViewBag.Operation.Create == true ? "checked" : "")>
+                        </div>
+                        <label class="col-sm-10 form-check-label" for="create">Yaratmaq</label>
+                    </div>
+                    <div class="form-group form-check">
+                        <div class="col-sm-10">
+                            <input type="checkbox" class="form-check-input" value="true" id="update" name="update" @(ViewBag.Operation.Update == true ? "checked" : "")>
+                        </div>
+                        <label class="col-sm-10 form-check-label" for="update">Yeniləmək</label>
+                    </div>
+                    <div class="form-group form-check">
+                        <div class="col-sm-10">
+                            <input type="checkbox" class="form-check-input" value="true" id="delete" name="delete" @(ViewBag.Operation.Delete == true ? "checked" : "")>
+                        </div>
+                        <label class="col-sm-10 form-check-label" for="delete">Silmək</label>
+                    </div>
+                    <!-- Hiden inputs -->
+                    <input type="hidden" class="form-control" name="date" value="@date">
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-primary addButton">Yenilə</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

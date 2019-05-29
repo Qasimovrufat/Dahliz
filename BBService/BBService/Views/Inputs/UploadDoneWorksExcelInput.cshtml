@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "UploadDoneWorksExcelInput";
+}
+
+<div id="uploadDoneWorksExcelInput">
+    <div class="contaiber-fluid">
+        <div class="row">
+            <div class="col-md-6 inputAccident">
+                <h1>Görülmüş işlər siyahısını Excel file olaraq əlavə edin :</h1>
+                <form method="post" action="@Url.Action("UploadDoneWorksExcelInput", "Inputs")" class="formTest" enctype="multipart/form-data">
+
+                    <div class="form-group">
+                        <label for="UploadedExcel" class="col-sm-10 col-form-label">File seç :</label>
+                        <div class="col-sm-10">
+                            <input type="file" class="form-control inputItem" id="UploadedExcel" name="UploadedExcel">
+                        </div>
+                    </div>
+
+                    @if (Session["RepeatedWorkCodeFile"] != null)
+                    {
+                        <div class="form-group">
+                            <div class="alert alert-info">
+                                @TempData["RepeatedWorkCodeFile"] kodlu iş faylda təkrar qeyd edilib.
+                            </div>
+                        </div>
+                        Session["RepeatedWorkCodeFile"] = null;
+                        TempData["RepeatedWorkCodeFile"] = null;
+                    }
+
+                    @if (Session["RepeatedWorkCode"] != null)
+                    {
+                        <div class="form-group">
+                            <div class="alert alert-info">
+                                @TempData["RepeatedWorkCode"] kodlu iş artıq bazada mövcuddur.
+                            </div>
+                        </div>
+                        Session["RepeatedWorkCode"] = null;
+                        TempData["RepeatedWorkCode"] = null;
+                    }
+
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-primary addButton">Əlavə et</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

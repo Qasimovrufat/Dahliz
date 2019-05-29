@@ -1,0 +1,130 @@
+﻿@model BBService.Models.ViewHome
+@{
+    /**/
+
+    ViewBag.Title = "BindSparePartIndex";
+    List<string> permitted = (List<string>)Session["permitted"];
+}
+
+<div id="BindSparePartIndex">
+    <div class="contaiber-fluid">
+        <div class="row filter">            
+            <div class="col-md-12">
+                <form @Url.Action("OpenInitContIndex", "MainOperations") autocomplete="off">
+                    <div class="form-row">
+                        <div class="col-md-12">
+
+                            @*Maintenance type*@
+                            <div class="searchItem">
+                                <label class="lableSelectBox">TQ :</label>
+                                <select class="form-control inputItem inputItemWith-3 selectpicker" name="maintenanceTypeId" data-live-search="true">
+                                    <option value="null" selected>Seçin ...</option>
+                                    @foreach (var item in Model.MaintenanceType)
+                                    {
+                                        <option @(Model.SearchMainBinding.maintenanceTypeId == item.Id ? "selected" : "") value="@item.Id">@(item.Name + " - " + item.MaintenanceValue)</option>
+                                    }
+                                </select>
+                            </div>
+
+                            @*Spare parts*@
+                            <div class="searchItem">
+                                <label class="lableSelectBox">Ehtiyyat hissəsi :</label>
+                                <select class="form-control inputItem inputItemWith-3 selectpicker" name="warehouseId" data-live-search="true">
+                                    <option value="null" selected>Seçin ...</option>
+                                    @foreach (var item in Model.TempWarehouse)
+                                    {
+                                        <option @(Model.SearchMainBinding.warehouseId == item.Id ? "selected" : "") value="@item.Id">@(item.SparePartCode + " - " + item.Name)</option>
+                                    }
+                                </select>
+                            </div>
+
+                            @*Spare parts*@
+                            <div class="searchItem">
+                                <label class="lableSelectBox">NV Brand :</label>
+                                <select class="form-control inputItem inputItemWith-3 selectpicker" name="brandId" data-live-search="true">
+                                    <option value="null" selected>Seçin ...</option>
+                                    @foreach (var item in Model.VehiclesBrand)
+                                    {
+                                        <option @(Model.SearchMainBinding.brandId == item.Id ? "selected" : "") value="@item.Id">@item.Brand</option>
+                                    }
+                                </select>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Axtar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-12">
+                <div class="nonFIlterWrapper">
+                    <p class="nonFilter" id="clearFilter">
+                        <a href=""><i class="fa fa-eraser"></i> Təmizlə</a>
+                    </p>
+
+                    <p class="nonFilter">
+                        <a class="@(permitted.FirstOrDefault(a => a == "BindSparePartCreate")==null? "hideAction" : "")" href="@Url.Action("BindSparePartCreate","Monipulations")"><i class="fas fa-plus"></i> Yenisini əlavə et</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row content">
+            <div class="col-md-12">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="width: 50px;max-width:50px" class="centerCell">S/s</th>
+                            <th style="width: 120px;" class="centerCell">TQ adı</th>
+                            <th style="width: 100px;" class="centerCell">Ehtiyyat hissəsi kodu</th>
+                            <th style="width: 250px;" class="centerCell">Ehtiyyat hissəsi adı</th>
+                            <th style="width: 80px;" class="centerCell">Ehtiyyat hissəsi miqdarı</th>
+                            <th style="width: 120px;" class="centerCell">NV Brand</th>
+                            <th style="width: 100px;" class="centerCell">Limit</th>
+                            <th scope="col" style="width: 70px;max-width:50px" class="centerCell">Düzəliş et</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{ int i = 0;}
+                        @foreach (var item in Model.WarehouseToMaintenance)
+                        {
+                            i++;
+                        <tr class="pageItem">
+
+                            <td scope="row" class="centerCell">@i</td>
+                            <td>@(item.MaintenanceType.Name == null ? "" : (item.MaintenanceType.Name + " - " + item.MaintenanceType.MaintenanceValue))</td>
+                            <td>@(item.TempWarehouse.SparePartCode == null ? null : item.TempWarehouse.SparePartCode)</td>
+                            <td>@(item.TempWarehouse.Name == null ? null : item.TempWarehouse.Name)</td>
+                            <td>@(item.Quantity == null ? null : item.Quantity.Value.ToString("#.##"))</td>
+                            <td>@(item.TempWarehouse.VehicleId == null ? null : item.TempWarehouse.VehiclesBrand.Brand)</td>
+                            <td>@(item.NotRequireSPLimit == null ? null : item.NotRequireSPLimit.Value.ToString("#.##"))</td>
+                            <td class="centerCell">
+                                <a class="@(permitted.FirstOrDefault(a => a == "BindSparePartUpdate")==null? "hideAction" : "")" href="@Url.Action("BindSparePartUpdate","Monipulations",new { id=item.Id})" title="Düzəliş et"><i class="fas fa-edit"></i></a>
+                                <a class="@(permitted.FirstOrDefault(a => a == "BindSparePartDelete")==null? "hideAction" : "")" href="@Url.Action("BindSparePartDelete","Monipulations",new { id=item.Id})" onclick="return confirm('Are you sure?')" title="Sil">
+                                    <i class="fas fa-times"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row footer">
+            <div class="col-md-3 download">
+                <div class="fieldSet">
+                    <h1>Yüklə</h1>
+                        <a href="@Url.Action("ExportBindSparePartData","Monipulations")" title="Excel">
+                            <img src="~/public/assets/img/excel.png" alt="">
+                        </a>
+                </div>
+            </div>
+            <div class="col-md-6 paginationWrapper">
+                <ul id="paginationCauseListNav"></ul>
+            </div>
+            <div class="col-md-3 records">
+                <p>Cəmi @Model.WarehouseToMaintenance.Count sətir</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+﻿@model BBService.Models.ViewHome
+@using BBService.Models
+@{
+    BBServiceEntities db = new BBServiceEntities();
+    ViewBag.Title = "NotifIndex";
+
+    List<string> permitted = (List<string>)Session["permitted"];
+}
+
+<div id="notificationsIndex">
+    <div class="contaiber-fluid">
+        <div class="row filter">
+            <div class="col-md-12">
+                <form @Url.Action("NotifIndex", "Notifications")>
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <div class="searchItem">
+                                <label>Başlanğıc tarix :</label>
+                                <input type="text" value="@(Model.SearchDate.startDate!=null?Model.SearchDate.startDate:"")" class="form-control inputItem datepicker inputItemWith-2" name="startDate" placeholder="Tarix seçin ...">
+                            </div>
+                            <div class="searchItem">
+                                <label>Son tarix :</label>
+                                <input type="text" value="@(Model.SearchDate.endDate!=null?Model.SearchDate.endDate:"")" class="form-control inputItem datepicker inputItemWith-2" name="endDate" placeholder="Tarix seçin ...">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Axtar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row content">
+            <div class="col-md-12">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="width: 50px;" class="centerCell">#</th>
+                            <th style="width: 750px;" class="centerCell">Xəbərdarlıq</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{ int i = 0;}
+                        @foreach (var item in Model.Notifications)
+                        {
+                            i++;
+                            <tr class="pageItem @(item.Status==true?"active":"")">
+                                <td scope="row" class="centerCell">@i</td>
+                                <td>
+                                    <a href="@Url.Action("NotifDetails","Notifications", new {notificationId = item.Id, employeeId=item.DataId})">
+                                        <h3>@(item.NotificationTitleId != null ? item.NotificationTitles.Name : null)</h3>
+                                        <p>@(item.DataId != null ? db.Employees.Find(item.DataId).EmployeeCode : "") @(item.NotificationTitleId != null ? item.NotificationTitles.NotificationContent.First().Name : null)</p>
+                                        <span class="date"><i class="far fa-calendar-alt"></i> @item.AddingDate.Value.ToString("dd.MM.yyyy")</span>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row footer">
+            <div class="col-md-3 download">
+
+            </div>
+            <div class="col-md-6 paginationWrapper">
+                @*<ul class="paginationCauseListNav"></ul>*@
+            </div>
+            <div class="col-md-3 records">
+                <p>Cəmi @Model.Notifications.Count xəbərdarlıq</p>
+            </div>
+        </div>
+    </div>
+</div>
+

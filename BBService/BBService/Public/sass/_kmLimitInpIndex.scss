@@ -1,0 +1,31 @@
+#KmLimitInpIndex {
+    .contaiber-fluid {
+        .filter {
+            @extend %filter-style;
+
+            form {
+                float: left;
+            }
+
+            .nonFIlterWrapper {
+                float: right;
+                margin-top: 8px;
+
+                p {
+                    a {
+                        padding: 4px 10px;
+                        font-size: 13px;
+                    }
+                }
+            }
+        }
+
+        .content {
+            @extend %content-style;
+        }
+
+        .footer {
+            @extend %footer-style;
+        }
+    }
+}

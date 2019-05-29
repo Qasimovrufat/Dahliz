@@ -1,0 +1,7 @@
+﻿@model List<Language>
+<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+    @foreach (var language in Model)
+    {
+        <a class="dropdown-item" asp-action="SetLanguage" asp-controller="Home" asp-route-id="@language.Value">@language.Key</a>
+    }
+</div>

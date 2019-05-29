@@ -1,0 +1,267 @@
+﻿@using BBService.Models
+@model BBService.Models.ViewHome
+@{
+    ViewBag.Title = "JobcardDetails";
+    List<string> permitted = (List<string>)Session["permitted"];
+    var cardNo = "";
+    var len = ((string)Model.JobcardDetailsModel.JobcardNo.ToString()).Length;
+    for (int i = 0; i < (9 - len); i++)
+    {
+        cardNo += 0;
+    }
+    cardNo += Model.JobcardDetailsModel.JobcardNo.ToString();
+}
+
+<div id="JobcardDetails">
+    <div class="contaiber-fluid">
+        <div class="row firstPart allParts">
+            <div class="col-md-12 heading">
+                <h1>Təmir Kartı №@cardNo</h1>
+            </div>
+            <div class="col-md-4 firstItemGroup allItemGroup">
+                <div class="itemGroup">
+                    <div class="left">
+                        <p>Sifarişçi :</p>
+                    </div>
+                    <div class="right">
+                        <p>@Model.JobcardDetailsModel.Company</p>
+                    </div>
+                </div>
+
+                <div class="itemGroup">
+                    <div class="left">
+                        <p>Qaraj kodu :</p>
+                    </div>
+                    <div class="right">
+                        <p>@Model.JobcardDetailsModel.VehicleCode </p>
+                    </div>
+                </div>
+
+                <div class="itemGroup">
+                    <div class="left">
+                        <p>Şassi :</p>
+                    </div>
+                    <div class="right">
+                        <p>@Model.JobcardDetailsModel.ChassisNumber</p>
+                    </div>
+                </div>
+
+                <div class="itemGroup">
+                    <div class="left">
+                        <p>Baş nəzarətçi :</p>
+                    </div>
+                    <div class="right">
+                        <p>@Model.JobcardDetailsModel.SeniorMech</p>
+                    </div>
+                </div>
+
+                <div class="itemGroup">
+                    <div class="left">
+                        <p>Qəbul edən KN :</p>
+                    </div>
+                    <div class="right">
+                        <p>@Model.JobcardDetailsModel.ReceivingController</p>
+                    </div>
+                </div>
+
+                <div class="itemGroup">
+                    <div class="left">
+                        <p>Təhvil alan KN :</p>
+                    </div>
+                    <div class="right">
+                        <p>@Model.JobcardDetailsModel.TakeOverController</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-4 secondItemGroup allItemGroup">
+                <div class="itemGroup">
+                    <div class="left">
+                        <p>DNN :</p>
+                    </div>
+                    <div class="right">
+                        <p>@Model.JobcardDetailsModel.VehicleNumber</p>
+                    </div>
+                </div>
+
+                <div class="itemGroup">
+                    <div class="left">
+                        <p>Buraxılış ili :</p>
+                    </div>
+                    <div class="right">
+                        <p>@Model.JobcardDetailsModel.ReleaseYear</p>
+                    </div>
+                </div>
+
+                <div class="itemGroup">
+                    <div class="left">
+                        <p>Yürüş(km) :</p>
+                    </div>
+                    <div class="right">
+                        <p>@Model.JobcardDetailsModel.MaxKm</p>
+                    </div>
+                </div>
+
+                <div class="itemGroup">
+                    <div class="left">
+                        <p>Nəzarətçi :</p>
+                    </div>
+                    <div class="right">
+                        <p>@Model.JobcardDetailsModel.Mech</p>
+                    </div>
+                </div>
+
+                <div class="itemGroup">
+                    <div class="left">
+                        <p>Təhvil vaxtı :</p>
+                    </div>
+                    <div class="right">
+                        <p>@Model.JobcardDetailsModel.HandOverTime</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 thirdItemGroup allItemGroup">
+                <div class="itemGroup">
+                    <div class="left">
+                        <p>Nəqliyyat vasitəsi :</p>
+                    </div>
+                    <div class="right">
+                        <p>@Model.JobcardDetailsModel.VehicleBrand</p>
+                    </div>
+                </div>                
+
+                <div class="itemGroup">
+                    <div class="left">
+                        <p>Mühərrik :</p>
+                    </div>
+                    <div class="right">
+                        <p>@Model.JobcardDetailsModel.EngineCode</p>
+                    </div>
+                </div>
+
+                <div class="itemGroup">
+                    <div class="left">
+                        <p>Nasazlıq növü :</p>
+                    </div>
+                    <div class="right">
+                        <p>@Model.JobcardDetailsModel.FailureType</p>
+                    </div>
+                </div>
+
+                <div class="itemGroup">
+                    <div class="left">
+                        <p>Qəbul vaxtı :</p>
+                    </div>
+                    <div class="right">
+                        <p>@Model.JobcardDetailsModel.ReceivTime</p>
+                    </div>
+                </div>
+
+                <div class="itemGroup">
+                    <div class="left">
+                        <p>Təhvil verən KN :</p>
+                    </div>
+                    <div class="right">
+                        <p>@Model.JobcardDetailsModel.HandOverController</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row secondPart allParts">
+            <div class="col-md-12 heading">
+                <h1>Sərf edilmiş ehtiyyat hissələri</h1>
+            </div>
+
+            <div class="col-md-12 content">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="min-width: 40px;" class="centerCell">S/s</th>
+                            <th style="min-width: 80px;" class="centerCell">Daxili kod</th>
+                            <th style="min-width: 80px;" class="centerCell">Malın kodu</th>
+                            <th style="min-width: 500px;" class="centerCell">Malın adı</th>
+                            <th style="min-width: 80px;" class="centerCell">Tələb sayı</th>
+                            <th style="min-width: 80px;" class="centerCell">Qarşılama sayı</th>
+                            <th style="min-width: 80px;" class="centerCell">Ö/V</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{ int k = 0;}
+                        @foreach (var item in Model.JobcardDetailsModel.Requisitions)
+                        {
+                            k++;
+                        <tr class="pageItem">
+                            <td scope="row" class="centerCell">@k</td>
+                            <td class="centerCell">@(item.TempWarehouseId != null ? item.TempWarehouse.InternalCode : "")</td>
+                            <td class="centerCell">@(item.TempWarehouseId != null ? item.TempWarehouse.SparePartCode : "")</td>
+                            <td class="centerCell">@(item.TempWarehouseId != null ? item.TempWarehouse.Name : "")</td>
+                            <td class="centerCell">@(item.RequiredQuantity != null ? item.RequiredQuantity.Value.ToString("#.##") : "")</td>
+                            <td class="centerCell">@(item.MeetingQuantity != null ? item.MeetingQuantity.Value.ToString("#.##") : "")</td>
+                            <td class="centerCell">@(item.TempWarehouseId != null ? item.TempWarehouse.Name : "")</td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>            
+        </div>
+
+        <div class="row thirdPart allParts">
+            <div class="col-md-12 heading">
+                <h1>Görülmüş təmir işləri</h1>
+            </div>
+
+            <div class="col-md-12 content">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="min-width: 40px;" class="centerCell">S/s</th>
+                            <th style="min-width: 80px;" class="centerCell">Xidmət kod</th>
+                            <th style="min-width: 300px;" class="centerCell">Xidmətin açıqlaması</th>
+                            <th style="min-width: 80px;" class="centerCell">KN kodu</th>
+                            <th style="min-width: 150px;" class="centerCell">KN soyadı, adı</th>
+                            <th style="min-width: 80px;" class="centerCell">İşçi kodu</th>
+                            <th style="min-width: 150px;" class="centerCell">İşçi soyadı, adı</th>
+                            <th style="min-width: 115px;" class="centerCell">İşə baş. zamanı</th>
+                            <th style="min-width: 115px;" class="centerCell">İşin bit. zamanı</th>
+                            <th style="min-width: 50px;" class="centerCell">FİM</th>
+                            <th style="min-width: 50px;" class="centerCell">NİM</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{ int j = 0;}
+                        @foreach (var item in Model.JobcardDetailsModel.JobcardToDoneWorks)
+                         {
+                            j++;
+                            <tr class="pageItem">
+                                <td scope="row" class="centerCell">@j</td>
+                                <td class="centerCell">@(item.WorkId != null ? item.DoneWorks.WorkCode : "")</td>
+                                <td>@(item.WorkId != null ? item.DoneWorks.WorkName : "")</td>
+                                <td class="centerCell">@(item.ServisOfficer != null ? item.Employees.EmployeeCode : "")</td>
+                                <td>@(item.ServisOfficer != null ? (item.Employees.Surname + " " + item.Employees.Name) : "")</td>
+                                <td class="centerCell">@(item.Master != null ? item.Employees1.EmployeeCode : "")</td>
+                                <td>@(item.Master != null ? (item.Employees1.Surname + " " + item.Employees1.Name) : "")</td>
+                                <td class="centerCell">@(item.WorkStartTime != null ? item.WorkStartTime.Value.ToString("dd.MM.yyyy HH:mm") : "")</td>
+                                <td class="centerCell">@(item.WorkEndTime != null ? item.WorkEndTime.Value.ToString("dd.MM.yyyy HH:mm") : "")</td>
+                                <td class="centerCell">@((item.WorkStartTime != null && item.WorkEndTime != null) ?Math.Round(((item.WorkEndTime - item.WorkStartTime).Value.TotalMinutes/6), 1).ToString() : "")</td>
+                                <td class="centerCell">@(item.WorkId!=null ? item.DoneWorks.NormativeBakubus.ToString() : "")</td>
+                            </tr>
+                         }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row fourthPart">
+            <div class="col-md-12 linkWrapper">
+                <a class="@(permitted.FirstOrDefault(a => a == "JobcardNote")==null? "hideAction" : "")" href="@(Url.Action("JobcardNote","MainOperations", new {jobCardId = Model.JobcardDetailsModel.Id}))">Qeyd</a>
+                <a href="@(Url.Action("RequisitionsIndex","MainOperations", new {jobCardId = Model.JobcardDetailsModel.Id}))">Tələbnamə</a>
+                <a href="@(Url.Action("DoneWorksIndex","MainOperations", new {jobCardId = Model.JobcardDetailsModel.Id}))">Görülmüş işlər</a>
+                <a class="@(permitted.FirstOrDefault(a => a == "JobcardPrint")==null? "hideAction" : "")" href="@(Url.Action("JobcardPrint","MainOperations", new {jobCardId = Model.JobcardDetailsModel.Id}))" target="_blank">Çap et</a>
+                <a href="@(Url.Action("JobcardIndex","MainOperations"))">Geri</a>
+            </div>
+        </div>
+    </div>
+</div>

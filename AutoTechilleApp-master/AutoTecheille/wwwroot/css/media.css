@@ -1,0 +1,46 @@
+﻿@media screen and (max-width:1200px){
+    .header-item {
+        display: flex;
+        justify-content: center !important;
+    }
+    .header-item li a{
+        font-size:1.1em;
+    }
+    .header-item form{
+        font-size:1.1em;
+    }
+    .logo h1{
+        font-size:1.4em;
+    }
+    .about p{
+        font-size:0.9em;
+    }
+}
+
+@media screen and (max-width:768px){
+    .product-img img{
+        width:200px;
+    }
+    #selectLanguage{
+        display:block;
+    }
+    .language-wrapper{
+        display:none;
+    }
+    .product-item{
+        margin:20px 0px;
+    }
+    .product-description p{
+        font-size:0.9em;
+    }
+    .navbar{
+        display:none;
+    }
+    .hamburger-menu{
+        display:block;
+    }
+    .about-photo img{
+        width:95%;
+        height:100%;
+    }
+}

@@ -1,0 +1,387 @@
+﻿@model BBService.Models.ViewHome
+@{
+    ViewBag.Title = "Çap-Təmir kartı";
+    Layout = null;
+    List<string> permitted = (List<string>)Session["permitted"];
+    var cardNo = "";
+    var len = ((string)Model.JobcardDetailsModel.JobcardNo.ToString()).Length;
+    for (int i = 0; i < (9 - len); i++)
+    {
+        cardNo += 0;
+    }
+    cardNo += Model.JobcardDetailsModel.JobcardNo.ToString();
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Çap-Təmir kartı</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        body {
+        }
+
+        p {
+            margin: 0px;
+        }
+
+        .clearFix {
+            clear: both;
+            margin-bottom: 5px;
+        }
+
+        .allItemGroup {
+            width: 33.33%;
+            float: left;
+        }
+
+        .itemGroup {
+            /*display: flex;*/
+            margin-bottom: 5px;
+        }
+
+            .itemGroup .left {
+                font-weight: bold;
+            }
+
+        .firstItemGroup .left {
+            width: 120px;
+            float:left;
+        }
+
+        .firstItemGroup .right {
+            width: calc(100% - 120px);
+            float: left;
+        }
+
+        .secondItemGroup .left {
+            width: 94px;
+            float: left;
+        }
+
+        .secondItemGroup .right {
+            width: calc(100% - 94px);
+            float: left;
+        }
+
+        .thirdItemGroup .left {
+            width: 133px;
+            float: left;
+        }
+        .thirdItemGroup .right {
+            width: calc(100% - 133px);
+            float: left;
+        }
+
+        .secondPart .heading h1 {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 25px;
+        }
+
+        .thirdPart .heading h1 {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 25px;
+        }
+
+        .allParts .table, .allParts .table th, .allParts .table td {
+            border: 1px solid;
+        }
+
+        .allParts .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+            .allParts .table thead tr {
+                height: 30px;
+                background: aliceblue;
+            }
+    </style>
+</head>
+
+<body>
+    <div id="JobcardPrint">
+        <div class="contaiber-fluid">
+            <div class="row firstPart allParts">
+                <div class="col-md-12 heading">
+                    <h1 style="text-align:center; font-size: 30px;">Təmir Kartı №@cardNo</h1>
+                </div>
+
+                <div class="col-md-4 firstItemGroup allItemGroup">
+                    <div class="itemGroup">
+                        <div class="left">
+                            <p>Sifarişçi :</p>
+                        </div>
+                        <div class="right">
+                            <p>@Model.JobcardDetailsModel.Company</p>
+                        </div>
+                    </div>
+
+                    <div class="clearFix"></div>
+
+                    <div class="itemGroup">
+                        <div class="left">
+                            <p>Qaraj kodu :</p>
+                        </div>
+                        <div class="right">
+                            <p>@Model.JobcardDetailsModel.VehicleCode </p>
+                        </div>
+                    </div>
+
+                    <div class="clearFix"></div>
+
+                    <div class="itemGroup">
+                        <div class="left">
+                            <p>Şassi :</p>
+                        </div>
+                        <div class="right">
+                            <p>@Model.JobcardDetailsModel.ChassisNumber</p>
+                        </div>
+                    </div>
+
+                    <div class="clearFix"></div>
+
+                    <div class="itemGroup">
+                        <div class="left">
+                            <p>Baş nəzarətçi :</p>
+                        </div>
+                        <div class="right">
+                            <p>@Model.JobcardDetailsModel.SeniorMech</p>
+                        </div>
+                    </div>
+
+                    <div class="clearFix"></div>
+
+                    <div class="itemGroup">
+                        <div class="left">
+                            <p>Qəbul edən KN :</p>
+                        </div>
+                        <div class="right">
+                            <p>@Model.JobcardDetailsModel.ReceivingController</p>
+                        </div>
+                    </div>
+
+                    <div class="clearFix"></div>
+
+                    <div class="itemGroup">
+                        <div class="left">
+                            <p>Təhvil alan KN :</p>
+                        </div>
+                        <div class="right">
+                            <p>@Model.JobcardDetailsModel.TakeOverController</p>
+                        </div>
+                    </div>
+
+                    <div class="clearFix"></div>
+
+                </div>
+
+                <div class="col-md-4 secondItemGroup allItemGroup">
+                    <div class="itemGroup">
+                        <div class="left">
+                            <p>DNN :</p>
+                        </div>
+                        <div class="right">
+                            <p>@Model.JobcardDetailsModel.VehicleNumber</p>
+                        </div>
+                    </div>
+
+                    <div class="clearFix"></div>
+
+                    <div class="itemGroup">
+                        <div class="left">
+                            <p>Buraxılış ili :</p>
+                        </div>
+                        <div class="right">
+                            <p>@Model.JobcardDetailsModel.ReleaseYear</p>
+                        </div>
+                    </div>
+
+                    <div class="clearFix"></div>
+
+                    <div class="itemGroup">
+                        <div class="left">
+                            <p>Yürüş(km) :</p>
+                        </div>
+                        <div class="right">
+                            <p>@Model.JobcardDetailsModel.MaxKm</p>
+                        </div>
+                    </div>
+
+                    <div class="clearFix"></div>
+
+                    <div class="itemGroup">
+                        <div class="left">
+                            <p>Nəzarətçi :</p>
+                        </div>
+                        <div class="right">
+                            <p>@Model.JobcardDetailsModel.Mech</p>
+                        </div>
+                    </div>
+
+                    <div class="clearFix"></div>
+
+                    <div class="itemGroup">
+                        <div class="left">
+                            <p>Təhvil vaxtı :</p>
+                        </div>
+                        <div class="right">
+                            <p>@Model.JobcardDetailsModel.HandOverTime</p>
+                        </div>
+                    </div>
+
+                    <div class="clearFix"></div>
+                </div>
+
+                <div class="col-md-4 thirdItemGroup allItemGroup">
+                    <div class="itemGroup">
+                        <div class="left">
+                            <p>Nəqliyyat vasitəsi :</p>
+                        </div>
+                        <div class="right">
+                            <p>@Model.JobcardDetailsModel.VehicleBrand</p>
+                        </div>
+                    </div>
+
+                    <div class="clearFix"></div>
+
+                    <div class="itemGroup">
+                        <div class="left">
+                            <p>Mühərrik :</p>
+                        </div>
+                        <div class="right">
+                            <p>@Model.JobcardDetailsModel.EngineCode</p>
+                        </div>
+                    </div>
+
+                    <div class="clearFix"></div>
+
+                    <div class="itemGroup">
+                        <div class="left">
+                            <p>Nasazlıq növü :</p>
+                        </div>
+                        <div class="right">
+                            <p>@Model.JobcardDetailsModel.FailureType</p>
+                        </div>
+                    </div>
+
+                    <div class="clearFix"></div>
+
+                    <div class="itemGroup">
+                        <div class="left">
+                            <p>Qəbul vaxtı :</p>
+                        </div>
+                        <div class="right">
+                            <p>@Model.JobcardDetailsModel.ReceivTime</p>
+                        </div>
+                    </div>
+
+                    <div class="clearFix"></div>
+
+                    <div class="itemGroup">
+                        <div class="left">
+                            <p>Təhvil verən KN :</p>
+                        </div>
+                        <div class="right">
+                            <p>@Model.JobcardDetailsModel.HandOverController</p>
+                        </div>
+                    </div>
+
+                    <div class="clearFix"></div>
+                </div>
+
+            </div>
+
+            <div class="clearFix"></div>
+
+            <div class="row secondPart allParts">
+                <div class="col-md-12 heading">
+                    <h1>Sərf edilmiş ehtiyyat hissələri</h1>
+                </div>
+
+                <div class="col-md-12 content">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="min-width: 40px;" class="centerCell">S/s</th>
+                                <th style="min-width: 80px;" class="centerCell">Daxili kod</th>
+                                <th style="min-width: 80px;" class="centerCell">Malın kodu</th>
+                                <th style="min-width: 500px;" class="centerCell">Malın adı</th>
+                                <th style="min-width: 80px;" class="centerCell">Tələb sayı</th>
+                                <th style="min-width: 80px;" class="centerCell">Qarşılama sayı</th>
+                                <th style="min-width: 80px;" class="centerCell">Ö/V</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{ int k = 0;}
+                            @foreach (var item in Model.JobcardDetailsModel.Requisitions)
+                            {
+                                k++;
+                                <tr class="pageItem">
+                                    <td style="text-align:center;">@k</td>
+                                    <td style="text-align:center;">@(item.TempWarehouseId != null ? item.TempWarehouse.InternalCode : "")</td>
+                                    <td style="text-align:center;">@(item.TempWarehouseId != null ? item.TempWarehouse.SparePartCode : "")</td>
+                                    <td>@(item.TempWarehouseId != null ? item.TempWarehouse.Name : "")</td>
+                                    <td style="text-align:center;">@(item.RequiredQuantity != null ? item.RequiredQuantity.Value.ToString("#.##") : "")</td>
+                                    <td style="text-align:center;">@(item.MeetingQuantity != null ? item.MeetingQuantity.Value.ToString("#.##") : "")</td>
+                                    <td style="text-align:center;">@(item.TempWarehouseId != null ? item.TempWarehouse.Name : "")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="row thirdPart allParts">
+                <div class="col-md-12 heading">
+                    <h1>Görülmüş təmir işləri</h1>
+                </div>
+
+                <div class="col-md-12 content">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="min-width: 40px;" class="centerCell">S/s</th>
+                                <th style="min-width: 80px;" class="centerCell">Xidmət kod</th>
+                                <th style="min-width: 300px;" class="centerCell">Xidmətin açıqlaması</th>
+                                <th style="min-width: 80px;" class="centerCell">KN kodu</th>
+                                <th style="min-width: 150px;" class="centerCell">KN soyadı, adı</th>
+                                <th style="min-width: 80px;" class="centerCell">İşçi kodu</th>
+                                <th style="min-width: 150px;" class="centerCell">İşçi soyadı, adı</th>
+                                <th style="min-width: 115px;" class="centerCell">İşə baş. zamanı</th>
+                                <th style="min-width: 115px;" class="centerCell">İşin bit. zamanı</th>
+                                <th style="min-width: 50px;" class="centerCell">FİM</th>
+                                <th style="min-width: 50px;" class="centerCell">NİM</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{ int j = 0;}
+                            @foreach (var item in Model.JobcardDetailsModel.JobcardToDoneWorks)
+                            {
+                                j++;
+                                <tr class="pageItem">
+                                    <td style="text-align:center;">@j</td>
+                                    <td style="text-align:center;">@(item.WorkId != null ? item.DoneWorks.WorkCode : "")</td>
+                                    <td>@(item.WorkId != null ? item.DoneWorks.WorkName : "")</td>
+                                    <td style="text-align:center;">@(item.ServisOfficer != null ? item.Employees.EmployeeCode : "")</td>
+                                    <td>@(item.ServisOfficer != null ? (item.Employees.Surname + " " + item.Employees.Name) : "")</td>
+                                    <td style="text-align:center;">@(item.Master != null ? item.Employees1.EmployeeCode : "")</td>
+                                    <td>@(item.Master != null ? (item.Employees1.Surname + " " + item.Employees1.Name) : "")</td>
+                                    <td style="text-align:center;">@(item.WorkStartTime != null ? item.WorkStartTime.Value.ToString("dd.MM.yyyy HH:mm") : "")</td>
+                                    <td style="text-align:center;">@(item.WorkEndTime != null ? item.WorkEndTime.Value.ToString("dd.MM.yyyy HH:mm") : "")</td>
+                                    <td style="text-align:center;">@((item.WorkStartTime != null && item.WorkEndTime != null) ? (item.WorkEndTime - item.WorkStartTime).Value.TotalHours.ToString("#.#") : "")</td>
+                                    <td style="text-align:center;">@(item.WorkId != null ? item.DoneWorks.NormativeBakubus.ToString() : "")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

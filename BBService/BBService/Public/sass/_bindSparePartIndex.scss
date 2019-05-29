@@ -1,0 +1,34 @@
+#BindSparePartIndex {
+    .contaiber-fluid {
+        .filter {
+            @extend %filter-style;
+
+            .lableSelectBox {
+                margin-bottom: 10px !important;
+            }
+
+            .nonFIlterWrapper {
+                float: right;
+                margin-top: -8px;
+                /*position: absolute;*/
+                right: 0px;
+                bottom: 5px;
+
+                p {
+                    a {
+                        padding: 4px 10px;
+                        font-size: 13px;
+                    }
+                }
+            }
+        }
+
+        .content {
+            @extend %content-style;
+        }
+
+        .footer {
+            @extend %footer-style;
+        }
+    }
+}

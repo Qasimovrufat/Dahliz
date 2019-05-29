@@ -1,0 +1,150 @@
+#RequisitionsAdd {
+    .contaiber-fluid {
+        .inputAccident {
+            @extend %add-style;
+
+            h1 {
+                margin-bottom: 35px !important;
+            }
+
+            form {
+                .inputItem {
+                    margin-bottom: 0px;
+                }
+
+                .addButton {
+                    margin-top: 40px;
+                }
+
+                .text {
+                    span {
+                        color: $main-col-red;
+                        font-weight: 700;
+                        margin-left: 10px;
+                    }
+                }
+
+                .text-failure {
+                    padding: 0px 30px;
+
+                    label {
+                        display: block;
+                        margin-bottom: 5px;
+                        margin-left: -29px;
+                    }
+
+                    span {
+                        color: $main-col;
+                        font-weight: 500;
+                        font-size: 14px;
+                    }
+                }
+
+                .itemGroup {
+                    padding: 5px 15px 0px 15px;
+
+                    .itemGood {
+                        display: inline-block;
+                        width: calc(100% - 119px);
+                    }
+
+                    .itemQuantity {
+                        display: inline-block;
+                        width: 75px;
+
+                        input {
+                            border-color: #707DA1;
+                        }
+                    }
+
+                    .resultIsOk {
+                        text-align: center;
+                        width: 25px;
+                        vertical-align: middle;
+                        margin-left: 8px;
+                        transition: all 0.1s linear;
+                        display: inline-block;
+
+                        .fa-check {
+                            color: green;
+                        }
+
+                        .fa-exclamation {
+                            color: darkred;
+                        }
+                    }
+                }
+
+                .addItem {
+                    margin: 15px 0px 0px 15px;
+
+                    i {
+                        width: calc(100% - 54px);
+                        background-color: $main-col-red;
+                        color: $main-col-white;
+                        border-radius: 3px;
+                        padding: 5px;
+                        text-align: center;
+                        box-sizing: border-box;
+                        cursor: pointer;
+
+                        &:hover {
+                            background-color: #d80707;
+                        }
+                    }
+                }
+
+                .requsitions {
+                    .alert-warning {
+                        width: calc(100% - 68px);
+                        margin: 5px 0px 0px 14px;
+                        display: none;
+                        color: $main-col-red;
+                        font-size: 16px;
+                        line-height: 20px;
+                        font-weight: 500;
+                        letter-spacing: 1px;
+                        padding-left: 10px;
+                    }
+                }
+
+                #goBack {
+                    margin-left: 15px;
+                    font-size: 16px;
+                    font-weight: 500;
+                    text-decoration: none;
+                    padding: 5px 9px;
+                    color: $main-col;
+                    border-radius: 4px;
+                    transition: all .1s linear;
+                    cursor: pointer;
+                    letter-spacing: 1px;
+
+                    &:hover {
+                        color: $main-col-red;
+                        transition: all .1s linear;
+                    }
+                }
+            }
+
+
+            .SuccessInfo {
+                font-size: 17px;
+                line-height: 22px;
+                color: $main-col-red;
+                width: calc(100% - 39px) !important;
+                max-width: unset;
+                margin-left: 0px !important;
+                display: block !important;
+            }
+
+            .inputHere {
+                margin-bottom: 0px;
+
+                .dropdown {
+                    padding: 0px 10px;
+                }
+            }
+        }
+    }
+}
